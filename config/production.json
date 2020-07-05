@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://bhart:Bella2121@chatter-khexo.mongodb.net/chatter?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "2faa35b9d9dbbee1de38",
+    "githubSecret": "7fcdfe059ff0f9a39a0b3d0c501c0caf5ac41cb4"
+}
