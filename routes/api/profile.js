@@ -129,34 +129,52 @@ router.get('/user/:user_id', async (req, res) => {
 // @access Private
 router.post('/user/:user_id/follow-user', auth, async (req, res) => {
   try {
-      // if (req.user.id === req.params.id) {
-      //   console.log('You cannot follow yourself')
-      //     return res.status(400).json({ alreadyfollow : "You cannot follow yourself"})
-      // } 
-      const profile = await Profile.findOne({
+    // Request visited users data
+      const visitiedProfile = await Profile.findOne({
         user: req.params.user_id
-      }).populate('user', 'followers')
-      console.log(profile.followers);
-      // if(profile.followers.filter(follower => 
-      //     follower.user.toString() === req.user.id ).length > 0){
-      //     return res.status(400).json({ alreadyfollow : "You already followed the user"})
-      // }
+      }).populate( 
+      'followers',
+      'user',
+      ['name', 'avatar']
+      );
 
-      profile.followers.unshift({user:req.user.id});
-      await profile.save()
+      // Check to make sure current user isnt already following visited user
+      if(visitiedProfile.followers.filter(follower => 
+          follower.user.toString() === req.user.id ).length > 0){
+            return res.status(400).end('User already followed')
+          }
+      // Checks to see if user is attempting to follow themselves
+      if (req.user.id === req.params.user_id) {
+            return res.status(400).end('You cannot follow yourself')
+        } 
+      // Add current user to visited users follwer array
+      visitiedProfile.followers.unshift({user:req.user.id});
 
-      // const currUser =  await User.findOne({ email: req.user.email });
-      // const data = {
-      //   user,
-      //   currUser
-      // }
-      // console.log(data);
+      // save visited user
+      await visitiedProfile.save()
 
-      // currUser.following.unshift({user: req.params.id});
-      // await user.save();
-      res.json(profile)
+      // Get current users profile
+      const currentProfile =  await Profile.findOne({ user: req.user.id }).populate(
+        'followers',
+        'user',
+        ['handle', 'avatar']
+      );
+      const userObjects = {
+        visitiedProfile,
+        currentProfile
+      };
+
+      // Add visited user to current users following array
+      currentProfile.following.unshift({user: req.params.user_id});
+
+      // save current user
+      await currentProfile.save();
+
+      // send objects
+      res.json(userObjects)
+
   } catch (err) {
-      res.status(err).json({alradyfollow:"you already followed the user"})
+      res.status(500).end('User already followed')
   }
 })
 

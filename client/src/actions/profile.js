@@ -62,16 +62,24 @@ export const getProfileById = userId => async dispatch => {
 };
 export const follow = (e, userId) => async dispatch => {
   e.preventDefault();
+
+
   try {
       const res = await axios.post(`/api/profile/user/${userId}/follow-user`);
       dispatch({
         type: ADD_FOLLOWER,
         payload: res.data.followers
       });
-      console.log(res.data.followers);
+      console.log(res);
+      // console.log(res.data.currentProfile);
+      // console.log(res.data);
   } catch (err) {
-    console.log(err);
-
+    // console.log(err.response)
+    dispatch({
+      type: SET_ALERT,
+      payload: {msg: err.response.data, status: err.response.status}
+    })
+    
   }
 }
 // Create or update profile
