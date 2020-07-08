@@ -26,16 +26,16 @@ const ProfileSchema = new mongoose.Schema({
       {
           user:{ 
               type: mongoose.Schema.Types.ObjectId, 
-              ref: 'User' 
+              ref: 'user'
           },
       }
-
   ],
   followers: [
       {
           user:{ 
               type: mongoose.Schema.Types.ObjectId, 
-              ref: 'User' 
+              firstName: String,
+              ref: 'user' 
           },
       }
   ],

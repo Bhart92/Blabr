@@ -8,7 +8,8 @@ import {
     CLEAR_PROFILE,
     ACCOUNT_DELETED,
     GET_PROFILES,
-    ADD_FOLLOWER
+    ADD_FOLLOWER,
+    REMOVE_FOLLOWER
 } from './types';
 
 // Get current users profile
@@ -60,28 +61,92 @@ export const getProfileById = userId => async dispatch => {
     });
   }
 };
-export const follow = (e, userId) => async dispatch => {
-  e.preventDefault();
+export const filterByValue = (array, string) => {
+  return array.filter(o =>
+      Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Follow a user
+export const follow = (userId) => async dispatch => {
   try {
       const res = await axios.post(`/api/profile/user/${userId}/follow-user`);
       dispatch({
         type: ADD_FOLLOWER,
-        payload: res.data.followers
+        payload: res.data
       });
+      dispatch(setAlert('User followed!'));
+
       console.log(res);
-      // console.log(res.data.currentProfile);
-      // console.log(res.data);
   } catch (err) {
-    // console.log(err.response)
+    const {msg} = err.response.data;
     dispatch({
       type: SET_ALERT,
-      payload: {msg: err.response.data, status: err.response.status}
+      payload: {msg: msg, status: err.response.status}
     })
     
   }
 }
+
+
+// Unfollow a user
+export const unfollow = (userId) => async dispatch => {
+  try {
+      const res = await axios.post(`/api/profile/user/${userId}/unfollow-user`);
+      dispatch({
+        type: REMOVE_FOLLOWER,
+        payload: res.data.followers
+      });
+      dispatch(setAlert('User unfollowed!'));
+  } catch (err) {
+    const {msg} = err.response.data;
+    dispatch({
+      type: SET_ALERT,
+      payload: {msg: msg, status: err.response.status}
+    })
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Create or update profile
 export const createProfile = (
   formData,

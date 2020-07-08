@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProfileTop from './ProfileTop';
 import CreateProfile from '../profile-forms/CreateProfile';
@@ -6,25 +6,43 @@ import ProfilePosts from '../profile/ProfilePosts';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
-import { getProfileById } from '../../actions/profile';
-import { follow } from '../../actions/profile';
+import { getProfileById, filterByValue } from '../../actions/profile';
+import { follow, unfollow } from '../../actions/profile';
 
 
-const Profile = ({  getProfileById, follow, match,  profile: {profile}, auth:{isAuthenticated}}) => {
+const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
+
         getProfileById(match.params.id);
     }, [getProfileById ,match.params.id]);
+
+
+if(profile && user){
+    let array = filterByValue(profile.followers, user._id);
+    console.log(array)
+}
+
+
+const triggerFollow = (id) => {
+    follow(id)
+}
+const triggerUnfollow = (id) => {
+    unfollow(id)
+}
     return (
     <div className='profile--container'>
-        {profile === null  ?  <Spinner /> : <Fragment>
-            <div className='profile--top'>
-                {profile.user === null ? <Spinner /> : (
-                <Fragment>
-                    <img src={profile.user.avatar} />
-                        <h1>{`${profile.user.firstName} ${profile.user.lastName}`}</h1>
-                        <span>{profile.user.handle}</span>
-                        <button onClick={e => follow(e, match.params.id)}>Follow</button>
-                </Fragment>)}
+        {profile  === null || user === null  ?  <Spinner /> : <Fragment>
+            <div className='profile--top'>        
+
+
+    <button onClick={e => triggerFollow(match.params.id)} disabled={filterByValue(profile.followers, user._id).length > 0}>
+        Follow
+        </button>
+        <button onClick={e => triggerUnfollow(match.params.id)} disabled={filterByValue(profile.followers, user._id).length <= 0}>
+        Unfollow
+        </button>
+
+           {filterByValue(profile.followers, user._id).map(item => <p>{item.user}</p>)}
             </div>
             <div className='profile--mid'>
                 <div className='profile--mid__interests'>
@@ -36,11 +54,13 @@ const Profile = ({  getProfileById, follow, match,  profile: {profile}, auth:{is
                     })}
                 </ul>
                 </div>
-
                 <p>{profile.bio}</p>
             </div>
             <div className='profile--bottom'>
+
                 <ProfilePosts />
+                {profile.followers.length < 0 ? 'This user has now followers' : <p>{profile.followers.length}</p>}
+
             </div>
             </Fragment>}
     </div>
@@ -50,7 +70,9 @@ const Profile = ({  getProfileById, follow, match,  profile: {profile}, auth:{is
 Profile.propTypes = {
     getProfileById: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
-    follow: PropTypes.func.isRequired
+    follow: PropTypes.func.isRequired,
+    unfollow: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -58,4 +80,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 });
 
-export default connect(mapStateToProps, { getProfileById, follow })(Profile);
+export default connect(mapStateToProps, { getProfileById, follow, unfollow })(Profile);

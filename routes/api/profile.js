@@ -15,7 +15,7 @@ router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id }).populate(
       'user',
-      ['name', 'avatar']
+      ['firstName', 'avatar', 'handle', 'lastName']
     );
 
     if (!profile) {
@@ -96,8 +96,9 @@ const {
 // @access   Public
 router.get('/', async (req, res) => {
     try {
-      const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+      const profiles = await Profile.find().populate('user', ['firstName', 'avatar', 'handle', 'lastName']);
       res.json(profiles);
+
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -124,6 +125,26 @@ router.get('/user/:user_id', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+// @route    DELETE api/profile
+// @desc     delete profile, user & posts
+// @access   Private
+router.delete('/', auth, async (req, res) => {
+  try {
+    //todo remove users posts
+    await Post.deleteMany({ user: req.user.id });
+    //remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+    //remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+
+      res.json({ msg: 'User Deleted' });
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route  POST api/users/follow-user
 // @desc   follow a  user
 // @access Private
@@ -132,20 +153,16 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
     // Request visited users data
       const visitiedProfile = await Profile.findOne({
         user: req.params.user_id
-      }).populate( 
-      'followers',
-      'user',
-      ['name', 'avatar']
-      );
-
+      })
+        console.log(visitiedProfile)
       // Check to make sure current user isnt already following visited user
       if(visitiedProfile.followers.filter(follower => 
           follower.user.toString() === req.user.id ).length > 0){
-            return res.status(400).end('User already followed')
+            return res.status(400).json({msg: 'User already followed'})
           }
-      // Checks to see if user is attempting to follow themselves
+      // // // Checks to see if user is attempting to follow themselves
       if (req.user.id === req.params.user_id) {
-            return res.status(400).end('You cannot follow yourself')
+            return res.status(400).json({msg : 'You cannot follow yourself'})
         } 
       // Add current user to visited users follwer array
       visitiedProfile.followers.unshift({user:req.user.id});
@@ -174,30 +191,51 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
       res.json(userObjects)
 
   } catch (err) {
-      res.status(500).end('User already followed')
+      res.status(500).json({msg: 'Something went wrong on our end. Please refresh and try again.'})
   }
 })
 
-// @route    DELETE api/profile
-// @desc     delete profile, user & posts
-// @access   Private
-router.delete('/', auth, async (req, res) => {
+
+// @route  POST api/users/unfollow-user
+// @desc   unfollow a  user
+// @access Private
+router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
   try {
-    //todo remove users posts
-    await Post.deleteMany({ user: req.user.id });
-    //remove profile
-    await Profile.findOneAndRemove({ user: req.user.id });
-    //remove user
-    await User.findOneAndRemove({ _id: req.user.id });
+    // Request visited users data
+      const visitiedProfile = await Profile.findOne({
+        user: req.params.user_id
+      });
 
-      res.json({ msg: 'User Deleted' });
-    res.json(profiles);
+      //filter visited users follower array to remove any followers with id == req.user.id
+      const removeIndexOne = visitiedProfile.followers.map(follower => follower.user.toString()).indexOf(req.user.id);
+        visitiedProfile.followers.splice(removeIndexOne, 1);
+
+      // // save visited user
+      await visitiedProfile.save()
+
+      // Get current users profile
+      const currentProfile =  await Profile.findOne({ user: req.user.id }).populate(
+        'followers',
+        'user.avatar',
+        ['handle', 'avatar']
+      );
+      const removeIndexTwo = currentProfile.following.map(follower => follower.user.toString()).indexOf(req.params.user_id);
+        currentProfile.following.splice(removeIndexTwo, 1);
+
+      // save current user
+      await currentProfile.save();
+
+      const userObjects = {
+        visitiedProfile,
+        currentProfile
+      };
+
+      // send objects
+      res.json(userObjects)
+
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+      res.status(500).json({msg: 'Something went wrong on our end. Please refresh and try again.'})
   }
-});
-
-
+})
 
 module.exports = router;

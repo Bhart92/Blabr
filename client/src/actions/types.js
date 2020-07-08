@@ -23,6 +23,8 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const GET_NEWS = 'GET_NEWS';
 export const FILTER_NEWS = 'FILTER_NEWS';
 export const ADD_FOLLOWER = 'ADD_FOLLOWER';
+export const REMOVE_FOLLOWER = 'REMOVE_FOLLOWER';
+
 
 
 

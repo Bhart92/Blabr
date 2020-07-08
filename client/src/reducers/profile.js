@@ -3,14 +3,14 @@ import {
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
 	GET_PROFILES,
-    ADD_FOLLOWER
+	ADD_FOLLOWER,
+	REMOVE_FOLLOWER
 } from '../actions/types';
 
 const initialState = {
 	profile: null,
 	profiles: [],
-	repos: [],
-	followers: [],
+	isFollowing: false,
 	loading: true,
 	error: {}
 };
@@ -35,6 +35,11 @@ export default function(state = initialState, action) {
 				return {
 					...state,
 					followers: payload
+				};
+			case REMOVE_FOLLOWER:
+				return {
+					...state,
+					follows: payload
 				};
 		case PROFILE_ERROR:
 			return {
