@@ -12,22 +12,31 @@ import { follow, unfollow } from '../../actions/profile';
 
 const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
-
         getProfileById(match.params.id);
     }, [getProfileById ,match.params.id]);
+    
 
-
-if(profile && user){
-    let array = filterByValue(profile.followers, user._id);
-    console.log(array)
-}
+const [followState, setFollowState] = useState({
+    following: null
+});
 
 
 const triggerFollow = (id) => {
     follow(id)
+    setFollowState({
+        following: true
+    });
+    getProfileById(match.params.id);
 }
 const triggerUnfollow = (id) => {
     unfollow(id)
+    let old = followState;
+    setFollowState({
+        ...old,
+        following: false
+    });
+    getProfileById(match.params.id);
+
 }
     return (
     <div className='profile--container'>
