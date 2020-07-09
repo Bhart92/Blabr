@@ -12,27 +12,27 @@ import { loadUser } from '../../actions/auth';
 const Dashboard = ({   
     getCurrentProfile,
     logout,
-    getNews,
     deleteAccount,
     auth: { user },
     posts,
     profile: { profile, loading } 
 }) => {
     useEffect(() => {
-        getCurrentProfile();
         loadUser();
-        getNews();
-    },[loadUser, getCurrentProfile]);
+        getCurrentProfile()
+    },[loadUser]);
     
     return user === null ? <Spinner /> : 
 
     <div className='dashboard--container'>
+        
         <div className='dashboard--center-console'>
             <div className='dashboard--newsfeed'>
                {!profile ? (<Fragment>
                 <Link to='create-profile'>Create your profile</Link>
                </Fragment>) : (<Fragment>
                 <DashboardProfile loading={loading} user={user}/>
+                
                </Fragment>)}
             </div>
         </div>

@@ -10,25 +10,27 @@ import {
 const initialState = {
 	profile: null,
 	profiles: [],
-	isFollowing: false,
+	followerProfiles: [],
 	loading: true,
 	error: {}
 };
 
 export default function(state = initialState, action) {
-	const { type, payload } = action;
-
+	const { type, payload, payloadTwo } = action;
+	console.log(payloadTwo);
 	switch (type) {
 		case GET_PROFILE:
 			return {
 				...state,
 				profile: payload,
+				followerProfiles: payloadTwo,
 				loading: false
 			};
 		case GET_PROFILES:
 			return {
 				...state,
 				profiles: payload,
+				followerProfiles: payloadTwo,
 				loading: false
 			};
 			case ADD_FOLLOWER:

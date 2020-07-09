@@ -10,44 +10,36 @@ import { getProfileById, filterByValue } from '../../actions/profile';
 import { follow, unfollow } from '../../actions/profile';
 
 
-const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles}, auth:{isAuthenticated}}) => {
+const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
         getProfileById(match.params.id);
-    }, [getProfileById ,match.params.id]);
+    }, [getProfileById ,match.params.id], followerProfiles);
     
-
-const [followState, setFollowState] = useState({
-    following: null
-});
+const [followState, setFollowState] = useState(true);
 
 
 const triggerFollow = (id) => {
     follow(id)
-    setFollowState({
-        following: true
-    });
+    setFollowState(false);
     getProfileById(match.params.id);
 }
 const triggerUnfollow = (id) => {
     unfollow(id)
     let old = followState;
-    setFollowState({
-        ...old,
-        following: false
-    });
+    setFollowState(true);
     getProfileById(match.params.id);
 
 }
     return (
     <div className='profile--container'>
-        {profile  === null || user === null  ?  <Spinner /> : <Fragment>
+        {profile  === null || user === null   && profile.followers === undefined ?  <Spinner /> : <Fragment>
             <div className='profile--top'>        
 
 
-    <button onClick={e => triggerFollow(match.params.id)} disabled={filterByValue(profile.followers, user._id).length > 0}>
+    <button onClick={e => triggerFollow(match.params.id)} disabled={!followState}>
         Follow
         </button>
-        <button onClick={e => triggerUnfollow(match.params.id)} disabled={filterByValue(profile.followers, user._id).length <= 0}>
+        <button onClick={e => triggerUnfollow(match.params.id)} disabled={followState}>
         Unfollow
         </button>
 
@@ -67,7 +59,7 @@ const triggerUnfollow = (id) => {
             </div>
             <div className='profile--bottom'>
 
-                <ProfilePosts />
+                {/* <ProfilePosts /> */}
                 {profile.followers.length < 0 ? 'This user has now followers' : <p>{profile.followers.length}</p>}
 
             </div>

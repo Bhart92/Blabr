@@ -114,9 +114,16 @@ router.get('/user/:user_id', async (req, res) => {
       user: req.params.user_id
     }).populate('user', ['firstName', 'lastName', 'handle', 'avatar', 'followers', 'following']);
 
+    const profiles = profile.followers.map(item => item.user);
+    const followerProfiles = await Profile.find().where('user').in(profiles).exec();
+
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
-    res.json(profile);
+    const profileObj = {
+      profile,
+      followerProfiles
+    };
+    res.json(profileObj);
   } catch (err) {
     console.error(err.message);
     if (err.kind == 'ObjectId') {
@@ -154,7 +161,6 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
       const visitiedProfile = await Profile.findOne({
         user: req.params.user_id
       })
-        console.log(visitiedProfile)
       // Check to make sure current user isnt already following visited user
       if(visitiedProfile.followers.filter(follower => 
           follower.user.toString() === req.user.id ).length > 0){
