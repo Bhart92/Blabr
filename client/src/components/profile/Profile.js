@@ -13,10 +13,11 @@ import { follow, unfollow } from '../../actions/profile';
 const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
         getProfileById(match.params.id);
-    }, [getProfileById ,match.params.id], followerProfiles);
+    }, [getProfileById ,match.params.id]);
     
 const [followState, setFollowState] = useState(true);
 
+console.log(followerProfiles)
 
 const triggerFollow = (id) => {
     follow(id)
@@ -32,7 +33,7 @@ const triggerUnfollow = (id) => {
 }
     return (
     <div className='profile--container'>
-        {profile  === null || user === null   && profile.followers === undefined ?  <Spinner /> : <Fragment>
+        {profile  === null ?  <Spinner /> : <Fragment>
             <div className='profile--top'>        
 
 
@@ -43,24 +44,21 @@ const triggerUnfollow = (id) => {
         Unfollow
         </button>
 
-           {filterByValue(profile.followers, user._id).map(item => <p>{item.user}</p>)}
             </div>
             <div className='profile--mid'>
                 <div className='profile--mid__interests'>
-                <ul>
-                    {profile.interests.map((item, i) => {
-                        return <li key={i}>
-                            {item}
-                        </li>
-                    })}
-                </ul>
+
                 </div>
                 <p>{profile.bio}</p>
             </div>
             <div className='profile--bottom'>
-
-                {/* <ProfilePosts /> */}
-                {profile.followers.length < 0 ? 'This user has now followers' : <p>{profile.followers.length}</p>}
+            <h2>{user.firstName}s followers</h2>
+                {followerProfiles.map(follower => {
+                    return <div key={follower._id}>
+                        <img src={follower.avatar} />
+                    <p>{follower.firstName}</p>
+                </div>
+            })}
 
             </div>
             </Fragment>}

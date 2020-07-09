@@ -29,7 +29,7 @@ const DashboardWidgets = ({
                 <PostsWidget />
             </div>
             <div className='dashboard--widgets__people'>
-                <DashboardProfileWidget />
+                {/* <DashboardProfileWidget /> */}
             </div>
         </div>
     );

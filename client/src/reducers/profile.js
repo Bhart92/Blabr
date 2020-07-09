@@ -17,7 +17,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
 	const { type, payload, payloadTwo } = action;
-	console.log(payloadTwo);
 	switch (type) {
 		case GET_PROFILE:
 			return {

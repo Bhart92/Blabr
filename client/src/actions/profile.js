@@ -33,9 +33,11 @@ export const getProfiles = () => async dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get('/api/profile');
+    const { profiles, followerProfiles } = res.data;
     dispatch({
       type: GET_PROFILES,
-      payload: res.data
+      payload: profiles,
+      payloadTwo: followerProfiles
     });
   } catch (err) {
     dispatch({
@@ -50,7 +52,6 @@ export const getProfileById = userId => async dispatch => {
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
     const { profile, followerProfiles } = res.data;
-    console.log(res.data)
     // console.log(followerProfiles)
     dispatch({
       type: GET_PROFILE,

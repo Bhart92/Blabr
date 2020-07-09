@@ -41,6 +41,9 @@ router.post('/', [auth, [
   }
 
 const {
+  firstName,
+  lastName,
+  avatar,
     company,
     status,
     location,
@@ -54,6 +57,9 @@ const {
     //build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
+    if(firstName) profileFields.firstName = firstName;
+    if(lastName) profileFields.lastName = lastName;
+    if(avatar) profileFields.avatar = avatar;
     if(company) profileFields.company = company;
     if(location) profileFields.location = location;
     if(bio) profileFields.bio = bio;
@@ -97,8 +103,15 @@ const {
 router.get('/', async (req, res) => {
     try {
       const profiles = await Profile.find().populate('user', ['firstName', 'avatar', 'handle', 'lastName']);
-      res.json(profiles);
 
+      const followerProfiles = await Profile.find().where('user').in(profiles).exec();
+
+
+      const profileObj = {
+        profiles,
+        followerProfiles
+      };
+      res.json(profileObj);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');

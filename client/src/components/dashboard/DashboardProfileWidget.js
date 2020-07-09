@@ -10,7 +10,7 @@ const DashboardProfileWidget = ({ auth: {user}, getCurrentProfile, getProfiles, 
 
   useEffect(() => {
     getProfiles();
-  }, [getProfiles]);
+  }, []);
 
     const shortArr = profiles.slice(0, 3);
   return (
