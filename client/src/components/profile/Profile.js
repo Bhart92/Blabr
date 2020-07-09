@@ -2,12 +2,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProfileTop from './ProfileTop';
 import CreateProfile from '../profile-forms/CreateProfile';
-import ProfilePosts from '../profile/ProfilePosts';
+
+import ProfilePosts from './ProfilePosts';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { getProfileById, filterByValue } from '../../actions/profile';
 import { follow, unfollow } from '../../actions/profile';
+import { GET_POSTS } from '../../actions/types';
 
 
 const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
@@ -16,9 +18,6 @@ const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  prof
     }, [getProfileById ,match.params.id]);
     
 const [followState, setFollowState] = useState(true);
-
-console.log(followerProfiles)
-
 const triggerFollow = (id) => {
     follow(id)
     setFollowState(false);
@@ -36,7 +35,8 @@ const triggerUnfollow = (id) => {
         {profile  === null ?  <Spinner /> : <Fragment>
             <div className='profile--top'>        
 
-
+            <img src={profile.user.avatar} />
+        <h1>{profile.firstName} {profile.lastName}</h1>
     <button onClick={e => triggerFollow(match.params.id)} disabled={!followState}>
         Follow
         </button>
@@ -51,8 +51,31 @@ const triggerUnfollow = (id) => {
                 </div>
                 <p>{profile.bio}</p>
             </div>
+
+
+
+
+
+            <div>
+            <h2>{profile.firstName}s posts</h2>
+
+
+
+            <ProfilePosts />
+
+
+
+
+            </div>
+
+
+
+
+
+
+
             <div className='profile--bottom'>
-            <h2>{user.firstName}s followers</h2>
+            <h2>{profile.user.firstName}s followers</h2>
                 {followerProfiles.map(follower => {
                     return <div key={follower._id}>
                         <img src={follower.avatar} />

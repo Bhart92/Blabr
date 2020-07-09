@@ -21,7 +21,18 @@ router.get('/me', auth, async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: 'There is no profile for this user' });
     }
-    res.json(profile);
+
+    
+    const profiles = profile.following.map(item => item.user);
+    const followerProfiles = await Profile.find().where('user').in(profiles).exec();
+
+
+    const profileObj = {
+      profile,
+      followerProfiles
+    };
+
+    res.json(profileObj);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -166,7 +177,7 @@ router.delete('/', auth, async (req, res) => {
 });
 
 // @route  POST api/users/follow-user
-// @desc   follow a  user
+// @desc   follow a user
 // @access Private
 router.post('/user/:user_id/follow-user', auth, async (req, res) => {
   try {

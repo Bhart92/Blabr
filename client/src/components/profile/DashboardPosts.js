@@ -5,17 +5,18 @@ import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../../actions/posts';
 
-const DashboardPosts = ({ getPosts, user, profile: { profile }, post: { posts, loading } }) => {
+const DashboardPosts = ({ getPosts, user, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
-const visitedPostArray = posts.filter(post => post.user == profile.user._id)
+const userPostArray = posts.filter(post => post.user == user._id)
+  
   return loading ? (
     <Spinner />
   ) : (
     <div>
-        {visitedPostArray.map(item => {
+        {userPostArray.map(item => {
             return <li key={item._id}>
                 <p>{item.text.substring(0, 75)}...</p>
                 <Link to={`/posts/${item._id}`}>Read more</Link>
@@ -29,13 +30,11 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
 DashboardPosts.propTypes = {
   getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   post: state.post,
-  profile: state.profile,
   user:state.auth.user
 });
 

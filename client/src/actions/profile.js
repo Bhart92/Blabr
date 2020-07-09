@@ -16,10 +16,12 @@ import {
 export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get('/api/profile/me');
+    const { profile, followerProfiles } = res.data;
 
     dispatch({
       type: GET_PROFILE,
-      payload: res.data
+      payload: profile,
+      payloadTwo: followerProfiles
     });
   } catch (err) {
     dispatch({
@@ -51,12 +53,13 @@ export const getProfileById = userId => async dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
-    const { profile, followerProfiles } = res.data;
+    const { profile, followerProfiles, posts } = res.data;
     // console.log(followerProfiles)
     dispatch({
       type: GET_PROFILE,
       payload: profile,
-      payloadTwo: followerProfiles
+      payloadTwo: followerProfiles,
+      postPayload: posts
     });
     // console.log(profile, followerProfiles)
   } catch (err) {

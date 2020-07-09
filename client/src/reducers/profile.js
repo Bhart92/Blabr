@@ -11,18 +11,20 @@ const initialState = {
 	profile: null,
 	profiles: [],
 	followerProfiles: [],
+	posts: [],
 	loading: true,
 	error: {}
 };
 
 export default function(state = initialState, action) {
-	const { type, payload, payloadTwo } = action;
+	const { type, payload, payloadTwo, postsPayload } = action;
 	switch (type) {
 		case GET_PROFILE:
 			return {
 				...state,
 				profile: payload,
 				followerProfiles: payloadTwo,
+				posts: postsPayload,
 				loading: false
 			};
 		case GET_PROFILES:

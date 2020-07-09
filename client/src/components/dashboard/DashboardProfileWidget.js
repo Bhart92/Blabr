@@ -6,24 +6,25 @@ import Spinner from '../layout/Spinner';
 import { getCurrentProfile, getProfiles } from '../../actions/profile';
 import ProfileWidgetItem from './ProfileWidgetItem';
 
-const DashboardProfileWidget = ({ auth: {user}, getCurrentProfile, getProfiles, profile: {profiles, loading}}) => {
+const DashboardProfileWidget = ({ auth: {user}, getCurrentProfile, getProfiles, profile: {profile, profiles, loading}}) => {
 
   useEffect(() => {
-    getProfiles();
+    // getProfiles();
   }, []);
 
-    const shortArr = profiles.slice(0, 3);
   return (
     <Fragment>
-      <div className='dashboard--profile-widget'>
-      <h2>People to follow</h2>
-          {shortArr.map((profile, i) => {
-            return (
-              <ProfileWidgetItem key={i} profile={profile} user={user} />
-            )
-          })}
+      {profile === null  ?  <Spinner /> : <Fragment>
+        
+        <div className='dashboard--profile-widget'>
+      <h2>People you follow</h2>
+      {profile.following.map(item => {
+        return <p>{item.user}</p>
+      })}
          <span className='seeMore'><Link to='/profiles'>See More</Link></span>
       </div>
+        </Fragment>}
+
     </Fragment>
   );
 
