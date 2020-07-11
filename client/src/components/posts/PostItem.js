@@ -22,15 +22,6 @@ const PostItem = ({
         <h4>{name}</h4>
       </Link>
       <span>{user.handle}</span>
-      {!auth.loading && user === auth.user._id && (
-            <button
-              onClick={() => deletePost(_id)}
-              type='button'
-              className='btn btn-danger'
-            >
-             Delete Post
-            </button>
-          )}
   </div>
   <div>
 
@@ -41,9 +32,17 @@ const PostItem = ({
             )}
           </Link>
   <p className='post-date'>
-    
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
+      {!auth.loading && user === auth.user._id && (
+            <button
+              onClick={() => deletePost(_id)}
+              type='button'
+              className='btn btn-danger'
+            >
+             Delete Post
+            </button>
+          )}
   </div>
 
   </div>

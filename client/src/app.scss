@@ -577,6 +577,27 @@ margin-bottom: 15px;
     p{
         text-align: center;
     }
+    img{
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+    }
+    h4{
+        margin: 5px auto 10px auto;
+    }
+    button{
+        background: none;
+        border: none;
+        color: darkred;
+        outline: none;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+.post-date{
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 .post--body{
     width: 65%;
