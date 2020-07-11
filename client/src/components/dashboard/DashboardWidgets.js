@@ -29,7 +29,8 @@ const DashboardWidgets = ({
                 <PostsWidget />
             </div>
             <div className='dashboard--widgets__people'>
-                {/* <DashboardProfileWidget /> */}
+                <textarea placeholder='Quick Post'></textarea>
+                <button>Post</button>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
    useEffect(() => {
        getProfiles();
    }, [getProfiles])
-    return <Fragment>
+    return <div className='profiles--container'>
         {loading ? <Spinner /> : <Fragment>
             <h1>Profiles</h1>
             <i className='fab fa-connectdevelop'></i>
@@ -21,7 +21,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                 ) : <h4>No Profiles Found</h4>}
             </div>
             </Fragment>}
-    </Fragment>;
+    </div>;
 };
 
 Profiles.propTypes = {

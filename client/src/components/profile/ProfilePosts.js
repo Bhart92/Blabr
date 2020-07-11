@@ -15,13 +15,15 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
     <Spinner />
   ) : (
     <div>
-        {visitedPostArray.map(item => {
+      <ul>
+      {visitedPostArray.map(item => {
             return <li key={item._id}>
                 <p>{item.text.substring(0, 75)}...</p>
                 <Link to={`/posts/${item._id}`}>Read more</Link>
                 <p>{item.date}</p>
             </li>
         })}
+      </ul>
     </div>
   );
 };

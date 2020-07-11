@@ -186,10 +186,10 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
         user: req.params.user_id
       })
       // Check to make sure current user isnt already following visited user
-      if(visitiedProfile.followers.filter(follower => 
-          follower.user.toString() === req.user.id ).length > 0){
-            return res.status(400).json({msg: 'User already followed'})
-          }
+      // if(visitiedProfile.followers.filter(follower => 
+      //     follower.user.toString() === req.user.id ).length > 0){
+      //       return res.status(400).json({msg: 'User already followed'})
+          // }
       // // // Checks to see if user is attempting to follow themselves
       if (req.user.id === req.params.user_id) {
             return res.status(400).json({msg : 'You cannot follow yourself'})

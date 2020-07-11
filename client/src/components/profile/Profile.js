@@ -34,7 +34,6 @@ const triggerUnfollow = (id) => {
     <div className='profile--container'>
         {profile  === null ?  <Spinner /> : <Fragment>
             <div className='profile--top'>        
-
             <img src={profile.user.avatar} />
         <h1>{profile.firstName} {profile.lastName}</h1>
     <button onClick={e => triggerFollow(match.params.id)} disabled={!followState}>
@@ -46,42 +45,24 @@ const triggerUnfollow = (id) => {
 
             </div>
             <div className='profile--mid'>
-                <div className='profile--mid__interests'>
-
-                </div>
                 <p>{profile.bio}</p>
             </div>
-
-
-
-
-
-            <div>
+            <div className='profile--bottom'>
             <h2>{profile.firstName}s posts</h2>
-
-
-
             <ProfilePosts />
-
-
-
-
             </div>
 
-
-
-
-
-
-
-            <div className='profile--bottom'>
+            <div className='dashboard--profile--following'>
             <h2>{profile.user.firstName}s followers</h2>
+            <div className='dashboard--profile--following--container'>
                 {followerProfiles.map(follower => {
-                    return <div key={follower._id}>
+                    return <div  className='dashboard--profile--following--container-user' key={follower._id}>
                         <img src={follower.avatar} />
                     <p>{follower.firstName}</p>
                 </div>
             })}
+            </div>
+
 
             </div>
             </Fragment>}

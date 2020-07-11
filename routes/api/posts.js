@@ -23,9 +23,10 @@ router.post('/', [auth, [
 
     try{
         const user = await User.findById(req.user.id).select('-password');
+        console.log(user)
         const newPost = new Post ({
             text: req.body.text,
-            name: user.name,
+            name: `${user.firstName}  ${user.lastName}`,
             avatar: user.avatar,
             user: req.user.id
         });

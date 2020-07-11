@@ -14,7 +14,7 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
     }, [getCurrentProfile]);
     // console.log(profile)
     return (
-    <div className='profile--container'>
+    <div>
         {profile === null  ?  <Spinner /> : <Fragment>
             <div className='profile--top'>
                 <img src={user.avatar}></img>
@@ -24,16 +24,22 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
             </div>
 
             <div className='profile--bottom'>
+                <h1>Your Posts</h1>
                 <DashboardPosts />
             </div>
-            <div>
+            <div className='dashboard--profile--following'>
                 <h2>Following</h2>
-                {followerProfiles.map(follower => {
-                    return <div>
-                         <p>{follower.firstName} {follower.lastName}</p>
-                        <img src={follower.avatar} />
-                    </div>
-                })}
+                <div className='dashboard--profile--following--container'>
+                {followerProfiles === null || followerProfiles === undefined ? <Spinner /> : (
+                    followerProfiles.map(follower => {
+                        return <div className='dashboard--profile--following--container-user'>
+                             <p>{follower.firstName} {follower.lastName}</p>
+                            <img src={follower.avatar} />
+                        </div>
+                    })
+                )}
+                </div>
+
             </div>
             </Fragment>}
     </div>

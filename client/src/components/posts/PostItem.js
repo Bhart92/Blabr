@@ -16,49 +16,39 @@ const PostItem = ({
 
 <div className='post-item'>
 <div className='post--header'>
-      <Link to={`/profile/${user}`}>
+  <div>
+  <Link to={`/profile/${user}`}>
+    <img src={avatar} />
         <h4>{name}</h4>
       </Link>
-      <span><Moment format='MM/YYYY'>{date}</Moment></span>
-    </div>
-    <div>
-      <p className='my-1'>{text}</p>
-      <p className='post-date'>
-        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
-      </p>
-
-        <Fragment>
-          <button
-            onClick={() => addLike(_id)}
-            type='button'
-            className='btn btn-light'
-          >
-            <i className='fas fa-thumbs-up' />{' '}
-            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-          </button>
-          <button
-            onClick={() => removeLike(_id)}
-            type='button'
-            className='btn btn-light'
-          >
-            <i className='fas fa-thumbs-down' />
-          </button>
-          <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Discussion{' '}
-            {comments.length > 0 && (
-              <span className='comment-count'>{comments.length}</span>
-            )}
-          </Link>
-          {!auth.loading && user === auth.user._id && (
+      <span>{user.handle}</span>
+      {!auth.loading && user === auth.user._id && (
             <button
               onClick={() => deletePost(_id)}
               type='button'
               className='btn btn-danger'
             >
-              <i className='fas fa-times' />
+             Delete Post
             </button>
           )}
-        </Fragment>
+  </div>
+  <div>
+
+  <Link to={`/posts/${_id}`} className='btn btn-primary'>
+            Discussion{' '}
+            {comments.length > 0 && (
+              <span className='comment-count'>{comments.length}</span>
+            )}
+          </Link>
+  <p className='post-date'>
+    
+        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+      </p>
+  </div>
+
+  </div>
+    <div className='post--body'>
+            <p className='my-1'>{text}</p>
     </div>
   </div>
 );

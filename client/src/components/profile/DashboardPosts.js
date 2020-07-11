@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../../actions/posts';
 
@@ -15,15 +16,17 @@ const userPostArray = posts.filter(post => post.user == user._id)
   return loading ? (
     <Spinner />
   ) : (
-    <div>
-        {userPostArray.map(item => {
+    <Fragment>
+      <ul>
+      {userPostArray.map(item => {
             return <li key={item._id}>
-                <p>{item.text.substring(0, 75)}...</p>
+                <p>{item.text.substring(0, 50)}...</p>
                 <Link to={`/posts/${item._id}`}>Read more</Link>
-                <p>{item.date}</p>
+                <p><Moment format='MM/YYYY'>{item.date}</Moment></p>
             </li>
         })}
-    </div>
+      </ul>
+    </Fragment>
   );
 };
 

@@ -10,8 +10,12 @@ const WidgetPostItem = ({
   removeLike,
   deletePost,
   auth,
+  post,
   post: { _id, text, name, avatar, user, likes, comments, date }
-}) => (
+}) => {
+  console.log(post)
+
+  return (
   <div className='post-item'>
     <div className='post--header'>
       <Link to={`/profile/${user}`}>
@@ -20,11 +24,13 @@ const WidgetPostItem = ({
       <span><Moment format='MM/YYYY'>{date}</Moment></span>
     </div>
     <div className='post--header'>
-    <p>{text.slice(0,15)}</p>
+    <p>{text.slice(0,35)}...</p>
+    <Link to=''>Read More...</Link>
     </div>
 
   </div>
 );
+}
 
 WidgetPostItem.defaultProps = {
 };

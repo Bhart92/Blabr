@@ -10,7 +10,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  const postsArr = posts.slice(0,4);
+  const postsArr = posts.slice(0,15);
   return loading ? (
     ''
   ) : (
