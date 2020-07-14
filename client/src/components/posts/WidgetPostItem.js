@@ -13,7 +13,6 @@ const WidgetPostItem = ({
   post,
   post: { _id, text, name, avatar, user, likes, comments, date }
 }) => {
-  console.log(post)
 
   return (
   <div className='post-item'>

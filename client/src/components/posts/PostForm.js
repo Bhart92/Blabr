@@ -16,7 +16,6 @@ const PostForm = ({ addPost }) => {
           setText('');
         }}
       >
-        <input type='text' value='' />
         <textarea
         maxLength='280'
           name='text'

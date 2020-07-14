@@ -25,8 +25,10 @@ const NewsFeedItem = ({ getNews, news: { articles } }) => {
 
     return unique;
     }
-    
 
+    const triggerRepost = (item) => {
+        console.log(item.title)
+    }
 
     return (
         <Fragment>
@@ -35,7 +37,7 @@ const NewsFeedItem = ({ getNews, news: { articles } }) => {
                         <div className='newsFeed--article--container--info'>
                         <p className='newsFeed--article--title'>{item.title}</p>
                         <div className='button-container'>
-                        <button><i className='fa fa-commenting'></i></button><button><i className='fas fa-thumbs-up'></i></button>
+                        <button><i className='fa fa-commenting'></i></button><button><i className='fas fa-thumbs-up'></i></button><button onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button>
                         </div>
                         </div>
                         <div className='newsfeed--article--image'>

@@ -11,6 +11,7 @@ import Spinner from '../layout/Spinner';
 
 const Newsfeed = ({ 
     getCurrentProfile,
+    user,
     getNews,
     news: { articles }
  }) => {
@@ -18,7 +19,10 @@ const Newsfeed = ({
         getNews();
         getCurrentProfile();
     },[getCurrentProfile, getNews]);
-
+    console.log(articles);
+    if(user === null){
+        console.log('user is null')
+    }
     return (
        <div className='newsFeed'>
            <div className='newsFeed--article-section'>
@@ -39,11 +43,13 @@ const Newsfeed = ({
 
 Newsfeed.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
-    getNews: PropTypes.func.isRequired
+    getNews: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    news: state.news
+    news: state.news,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps,{ getCurrentProfile, getNews })(Newsfeed);
