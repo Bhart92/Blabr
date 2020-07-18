@@ -16,6 +16,7 @@ import PrivateRoute from '../routing/PrivateRoute';
 import DashboardNavBar from '../dashboard/DashboardNavBar';
 import DashboardWidgets from '../dashboard/DashboardWidgets';
 import { connect } from 'react-redux';
+import RepostForm from '../posts/RepostForm';
 
 
 const Routes = ({isAuthenticated}) => {
@@ -40,6 +41,7 @@ const Routes = ({isAuthenticated}) => {
         <PrivateRoute exact path='/posts' component={Posts} />
         <PrivateRoute exact path='/explore' component={NewFeedWidget} />
         <PrivateRoute exact path='/posts/:id' component={Post} />
+        <PrivateRoute exact path='/repost/:id' component={RepostForm} />
         <Route component={NotFound} />
       </Switch>
     </section>

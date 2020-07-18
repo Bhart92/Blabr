@@ -42,7 +42,7 @@ const DashboardNavBar = ({
         <div className='dashboard--navBar-list'>
             <ul>
                 <li><NavLink exact to='/dashboard' activeClassName='active'><i className="fas fa-home"></i> Home</NavLink></li>
-                <li><NavLink exact to='/news' activeClassName='active' ><i className="fas fa-newspaper"></i> Explore</NavLink></li>
+                <li><NavLink exact to='/explore' activeClassName='active' ><i className="fas fa-newspaper"></i> Explore</NavLink></li>
                 <li><NavLink exact to='/posts' activeClassName='active' ><i className='fa fa-commenting'></i> Posts</NavLink></li>
                 <li><NavLink exact to='/profiles' activeClassName='active' ><i className='fa fa-user'></i> People</NavLink></li>
 

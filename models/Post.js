@@ -12,6 +12,18 @@ const PostSchema = new mongoose.Schema({
     name: {
         type: String,
     },
+    image: {
+        type: String
+    },
+    title: {
+        type: String
+    },
+    url: {
+        type: String
+    },
+    description: {
+        type: String
+    },
     avatar: {
         type: String
     },

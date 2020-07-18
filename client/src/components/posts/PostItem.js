@@ -10,8 +10,11 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date }
-}) => (
+  post: { _id, text, url, image, description, name, avatar, user, likes, comments, date }
+}) => {
+
+
+return (
 
 
 <div className='post-item'>
@@ -47,10 +50,22 @@ const PostItem = ({
 
   </div>
     <div className='post--body'>
-            <p className='my-1'>{text}</p>
+            <p className='my-1'>{text}sss</p>
+            {image !== undefined && description !== undefined && (
+              <div className='repost'>
+                <img src={image} />
+                <p>{description.slice(0,150)}... <a href={url}>Read More</a></p>
+              </div>
+            )}
+          <div className='post--actionBox'>
+              <i className='fa fa-thumbs-o-up'></i>
+              <i className='fa fa-commenting-o'></i>
+              <i className="fas fa-retweet"></i>
+          </div>
     </div>
   </div>
 );
+      }
 
 PostItem.defaultProps = {
 };

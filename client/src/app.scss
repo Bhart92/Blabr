@@ -604,9 +604,38 @@ margin-bottom: 15px;
     word-break: break-word;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: cener;
     p{
         letter-spacing: 1.15px;
+    }
+}
+.repost{
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    padding-bottom: 5px;
+    transform: translate(3%, -2%);
+    img{
+        height: 200px;
+        width: 100%;
+    }
+}
+.post--actionBox{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.15rem;
+    .fa, .fas{
+        color: rgba(0,0,0, .45);
+        width: 100%;
+        margin: -20px;
+        padding: 20px;
+        transition: .25s all ease;
+        &:hover{
+            cursor: pointer;
+            color: lighten(deepskyblue, 5%);
+        }
     }
 }
 .post--container,
@@ -931,3 +960,4 @@ p{
     width: 47%;
     margin: 0 auto;
 }
+

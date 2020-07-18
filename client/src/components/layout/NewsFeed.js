@@ -29,7 +29,7 @@ const Newsfeed = ({
             {articles.length === 0 ? <Spinner /> : (
                 <Fragment>
                     <NewsFilterBar articles={articles}/>
-                    <NewsFeedItem />
+                    <NewsFeedItem user={user}/>
                 </Fragment>
             )}
            </div>

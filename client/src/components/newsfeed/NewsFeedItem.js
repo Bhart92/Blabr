@@ -1,11 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getNews } from '../../actions/news';
 import { v4 as uuidv4 } from 'uuid';
+import RepostForm from '../posts/RepostForm';
 
 
-const NewsFeedItem = ({ getNews, news: { articles } }) => {
+const NewsFeedItem = ({ getNews, user, news: { articles } }) => {
 
     let filterArticles = articles.filter((item, index) => index !== 0);
     filterArticles.map((e) => {
@@ -29,7 +31,12 @@ const NewsFeedItem = ({ getNews, news: { articles } }) => {
     const triggerRepost = (item) => {
         console.log(item.title)
     }
+    // if(user === null){
+    //     console.log('user is null')
+    // } else{
+    //     console.log(user)
 
+    // }
     return (
         <Fragment>
             {filterArticles.map(item => (
@@ -37,7 +44,10 @@ const NewsFeedItem = ({ getNews, news: { articles } }) => {
                         <div className='newsFeed--article--container--info'>
                         <p className='newsFeed--article--title'>{item.title}</p>
                         <div className='button-container'>
-                        <button><i className='fa fa-commenting'></i></button><button><i className='fas fa-thumbs-up'></i></button><button onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button>
+                        <button><i className='fa fa-commenting'></i></button>
+                        <button><i className='fas fa-thumbs-up'></i></button>
+                        {/* <Link onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button> */}
+                        <RepostForm article={item}/>
                         </div>
                         </div>
                         <div className='newsfeed--article--image'>
