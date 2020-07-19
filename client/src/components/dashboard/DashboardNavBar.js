@@ -19,12 +19,14 @@ const DashboardNavBar = ({
 
     const customStyles = {
         content : {
-          top                   : '50%',
-          left                  : '50%',
-          right                 : 'auto',
-          bottom                : 'auto',
+          top                   : 'unset',
+          left                  : '15%',
+          right                 : 'unset',
+          bottom                : '10%',
           marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)'
+          height                : '166px',
+          padding               : '15px 0 10px 0',
+          transform             : 'translate(-25%, 2%)'
         }
       };
         const [modalIsOpen, setIsOpen] = useState(false);

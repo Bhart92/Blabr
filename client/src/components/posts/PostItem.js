@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
+import RepostForm from './RepostForm';
 import { addLike, removeLike, deletePost } from '../../actions/posts';
 
 const PostItem = ({
@@ -10,9 +11,8 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, url, image, description, name, avatar, user, likes, comments, date }
+  post: { _id, text, url, title, image, description, name, avatar, user, likes, comments, date }
 }) => {
-
 
 return (
 
@@ -60,7 +60,7 @@ return (
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <i className="fas fa-retweet"></i>
+              <RepostForm title={title} description={description} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>
@@ -79,7 +79,8 @@ PostItem.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  posts: state.posts
 });
 
 export default connect(

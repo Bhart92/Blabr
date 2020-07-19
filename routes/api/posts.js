@@ -32,7 +32,6 @@ router.post('/', [auth, [
             url: req.body.url,
             description: req.body.description
         });
-        console.log(newPost)
             const post = await newPost.save();
             res.json(post);
     } catch(err){

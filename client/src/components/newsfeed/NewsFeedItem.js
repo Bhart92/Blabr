@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getNews } from '../../actions/news';
 import { v4 as uuidv4 } from 'uuid';
-import RepostForm from '../posts/RepostForm';
+import RepostArticleForm from '../posts/RepostArticleForm';
 
 
 const NewsFeedItem = ({ getNews, user, news: { articles } }) => {
@@ -47,7 +47,7 @@ const NewsFeedItem = ({ getNews, user, news: { articles } }) => {
                         <button><i className='fa fa-commenting'></i></button>
                         <button><i className='fas fa-thumbs-up'></i></button>
                         {/* <Link onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button> */}
-                        <RepostForm article={item}/>
+                        <RepostArticleForm article={item}/>
                         </div>
                         </div>
                         <div className='newsfeed--article--image'>
