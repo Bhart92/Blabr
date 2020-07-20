@@ -133,6 +133,11 @@ textarea{
             width: 95%;
             align-items: center;
             justify-content: flex-start;
+            img{
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+            }
             textarea{
                 outline: none;
                 background: none;
@@ -144,23 +149,32 @@ textarea{
                 margin-left: 10px;
             }
         }
-        img{
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
         .repost--modal--commentary--data{
             border: 1px solid rgba(0, 0, 0, .25);
             border-radius: 25px;
             padding: 10px;
-            width: 75%;
+            width: 90%;
             margin-bottom: 3rem;
-            img{
-                height: 50px;
-                width: 50px;
-                border-radius: 50%;
+            .data--title{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                .textBox{
+                    display:flex;
+                    flex-direction: column;
+                    p{
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
             }
+            .data--text{
+                text-align: center;
+            }
+        }
+        .data--repost--details{
+            text-align: center;
+            margin: 10px;
         }
         input[type='submit']{
             background: none;
@@ -179,6 +193,20 @@ textarea{
                 background: transparent;
             }
         }
+    }
+}
+.repost--avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.data--repost--details{
+    .repost--details--image{
+        height: 200px;
+        width: 85%;
+        display: block;
+        margin: 0 auto;
     }
 }
 

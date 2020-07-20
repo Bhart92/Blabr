@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/posts';
@@ -111,9 +111,24 @@ const onSubmit = (e) => {
                     ></textarea>
                   </div>
                   <div className='repost--modal--commentary--data'>
-                    <img src={avatar} />
-                    <span>{name}</span>
-                    <p>{text}</p>
+                    <div className='data--title'>
+                      <img src={avatar} className='repost--avatar' />
+                      <div className='textBox'>
+                      <p>{name}</p>
+                      <span>@{handle}</span>
+                      </div>
+                    </div>
+                    <div className='data--text'>
+                      <p>{text}</p>
+                    </div>
+                    <div className='data--repost--details'>
+                      <img src={image} className='repost--details--image'/>
+                      {description !== undefined ? (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>) : (
+                        <Fragment>
+                          <p></p>
+                        </Fragment>
+                      )}
+                    </div>
                   </div>
                   <input type='submit'value='Repost'/>
                 </form>

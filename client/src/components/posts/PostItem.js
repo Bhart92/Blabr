@@ -61,7 +61,7 @@ return (
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <RepostForm user={auth.user} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
+              <RepostForm user={auth.user} handle={handle} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>

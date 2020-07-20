@@ -43,3 +43,5 @@ export default connect(
   null,
   { addPost }
 )(RepostArticleForm);
+
+/// CREATE REPOST ARTICLE WITH COMMENTARY ////////////////
