@@ -21,10 +21,16 @@ const PostSchema = new mongoose.Schema({
     url: {
         type: String
     },
+    handle: {
+        type: String
+    },
     description: {
         type: String
     },
     avatar: {
+        type: String
+    },
+    commentary: {
         type: String
     },
     likes: [

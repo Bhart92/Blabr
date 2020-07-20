@@ -84,13 +84,13 @@ export const deletePost = id => async dispatch => {
 export const addPost = formData => async dispatch => {
   try {
     const res = await axios.post('/api/posts', formData);
+    console.log(res.data)
+    dispatch({
+      type: ADD_POST,
+      payload: res.data
+    });
 
-    // dispatch({
-    //   type: ADD_POST,
-    //   payload: res.data
-    // });
-
-    // dispatch(setAlert('Post Created', 'success'));
+    dispatch(setAlert('Post Created', 'success'));
     // console.log(res.data)
 
   } catch (err) {

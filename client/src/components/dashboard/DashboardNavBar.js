@@ -19,6 +19,7 @@ const DashboardNavBar = ({
 
     const customStyles = {
         content : {
+          position              : 'fixed',
           top                   : 'unset',
           left                  : '15%',
           right                 : 'unset',

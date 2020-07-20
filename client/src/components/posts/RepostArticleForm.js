@@ -30,6 +30,7 @@ const onSubmit = (e) => {
     <div className='post-form'>
 
       <i className="fas fa-retweet" onClick={e => onSubmit(e)}></i>
+      
     </div>
   );
 };

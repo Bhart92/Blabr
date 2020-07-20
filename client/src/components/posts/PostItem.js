@@ -11,9 +11,8 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, url, title, image, description, name, avatar, user, likes, comments, date }
+  post: { _id, text, url, title, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
-
 return (
 
 
@@ -23,8 +22,9 @@ return (
   <Link to={`/profile/${user}`}>
     <img src={avatar} />
         <h4>{name}</h4>
+        <span>@{handle}</span>
+
       </Link>
-      <span>{user.handle}</span>
   </div>
   <div>
 
@@ -50,9 +50,10 @@ return (
 
   </div>
     <div className='post--body'>
-            <p className='my-1'>{text}sss</p>
+            <p className='my-1'>{commentary ? commentary : text}</p>
             {image !== undefined && description !== undefined && (
               <div className='repost'>
+                <p>{commentary !== undefined ? text : ''}</p>
                 <img src={image} />
                 <p>{description.slice(0,150)}... <a href={url}>Read More</a></p>
               </div>
@@ -60,7 +61,7 @@ return (
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <RepostForm title={title} description={description} url={url} image={image} text={text}/>
+              <RepostForm user={auth.user} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>

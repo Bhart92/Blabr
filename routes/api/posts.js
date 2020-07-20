@@ -27,6 +27,8 @@ router.post('/', [auth, [
             name: `${user.firstName}  ${user.lastName}`,
             avatar: user.avatar,
             user: req.user.id,
+            handle: user.handle,
+            commentary: req.body.commentary,
             image: req.body.image,
             title: req.body.title,
             url: req.body.url,
@@ -40,6 +42,7 @@ router.post('/', [auth, [
     }
 
 });
+
 
 
 // @route  GET api/Post
