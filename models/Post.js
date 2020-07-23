@@ -30,6 +30,15 @@ const PostSchema = new mongoose.Schema({
     avatar: {
         type: String
     },
+    repostAvatar: {
+        type: String
+    },
+    repostHandle: {
+        type: String
+    },
+    repostName: {
+        type: String
+    },
     commentary: {
         type: String
     },

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import RepostForm from './RepostForm';
+import Spinner from '../layout/Spinner';
 import { addLike, removeLike, deletePost } from '../../actions/posts';
 
 const PostItem = ({
@@ -13,9 +14,9 @@ const PostItem = ({
   auth,
   post: { _id, text, url, title, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
-return (
 
-
+return user === null ? <Spinner /> :
+(
 <div className='post-item'>
 <div className='post--header'>
   <div>
@@ -61,7 +62,7 @@ return (
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <RepostForm user={auth.user} handle={handle} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
+              <RepostForm user={auth} handle={handle} repostAvatar={avatar} repostHandle={handle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>

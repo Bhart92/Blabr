@@ -5,13 +5,11 @@ import { addPost } from '../../actions/posts';
 import Modal from 'react-modal';
 
 
-const PostForm = ({ addPost, title, user, avatar, handle, name, description, url, image, text }) => {
+const PostForm = ({ addPost, title, repostName, repostHandle, repostAvatar, user, avatar, handle, name, description, url, image, text }) => {
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
   const [commentary, setCommentary] = useState('');
 
-
-// console.log(user.avatar)
   function openRepostModal() {
     setRepostModalOpen(true);
   }
@@ -50,9 +48,16 @@ const PostForm = ({ addPost, title, user, avatar, handle, name, description, url
         width                 : '25%'
       }
     };
+
+    // console.log(repostName)
+    // console.log(repostAvatar)
+    // console.log(repostHandle)
+    console.log(user)
+
+
 const onSubmit = (e) => {
     e.preventDefault();
-    addPost({ title, handle, name, avatar, commentary, description, url, image, text });
+    addPost({ title, handle, name, avatar, repostName, repostHandle, repostAvatar, commentary, description, url, image, text });
 }
   return (
     <div className='post-form'>
