@@ -10,7 +10,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  // console.log(posts)
+  console.log(posts)
   return loading ? (
     <Spinner />
   ) : (

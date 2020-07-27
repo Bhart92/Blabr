@@ -12,9 +12,8 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, url, title, commentary, handle, image, description, name, avatar, user, likes, comments, date }
+  post: { _id, text, url, title, repostHandle, repostAvatar, repostName, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
-
 return user === null ? <Spinner /> :
 (
 <div className='post-item'>
@@ -54,15 +53,23 @@ return user === null ? <Spinner /> :
             <p className='my-1'>{commentary ? commentary : text}</p>
             {image !== undefined && description !== undefined && (
               <div className='repost'>
+                <div className='repost-OG-info'>
+                <img className='repost-avatar' src={repostAvatar}/>
+                <div className='repost--OG--info__names'>
+                  <p>{repostName}</p>
+                  <p>@{repostHandle}</p> &nbsp; 
+                </div>
+                <p className='repost-date'><Moment format='MMM/YY'>{date}</Moment></p>
+                </div>
                 <p>{commentary !== undefined ? text : ''}</p>
-                <img src={image} />
+                <img className='repost-image' src={image} />
                 <p>{description.slice(0,150)}... <a href={url}>Read More</a></p>
               </div>
             )}
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <RepostForm user={auth} handle={handle} repostAvatar={avatar} repostHandle={handle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
+              <RepostForm user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>

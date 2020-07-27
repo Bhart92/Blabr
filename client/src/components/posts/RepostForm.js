@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/posts';
 import Modal from 'react-modal';
+import Spinner from '../layout/Spinner';
 
 
-const PostForm = ({ addPost, title, repostName, repostHandle, repostAvatar, user, avatar, handle, name, description, url, image, text }) => {
+
+const PostForm = ({ addPost, title, handle, repostName, repostAvatar, user, avatar, repostHandle, name, description, url, image, text }) => {
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
   const [commentary, setCommentary] = useState('');
@@ -52,14 +54,17 @@ const PostForm = ({ addPost, title, repostName, repostHandle, repostAvatar, user
     // console.log(repostName)
     // console.log(repostAvatar)
     // console.log(repostHandle)
-    console.log(user)
+    if(user !== null) console.log(user.handle + ' ' + repostHandle)
+      
+
+  
 
 
 const onSubmit = (e) => {
     e.preventDefault();
     addPost({ title, handle, name, avatar, repostName, repostHandle, repostAvatar, commentary, description, url, image, text });
 }
-  return (
+return user === null ? <Spinner /> : (
     <div className='post-form'>
 
       <i className="fas fa-retweet" onClick={openRepostModal}></i>
