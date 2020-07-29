@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import RepostArticleForm from '../posts/RepostArticleForm';
 
 
-const NewsFeedItem = ({ getNews, user, news: { articles } }) => {
+const NewsFeedItem = ({ getNews, auth: {user}, news: { articles } }) => {
 
     let filterArticles = articles.filter((item, index) => index !== 0);
     filterArticles.map((e) => {
@@ -47,7 +47,7 @@ const NewsFeedItem = ({ getNews, user, news: { articles } }) => {
                         <button><i className='fa fa-commenting'></i></button>
                         <button><i className='fas fa-thumbs-up'></i></button>
                         {/* <Link onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button> */}
-                        <RepostArticleForm article={item}/>
+                        <RepostArticleForm user={user} article={item}/>
                         </div>
                         </div>
                         <div className='newsfeed--article--image'>
@@ -63,10 +63,12 @@ const NewsFeedItem = ({ getNews, user, news: { articles } }) => {
 };
 
 NewsFeedItem.propTypes = {
-    getNews: PropTypes.func.isRequired
+    getNews: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    news: state.news
+    news: state.news,
+    auth: state.auth
 });
 export default connect(mapStateToProps, { getNews })(NewsFeedItem);
