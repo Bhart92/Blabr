@@ -11,7 +11,7 @@ const WidgetPostItem = ({
   deletePost,
   auth,
   post,
-  post: { _id, text, name, avatar, user, likes, comments, date }
+  post: { _id, text, name, commentary, avatar, user, likes, comments, date }
 }) => {
 
   return (

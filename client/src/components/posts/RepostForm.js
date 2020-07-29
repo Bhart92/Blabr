@@ -7,10 +7,11 @@ import Spinner from '../layout/Spinner';
 
 
 
-const PostForm = ({ addPost, title, handle, repostName, repostAvatar, user, avatar, repostHandle, name, description, url, image, text }) => {
+const PostForm = ({ addPost, title, handle, commentary, repostName, repostAvatar, user, avatar, repostHandle, name, description, url, image }) => {
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
-  const [commentary, setCommentary] = useState('');
+  const [text, setText] = useState('');
+
 
   function openRepostModal() {
     setRepostModalOpen(true);
@@ -50,15 +51,6 @@ const PostForm = ({ addPost, title, handle, repostName, repostAvatar, user, avat
         width                 : '25%'
       }
     };
-
-    // console.log(repostName)
-    // console.log(repostAvatar)
-    // console.log(repostHandle)
-    if(user !== null) console.log(user.handle + ' ' + repostHandle)
-      
-
-  
-
 
 const onSubmit = (e) => {
     e.preventDefault();
@@ -113,14 +105,16 @@ return user === null ? <Spinner /> : (
                   <div className='repost--modal--commentary--input'>
                     <img src={user !== null && user.avatar} />
                     <textarea
-                    value={commentary}
+                    value={text}
                     placeholder='add a comment'
                     maxLength='250'
-                    onChange={e => setCommentary(e.target.value)}
+                    onChange={e => setText(e.target.value)}
                     required
                     ></textarea>
                   </div>
+
                   <div className='repost--modal--commentary--data'>
+
                     <div className='data--title'>
                       <img src={avatar} className='repost--avatar' />
                       <div className='textBox'>
@@ -128,18 +122,19 @@ return user === null ? <Spinner /> : (
                       <span>@{handle}</span>
                       </div>
                     </div>
+
                     <div className='data--text'>
-                      <p>{text}</p>
+                      <p>{commentary}</p>
                     </div>
+
                     <div className='data--repost--details'>
                       <img src={image} className='repost--details--image'/>
-                      {description !== undefined ? (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>) : (
-                        <Fragment>
-                          <p></p>
-                        </Fragment>
-                      )}
+                      {description !== undefined && (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>) }
                     </div>
+
                   </div>
+
+
                   <input type='submit'value='Repost'/>
                 </form>
               </div>

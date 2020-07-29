@@ -24,6 +24,7 @@ router.post('/', [auth, [
 
         const newPost = new Post ({
             text: req.body.text,
+            commentary: req.body.commentary,
             name: `${user.firstName}  ${user.lastName}`,
             avatar: user.avatar,
             repostAvatar: req.body.avatar,
@@ -31,7 +32,6 @@ router.post('/', [auth, [
             repostHandle: req.body.handle,
             user: req.user.id,
             handle: user.handle,
-            commentary: req.body.commentary,
             image: req.body.image,
             title: req.body.title,
             url: req.body.url,

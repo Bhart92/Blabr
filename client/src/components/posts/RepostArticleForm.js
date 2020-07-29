@@ -5,13 +5,15 @@ import { addPost } from '../../actions/posts';
 import Modal from 'react-modal';
 
 
-const RepostArticleForm = ({ user, addPost, article, article: {url} }) => {
+const RepostArticleForm = ({ user, addPost, article, article: {title, description, image: {url, thumbnail}}}) => {
+  const [commentary, setCommentary] = useState('');
   const [text, setText] = useState('');
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
-  const [commentary, setCommentary] = useState('');
   
-  console.log(article)
+
+
+
   function openRepostModal() {
     setRepostModalOpen(true);
   }
@@ -57,11 +59,10 @@ const onSubmit = (e) => {
       description: article.description,
       url: article.url,
       image: article.image.thumbnail,
-      text: 'this this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testis a test'
+      text
     }
-    const {title, description, url, image, text} = articleObj;
-    console.log(image)
-    addPost({ title, description, url, image, text });
+    const {title, description, url, image} = articleObj;
+    addPost({ title, description, url, image, commentary, text });
 }
   return (
     <div className='post-form'>
@@ -124,12 +125,9 @@ const onSubmit = (e) => {
                       <p>{text}</p>
                     </div>
                     <div className='data--repost--details'>
-                    <img src={url} className='repost--details--image'/>
-                      {/* {description !== undefined ? (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>) : (
-                        <Fragment>
-                          <p></p>
-                        </Fragment>
-                      )} */}
+                    <h3>{title}</h3>
+                    <img src={thumbnail} className='repost--details--image'/>
+                      {description !== undefined && <p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>}
                     </div>
                   </div>
                   <input type='submit'value='Repost'/>

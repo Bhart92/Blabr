@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import RepostForm from './RepostForm';
 import Spinner from '../layout/Spinner';
+import RepostItem from './RepostItem';
 import { addLike, removeLike, deletePost } from '../../actions/posts';
 
 const PostItem = ({
@@ -12,6 +13,7 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
+  post,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
 return user === null ? <Spinner /> :
@@ -50,26 +52,18 @@ return user === null ? <Spinner /> :
 
   </div>
     <div className='post--body'>
-            <p className='my-1'>{commentary ? commentary : text}</p>
+            <p className='my-1'>{commentary}</p>
             {image !== undefined && description !== undefined && (
-              <div className='repost'>
-                <div className='repost-OG-info'>
-                <img className='repost-avatar' src={repostAvatar}/>
-                <div className='repost--OG--info__names'>
-                  <p>{repostName}</p>
-                  <p>@{repostHandle}</p> &nbsp; 
-                </div>
-                <p className='repost-date'><Moment format='MMM/YY'>{date}</Moment></p>
-                </div>
-                <p>{commentary !== undefined ? text : ''}</p>
-                <img className='repost-image' src={image} />
-                <p>{description.slice(0,150)}... <a href={url}>Read More</a></p>
-              </div>
+
+
+              <RepostItem repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>
+
+
             )}
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <RepostForm user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
+              <RepostForm commentary={commentary} user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>

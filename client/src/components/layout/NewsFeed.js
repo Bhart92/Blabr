@@ -19,10 +19,7 @@ const Newsfeed = ({
         getNews();
         getCurrentProfile();
     },[getCurrentProfile, getNews]);
-    console.log(articles);
-    if(user === null){
-        console.log('user is null')
-    }
+
     return (
        <div className='newsFeed'>
            <div className='newsFeed--article-section'>
