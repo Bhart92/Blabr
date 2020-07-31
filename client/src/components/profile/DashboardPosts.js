@@ -20,7 +20,7 @@ const userPostArray = posts.filter(post => post.user == user._id)
       <ul>
       {userPostArray.map(item => {
             return <li key={item._id}>
-                <p>{item.text.substring(0, 50)}...</p>
+                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 50) : ''} </p>
                 <Link to={`/posts/${item._id}`}>Read more</Link>
                 <p><Moment format='MM/YYYY'>{item.date}</Moment></p>
             </li>

@@ -35,6 +35,7 @@ router.post('/', [auth, [
             image: req.body.image,
             title: req.body.title,
             url: req.body.url,
+            originalCommentary: req.body.originalCommentary,
             description: req.body.description
         });
             const post = await newPost.save();

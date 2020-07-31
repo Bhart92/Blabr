@@ -23,7 +23,7 @@ const WidgetPostItem = ({
       <span><Moment format='MM/YYYY'>{date}</Moment></span>
     </div>
     <div className='post--header'>
-    <p>{text.slice(0,35)}...</p>
+    <p>{text !== undefined && text !== null ? text.slice(0,35) : 'Please add some posts'}...</p>
     <Link to=''>Read More...</Link>
     </div>
 

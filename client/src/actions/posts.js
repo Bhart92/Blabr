@@ -84,7 +84,6 @@ export const deletePost = id => async dispatch => {
 export const addPost = formData => async dispatch => {
   try {
     const res = await axios.post('/api/posts', formData);
-    console.log(res.data)
     dispatch({
       type: ADD_POST,
       payload: res.data

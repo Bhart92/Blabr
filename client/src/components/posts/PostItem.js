@@ -14,8 +14,15 @@ const PostItem = ({
   deletePost,
   auth,
   post,
-  post: { _id, text, url, title, repostHandle, repostAvatar, repostName, commentary, handle, image, description, name, avatar, user, likes, comments, date }
+  post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
+  console.log('***********' )
+  console.log('Commentary:' + commentary)
+  console.log('Text:' + text)
+  console.log('***********' )
+
+
+
 return user === null ? <Spinner /> :
 (
 <div className='post-item'>
@@ -52,18 +59,18 @@ return user === null ? <Spinner /> :
 
   </div>
     <div className='post--body'>
-            <p className='my-1'>{commentary}</p>
-            {image !== undefined && description !== undefined && (
+            <p className='my-1'>{text === undefined || text === null ? commentary : text}</p>
 
 
-              <RepostItem repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>
+        {/* FIND A WAY TO DISPLAY REPOST WHEN COMMENTARY ALONE IS REPOSTED */}
+          {image && description && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
+          {!image && !description && text && commentary && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
 
 
-            )}
           <div className='post--actionBox'>
               <i className='fa fa-thumbs-o-up'></i>
               <i className='fa fa-commenting-o'></i>
-              <RepostForm commentary={commentary} user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
+              <RepostForm originalCommentary={originalCommentary} commentary={commentary} user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>
   </div>

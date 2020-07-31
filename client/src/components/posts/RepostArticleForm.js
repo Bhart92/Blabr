@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 
 const RepostArticleForm = ({ user, addPost, article, article: {title, description, image: {url, thumbnail}}}) => {
   const [commentary, setCommentary] = useState('');
-  const [text, setText] = useState('');
+  const [text, setText] = useState(null);
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
   
@@ -58,8 +58,7 @@ const onSubmit = (e) => {
       title: article.title,
       description: article.description,
       url: article.url,
-      image: article.image.thumbnail,
-      text
+      image: article.image.thumbnail
     }
     const {title, description, url, image} = articleObj;
     addPost({ title, description, url, image, commentary, text });
@@ -122,7 +121,6 @@ const onSubmit = (e) => {
                   </div>
                   <div className='repost--modal--commentary--data'>
                     <div className='data--text'>
-                      <p>{text}</p>
                     </div>
                     <div className='data--repost--details'>
                     <h3>{title}</h3>

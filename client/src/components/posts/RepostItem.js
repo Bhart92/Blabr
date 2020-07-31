@@ -8,7 +8,7 @@ import Spinner from '../layout/Spinner';
 const RepostItem = ({
     text, url, repostHandle, title, repostAvatar, repostName, commentary, image, description, date
 }) => {
-
+// console.log(commentary)
 return <div className='repost'>
     {repostAvatar === undefined || null ? '' : (
      <div className='repost-OG-info'>
@@ -20,10 +20,12 @@ return <div className='repost'>
        <p className='repost-date'><Moment format='MMM/YY'>{date}</Moment></p>
      </div>
      )}
+     {text !== undefined && text !== null && <p>{commentary}</p>}
 
-     <p>{commentary}</p>
-     <img className='repost-image' src={image} />
-     <p>{description.slice(0,150)}... <a href={url}>Read More</a></p>
+     <p>{title}</p>
+     {image && (<Fragment><img className='repost-image' src={image} /></Fragment>)}
+  
+     {description && <Fragment><p>{description.slice(0,150)}... <a href={url}>Read More</a></p></Fragment>}
    </div>
       }
 

@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner';
 
 
 
-const PostForm = ({ addPost, title, handle, commentary, repostName, repostAvatar, user, avatar, repostHandle, name, description, url, image }) => {
+const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repostName, repostAvatar, user, avatar, repostHandle, name, description, url, image }) => {
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
   const [text, setText] = useState('');
@@ -51,10 +51,10 @@ const PostForm = ({ addPost, title, handle, commentary, repostName, repostAvatar
         width                 : '25%'
       }
     };
-
+// ADD ORIGINALCOMMENTARY TO ADDPOST, THEN ADD IT TO THE COMPONENT DISPLAY
 const onSubmit = (e) => {
     e.preventDefault();
-    addPost({ title, handle, name, avatar, repostName, repostHandle, repostAvatar, commentary, description, url, image, text });
+    addPost({ title, handle, name, avatar, originalCommentary, repostName, repostHandle, repostAvatar, commentary, description, url, image, text });
 }
 return user === null ? <Spinner /> : (
     <div className='post-form'>
@@ -123,13 +123,21 @@ return user === null ? <Spinner /> : (
                       </div>
                     </div>
 
-                    <div className='data--text'>
-                      <p>{commentary}</p>
-                    </div>
 
                     <div className='data--repost--details'>
+                    {image === undefined ? (
+                      <Fragment>
+                        <div className='data--text'>
+                          <p>{commentary}...</p>
+                      </div>            
+                    </Fragment>
+                    ) : (
+                      <Fragment>
                       <img src={image} className='repost--details--image'/>
-                      {description !== undefined && (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>) }
+                      {description !== undefined && (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>)}
+                      </Fragment>
+
+                      )}
                     </div>
 
                   </div>

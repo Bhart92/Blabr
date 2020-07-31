@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { addPost } from '../../actions/posts';
 
 const PostForm = ({ addPost }) => {
-  const [text, setText] = useState('');
+  const [commentary, setCommentary] = useState('');
+  const [text, setText] = useState(null);
+
 
   return (
     <div className='post-form'>
@@ -12,18 +14,18 @@ const PostForm = ({ addPost }) => {
         className='form'
         onSubmit={e => {
           e.preventDefault();
-          addPost({ text });
-          setText('');
+          addPost({ commentary });
+          setCommentary('');
         }}
       >
         <textarea
         maxLength='280'
-          name='text'
+          name='commentary'
           cols='30'
           rows='5'
           placeholder='Share Something...'
-          value={text}
-          onChange={e => setText(e.target.value)}
+          value={commentary}
+          onChange={e => setCommentary(e.target.value)}
           required
         />
         <input type='submit' className='btn btn-dark my-1' value='Submit' />

@@ -41,6 +41,9 @@ const PostSchema = new mongoose.Schema({
     commentary: {
         type: String
     },
+    originalCommentary: {
+        String
+    },
     likes: [
         {
             user: {
