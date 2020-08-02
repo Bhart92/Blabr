@@ -16,12 +16,6 @@ const PostItem = ({
   post,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
-  console.log('***********' )
-  console.log('Commentary:' + commentary)
-  console.log('Text:' + text)
-  console.log('***********' )
-
-
 
 return user === null ? <Spinner /> :
 (
@@ -62,7 +56,6 @@ return user === null ? <Spinner /> :
             <p className='my-1'>{text === undefined || text === null ? commentary : text}</p>
 
 
-        {/* FIND A WAY TO DISPLAY REPOST WHEN COMMENTARY ALONE IS REPOSTED */}
           {image && description && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
           {!image && !description && text && commentary && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
 

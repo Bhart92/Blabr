@@ -12,21 +12,16 @@ import { follow, unfollow } from '../../actions/profile';
 import { GET_POSTS } from '../../actions/types';
 
 
-const Profile = ({  getProfileById, follow, unfollow, auth: {user}, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
+const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
         getProfileById(match.params.id);
     }, [getProfileById ,match.params.id]);
-    
-const [followState, setFollowState] = useState(true);
 const triggerFollow = (id) => {
     follow(id)
-    setFollowState(false);
     getProfileById(match.params.id);
 }
 const triggerUnfollow = (id) => {
     unfollow(id)
-    let old = followState;
-    setFollowState(true);
     getProfileById(match.params.id);
 
 }
@@ -36,12 +31,23 @@ const triggerUnfollow = (id) => {
             <div className='profile--top'>        
             <img src={profile.user.avatar} />
         <h1>{profile.firstName} {profile.lastName}</h1>
-    <button onClick={e => triggerFollow(match.params.id)} disabled={!followState}>
-        Follow
-        </button>
-        <button onClick={e => triggerUnfollow(match.params.id)} disabled={followState}>
-        Unfollow
-        </button>
+            {profile && 
+            <Fragment>
+                <div>
+                {profile.followers.filter(follower => parseInt(follower.user) === parseInt(auth.user._id)).length ? <Fragment>
+                    <button onClick={e => triggerUnfollow(match.params.id)} >
+                            Unfollow
+                    </button></Fragment>
+                    :
+                    <Fragment>
+                    <button onClick={e => triggerFollow(match.params.id)}>
+                        Follow
+                    </button>
+                    </Fragment>
+                    }
+                </div>
+            </Fragment>
+            }
 
             </div>
             <div className='profile--mid'>
