@@ -10,6 +10,7 @@ const EditProfile = ({
   getCurrentProfile,
   history
 }) => {
+
   const [formData, setFormData] = useState({
     company: '',
     location: '',
@@ -61,20 +62,21 @@ const EditProfile = ({
   };
 
   return (
-    <Fragment>
+    <div className='post--container edit--container'>
       <h1 className='large text-primary'>Edit Your Profile</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Add some changes to your profile
+        <i className='fas fa-user' /> Make some changes to your profile
       </p>
       <small>* = required field</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
+          <div className='form-input-inner'>
           <input type='text' name='status' value={status} onChange={e => onChange(e)} />
           <small className='form-text'>
             Give us an idea of where you are at in your career
           </small>
-        </div>
-        <div className='form-group'>
+          </div>
+          <div className='form-input-inner'>
           <input
             type='text'
             placeholder='Company'
@@ -85,22 +87,25 @@ const EditProfile = ({
           <small className='form-text'>
             Could be your own company or one you work for
           </small>
+          </div>
         </div>
 
+
         <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Location'
-            name='location'
-            value={location}
-            onChange={e => onChange(e)}
-          />
-          <small className='form-text'>
-            City & state suggested (eg. Boston, MA)
-          </small>
-        </div>
-        <div className='form-group'>
-          <input
+          <div className='form-input-inner'>
+            <input
+              type='text'
+              placeholder='Location'
+              name='location'
+              value={location}
+              onChange={e => onChange(e)}
+            />
+            <small className='form-text'>
+              City & state suggested (eg. Boston, MA)
+            </small>
+            </div>
+            <div className='form-input-inner'>
+            <input
             type='text'
             placeholder='* interests'
             name='interests'
@@ -108,10 +113,11 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Please use comma separated values(ex. MMA, Basketball, Soccer)
           </small>
+            </div>
         </div>
-        <div className='form-group'>
+        <div className='form-group form-textarea'>
           <textarea
             placeholder='A short bio of yourself'
             name='bio'
@@ -121,11 +127,11 @@ const EditProfile = ({
           <small className='form-text'>Tell us a little about yourself</small>
         </div>
 
-        <div className='my-2'>
+        <div className='social-button-link-container'>
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
             type='button'
-            className='btn btn-light'
+            className='btn-social-links'
           >
             Add Social Network Links
           </button>
@@ -133,7 +139,7 @@ const EditProfile = ({
         </div>
 
         {displaySocialInputs && (
-          <Fragment>
+          <div className='social-input-box'>
             <div className='form-group social-input'>
               <i className='fab fa-twitter fa-2x' />
               <input
@@ -176,7 +182,7 @@ const EditProfile = ({
                 onChange={e => onChange(e)}
               />
             </div>
-          </Fragment>
+          </div>
         )}
 
         <input type='submit' className='btn btn-primary my-1' />
@@ -184,7 +190,7 @@ const EditProfile = ({
           Go Back
         </Link>
       </form>
-    </Fragment>
+    </div>
   );
 };
 

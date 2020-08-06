@@ -1164,6 +1164,7 @@ p{
 .profile--bottom{
     width: 100%;
     margin: 0 auto;
+    position: relative;
     ul{
         display: flex;
         flex-wrap: wrap;
@@ -1185,6 +1186,10 @@ p{
         }
     }
 }
+.profile--posts-seeMore{
+    position: relative;
+    margin-bottom: 2rem;
+}
 .dashboard--profile--following{
     width: 100%;
     background: #e6f9ff;
@@ -1196,6 +1201,7 @@ p{
     justify-content: center;
     flex-wrap: wrap;
     flex-basis: 25%;
+    position: relative;
 }
 .dashboard--profile--following--container-user{
     margin: 0 5px;
@@ -1211,3 +1217,83 @@ p{
     margin: 0 auto;
 }
 
+.seeMore, .profile--posts-seeMore--btn{
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    margin: -10px;
+    padding: 10px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.profile--posts-seeMore--btn{
+    bottom: -25px;
+}
+.edit--container{
+    @extend .post--container;
+    height: 97vh;
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        .form-group{
+            display: flex;
+        }
+        .form-input-inner{
+            flex-direction: column-reverse;
+            display: flex;
+            margin: 0 10px;
+        }
+    }
+    .form-textarea{
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        small{
+            margin-top: 10px;
+        }
+        textarea{
+            display: block;
+            width: 80%;
+            margin: 5px auto 10px auto;
+        }
+
+    }
+}
+.social-button-link-container{
+    display: flex;
+    flex-direction: column;
+    span{
+        margin: 10px auto 5px auto;
+    }
+}
+.btn-social-links{
+    border: 1px solid black;
+    background: transparent;
+    outline: none;
+    color: black;
+    border-radius: 25px;
+    padding: 5px 10px;
+
+}
+.social-input-box{
+    width: 80%;
+    .social-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        i{
+            margin-right: 10px;
+        }
+        input{
+            width: 75%;
+        }
+    }
+}
+.edit--container .form .form-group .social-input{
+    width: 80%;
+}

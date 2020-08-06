@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
+import ProfileFollowers from '../profile/ProfileFollowers';
+
 
 const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, followerProfiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
@@ -31,12 +33,8 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
                 <h2>Following</h2>
                 <div className='dashboard--profile--following--container'>
                 {followerProfiles === null || followerProfiles === undefined ? <Spinner /> : (
-                    followerProfiles.map(follower => {
-                        return <div className='dashboard--profile--following--container-user'>
-                             <p>{follower.firstName} {follower.lastName}</p>
-                            <img src={follower.avatar} />
-                        </div>
-                    })
+                <ProfileFollowers followerProfiles={followerProfiles} />
+
                 )}
                 </div>
 

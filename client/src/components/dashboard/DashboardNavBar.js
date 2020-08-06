@@ -25,7 +25,7 @@ const DashboardNavBar = ({
           right                 : 'unset',
           bottom                : '10%',
           marginRight           : '-50%',
-          height                : '166px',
+          height                : 'auto',
           padding               : '15px 0 10px 0',
           transform             : 'translate(-25%, 2%)'
         }

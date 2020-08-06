@@ -4,6 +4,8 @@ import ProfileTop from './ProfileTop';
 import CreateProfile from '../profile-forms/CreateProfile';
 
 import ProfilePosts from './ProfilePosts';
+import ProfileFollowers from './ProfileFollowers';
+
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
@@ -34,7 +36,7 @@ const triggerUnfollow = (id) => {
             {profile && 
             <Fragment>
                 <div>
-                {profile.followers.filter(follower => parseInt(follower.user) === parseInt(auth.user._id)).length ? <Fragment>
+                {auth.user && profile && profile.followers.filter(follower => parseInt(follower.user) === parseInt(auth.user._id)).length ? <Fragment>
                     <button onClick={e => triggerUnfollow(match.params.id)} >
                             Unfollow
                     </button></Fragment>
@@ -45,6 +47,9 @@ const triggerUnfollow = (id) => {
                     </button>
                     </Fragment>
                     }
+
+
+
                 </div>
             </Fragment>
             }
@@ -60,14 +65,12 @@ const triggerUnfollow = (id) => {
 
             <div className='dashboard--profile--following'>
             <h2>{profile.user.firstName}s followers</h2>
-            <div className='dashboard--profile--following--container'>
-                {followerProfiles.map(follower => {
-                    return <div  className='dashboard--profile--following--container-user' key={follower._id}>
-                        <img src={follower.avatar} />
-                    <p>{follower.firstName}</p>
-                </div>
-            })}
-            </div>
+
+
+
+
+            <ProfileFollowers followerProfiles={followerProfiles} />
+
 
 
             </div>
