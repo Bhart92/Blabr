@@ -57,7 +57,6 @@ const onSubmit = (e) => {
     e.preventDefault();
     addPost({ title, handle, name, avatar, repostName, repostHandle, repostAvatar, commentary, description, url, image, text });
 }
-console.log(commentary)
 return user === null ? <Spinner /> : (
     <div className='post-form'>
 
@@ -141,7 +140,7 @@ return user === null ? <Spinner /> : (
                     ) : (
                         <Fragment>
                           <img src={image} className='repost--details--image'/>
-                          {description !== undefined && (<p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>)}
+                          {description !== undefined && (<p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... ... <a href={url}>Read More</a></p>)}
                         </Fragment>
                       )}
 

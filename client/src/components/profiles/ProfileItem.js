@@ -7,17 +7,18 @@ const ProfileItem = ({
     status, company, location, interests
     } 
 }) => {
-    return <Fragment>
-        <img src={avatar} alt="" />
-        <div>
-            <h2>{name}</h2>
-            <span>{handle}</span>
-            <p>{status} {company && <span> at {company}</span>}</p>
-            <p>{location && <span>{location}</span>}</p>
-            <Link to={`/profile/${_id}`} >View Profile</Link>
-        </div>
-
-    </Fragment>;
+    return <div className='profiles-item'>
+            <div className='profiles--item--title'>
+                <img src={avatar} alt="" />
+                <h2>{name}</h2>
+                <span>{handle}</span>
+            </div>
+            <div>
+                <p>{status} {company && <span> at {company}</span>}</p>
+                <p>{location && <span>{location}</span>}</p>
+                <Link className='profiles--button' to={`/profile/${_id}`} >View Profile</Link>
+            </div>
+        </div>;
 };
 
 

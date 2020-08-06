@@ -21,16 +21,18 @@ const Newsfeed = ({
 
     // console.log(articles)
     return (
-       <div className='newsFeed--widget'>
-           <div className='newsFeed--article-section__widget'>
-            {articles.length === 0 ? <Spinner /> : (
-                <Fragment>
-                    <NewsFilterBar articles={articles}/>
-                    <NewsFeedItem user={user}/>
-                </Fragment>
-            )}
-           </div>
-       </div> 
+<div className='post--container'>
+    <div className='newsFeed--widget'>
+            <div className='newsFeed--article-section__widget'>
+                {articles.length === 0 ? <Spinner /> : (
+                    <Fragment>
+                        <NewsFilterBar articles={articles}/>
+                        <NewsFeedItem user={user}/>
+                    </Fragment>
+                )}
+            </div>
+        </div>
+</div> 
     );
 };
 

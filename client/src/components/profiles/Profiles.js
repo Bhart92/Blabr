@@ -12,7 +12,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     return <div className='profiles--container'>
         {loading ? <Spinner /> : <Fragment>
             <h1>Profiles</h1>
-            <i className='fab fa-connectdevelop'></i>
             <div>
                 {profiles.length > 0 ? (
                     profiles.map(profile => (

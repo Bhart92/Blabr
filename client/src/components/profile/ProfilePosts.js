@@ -18,8 +18,15 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
       <ul>
       {visitedPostArray.map(item => {
             return <li key={item._id}>
-                <p>{item.text.substring(0, 75)}...</p>
-                <Link to={`/posts/${item._id}`}>Read more</Link>
+            {item.text && <Fragment>
+                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 50) : ''} </p>
+              </Fragment>}
+              {!item.text && item.commentary && <Fragment>
+                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 50) : ''} </p>
+              </Fragment>}
+              {!item.text && !item.commentary && <Fragment>
+                <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 45) : ''} ...</p>
+              </Fragment>}                <Link to={`/posts/${item._id}`}>Read more</Link>
                 <p>{item.date}</p>
             </li>
         })}

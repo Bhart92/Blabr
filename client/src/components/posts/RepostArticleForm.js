@@ -123,9 +123,11 @@ const onSubmit = (e) => {
                     <div className='data--text'>
                     </div>
                     <div className='data--repost--details'>
-                    <h3>{title}</h3>
+                    {title && <Fragment>
+                      <h3>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</h3>
+                      </Fragment>}
                     <img src={thumbnail} className='repost--details--image'/>
-                      {description !== undefined && <p>{description.slice(0,150)}... ... <a href={url}>Read More</a></p>}
+                      {description !== undefined && <p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... ... <a href={url}>Read More</a></p>}
                     </div>
                   </div>
                   <input type='submit'value='Repost'/>

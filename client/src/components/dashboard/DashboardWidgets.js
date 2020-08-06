@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import PostForm from '../posts/PostForm';
 import DashboardProfileWidget from './DashboardProfileWidget';
-import PostsWidget from '../posts/PostsWidget';
+import AdsWidget from '../posts/AdsWidget';
 
 const DashboardWidgets = ({
     auth: { user }
@@ -26,12 +26,9 @@ const DashboardWidgets = ({
                 <button type='submit' onClick={e => search(e)}>Search</button>
             </div>
             <div className='dashboard--widgets__posts'>
-                <PostsWidget />
+                <AdsWidget />
             </div>
-            <div className='dashboard--widgets__people'>
-                <textarea placeholder='Quick Post'></textarea>
-                <button>Post</button>
-            </div>
+        
         </div>
     );
 };

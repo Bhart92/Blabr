@@ -43,7 +43,7 @@ const NewsFilterBar = ({
                 <div className='newsFeed--newsFilterBar--image__overlay'>
                     <div className='info-box'>
                     <p>{item.provider.name}: {item.author}</p>
-                    <p>{item.title.split('').splice(0, 150)}...</p>
+                    <p>{item.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
                     </div>
 
                 </div>

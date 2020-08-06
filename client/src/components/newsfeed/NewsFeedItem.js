@@ -7,12 +7,14 @@ import { v4 as uuidv4 } from 'uuid';
 import RepostArticleForm from '../posts/RepostArticleForm';
 
 
-const NewsFeedItem = ({ getNews, auth: {user}, news: { articles } }) => {
+const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles } }) => {
 
     let filterArticles = articles.filter((item, index) => index !== 0);
+
     filterArticles.map((e) => {
         e.id = uuidv4()
     })
+    console.log(filterArticles)
     //remove any duplicate objects in an array based off of the second parameter passed in
     function getUnique(arr, comparison) {
 
@@ -37,17 +39,21 @@ const NewsFeedItem = ({ getNews, auth: {user}, news: { articles } }) => {
     //     console.log(user)
 
     // }
+
     return (
         <Fragment>
             {filterArticles.map(item => (
                     <div key={item.id} className='newsFeed--article--container'>
                         <div className='newsFeed--article--container--info'>
-                        <p className='newsFeed--article--title'>{item.title}</p>
+                        <p className='newsFeed--article--title'>{item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>
                         <div className='button-container'>
-                        <button><i className='fa fa-commenting'></i></button>
-                        <button><i className='fas fa-thumbs-up'></i></button>
+
                         {/* <Link onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button> */}
-                        <RepostArticleForm user={user} article={item}/>
+                        {isAuthenticated && <Fragment>
+                            <button><i className='fa fa-commenting'></i></button>
+                            <button><i className='fas fa-thumbs-up'></i></button>
+                            <RepostArticleForm user={user} article={item}/>
+                            </Fragment>}
                         </div>
                         </div>
                         <div className='newsfeed--article--image'>
@@ -69,6 +75,8 @@ NewsFeedItem.propTypes = {
 
 const mapStateToProps = state => ({
     news: state.news,
-    auth: state.auth
+    auth: state.auth,
+    isAuthenticated: state.auth.isAuthenticated
+
 });
 export default connect(mapStateToProps, { getNews })(NewsFeedItem);

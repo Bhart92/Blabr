@@ -409,6 +409,13 @@ textarea{
     width: 100%;
     .button-container{
         display: flex;
+        width: 100%;
+        flex-basis: 25%;
+        align-items: center;
+        justify-content: space-around;
+        .fas{
+            font-size: 1.25rem!important;
+        }
         button{
             margin: 0 10px;
             border: none;
@@ -431,6 +438,7 @@ textarea{
     font-size: 1rem;
     font-weight: 500;
     width: 90%;
+    margin: 20px;
 }
 .newsfeed--article--image{
 width: 25%;
@@ -556,15 +564,30 @@ margin-bottom: 15px;
     right: 16rem;
 }
 .dashboard--widgets__posts{
-    height: 50%;
+    height: auto;
     width: 99%;
-    background: #e8f4f8;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
     flex-direction: column;
     
+}
+.dashboard--widgets--adOne{
+    background: #e8f4f8;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.dashboard--widgets--adTwo{
+    background: #e8f4f8;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .dashboard--widgets__people{
     height: 24%;
@@ -624,6 +647,39 @@ margin-bottom: 15px;
     justify-content: space-around;
     align-items: center;
 }
+.profiles-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 10px;
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: .25px solid rgba(0, 0, 0, .35);
+    &:nth-of-type(even){
+        flex-direction: row-reverse;
+    }
+
+}
+.profiles--button{
+    background: transparent;
+    border: 2px solid #b3ecff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    margin: 10px 0;
+    transition: .35s all ease-in-out;
+}
+.profiles--item--title{
+    display: flex;
+    flex-direction: column;
+    img{
+        margin-bottom: 2px;
+    }
+    span, p, h2{
+        padding: 0;
+        margin: 0;
+    }
+}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
@@ -665,7 +721,7 @@ margin-bottom: 15px;
     height: 100%;
     width: 95%;
     margin: 0 auto;
-    background: lighten(lightblue, 15%);
+    background: transparent;
     border-radius: 5px;
     position: relative;
     h2{
@@ -835,7 +891,7 @@ margin-bottom: 15px;
 .post--container,
 .profiles--container{
     display: flex;
-    height: 100vh;
+    height: auto;
     max-width: 750px;
     margin: 0 auto;
     flex-direction: column;
@@ -883,7 +939,7 @@ margin-bottom: 15px;
     width: 100%;
 }
 .newsFeed--article-section__widget{
-    width: 85%;
+    width: 98.75%;
     margin: 0 auto;
 }
 

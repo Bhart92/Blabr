@@ -22,10 +22,10 @@ return <div className='repost'>
      )}
      {text !== undefined && text !== null && <p>{commentary}</p>}
 
-     <p>{title}</p>
+     {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
      {image && (<Fragment><img className='repost-image' src={image} /></Fragment>)}
   
-     {description && <Fragment><p>{description.slice(0,150)}... <a href={url}>Read More</a></p></Fragment>}
+     {description && <Fragment><p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... <a href={url}>Read More</a></p></Fragment>}
    </div>
       }
 
