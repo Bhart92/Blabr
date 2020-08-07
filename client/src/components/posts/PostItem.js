@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import RepostForm from './RepostForm';
 import Spinner from '../layout/Spinner';
 import RepostItem from './RepostItem';
-import { addLike, removeLike, deletePost } from '../../actions/posts';
+import { addLike, removeLike, deletePost, addPost } from '../../actions/posts';
 
 const PostItem = ({
   addLike,
@@ -17,6 +17,12 @@ const PostItem = ({
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
 
+  const [likeStatus, setLikeStatus] = useState(false);
+
+const likePost = (id) => {
+  setLikeStatus(true);
+  addLike(id);
+}
 return user === null ? <Spinner /> :
 (
 <div className='post-item'>
@@ -31,12 +37,6 @@ return user === null ? <Spinner /> :
   </div>
   <div>
 
-  <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Discussion{' '}
-            {comments.length > 0 && (
-              <span className='comment-count'>{comments.length}</span>
-            )}
-          </Link>
   <p className='post-date'>
         Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>
       </p>
@@ -61,8 +61,16 @@ return user === null ? <Spinner /> :
 
 
           <div className='post--actionBox'>
-              <i className='fa fa-thumbs-o-up'></i>
-              <i className='fa fa-commenting-o'></i>
+       <span>
+
+
+         <i onClick={() => addLike(_id)} className='fa fa-thumbs-o-up '></i>
+          {likes.length > 0 && <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i>}
+
+
+         {likes.length <= 0 ? '' : <span>{likes.length}</span>}
+         </span>
+              <Link to={`/posts/${_id}`}><i className='fa fa-commenting-o'></i></Link>
               <RepostForm originalCommentary={originalCommentary} commentary={commentary} user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
     </div>

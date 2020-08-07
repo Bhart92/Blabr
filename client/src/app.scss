@@ -878,7 +878,7 @@ margin-bottom: 15px;
     font-size: 1.15rem;
     .fa, .fas{
         color: rgba(0,0,0, .45);
-        width: 100%;
+        width: 30%;
         margin: -20px;
         padding: 20px;
         transition: .25s all ease;
@@ -1128,6 +1128,9 @@ margin-bottom: 15px;
     flex-direction: column;
     justify-content: center;
     height: 35%;
+    a{
+        padding-bottom: 5px;
+    }
 width: 100%;
     img{
         border-radius: 50%;
@@ -1171,6 +1174,7 @@ p{
         align-items: center;
         justify-content: center;
         padding-left: 0;
+        margin-bottom: 35px;
         li{
             border-bottom: 3px solid lighten(deepskyblue, 44%);
             border-right: .75px solid lighten(deepskyblue, 44%);
@@ -1296,4 +1300,8 @@ p{
 }
 .edit--container .form .form-group .social-input{
     width: 80%;
+}
+
+.liked{
+    color: deepskyblue!important;
 }
