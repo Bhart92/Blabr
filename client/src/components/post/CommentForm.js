@@ -6,7 +6,7 @@ import { addComment } from '../../actions/posts';
 const CommentForm = ({ postId, addComment }) => {
     const [ text, setText ] = useState(' ');
 return (
-    <div>
+    <div className='comment--form'>
       <div>
         <h3>Leave a comment</h3>
       </div>

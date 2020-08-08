@@ -1382,3 +1382,29 @@ p{
         border-bottom: 2px solid deepskyblue;
     }
 }
+.btn--back{
+    display: flex;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.comment--form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    form{
+        width: 50%;
+    }
+    textarea{
+        display: block;
+        margin-bottom: 10px;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid deepskyblue;
+        background: lighten(skyblue, 25%);
+        border-radius: 5px;
+        height: 150px;
+        width: 100%;
+    }
+}
