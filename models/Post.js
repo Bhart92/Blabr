@@ -64,6 +64,13 @@ const PostSchema = new mongoose.Schema({
             },
             avatar: {
                 type: String
+            },
+            name:{
+                type: String
+            },
+             handle: { 
+                type: String,
+                unique: true
             }
         }
     ],

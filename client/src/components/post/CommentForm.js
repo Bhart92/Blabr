@@ -21,12 +21,12 @@ return (
           name='text'
           cols='30'
           rows='5'
-          placeholder='Create a post'
+          placeholder='Write a comment'
           value={text}
           onChange={e => setText(e.target.value)}
           required
         />
-        <input type='submit' value='Submit' />
+        <input type='submit' value='Submit' className='comment-item--button' />
       </form>
     </div>
     );

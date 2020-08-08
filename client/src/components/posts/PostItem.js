@@ -12,6 +12,7 @@ const PostItem = ({
   addLike,
   removeLike,
   deletePost,
+  showActions,
   auth,
   post,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
@@ -59,20 +60,28 @@ return user === null ? <Spinner /> :
           {image && description && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
           {!image && !description && text && commentary && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
 
-
+        {showActions ? (
+        <Fragment>
           <div className='post--actionBox'>
        <span>
-
-
          <i onClick={() => addLike(_id)} className='fa fa-thumbs-o-up '></i>
-          {likes.length > 0 && <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i>}
+          { likes.length > 0 && <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i> }
 
+          { likes.length <= 0 ? '' : <span>{likes.length}</span> }
 
-         {likes.length <= 0 ? '' : <span>{likes.length}</span>}
-         </span>
+          </span>
               <Link to={`/posts/${_id}`}><i className='fa fa-commenting-o'></i></Link>
               <RepostForm originalCommentary={originalCommentary} commentary={commentary} user={auth.user} handle={handle} repostAvatar={avatar} repostHandle={repostHandle} repostName={name} title={title} description={description} name={name} avatar={avatar} url={url} image={image} text={text}/>
           </div>
+        </Fragment>
+          ): (
+          <Fragment>
+            <div className='comment-item--likes'>
+          {likes.length > 0 ? <p>Like count: <span>{likes.length}</span></p> : ''}
+            </div>
+        </Fragment>
+        )}
+
     </div>
   </div>
 );

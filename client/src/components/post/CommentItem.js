@@ -7,38 +7,48 @@ import { deleteComment } from '../../actions/posts';
 
 const CommentItem = ({
     postId,
-    comment: { _id, text, name, avatar, user, date },
+    comment,
+    comment: { _id, text, name, handle, avatar, user, date },
     auth,
     deleteComment
-}) => (
-        <Fragment>
-          <div>
-            <Link to={`/profile/${user}`}>
-              <img
-                src={avatar}
-                alt=""
-              />
-              <h4>{name}</h4>
-            </Link>
-          </div>
-          <div>
+}) => {
+  console.log(comment)
+  return (
+        <div className='comment-item'>
+          <div className='comment-item--userTitle'>
+            <div>
+              <Link to={`/profile/${user}`}>
+                          <img
+                            src={avatar}
+                            alt=""
+                          />
+                          <h4>{name}</h4>
+                          <span>{handle}</span>
+              </Link>
+            </div>
+            <div>
             <p>
-                {text}
-            </p>
-             <p>
-                Posted on <Moment format='YYY/MM/DD'>{date}</Moment>
+                Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>
             </p>
             {!auth.loading && user === auth.user._id && (
               <button
+              className='comment-item--delete'
               onClick={e => deleteComment(postId, _id)}
               type='button'
               >
-                <i className='fas fa-times'></i>
+                <span>Delete Comment</span>
               </button>
             )}
+            </div>
           </div>
-        </Fragment>
+          <div className='comment-item--info'>
+            <p className='comment--item--info--desc'>
+                {text}
+            </p>
+          </div>
+        </div>
     )
+            };
 
 CommentItem.propTypes = {
     postId: PropTypes.number.isRequired,

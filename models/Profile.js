@@ -36,8 +36,7 @@ const ProfileSchema = new mongoose.Schema({
       {
           user:{ 
               type: mongoose.Schema.Types.ObjectId, 
-              ref: 'user',
-              followed: false
+              ref: 'user'
           },
       }
   ],
@@ -46,8 +45,7 @@ const ProfileSchema = new mongoose.Schema({
           user:{ 
               type: mongoose.Schema.Types.ObjectId, 
               firstName: String,
-              ref: 'user',
-              followed: false
+              ref: 'user'
           },
       }
   ],
