@@ -10,7 +10,7 @@ const Landing = ({isAuthenticated}) => {
 
     return (
         <Fragment>
-                    <Navbar />
+            <Navbar />
             <NewsFeed />
         </Fragment>
     )

@@ -26,8 +26,9 @@ const DashboardNavBar = ({
           bottom                : '10%',
           marginRight           : '-50%',
           height                : 'auto',
-          padding               : '15px 0 10px 0',
-          transform             : 'translate(-25%, 2%)'
+          padding               : '15px 0 0 0',
+          transform             : 'translate(-25%, 2%)',
+          borderRadius         : '10px'
         }
       };
         const [modalIsOpen, setIsOpen] = useState(false);
@@ -82,10 +83,13 @@ const DashboardNavBar = ({
                     <span>{user.firstName} {user.lastName}</span>
                         <span>{user.handle}</span>
                     </div>
-                    <div>
+                    <div className='dashboard--modal--close--button'>
                         <button onClick={closeModal}>X</button>
                     </div>
                 </div>
+
+
+                <div className='dashboard--modal--settings-container'>
                 <div className='modal--settings'>
                     <span>Delete your account</span>
                 </div>
@@ -95,6 +99,8 @@ const DashboardNavBar = ({
                 <div className='modal--settings'>
                 <span onClick={logout}>Logout</span>
                 </div>
+                </div>
+
 
             </div>
           <div>

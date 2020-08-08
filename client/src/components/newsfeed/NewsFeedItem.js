@@ -50,8 +50,6 @@ const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles
 
                         {/* <Link onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button> */}
                         {isAuthenticated && <Fragment>
-                            <button><i className='fa fa-commenting'></i></button>
-                            <button><i className='fas fa-thumbs-up'></i></button>
                             <RepostArticleForm user={user} article={item}/>
                             </Fragment>}
                         </div>

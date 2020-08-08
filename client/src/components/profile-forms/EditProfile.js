@@ -27,17 +27,19 @@ const EditProfile = ({
 
   useEffect(() => {
     getCurrentProfile();
-    setFormData({
-      company: loading || !profile.company ? '' : profile.company,
-      location: loading || !profile.location ? '' : profile.location,
-      status: loading || !profile.status ? '' : profile.status,
-      interests: loading || !profile.interests ? '' : profile.interests.join(','),
-      bio: loading || !profile.bio ? '' : profile.bio,
-      twitter: loading || !profile.social ? '' : profile.social.twitter,
-      facebook: loading || !profile.social ? '' : profile.social.facebook,
-      youtube: loading || !profile.social ? '' : profile.social.youtube,
-      instagram: loading || !profile.social ? '' : profile.social.instagram
-    });
+    if(profile){
+      setFormData({
+        company: loading || !profile.company ? '' : profile.company,
+        location: loading || !profile.location ? '' : profile.location,
+        status: loading || !profile.status ? '' : profile.status,
+        interests: loading || !profile.interests ? '' : profile.interests.join(','),
+        bio: loading || !profile.bio ? '' : profile.bio,
+        twitter: loading || !profile.social ? '' : profile.social.twitter,
+        facebook: loading || !profile.social ? '' : profile.social.facebook,
+        youtube: loading || !profile.social ? '' : profile.social.youtube,
+        instagram: loading || !profile.social ? '' : profile.social.instagram
+      });
+    }
   }, [getCurrentProfile]);
 
   const {

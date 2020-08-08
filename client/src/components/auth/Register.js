@@ -3,6 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
+import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
 
 
@@ -42,10 +43,13 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
     }
     return (
         <Fragment>
+            <Navbar />
+            <div className='post--container register--container'>
             <h1>Sign Up</h1>
             <p><i className="fas fa-user"></i> Create Your Account</p>
+            <div>
             <form onSubmit={e => onSubmit(e)}>
-                <div>
+                <div className='register--form-group'>
                 <input
                 type="text"
                 placeholder="First Name"
@@ -54,8 +58,6 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                 onChange={e => onChange(e)}
                 
                 />
-                </div>
-                <div>
                 <input
                 type="text"
                 placeholder="Last Name"
@@ -64,8 +66,9 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                 onChange={e => onChange(e)}
                 
                 />
+    
                 </div>
-                <div>
+                <div className='register--form-group'> 
                 <input
                 type="email"
                 placeholder="Email Address"
@@ -73,12 +76,8 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                 value={email}
                 onChange={e => onChange(e)}
                 />
-                <small
-                    >This site uses Gravatar so if you want a profile image, use a
-                    Gravatar email</small>
-                </div>
-                <div>
-                <input
+
+                    <input
                 type="text"
                 placeholder="Handle"
                 name="handle"
@@ -87,7 +86,7 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                 
                 />
                 </div>
-                <div>
+                <div className='register--form-group'>
                 <input
                     type="password"
                     placeholder="Password"
@@ -96,9 +95,7 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                     onChange={e => onChange(e)}
                     
                 />
-                </div>
-                <div>
-                <input
+                                <input
                     type="password"
                     placeholder="Confirm Password"
                     name="password2"
@@ -106,12 +103,17 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                     onChange={e => onChange(e)}
                     
                 />
+                </div>
+                <div className='register--form-group__small'>
                 <input type='submit' value='Register' />
                 </div>
             </form>
-            <p className="my-1">
-                Already have an account? <Link to="/login">Sign In</Link>
+            </div>
+            <p className="register--form--footer">
+            <small>Create a Gravatar account to attach a profile image.</small>
+                <p>Already have an account? <Link to="/login">Sign In</Link></p>
             </p>
+            </div>
         </Fragment>
     );
 };

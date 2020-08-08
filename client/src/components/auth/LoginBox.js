@@ -52,7 +52,7 @@ const Login = ({ login, isAuthenticated }) => {
                 <span>OR</span>
             </div>
             <p className="my-1">
-                <Link className='loginButton' to="/login">Sign Up</Link>
+                <Link className='loginButton' to="/register">Sign Up</Link>
             </p>
             <span className='loginFooter'>Terms &nbsp; Policy &nbsp; About &nbsp; Contact</span>
             <span className='loginFooter'>&copy; 2020 Chattr</span>
