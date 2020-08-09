@@ -125,7 +125,6 @@ return user === null ? <Spinner /> : (
                     <div className='data--repost--details'>
 
 
-                  {/* {Need to display commentary when reposting article} */}
 
                   {image && description && commentary && <p>{commentary}</p>}
 

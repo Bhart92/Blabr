@@ -31,11 +31,10 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
     const customStyles = {
       content : {
         position              : 'fixed',
-        top                   : '74%',
+        top                   : '50%',
         left                  : 'unset',
-        right                 : 'auto',
+        right                 : '50%',
         bottom                : 'auto',
-        transform             : 'translate(100%, 3%)',
         height                : '75px',
         width                 : '10%'
       }

@@ -14,7 +14,7 @@ const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles
     filterArticles.map((e) => {
         e.id = uuidv4()
     })
-    console.log(filterArticles)
+    console.log(filterArticles.forEach)
     //remove any duplicate objects in an array based off of the second parameter passed in
     function getUnique(arr, comparison) {
 
