@@ -19,7 +19,7 @@ const Newsfeed = ({
         getCurrentProfile();
     },[getCurrentProfile, getNews]);
 
-    // console.log(articles)
+    console.log(articles)
     return (
 <div className='post--container'>
     <div className='newsFeed--widget'>

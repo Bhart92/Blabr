@@ -138,7 +138,15 @@ return user === null ? <Spinner /> : (
                       </Fragment>
                     ) : (
                         <Fragment>
-                          <img src={image} className='repost--details--image'/>
+                          {image.length === 0 ? (
+                          <Fragment>
+                            <i className='fa fa-commenting article-image-missing'></i>
+                          </Fragment>
+                          ) : (
+                          <Fragment>
+                            <img src={image} className='repost--details--image'/>
+                          </Fragment>
+                          )}
                           {description !== undefined && (<p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... ... <a href={url}>Read More</a></p>)}
                         </Fragment>
                       )}

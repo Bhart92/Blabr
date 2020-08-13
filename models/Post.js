@@ -69,8 +69,7 @@ const PostSchema = new mongoose.Schema({
                 type: String
             },
              handle: { 
-                type: String,
-                unique: true
+                type: String
             }
         }
     ],

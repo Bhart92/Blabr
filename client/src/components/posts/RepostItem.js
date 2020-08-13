@@ -8,7 +8,7 @@ import Spinner from '../layout/Spinner';
 const RepostItem = ({
     text, url, repostHandle, title, repostAvatar, repostName, commentary, image, description, date
 }) => {
-// console.log(commentary)
+console.log(image)
 return <div className='repost'>
     {repostAvatar === undefined || null ? '' : (
      <div className='repost-OG-info'>
@@ -20,10 +20,22 @@ return <div className='repost'>
        <p className='repost-date'><Moment format='MMM/YY'>{date}</Moment></p>
      </div>
      )}
-     {text !== undefined && text !== null && <p>{commentary}</p>}
+
+     {text !== undefined && text !== null && <p>{commentary}</p>
+     }
 
      {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
-     {image && (<Fragment><img className='repost-image' src={image} /></Fragment>)}
+
+     {image.length == 0 ? (
+                          <Fragment>
+                            <p>.....</p>
+                            <i className='fa fa-commenting article-image-missing'></i>
+                          </Fragment>
+                          ) : (
+                          <Fragment>
+                            <img src={image} className='repost--details--image'/>
+                          </Fragment>
+                          )}
   
      {description && <Fragment><p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... <a href={url}>Read More</a></p></Fragment>}
    </div>

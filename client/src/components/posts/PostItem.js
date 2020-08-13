@@ -17,7 +17,7 @@ const PostItem = ({
   post,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
-
+console.log(typeof(image))
   const [likeStatus, setLikeStatus] = useState(false);
 
 const likePost = (id) => {
@@ -56,9 +56,21 @@ return user === null ? <Spinner /> :
     <div className='post--body'>
             <p className='my-1'>{text === undefined || text === null ? commentary : text}</p>
 
+        {image && image.length == 0 && (
+          <div className='repost'>
+            {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
 
-          {image && description && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
-          {!image && !description && text && commentary && <RepostItem originalCommentary={originalCommentary} repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
+
+                          <Fragment>
+                            <i className='fa fa-commenting article-image-missing'></i>
+                          </Fragment>
+
+  
+     {description && <Fragment><p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... <a href={url}>Read More</a></p></Fragment>}
+          </div>
+        )}
+          {image && description && <RepostItem repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
+          {!image && !description && text && commentary && <RepostItem repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
 
         {showActions ? (
         <Fragment>
@@ -77,7 +89,8 @@ return user === null ? <Spinner /> :
           ): (
           <Fragment>
             <div className='comment-item--likes'>
-          {likes.length > 0 ? <p>Like count: <span>{likes.length}</span></p> : ''}
+          {likes.length > 0 ? <p>Like coun
+            t: <span>{likes.length}</span></p> : ''}
             </div>
         </Fragment>
         )}
