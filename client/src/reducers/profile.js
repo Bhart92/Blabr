@@ -37,12 +37,14 @@ export default function(state = initialState, action) {
 			case ADD_FOLLOWER:
 				return {
 					...state,
-					followers: payload
+					profile: payload,
+					followerProfiles: payloadTwo
 				};
 			case REMOVE_FOLLOWER:
 				return {
 					...state,
-					follows: payload
+					profile: payload,
+					followerProfiles: payloadTwo
 				};
 		case PROFILE_ERROR:
 			return {

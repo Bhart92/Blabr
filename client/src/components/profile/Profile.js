@@ -17,18 +17,35 @@ import { GET_POSTS } from '../../actions/types';
 const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
         getProfileById(match.params.id);
-    }, [getProfileById ,match.params.id]);
-const triggerFollow = (id) => {
-    follow(id)
-    getProfileById(match.params.id);
-}
-const triggerUnfollow = (id) => {
-    unfollow(id)
-    getProfileById(match.params.id);
+    }, [getProfileById]);
 
+
+// if(auth.user && profile){
+// console.log(profile.user._id)
+// }
+const [like, setLike] = useState(null);
+
+
+const triggerFollow = async (id) => {
+    try {
+        await follow(id)
+        getProfileById(match.params.id);
+    } catch (err) {
+        console.log(err)
+    }
+    // console.log(followerState)
 }
-    return (
-    <div className='profile--container'>
+const triggerUnfollow = async (id) => {
+    try {
+        await unfollow(id);
+        getProfileById(match.params.id)
+    } catch (err) {
+        console.log(err);
+    }
+}
+    return !profile ? <Spinner /> : (
+        <Fragment>
+                <div className='profile--container'>
         {profile  === null ?  <Spinner /> : <Fragment>
             <div className='profile--top'>        
             <img src={profile.user.avatar} />
@@ -36,17 +53,33 @@ const triggerUnfollow = (id) => {
             {profile && 
             <Fragment>
                 <div>
-                {auth.user && profile && profile.followers.filter(follower => parseInt(follower.user) === parseInt(auth.user._id)).length ? <Fragment>
+
+                {/* {auth.user && profile && profile.followers.filter(follower => parseInt(follower.user) === parseInt(auth.user._id)).length ?  */}
+
+                <Fragment>
+
                     <button onClick={e => triggerUnfollow(match.params.id)} >
+
+
                             Unfollow
-                    </button></Fragment>
-                    :
-                    <Fragment>
-                    <button onClick={e => triggerFollow(match.params.id)}>
-                        Follow
+
+
                     </button>
+                    
                     </Fragment>
-                    }
+                    {/* : */}
+                    <Fragment>
+
+                    <button onClick={e => triggerFollow(match.params.id)} >
+
+
+                        Follow
+
+
+                    </button>
+
+                    </Fragment>
+                    {/* } */}
 
 
 
@@ -69,14 +102,15 @@ const triggerUnfollow = (id) => {
 
 
 
-            <ProfileFollowers followerProfiles={followerProfiles} />
+            <ProfileFollowers followerProfiles={followerProfiles}/>
 
 
 
             </div>
             </Fragment>}
     </div>
-    );
+        </Fragment>
+    )
 };
 
 Profile.propTypes = {

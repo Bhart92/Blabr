@@ -26,7 +26,6 @@ router.get('/me', auth, async (req, res) => {
     const profiles = profile.following.map(item => item.user);
     const followerProfiles = await Profile.find().where('user').in(profiles).exec();
 
-
     const profileObj = {
       profile,
       followerProfiles
@@ -141,6 +140,8 @@ router.get('/user/:user_id', async (req, res) => {
     const profiles = profile.followers.map(item => item.user);
     const followerProfiles = await Profile.find().where('user').in(profiles).exec();
 
+
+
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     const profileObj = {
@@ -185,21 +186,38 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
       const visitiedProfile = await Profile.findOne({
         user: req.params.user_id
       })
+      const profile = await Profile.findOne({ user: req.user.id }).populate(
+        'user',
+        ['firstName', 'avatar', 'handle', 'lastName']
+      );
+
+
+
+
+      const profiles = profile.following.map(item => item.user);
+      const followerProfiles = await Profile.find().where('user').in(profiles).exec();
+      
+
+      
+      
       // Check to make sure current user isnt already following visited user
       if(visitiedProfile.followers.filter(follower => 
           follower.user.toString() === req.user.id ).length > 0){
             return res.status(400).json({msg: 'User already followed'})
           }
+
+
       //  Checks to see if user is attempting to follow themselves
       if (req.user.id === req.params.user_id) {
             return res.status(400).json({msg : 'You cannot follow yourself'})
         } 
+
+
       // Add current user to visited users follwer array
       visitiedProfile.followers.unshift({user:req.user.id});
 
       // save visited user
       await visitiedProfile.save()
-
       // Get current users profile
       const currentProfile =  await Profile.findOne({ user: req.user.id }).populate(
         'followers',
@@ -208,7 +226,8 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
       );
       const userObjects = {
         visitiedProfile,
-        currentProfile
+        currentProfile,
+        followerProfiles
       };
 
       // Add visited user to current users following array
@@ -235,7 +254,17 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
       const visitiedProfile = await Profile.findOne({
         user: req.params.user_id
       });
+      const profile = await Profile.findOne({ user: req.user.id }).populate(
+        'user',
+        ['firstName', 'avatar', 'handle', 'lastName']
+      );
 
+
+
+
+      const profiles = profile.following.map(item => item.user);
+      const followerProfiles = await Profile.find().where('user').in(profiles).exec();
+      
       //filter visited users follower array to remove any followers with id == req.user.id
       const removeIndexOne = visitiedProfile.followers.map(follower => follower.user.toString()).indexOf(req.user.id);
         visitiedProfile.followers.splice(removeIndexOne, 1);
@@ -257,7 +286,8 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
 
       const userObjects = {
         visitiedProfile,
-        currentProfile
+        currentProfile,
+        followerProfiles
       };
 
       // send objects

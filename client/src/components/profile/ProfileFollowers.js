@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 
-const ProfileFollowers = ({ followerProfiles}) => {
+const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => {
 
     const [seeMore, setSeeMore] = useState(false);
     const [seeMoreText, setSeeMoreText] = useState('See All');
-
 
     const toggleSeeMore = () => {
        setSeeMore(!seeMore); 
@@ -50,12 +49,18 @@ const ProfileFollowers = ({ followerProfiles}) => {
 
 <span className='seeMore' onClick={() => toggleSeeMore()}>
         {!seeMore ? 'See All' : 'Hide'}
-        </span>
+</span>
 </div>
   );
 };
-
+ProfileFollowers.propTypes = {
+  profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  profile: state.profile
+});
 export default connect(
-  null,
-  {  }
+  mapStateToProps,
 )(ProfileFollowers);

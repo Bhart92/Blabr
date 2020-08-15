@@ -75,35 +75,23 @@ export const filterByValue = (array, string) => {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Follow a user
 export const follow = (userId) => async dispatch => {
   try {
       const res = await axios.post(`/api/profile/user/${userId}/follow-user`);
+
+      const { profile, followerProfiles } = res.data;
+
+
       dispatch({
         type: ADD_FOLLOWER,
-        payload: res.data
-      });
-      dispatch(setAlert('User followed!'));
+        payload: profile,
+        payloadTwo: followerProfiles
 
+      });
+
+
+      dispatch(setAlert('User followed!'));
       console.log(res);
   } catch (err) {
     const {msg} = err.response.data;
@@ -120,9 +108,12 @@ export const follow = (userId) => async dispatch => {
 export const unfollow = (userId) => async dispatch => {
   try {
       const res = await axios.post(`/api/profile/user/${userId}/unfollow-user`);
+      const { profile, followerProfiles } = res.data;
+
       dispatch({
         type: REMOVE_FOLLOWER,
-        payload: res.data.followers
+        payload: profile,
+        payloadTwo: followerProfiles
       });
       dispatch(setAlert('User unfollowed!'));
   } catch (err) {
