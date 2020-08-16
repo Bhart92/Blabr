@@ -11,7 +11,7 @@ import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { getProfileById, filterByValue } from '../../actions/profile';
 import { follow, unfollow } from '../../actions/profile';
-import { GET_POSTS } from '../../actions/types';
+import { GET_POSTS, AUTH_ERROR } from '../../actions/types';
 
 
 const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
@@ -20,12 +20,16 @@ const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {pr
     }, [getProfileById]);
 
 
-// if(auth.user && profile){
-// console.log(profile.user._id)
-// }
 const [like, setLike] = useState(null);
 
-
+if(auth.user && profile){
+    followerProfiles.forEach((item) => {
+        if(auth.user._id == item.user){
+            console.log(followerProfiles.filter(follower => follower.user == auth.user._id).length < 0)
+        }
+    })
+    
+}
 const triggerFollow = async (id) => {
     try {
         await follow(id)
@@ -54,20 +58,17 @@ const triggerUnfollow = async (id) => {
             <Fragment>
                 <div>
 
-                {/* {auth.user && profile && profile.followers.filter(follower => parseInt(follower.user) === parseInt(auth.user._id)).length ?  */}
-
-                <Fragment>
+        {!followerProfiles.filter(follower => follower.user == auth.user._id).length <= 0 ? (
+                    <Fragment>
 
                     <button onClick={e => triggerUnfollow(match.params.id)} >
 
-
                             Unfollow
-
 
                     </button>
                     
                     </Fragment>
-                    {/* : */}
+                ) : (
                     <Fragment>
 
                     <button onClick={e => triggerFollow(match.params.id)} >
@@ -79,7 +80,9 @@ const triggerUnfollow = async (id) => {
                     </button>
 
                     </Fragment>
-                    {/* } */}
+                )}
+
+
 
 
 
