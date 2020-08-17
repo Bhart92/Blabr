@@ -19,16 +19,10 @@ const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {pr
         getProfileById(match.params.id);
     }, [getProfileById]);
 
-
 const [like, setLike] = useState(null);
 
 if(auth.user && profile){
-    followerProfiles.forEach((item) => {
-        if(auth.user._id == item.user){
-            console.log(followerProfiles.filter(follower => follower.user == auth.user._id).length < 0)
-        }
-    })
-    
+    console.log(profile.user._id)    
 }
 const triggerFollow = async (id) => {
     try {

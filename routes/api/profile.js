@@ -272,14 +272,22 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
       // // save visited user
       await visitiedProfile.save()
 
+
+
+
+
       // Get current users profile
       const currentProfile =  await Profile.findOne({ user: req.user.id }).populate(
         'followers',
         'user.avatar',
         ['handle', 'avatar']
       );
+        // console.log(currentProfile.following.map(follower => follower.user.toString()).indexOf(visitiedProfile.user))
       const removeIndexTwo = currentProfile.following.map(follower => follower.user.toString()).indexOf(req.params.user_id);
-        currentProfile.following.splice(removeIndexTwo, 1);
+      // console.log(removeIndexTwo)
+      currentProfile.following.map(follower => currentProfile.following.splice(removeIndexTwo, 1));
+        
+
 
       // save current user
       await currentProfile.save();
