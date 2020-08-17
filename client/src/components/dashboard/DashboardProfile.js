@@ -26,7 +26,7 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
             </div>
 
             <div className='profile--bottom'>
-                <h1>Your Posts</h1>
+                <h2>Your Posts</h2>
                 <DashboardPosts />
             </div>
             <div className='dashboard--profile--following'>

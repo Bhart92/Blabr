@@ -73,9 +73,9 @@ const EditProfile = ({
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <div className='form-input-inner'>
-          <input type='text' name='status' value={status} onChange={e => onChange(e)} />
+          <input type='text' name='status' value={status} placeholder='Work Title' onChange={e => onChange(e)} />
           <small className='form-text'>
-            Give us an idea of where you are at in your career
+            What is your work title?
           </small>
           </div>
           <div className='form-input-inner'>
@@ -87,7 +87,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Could be your own company or one you work for
+            Where do you work?
           </small>
           </div>
         </div>
@@ -103,7 +103,7 @@ const EditProfile = ({
               onChange={e => onChange(e)}
             />
             <small className='form-text'>
-              City & state suggested (eg. Boston, MA)
+              City & state(eg. Boston, MA)
             </small>
             </div>
             <div className='form-input-inner'>
@@ -115,7 +115,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Please use comma separated values(ex. MMA, Basketball, Soccer)
+            What are some of your interests?
           </small>
             </div>
         </div>

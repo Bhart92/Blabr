@@ -66,7 +66,7 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
 
       </ul>
       <span className='profile--posts-seeMore--btn' onClick={() => toggleSeeMore()}>
-        {!seeMore ? 'See All' : 'Hide'}
+      <span>{!seeMore ? 'See All' : 'Hide'}</span>
         </span>
     </div>
   );

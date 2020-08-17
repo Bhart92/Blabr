@@ -6,7 +6,7 @@ import CreateProfile from '../profile-forms/CreateProfile';
 import ProfilePosts from './ProfilePosts';
 import ProfileFollowers from './ProfileFollowers';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { getProfileById, filterByValue } from '../../actions/profile';
@@ -41,6 +41,9 @@ const triggerUnfollow = async (id) => {
     } catch (err) {
         console.log(err);
     }
+}
+if(!isAuthenticated){
+    return <Redirect to='/' />;
 }
     return !profile ? <Spinner /> : (
         <Fragment>
