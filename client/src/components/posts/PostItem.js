@@ -17,7 +17,6 @@ const PostItem = ({
   post,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
-console.log(image.length)
   const [likeStatus, setLikeStatus] = useState(false);
 
 const likePost = (id) => {
@@ -56,7 +55,7 @@ return user === null ? <Spinner /> :
     <div className='post--body'>
             <p className='my-1'>{text === undefined || text === null ? commentary : text}</p>
 
-        {image.length == 0 && (
+        {image !== undefined && image.length == 0 && (
           <div className='repost'>
             {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
 

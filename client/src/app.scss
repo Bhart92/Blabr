@@ -1200,6 +1200,7 @@ p{
             flex-basis: 47%;
             list-style-type: none;
             padding: 5px 7px;
+            height:145px;
             &:nth-of-type(even){
                 border-right: none;
                 text-align: right;
@@ -1217,17 +1218,25 @@ p{
     width: 100%;
     background: #e6f9ff;
     padding: 5px 0 30px 0;
+    height: auto;
+    position: relative;
 }
 .dashboard--profile--following--container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+.dashboard--profile--following--container-user{
+    margin: 0 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     flex-basis: 25%;
     position: relative;
-}
-.dashboard--profile--following--container-user{
-    margin: 0 5px;
     p{
         text-align: center;
     }
@@ -1242,7 +1251,7 @@ p{
 
 .seeMore, .profile--posts-seeMore--btn{
     position: absolute;
-    bottom: -10px;
+    bottom: 10px;
     right: 10px;
     margin: -10px;
     padding: 10px;
