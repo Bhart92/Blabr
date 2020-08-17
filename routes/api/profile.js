@@ -284,9 +284,7 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
       );
         // console.log(currentProfile.following.map(follower => follower.user.toString()).indexOf(visitiedProfile.user))
       const removeIndexTwo = currentProfile.following.map(follower => follower.user.toString()).indexOf(req.params.user_id);
-      // console.log(removeIndexTwo)
-      currentProfile.following.map(follower => currentProfile.following.splice(removeIndexTwo, 1));
-        
+      currentProfile.following.splice(removeIndexTwo, 1);
 
 
       // save current user

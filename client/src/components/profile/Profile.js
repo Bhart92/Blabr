@@ -52,7 +52,7 @@ const triggerUnfollow = async (id) => {
             <Fragment>
                 <div>
 
-        {!followerProfiles.filter(follower => follower.user == auth.user._id).length <= 0 ? (
+        { auth && !followerProfiles.filter(follower => follower.user == auth.user._id).length <= 0 ? (
                     <Fragment>
 
                     <button onClick={e => triggerUnfollow(match.params.id)} >
