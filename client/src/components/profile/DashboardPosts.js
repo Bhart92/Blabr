@@ -10,6 +10,7 @@ const DashboardPosts = ({ getPosts, user, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
+  console.log(posts.length)
   const [seeMore, setSeeMore] = useState(false);
   const [seeMoreText, setSeeMoreText] = useState('See All');
 
@@ -68,7 +69,7 @@ const userPostArray = posts.filter(post => post.user == user._id)
 
       </ul>
       <span className='profile--posts-seeMore--btn' onClick={() => toggleSeeMore()}>
-        {!seeMore ? 'See All' : 'Hide'}
+        {posts.length <= 6 ? '' : <span>{!seeMore ? 'See All' : 'Hide'}</span>}
         </span>
     </div>
   );

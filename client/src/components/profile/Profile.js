@@ -22,7 +22,8 @@ const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {pr
 const [like, setLike] = useState(null);
 
 if(auth.user && profile){
-    console.log(profile.user._id)    
+    console.log(profile.user._id);
+    console.log(auth.user._id)
 }
 const triggerFollow = async (id) => {
     try {
@@ -48,38 +49,25 @@ const triggerUnfollow = async (id) => {
             <div className='profile--top'>        
             <img src={profile.user.avatar} />
         <h1>{profile.firstName} {profile.lastName}</h1>
-            {profile && 
+            {profile && auth && profile.user._id !== auth.user._id &&
             <Fragment>
                 <div>
 
         { auth && !followerProfiles.filter(follower => follower.user == auth.user._id).length <= 0 ? (
                     <Fragment>
-
                     <button onClick={e => triggerUnfollow(match.params.id)} >
-
                             Unfollow
-
                     </button>
-                    
                     </Fragment>
                 ) : (
                     <Fragment>
 
                     <button onClick={e => triggerFollow(match.params.id)} >
-
-
                         Follow
-
-
                     </button>
 
                     </Fragment>
                 )}
-
-
-
-
-
                 </div>
             </Fragment>
             }
@@ -95,14 +83,7 @@ const triggerUnfollow = async (id) => {
 
             <div className='dashboard--profile--following'>
             <h2>{profile.user.firstName}s followers</h2>
-
-
-
-
             <ProfileFollowers followerProfiles={followerProfiles}/>
-
-
-
             </div>
             </Fragment>}
     </div>

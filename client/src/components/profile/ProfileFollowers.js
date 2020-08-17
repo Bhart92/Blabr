@@ -48,7 +48,7 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
 )}
 
 <span className='seeMore' onClick={() => toggleSeeMore()}>
-        {!seeMore ? 'See All' : 'Hide'}
+  {followerProfiles.length <= 6 ? '' : <span>{!seeMore ? 'See All' : 'Hide'}</span>}
 </span>
 </div>
   );
