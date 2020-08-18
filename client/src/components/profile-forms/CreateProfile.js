@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner';
 import { Redirect } from 'react-router-dom';
 
 const CreateProfile = ({isAuthenticated, user, createProfile, history, profile:{profile}}) => {
-  console.log(user)
+  console.log(profile)
     const [formData, setFormData] = useState({
       firstName: user !== null && user.firstName,
       lastName: user !== null && user.lastName,
@@ -56,28 +56,45 @@ const CreateProfile = ({isAuthenticated, user, createProfile, history, profile:{
       return <Redirect to='/dashboard' />;
     } 
     return (
-      <div>
+      <div className='post--container create--profile--container'>
       {user === null ? <Spinner /> : (
             <Fragment>
-            <h1>Profile Details</h1>
+            <h1 className='large text-primary'>Create your profile</h1>
             <small>* = required field</small>
-            <form onSubmit={e => onSubmit(e)}>
-              <div>
-                <input type='text'  value={user.firstName} />
+            <form className='form' onSubmit={e => onSubmit(e)}>
+              <div className='form-group'>
+                <div className='form-input-inner'>
+                  <input type='text'  value={user.firstName} />
+                  <small className='form-text'>
+                    First name
+                  </small>
+                </div>
+                <div className='form-input-inner'>
+                  <input type='text'  value={user.lastName} />
+                  <small className='form-text'>
+                    Last name
+                  </small>
+                </div>
               </div>
-              <div>
-                <input type='text'  value={user.lastName} />
-              </div>
-              <div>
+
+              <div className='form-group'>
+              <div className='form-input-inner'>
                 <input type='text'  value={user.avatar} />
-              </div>
-            <div className='form-group'>
+                <small className='form-text'>
+                Gravatar profile link
+                </small>
+                </div>
+                <div className='form-input-inner'>
                 <input type='text' name='status' value={status} onChange={e => onChange(e)} />
                 <small className='form-text'>
-                  Give us an idea of where you are at in your career
+                What is your work title?
                 </small>
+                </div>
               </div>
-              <div>
+
+              <div className='form-group'>
+              <div className='form-input-inner'>
+
                 <input
                   type="text"
                   placeholder="Company"
@@ -86,10 +103,10 @@ const CreateProfile = ({isAuthenticated, user, createProfile, history, profile:{
                   onChange={e => onChange(e)}
                 />
                 <small>
-                  Could be your own company or one you work for
+                Where do you work?
                 </small>
               </div>
-              <div>
+              <div className='form-input-inner'>
                 <input
                   type="text"
                   placeholder="Location"
@@ -98,39 +115,50 @@ const CreateProfile = ({isAuthenticated, user, createProfile, history, profile:{
                   onChange={e => onChange(e)}
                 />
                 <small>
-                  City & state suggested (eg. Boston, MA)
+                City & state(eg. Boston, MA)
                 </small>
+                </div>
               </div>
-              <div>
+
+              <div className='form-group'>
+              <div className='form-input-inner'>
                 <input
+                  className='interests--input'
                   type="text"
                   placeholder="* interests"
                   name="interests"
                   value={interests}
                   onChange={e => onChange(e)}
                 />
+                <small>
+                Some of your Interests (Comma separated list eg. Sports, Cooking, Fishing)
+                </small>
               </div>
-              <div>
+              </div>
+              <div className='form-group'>
                 <textarea
-                  placeholder="A short bio of yourself"
+                  placeholder="Tell us a little about yourself"
                   name="bio"
                   value={bio}
                   onChange={e => onChange(e)}
                 />
-                <small>Tell us a little about yourself</small>
               </div>
       
               <div >
+              <div className='form-input-inner'>
                 <button
+                  className='display-social-links'
                   onClick={() => toggleSocialInputs(!displaySocialInputs)}
                   type="button"
                 >
                   Add Social Network Links
                 </button>
                 <span>Optional</span>
+                </div>
               </div>
       
               {displaySocialInputs && <Fragment>
+                <div className='social--inputs'>
                   <div>
                     <i className="fab fa-twitter" />
                     <input
@@ -172,6 +200,7 @@ const CreateProfile = ({isAuthenticated, user, createProfile, history, profile:{
                       value={instagram}
                       onChange={e => onChange(e)}
                     />
+                  </div>
                   </div>
                   </Fragment>}
       

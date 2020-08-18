@@ -536,6 +536,7 @@ margin-bottom: 15px;
 .dashboard--container{
     display: flex;
     height: 100vh;
+    position: relative;
     max-width: 750px;
     margin: 0 auto;
     border-right: 0.5px solid lighten(#1a1a1a, 83%);
@@ -895,8 +896,8 @@ margin-bottom: 15px;
     .fa, .fas{
         color: rgba(0,0,0, .45);
         width: 30%;
-        margin: -20px;
-        padding: 20px;
+        margin: -9px;
+        padding: 12px;
         transition: .25s all ease;
         &:hover{
             cursor: pointer;
@@ -952,13 +953,71 @@ margin-bottom: 15px;
             cursor: text;
         }
     }
+    .interests--input{
+        width: 100%;
+    }
+    .social--inputs{
+        width: 100%;
+        input{
+            width: 70%;
+        }
+    }
+    input[type='submit']{
+        background: transparent;
+        border: 2px solid #b3ecff;
+        border-radius: 5px;
+        padding: 20px 20px;
+        outline: none;
+        margin: 20px 0;
+        transition: .35s all ease-in-out;
+        width: 20%;
+        letter-spacing: 1.1px;
+        font-size: .9rem;
+        &:hover{
+            cursor: pointer;
+            background: #b3ecff;
+            border: 2px solid transparent;
+        }
+
+    }
+}
+.display-social-links{
+    letter-spacing: 1.1px;
+    font-size: .9rem;
+    border: none;
+    background: none;
+    padding: 20px 20px;
+    margin: 20px 0;
+    color: darken(#b3ecff, 15%);
+    &:hover{
+        cursor: pointer;
+    }
 }
 .newsFeed--widget{
     width: 100%;
+
+}
+.newsFeed-Spinner{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: -5rem;
+    position: relative;
+    span{
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .newsFeed--article-section__widget{
     width: 98.75%;
     margin: 0 auto;
+
 }
 
 .dashboard--navBar-icon{
@@ -1276,7 +1335,7 @@ p{
 }
 .edit--container{
     @extend .post--container;
-    height: 97vh;
+    height: 100vh;
     .form{
         display: flex;
         flex-direction: column;
@@ -1310,6 +1369,17 @@ p{
 
     }
 }
+.fa-thumbs-o-down, .fa-thumbs-o-up{
+    margin: 0 5px;
+} 
+.create--profile--container{
+    @extend .edit--container;
+    height: auto!important;
+}
+.profiles-spinner{
+    width: 100%;
+    border: none!important;
+}
 .social-button-link-container{
     display: flex;
     flex-direction: column;
@@ -1339,6 +1409,36 @@ p{
         input{
             width: 75%;
         }
+    }
+}
+.create-button{
+    border: 2px solid deepskyblue;
+    @extend input[type='submit'];
+    width: 45%;
+    padding: 25px 0px;
+    text-align: center;
+    color: deepskyblue;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    margin: 0 auto;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+.dashboard--spinner{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    h2{
+        position: absolute;
+        top: 57%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        font-weight: 500;
     }
 }
 .edit--container .form .form-group .social-input{
@@ -1512,7 +1612,7 @@ p{
     justify-content: flex-end;
 }
 .alert-success{
-    background: skyblue;
+    background: forestgreen;
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
@@ -1539,4 +1639,10 @@ p{
     @extend .alert-success;
     background: limegreen;
     color: black;
+}
+.spinner--span{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

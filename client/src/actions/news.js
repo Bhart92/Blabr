@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     AUTH_ERROR,
     GET_NEWS,
+    CLEAR_NEWS,
     FILTER_NEWS
 } from './types';
 
@@ -40,6 +41,9 @@ export const getNews = (e) => async dispatch => {
 }
 export const filterNewsByKeyword = (keyword) => async dispatch => {
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios.get('https://newsapi.org/v2/everything?' +
           `q=${keyword}&` +
           'pageSize=100&' +
@@ -61,7 +65,11 @@ export const filterNewsByKeyword = (keyword) => async dispatch => {
     }
 }
 export const filterByBBC = () => async dispatch => {
+
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios({
             "method":"GET",
             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
@@ -94,6 +102,9 @@ export const filterByBBC = () => async dispatch => {
 }
 export const filterByCNN = () => async dispatch => {
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios({
             "method":"GET",
             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
@@ -127,6 +138,9 @@ export const filterByCNN = () => async dispatch => {
 }
 export const filterByFox = () => async dispatch => {
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios({
             "method":"GET",
             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
@@ -161,6 +175,9 @@ export const filterByFox = () => async dispatch => {
 }
 export const filterByCBS = () => async dispatch => {
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios({
             "method":"GET",
             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
@@ -191,9 +208,11 @@ export const filterByCBS = () => async dispatch => {
         });
     }
 }
-
 export const filterByNBC = () => async dispatch => {
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios({
             "method":"GET",
             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
@@ -227,6 +246,9 @@ export const filterByNBC = () => async dispatch => {
 }
 export const filterByIndependent = () => async dispatch => {
     try {
+        dispatch({
+            type: CLEAR_NEWS
+         });
         const res = await axios({
             "method":"GET",
             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",

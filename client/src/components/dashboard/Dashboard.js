@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount, getProfiles } from '../../actions/profile';
 import { filterNewsByKeyword } from '../../actions/news';
@@ -13,7 +13,7 @@ const Dashboard = ({
     getCurrentProfile,
     logout,
     deleteAccount,
-    auth: { user },
+    auth: { user, isAuthenticated },
     posts,
     profile: { profile, loading } 
 }) => {
@@ -21,19 +21,23 @@ const Dashboard = ({
         loadUser();
         getCurrentProfile()
     },[loadUser]);
-    
+    console.log(profile)
     return user === null ? <Spinner /> : 
 
     <div className='dashboard--container'>
         
         <div className='dashboard--center-console'>
             <div className='dashboard--newsfeed'>
-               {!profile ? (<Fragment>
-                <Link to='create-profile'>Create your profile</Link>
-               </Fragment>) : (<Fragment>
+               {isAuthenticated && !profile ? (
+               <div className='dashboard--spinner'>
+                   <Spinner />
+                   <h2>Please create a profile</h2>
+                <Link className='create-button' to='create-profile'>Create your profile</Link>
+               </div>) : (<Fragment>
                 <DashboardProfile loading={loading} user={user}/>
                 
-               </Fragment>)}
+               </Fragment>
+               )}
             </div>
         </div>
     </div>;

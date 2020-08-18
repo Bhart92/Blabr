@@ -14,7 +14,6 @@ const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles
     filterArticles.map((e) => {
         e.id = uuidv4()
     })
-    console.log(filterArticles.forEach)
     //remove any duplicate objects in an array based off of the second parameter passed in
     function getUnique(arr, comparison) {
 
@@ -45,7 +44,8 @@ const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles
             {filterArticles.map(item => (
                     <div key={item.id} className='newsFeed--article--container'>
                         <div className='newsFeed--article--container--info'>
-                        <p className='newsFeed--article--title'>{item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>
+                        <p className='newsFeed--article--title'>{item.description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 60)}...</p>
+
                         <div className='button-container'>
 
                         {/* <Link onClick={e => triggerRepost(item)}><i class="fas fa-retweet"></i></button> */}

@@ -6,7 +6,6 @@ import NewsFeedItem from '../newsfeed/NewsFeedItem';
 import { getCurrentProfile } from '../../actions/profile';
 import { getNews } from '../../actions/news';
 import LoginBox from '../auth/LoginBox';
-import Spinner from '../layout/Spinner';
 
 
 const Newsfeed = ({ 
@@ -19,16 +18,14 @@ const Newsfeed = ({
         getNews();
         getCurrentProfile();
     },[getCurrentProfile, getNews]);
-
+    console.log(articles)
     return (
        <div className='newsFeed'>
            <div className='newsFeed--article-section'>
-            {articles.length === 0 ? <Spinner /> : (
                 <Fragment>
                     <NewsFilterBar articles={articles}/>
                     <NewsFeedItem user={user}/>
                 </Fragment>
-            )}
            </div>
            <div className='loginBox'>
 

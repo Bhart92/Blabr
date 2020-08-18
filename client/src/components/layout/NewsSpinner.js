@@ -8,6 +8,6 @@ export default () => (
       style={{ width: '200px', margin: 'auto', display: 'block' }}
       alt='Loading...'
     />
-    <span className='spinner--span'>Loading...</span>
+    <span>Loading articles...</span>
   </Fragment>
 );

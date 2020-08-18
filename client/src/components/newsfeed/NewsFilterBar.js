@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import NewsSpinner from '../layout/NewsSpinner';
+
 import { getNews, filterByCNN, filterByFox, filterByCBS, filterByBBC, filterByIndependent, filterByNBC } from '../../actions/news';
 
 
@@ -38,20 +40,28 @@ const NewsFilterBar = ({
 
                 </ul>
             </div>
-            {filterArticles.map(item => (
-            <div className='newsFeed--newsFilterBar--image' key={uuidv4()}>
-                <div className='newsFeed--newsFilterBar--image__overlay'>
-                    <div className='info-box'>
-                    <p>{item.provider.name}: {item.author}</p>
-                    <p>{item.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
-                    </div>
+            {articles.length <= 0 ? (
+            <Fragment>
+                <NewsSpinner />
+                </Fragment>
+                ) : (
+                <Fragment>
+                    {filterArticles.map(item => (
+                        <div className='newsFeed--newsFilterBar--image' key={uuidv4()}>
+                            <div className='newsFeed--newsFilterBar--image__overlay'>
+                                <div className='info-box'>
+                                <p>{item.provider.name}: {item.author}</p>
+                                <p>{item.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
+                                </div>
 
-                </div>
-                
-                    <img src={item.image.url} />
-                
-            </div>
+                            </div>
+                            
+                                <img src={item.image.url} />
+                            
+                        </div>
             ))}
+            </Fragment>
+            )}
             </div>
         </div>
     );

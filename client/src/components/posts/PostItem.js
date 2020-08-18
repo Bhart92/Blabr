@@ -77,6 +77,8 @@ return user === null ? <Spinner /> :
           <div className='post--actionBox'>
        <span>
          <i onClick={() => addLike(_id)} className='fa fa-thumbs-o-up '></i>
+
+         
           { likes.length > 0 && <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i> }
 
           { likes.length <= 0 ? '' : <span>{likes.length}</span> }

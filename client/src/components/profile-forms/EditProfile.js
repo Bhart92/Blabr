@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
@@ -8,6 +8,7 @@ const EditProfile = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
+  isAuthenticated,
   history
 }) => {
 
@@ -62,7 +63,9 @@ const EditProfile = ({
     createProfile(formData, history, true);
     window.location.replace("/dashboard")
   };
-
+if(isAuthenticated && profile === null){
+  return <Redirect to='create-profile'></Redirect>;
+}
   return (
     <div className='post--container edit--container'>
       <h1 className='large text-primary'>Edit Your Profile</h1>
@@ -203,7 +206,8 @@ EditProfile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(

@@ -44,6 +44,7 @@ export const login = (email, password) => async dispatch => {
   
     try {
       const res = await axios.post('/api/auth', body, config);
+      await dispatch({type: CLEAR_PROFILE});
   
       dispatch({
         type: LOGIN_SUCCESS,

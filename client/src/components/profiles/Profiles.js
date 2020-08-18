@@ -14,14 +14,14 @@ const Profiles = ({ isAuthenticated, getProfiles, profile: { profiles, loading }
     return <Redirect to='/' />;
     }
     return <div className='profiles--container'>
-        {loading ? <Spinner /> : <Fragment>
+        {loading ? <div className='dashboard--container profiles-spinner'><Spinner /></div> : <Fragment>
             <h1>Profiles</h1>
             <div>
                 {profiles.length > 0 ? (
                     profiles.map(profile => (
                         <ProfileItem key={profile._id} profile={profile} />
                     ))
-                ) : <h4>No Profiles Found</h4>}
+                ) : <Fragment><Spinner /></Fragment>}
             </div>
             </Fragment>}
     </div>;

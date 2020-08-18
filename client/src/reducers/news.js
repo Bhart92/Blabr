@@ -1,5 +1,5 @@
 import {
-    GET_NEWS
+    GET_NEWS, CLEAR_NEWS
 } from '../actions/types';
 
 const initialState = {
@@ -17,6 +17,11 @@ const initialState = {
                 ...state,
                 outlet,
                 articles: payload
+            };
+        case CLEAR_NEWS:
+            return {
+                ...state,
+                articles: []
             };
         default:
             return state;
