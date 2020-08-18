@@ -13,8 +13,9 @@ const Profiles = ({ isAuthenticated, getProfiles, profile: { profiles, loading }
    if(!isAuthenticated){
     return <Redirect to='/' />;
     }
+    console.log(profiles)
     return <div className='profiles--container'>
-        {loading ? <div className='dashboard--container profiles-spinner'><Spinner /></div> : <Fragment>
+        {loading ? <Spinner /> : <Fragment>
             <h1>Profiles</h1>
             <div>
                 {profiles.length > 0 ? (

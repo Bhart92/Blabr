@@ -45,10 +45,10 @@ const triggerUnfollow = async (id) => {
 if(!isAuthenticated){
     return <Redirect to='/' />;
 }
-    return profile === null ? <div className='dashboard--container'><Spinner /></div> : (
+    return !profile ? <Spinner /> : (
         <Fragment>
                 <div className='profile--container'>
-        {profile  === null ?  (<Fragment><Spinner /></Fragment>) : <Fragment>
+        {profile  === 'cat' ?  (<Fragment><Spinner /></Fragment>) : <Fragment>
             <div className='profile--top'>        
             <img src={profile.user.avatar} />
         <h1>{profile.firstName} {profile.lastName}</h1>

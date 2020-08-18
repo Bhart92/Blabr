@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import NewsSpinner from '../layout/NewsSpinner';
 
-import { getNews, filterByCNN, filterByFox, filterByCBS, filterByBBC, filterByIndependent, filterByNBC } from '../../actions/news';
+import { filterByCNN, filterByFox, filterByNY, filterByWashPo, filterByBBC, filterByIndependent, filterByBlaze } from '../../actions/news';
 
 
 const NewsFilterBar = ({ 
-    getNews,
+    filterByNY,
     filterByCNN,
     filterByFox,
-    filterByCBS,
+    filterByWashPo,
     filterByBBC,
     filterBySports,
-    filterByNBC,
+    filterByBlaze,
     filterByIndependent,
     articles,
     news: {outlet}
@@ -30,12 +30,12 @@ const NewsFilterBar = ({
                 </div>
             <div className='newsFeed--newsFilterBar--buttons'>
                 <ul>
-                        <li id='trending' onClick={getNews}>Trending</li>
+                        <li id='trending' onClick={filterByNY}>NYTimes</li>
                         <li id='CNN'onClick={filterByCNN}>CNN</li>
                         <li id='FOX' onClick={filterByFox}>FOX</li>
-                        <li id='CBS' onClick={filterByCBS}>CBS</li>
+                        <li id='CBS' onClick={filterByWashPo}>Wash.Post</li>
                         <li id='BBC' onClick={filterByBBC}>BBC</li>
-                        <li id='NBC' onClick={filterByNBC}>NBC</li>
+                        <li id='NBC' onClick={filterByBlaze}>The Blaze</li>
                         <li id='Independent' onClick={filterByIndependent}>Independent</li>
 
                 </ul>
@@ -67,13 +67,9 @@ const NewsFilterBar = ({
     );
 };
 
-NewsFilterBar.propTypes = {
-    getNews: PropTypes.func.isRequired,
-
-};
 
 const mapStateToProps = state => ({
     news: state.news
 });
 
-export default connect(mapStateToProps,{ getNews, filterByIndependent, filterByCNN, filterByFox, filterByCBS, filterByBBC, filterByNBC })(NewsFilterBar);
+export default connect(mapStateToProps,{  filterByNY, filterByIndependent, filterByCNN, filterByFox, filterByWashPo, filterByBBC, filterByBlaze })(NewsFilterBar);

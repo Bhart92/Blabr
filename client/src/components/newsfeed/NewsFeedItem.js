@@ -2,12 +2,12 @@ import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getNews } from '../../actions/news';
+import { filterByNY } from '../../actions/news';
 import { v4 as uuidv4 } from 'uuid';
 import RepostArticleForm from '../posts/RepostArticleForm';
 
 
-const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles } }) => {
+const NewsFeedItem = ({ isAuthenticated, filterByNY, auth: {user}, news: { articles } }) => {
 
     let filterArticles = articles.filter((item, index) => index !== 0);
 
@@ -67,7 +67,6 @@ const NewsFeedItem = ({ isAuthenticated, getNews, auth: {user}, news: { articles
 };
 
 NewsFeedItem.propTypes = {
-    getNews: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 }
 
@@ -77,4 +76,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 
 });
-export default connect(mapStateToProps, { getNews })(NewsFeedItem);
+export default connect(mapStateToProps)(NewsFeedItem);

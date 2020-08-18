@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount, getProfiles } from '../../actions/profile';
 import { filterNewsByKeyword } from '../../actions/news';
 import DashboardProfile from './DashboardProfile';
-import { getNews } from '../../actions/news';
 import Spinner from '../layout/Spinner';
 import { loadUser } from '../../actions/auth';
 
@@ -60,4 +59,4 @@ const mapStateToProps = state => ({
     news: state.news
   });
 
-export default connect(mapStateToProps,{ getCurrentProfile, getNews, deleteAccount, loadUser })(Dashboard);
+export default connect(mapStateToProps,{ getCurrentProfile, deleteAccount, loadUser })(Dashboard);

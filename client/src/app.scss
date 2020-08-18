@@ -1379,6 +1379,19 @@ p{
 .profiles-spinner{
     width: 100%;
     border: none!important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    img{
+        width: 200px;
+        margin: auto;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .social-button-link-container{
     display: flex;
