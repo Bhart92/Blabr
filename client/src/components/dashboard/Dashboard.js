@@ -20,7 +20,6 @@ const Dashboard = ({
         loadUser();
         getCurrentProfile()
     },[loadUser]);
-    console.log(profile)
     return user === null ? <Spinner /> : 
 
     <div className='dashboard--container'>

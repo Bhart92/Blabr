@@ -18,7 +18,6 @@ const Newsfeed = ({
         filterByNY();
         getCurrentProfile();
     },[getCurrentProfile, filterByNY]);
-    console.log(articles)
     return (
 <div className='post--container'>
     <div className='newsFeed--widget'>

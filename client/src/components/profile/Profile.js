@@ -14,17 +14,12 @@ import { follow, unfollow } from '../../actions/profile';
 import { GET_POSTS, AUTH_ERROR } from '../../actions/types';
 
 
-const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {profile, profiles, followerProfiles}, auth:{isAuthenticated}}) => {
+const Profile = ({  getProfileById, follow, unfollow, auth, match,  profile: {profile, social , profiles, followerProfiles}, auth:{isAuthenticated}}) => {
     useEffect(() => {
         getProfileById(match.params.id);
     }, [getProfileById]);
-
+if(profile) console.log(profile.social)
 const [like, setLike] = useState(null);
-
-if(auth.user && profile){
-    console.log(profile.user._id);
-    console.log(auth.user._id)
-}
 const triggerFollow = async (id) => {
     try {
         await follow(id)
@@ -54,10 +49,16 @@ if(!isAuthenticated){
         <h1>{profile.firstName} {profile.lastName}</h1>
         <span>@{profile.user.handle}</span>
         <div className='profile--top--social-icons'>
-            <a><i className='fab fa-twitter'></i></a>
-            <a><i className='fab fa-facebook'></i></a>
-            <a><i className='fab fa-youtube'></i></a>
-            <a><i className='fab fa-instagram'></i></a>
+            {profile && profile.social !== undefined && (
+                        <Fragment>
+                        <a href={profile.social.twitter}><i className='fab fa-twitter'></i></a>
+                        <a href={profile.social.facebook}><i className='fab fa-facebook'></i></a>
+                        <a href={profile.social.youtube}><i className='fab fa-youtube'></i></a>
+                        <a href={profile.social.instagram}><i className='fab fa-instagram'></i></a>
+                    </Fragment>
+            )} 
+
+
         </div>
             {profile && auth && profile.user._id !== auth.user._id &&
             <Fragment>

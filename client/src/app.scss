@@ -583,23 +583,24 @@ margin-bottom: 15px;
 }
 .dashboard--widgets{
     height: 100%;
-    max-width: 600px;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     padding-left: 10px;
     position: fixed;
     right: 16rem;
+    align-items: center;
+    justify-content: center;
 }
 .dashboard--widgets__posts{
     height: auto;
-    width: 99%;
+    width: 100%;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
     flex-direction: column;
-    
 }
 .dashboard--widgets--adOne{
     background: #e8f4f8;
@@ -607,11 +608,11 @@ margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
 }
 .dashboard--widgets--adTwo{
     background: #e8f4f8;
-    height: 250px;
+    height: 225px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -744,7 +745,7 @@ margin-bottom: 15px;
 }  
 .postsWidget, .dashboard--profile-widget{
     height: 100%;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
     background: transparent;
     border-radius: 5px;

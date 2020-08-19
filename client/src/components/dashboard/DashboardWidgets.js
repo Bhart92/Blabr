@@ -1,13 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import PostForm from '../posts/PostForm';
 import DashboardProfileWidget from './DashboardProfileWidget';
 import AdsWidget from '../posts/AdsWidget';
+import {filterNewsByKeyword} from '../../actions/news';
 
 const DashboardWidgets = ({
-    auth: { user }
+    auth: { user },
+    filterNewsByKeyword
 }) => {
     const [searchInput, setSearchInput] = useState('');
 
@@ -16,15 +18,13 @@ const DashboardWidgets = ({
 
     };
     const search = e => {
+        console.log(searchInput)
         e.preventDefault();
-        // filterNewsByKeyword(searchInput);
+        filterNewsByKeyword(searchInput);
     };
     return (
         <div className='dashboard--widgets'>
-            <div className='dashboard--widgets__search'>
-                <input type='text' placeholder='Seach Chattr' value={searchInput} onChange={e => onChange(e)}/>
-                <button type='submit' onClick={e => search(e)}>Search</button>
-            </div>
+
             <div className='dashboard--widgets__posts'>
                 <AdsWidget />
             </div>
@@ -38,4 +38,4 @@ const mapStateToProps = state => ({
     profile: state.profile
   });
 
-export default connect(mapStateToProps)(DashboardWidgets);
+export default connect(mapStateToProps, {filterNewsByKeyword})(DashboardWidgets);

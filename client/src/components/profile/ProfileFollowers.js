@@ -28,6 +28,7 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
 {!seeMore ? (
 
 <Fragment>
+{followerProfiles && followerProfiles.length <= 0 && <p>There doesn't seem to be anything here</p>}
 {followerProfiles.slice(0,6).map(follower => {
         return <div  className='dashboard--profile--following--container-user' key={follower._id}>
             <img src={follower.avatar} />

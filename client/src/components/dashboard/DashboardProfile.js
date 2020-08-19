@@ -14,7 +14,7 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
     useEffect(() => {
         getCurrentProfile();
     }, [getCurrentProfile]);
-    // console.log(profile)
+    
     return (
     <div>
         {profile === null  ?  <Spinner /> : <Fragment>

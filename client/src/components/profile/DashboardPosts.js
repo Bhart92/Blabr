@@ -10,7 +10,6 @@ const DashboardPosts = ({ getPosts, user, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  console.log(posts.length)
   const [seeMore, setSeeMore] = useState(false);
   const [seeMoreText, setSeeMoreText] = useState('See All');
 
@@ -19,15 +18,19 @@ const DashboardPosts = ({ getPosts, user, post: { posts, loading } }) => {
      setSeeMore(!seeMore); 
   }
 const userPostArray = posts.filter(post => post.user == user._id)
-  console.log(userPostArray)
   return loading ? (
     <Spinner />
   ) : (
     <div>
       <ul>
 
+
+
+
     {!seeMore ? (
       <Fragment>
+                  {userPostArray.length <= 0 && <p>Please add some posts</p>}
+
       {userPostArray.slice(0, 6).map(item => {
             return <li key={item._id}>
 

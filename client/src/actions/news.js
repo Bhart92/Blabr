@@ -7,38 +7,38 @@ import {
 } from './types';
 
 
-// export const getNews = (e) => async dispatch => {
+export const getNews = (e) => async dispatch => {
 
-//     try {
-//         const res = await axios({
-//             "method":"GET",
-//             "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
-//             "headers":{
-//             "content-type":"application/octet-stream",
-//             "x-rapidapi-host":"contextualwebsearch-websearch-v1.p.rapidapi.com",
-//             "x-rapidapi-key":"b80b7f5ba4msha721601e212bb87p13d871jsne41b690e5822",
-//             "useQueryString":true
-//             },"params":{
-//             "autoCorrect":"false",
-//             "pageNumber":"1",
-//             "pageSize":"10",
-//             "q":"Top News",
-//             "safeSearch":"false"
-//             }
-//             })
+    try {
+        const res = await axios({
+            "method":"GET",
+            "url":"https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI",
+            "headers":{
+            "content-type":"application/octet-stream",
+            "x-rapidapi-host":"contextualwebsearch-websearch-v1.p.rapidapi.com",
+            "x-rapidapi-key":"b80b7f5ba4msha721601e212bb87p13d871jsne41b690e5822",
+            "useQueryString":true
+            },"params":{
+            "autoCorrect":"false",
+            "pageNumber":"1",
+            "pageSize":"50",
+            "q":"Trending News",
+            "safeSearch":"false"
+            }
+            })
 
-//             dispatch({
-//                type: GET_NEWS,
-//                payload: res.data.value
-//             });
-//     } catch (err) {
-//         dispatch({
-//             type: AUTH_ERROR,
-//             payload: { msg: 'something went wrong' }
-//           });
-//           console.log(err)
-//     }
-// }
+            dispatch({
+               type: GET_NEWS,
+               payload: res.data.value
+            });
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR,
+            payload: { msg: 'something went wrong' }
+          });
+          console.log(err)
+    }
+}
 export const filterNewsByKeyword = (keyword) => async dispatch => {
     try {
         dispatch({
@@ -46,14 +46,13 @@ export const filterNewsByKeyword = (keyword) => async dispatch => {
          });
         const res = await axios.get('https://newsapi.org/v2/everything?' +
           `q=${keyword}&` +
-          'pageSize=100&' +
+          'pageSize=50&' +
           'sortBy=relevancy&' +
           'apiKey=81ff8b3105cd407286c41a082f639c89');
 
           dispatch({
               type: GET_NEWS,
-              payload: res.data.articles,
-              outlet: keyword
+              payload: res.data.articles
           });
 
     } catch (err) {
@@ -81,7 +80,7 @@ export const filterByBBC = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:BBC.com Top News",
             "safeSearch":"false"
             }
@@ -116,7 +115,7 @@ export const filterByCNN = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:cnn.com Top News",
             "safeSearch":"false"
             }
@@ -152,7 +151,7 @@ export const filterByFox = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:foxnews.com Top News",
             "safeSearch":"false"
             }
@@ -189,7 +188,7 @@ export const filterByWashPo = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:washingtonpost.com Top News",
             "safeSearch":"false"
             }
@@ -224,7 +223,7 @@ export const filterByNY = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:nytimes.com Top News",
             "safeSearch":"false"
             }
@@ -259,7 +258,7 @@ export const filterByBlaze = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:theblaze.com Top News",
             "safeSearch":"false"
             }
@@ -295,7 +294,7 @@ export const filterByIndependent = () => async dispatch => {
             },"params":{
             "autoCorrect":"false",
             "pageNumber":"1",
-            "pageSize":"10",
+            "pageSize":"50",
             "q":"site:nationalreview.com top news",
             "safeSearch":"false"
             }
