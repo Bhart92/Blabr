@@ -24,10 +24,10 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
     <div className='profile--posts-seeMore'>
       <ul>
 
+      {visitedPostArray && visitedPostArray.length <= 0 && <p> {profile.user.firstName} has made no posts yet</p>}
 
 {!seeMore ? (
 <Fragment>
-{visitedPostArray && visitedPostArray.length <= 0 && <p> {profile.user.firstName} has made no posts yet</p>}
 {visitedPostArray.slice(0, 6).map(item => {
             return <li key={item._id}>
             {item.text && <Fragment>

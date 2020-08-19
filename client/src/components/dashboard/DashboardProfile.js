@@ -16,7 +16,7 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
     }, [getCurrentProfile]);
     
     return (
-    <div>
+    <div className='profile--top-container'>
         {profile === null  ?  <Spinner /> : <Fragment>
             <div className='profile--top'>
                 <img src={user.avatar}></img>

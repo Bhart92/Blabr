@@ -54,7 +54,6 @@ const Login = ({ login, isAuthenticated }) => {
             <p className="my-1">
                 <Link className='loginButton' to="/register">Sign Up</Link>
             </p>
-            <span className='loginFooter'>Terms &nbsp; Policy &nbsp; About &nbsp; Contact</span>
             <span className='loginFooter'>&copy; 2020 Chattr</span>
 
 

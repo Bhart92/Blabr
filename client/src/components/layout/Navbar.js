@@ -61,10 +61,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout, filterNewsByKeywor
             <h1 className='navBar--h1'>
                 <Link to={isAuthenticated ? '/dashboard' : '/'}>Chattr <i className='fa fa-commenting'></i><span className='navBar--h1__span'>Share. Discuss. Debate.</span></Link>
             </h1>
-            <div>
-                <input type='text' placeholder='Seach Chattr' value={searchInput} onChange={e => onChange(e)}/>
-                <button type='submit' onClick={e => search(e)}>Search</button>
-            </div>
+
             {!loading && (<Fragment>
                 { isAuthenticated ? authLinks : guestLinks }
             </Fragment>)}

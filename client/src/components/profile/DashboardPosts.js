@@ -26,10 +26,10 @@ const userPostArray = posts.filter(post => post.user == user._id)
 
 
 
+      {userPostArray.length <= 0 && <p>Please add some posts</p>}
 
     {!seeMore ? (
       <Fragment>
-                  {userPostArray.length <= 0 && <p>Please add some posts</p>}
 
       {userPostArray.slice(0, 6).map(item => {
             return <li key={item._id}>
