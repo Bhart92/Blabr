@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
+import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/posts';
 import Modal from 'react-modal';
@@ -28,6 +29,7 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
   function closeCommentaryModal(){
     setCommentaryModalOpen(false);
       }
+
     const customStyles = {
       content : {
         position              : 'fixed',
@@ -129,7 +131,7 @@ const onSubmit = (e) => {
                       {description !== undefined && <p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... ... <a href={url}>Read More</a></p>}
                     </div>
                   </div>
-                  <input type='submit'value='Repost'/>
+                  <input onClick={closeCommentaryModal} type='submit'value='Repost'/>
                 </form>
               </div>
             </div>

@@ -4,12 +4,14 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NewsFeed from './NewsFeed';
 import Navbar from './Navbar';
+import Alert from './Alert';
 import { getCurrentProfile } from '../../actions/profile';
 
 const Landing = ({isAuthenticated}) => {
 
     return (
         <Fragment>
+            <Alert />
             <Navbar />
             <NewsFeed />
         </Fragment>

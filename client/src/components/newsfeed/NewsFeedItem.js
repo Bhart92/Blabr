@@ -56,8 +56,8 @@ const NewsFeedItem = ({ isAuthenticated, filterByNY, auth: {user}, news: { artic
                         </div>
                         <div className='newsfeed--article--image'>
                         <a href={item.image.url}>
-                            {!item.image.url ? <i className='fa fa-commenting article-image-missing'></i> : <img src={item.image.url} />}
-                            <span>Read More...</span>
+                            {!item.image.url ? <a href={item.url}><i className='fa fa-commenting article-image-missing'></i></a> : <a href={item.url}><img src={item.image.url} /></a>}
+                            <a href={item.url}><span>Read More...</span></a>
                         </a> 
                         </div>
                     </div>

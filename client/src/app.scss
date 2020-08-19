@@ -116,6 +116,12 @@ textarea{
         border-radius: 50%;
     }
 }
+.repost--modal--commentary{
+    h1{
+        text-align: center;
+        font-size: 1.65rem;
+    }
+}
 .repost--modal--commentary--close{
     background: none;
     outline: none;
@@ -239,7 +245,7 @@ textarea{
     right: 0;
     border-bottom: .25px solid darken(rgba(0, 191, 255, .15), 35%);
     background: white;
-    z-index: 1000;
+    z-index: 999;
     .navBar--container{
         width: 55%;
         height: 75px;
@@ -260,8 +266,8 @@ textarea{
            }
         button{
             background: transparent;
-            border: .15px solid deepskyblue;
-            border-radius: 20px;
+            border: 2px solid deepskyblue;
+            border-radius: 5px;
             padding: 5px 10px;
             outline: none;
             margin: 0 5px;
@@ -286,8 +292,8 @@ textarea{
     justify-content: space-around;
     li{
         padding: 10px;
-        border: .15px solid deepskyblue;
-        border-radius: 20px;
+        border: 2px solid deepskyblue;
+        border-radius: 5px;
         padding: 5px 10px;
         margin: 0 10px;
     }
@@ -730,7 +736,9 @@ margin-bottom: 15px;
         transition: .35s all ease-in-out;
         &:hover{
             cursor: pointer;
-            border: 2px solid lighten(deepskyblue, 0);
+            border: 2px solid transparent;
+            color: lighten(deepskyblue, 35%);
+            background: #000;
         }  
      }
 }  
@@ -893,6 +901,9 @@ margin-bottom: 15px;
     align-items: center;
     justify-content: space-around;
     font-size: 1.15rem;
+    span{
+        margin-left: 5px;
+    }
     .fa, .fas{
         color: rgba(0,0,0, .45);
         width: 30%;
@@ -1222,8 +1233,42 @@ width: 100%;
     h1{
         margin: 15px 0 0 0;
     }
+    button{
+        background: transparent;
+        border: 1px solid #000;
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        outline: none;
+        margin: 10px 0;
+        transition: .35s all ease-in-out;
+        
+        &:hover{
+            cursor: pointer;
+            border: 1px solid transparent;
+            color: #b3ecff;
+            background: #000;
+        }
+    }
 }
-
+.profile--top--social-icons{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+    i{
+        font-size: 1.35rem;
+        padding: 10px;
+        margin: -10px;
+        transition: all .35s ease;
+        &:hover{
+            cursor: pointer;
+            color: deepskyblue;
+        }
+    }
+}
 .profile--mid{
 background: #f4f4f4;
 display: flex;
@@ -1234,8 +1279,11 @@ height: 15%;
 width: 100%;
 word-wrap: break-word;
 p{
-    padding: 5px 10px;
-    text-align: center;
+    padding: 5px 20px;
+    text-align: justify;
+    word-spacing: 1.1px;
+    letter-spacing: 0.85px;
+    margin: 0 auto;
 }
 }
 .profile--mid__interests{
@@ -1483,6 +1531,7 @@ p{
         text-align: center;
         padding-bottom: 5px;
     }
+
 }
 .register--form-group__small{
     display: flex;
@@ -1492,6 +1541,13 @@ p{
     small{
         margin: 20px 0;
         font-size: .9rem;
+    }
+    input[type='submit']{
+        border: 2px solid deepskyblue;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 0 10px;
+        background: transparent;
     }
 }
 .register--form--footer{
@@ -1625,8 +1681,8 @@ p{
     justify-content: flex-end;
 }
 .alert-success{
-    background: forestgreen;
-    color: white;
+    background: #000;
+    color: #e6f9ff;
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 1.05px;
@@ -1650,8 +1706,12 @@ p{
 }
 .alert-undefined{
     @extend .alert-success;
-    background: limegreen;
-    color: black;
+    background: #000;
+    color: #e6f9ff;
+}
+.alert-danger{
+    @extend .alert-fail;
+
 }
 .spinner--span{
     position: absolute;

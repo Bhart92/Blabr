@@ -158,7 +158,7 @@ return user === null ? <Spinner /> : (
                   </div>
 
 
-                  <input type='submit'value='Repost'/>
+                  <input onClick={closeCommentaryModal} type='submit'value='Repost'/>
                 </form>
               </div>
             </div>

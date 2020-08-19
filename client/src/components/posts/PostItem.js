@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import RepostForm from './RepostForm';
+
 import Spinner from '../layout/Spinner';
 import RepostItem from './RepostItem';
 import { addLike, removeLike, deletePost, addPost } from '../../actions/posts';
@@ -23,6 +24,13 @@ const likePost = (id) => {
   setLikeStatus(true);
   addLike(id);
 }
+if(likes){
+  likes.forEach((item) => {
+    console.log(likes.filter(item => item.user === auth.user._id).length)
+    
+  })
+  console.log(auth.user._id)
+}
 return user === null ? <Spinner /> :
 (
 <div className='post-item'>
@@ -41,13 +49,16 @@ return user === null ? <Spinner /> :
         Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>
       </p>
       {!auth.loading && user === auth.user._id && (
-            <button
+            <Fragment>
+               <button
               onClick={() => deletePost(_id)}
               type='button'
               className='btn btn-danger'
             >
              Delete Post
             </button>
+            </Fragment>
+
           )}
   </div>
 
@@ -71,16 +82,22 @@ return user === null ? <Spinner /> :
 
           {image && description && <RepostItem repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
           {!image && !description && text && commentary && <RepostItem repostAvatar={repostAvatar} title={title} repostHandle={repostHandle} commentary={commentary} repostName={repostName} text={text} date={date} image={image} description={description} url={url}/>}
-
+          
+        
         {showActions ? (
         <Fragment>
           <div className='post--actionBox'>
        <span>
-         <i onClick={() => addLike(_id)} className='fa fa-thumbs-o-up '></i>
 
-         
-          { likes.length > 0 && <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i> }
-
+         {likes.filter(like => like.user === auth.user._id).length === 1 ? (
+         <Fragment>
+          <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i>
+         </Fragment>
+        ) : (
+         <Fragment>
+          <i onClick={() => addLike(_id)} className='fa fa-thumbs-o-up '></i>
+         </Fragment>
+           )}
           { likes.length <= 0 ? '' : <span>{likes.length}</span> }
 
           </span>

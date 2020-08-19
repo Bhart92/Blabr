@@ -52,6 +52,13 @@ if(!isAuthenticated){
             <div className='profile--top'>        
             <img src={profile.user.avatar} />
         <h1>{profile.firstName} {profile.lastName}</h1>
+        <span>@{profile.user.handle}</span>
+        <div className='profile--top--social-icons'>
+            <a><i className='fab fa-twitter'></i></a>
+            <a><i className='fab fa-facebook'></i></a>
+            <a><i className='fab fa-youtube'></i></a>
+            <a><i className='fab fa-instagram'></i></a>
+        </div>
             {profile && auth && profile.user._id !== auth.user._id &&
             <Fragment>
                 <div>
