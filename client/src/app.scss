@@ -1752,10 +1752,13 @@ p{
     z-index: 999;
     transform: translate(0,-100%);
     transition: all .35s ease-in-out;
+    display: none;
+    border-bottom: 2px solid black;
     .mobile-nav--dropDown-menu--auth-actions{
+        border-radius: 5px;
         height: 250px;
         width: 250px;
-        background-color: green;
+        background-color: transparent;
         position: absolute;
         bottom: 0;
         right:0;
@@ -1765,6 +1768,49 @@ p{
 }
 .visible{
     transform: translate(0, 0)!important;
+}
+.mobile-nav--greeting-box{
+    @extend .dashboard--navBar-greeting-box;
+    width: 50%;
+   height: auto;
+   bottom: -20px;
+}
+.mobile-nav--greeting-box--image{
+    @extend .dashboard--navBar-greeting-box--image;
+    img{
+        height: 50px;
+        width: 50px;
+    }
+}
+.inner-burger{
+    z-index: 1001;
+}
+.mobile-nav--links{
+    ul{
+        height: 100%;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: unset;
+        li{
+            flex-basis: 50%;
+        } 
+    }
+}
+.fa-commenting.commenting-NavLink--mobileNav{
+    color: #000;
+}
+.modal--container.mobile-modal{
+    justify-content: flex-end;
+}
+
+.dashboard--modal--settings-container .modal--settings span{
+    border-top: 0.5px solid lighten(#b3ecff, 6%);
+
 }
 @media only screen and (max-width: 1450px) and (max-height: 900px){
     .dashboard--widgets--adOne {
@@ -1950,6 +1996,7 @@ p{
     .newsfeed--article--image {
         width: 35%;
     }
+
 }
 @media only screen and (max-width: 600px){
     .container {
@@ -1985,7 +2032,20 @@ p{
             align-self: center;
             justify-content: center;
             padding-right: 15px;
+
         }
+    }
+    .mobile-nav--links{
+        width: 80%;
+        margin: 0 auto;
+        height: 200px;
+    }
+    .mobile-nav--dropDown-menu{
+        display: unset;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: space-around;
     }
     .dashboard--container{
         display: unset;
