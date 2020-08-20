@@ -20,6 +20,7 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.17",
+    "react-hamburger-menu": "^1.2.1",
     "request": "^2.88.2",
     "unirest": "^0.6.0",
     "uuid": "^8.2.0"

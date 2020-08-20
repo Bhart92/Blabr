@@ -13,6 +13,7 @@ import Post from '../post/Post';
 import Dashboard from '../dashboard/Dashboard';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
+import MobileNav from '../layout/MobileNav';
 import DashboardNavBar from '../dashboard/DashboardNavBar';
 import DashboardWidgets from '../dashboard/DashboardWidgets';
 import { connect } from 'react-redux';
@@ -26,6 +27,7 @@ const Routes = ({isAuthenticated}) => {
       {isAuthenticated && (
         <Fragment>
         <DashboardNavBar />
+        <MobileNav />
         <DashboardWidgets />
         </Fragment>
       )}
