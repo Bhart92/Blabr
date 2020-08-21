@@ -62,6 +62,7 @@ return user === null ? <Spinner /> : (
 
       <i className="fas fa-retweet" onClick={openRepostModal}></i>
       <Modal
+          className='repost-item-modal'
           isOpen={repostModalOpen}
           onRequestClose={closeRepostModal}
           style={customStyles}
@@ -90,6 +91,7 @@ return user === null ? <Spinner /> : (
           </div>
         </Modal>
         <Modal
+          className='repost-item-modal-inner'
           isOpen={commentaryModalOpen}
           onRequestClose={closeCommentaryModal}
           style={customStylesSecond}

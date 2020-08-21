@@ -69,6 +69,7 @@ const onSubmit = (e) => {
 
       <i className="fas fa-retweet" onClick={openRepostModal}></i>
       <Modal
+          className='repost-item-modal'
           isOpen={repostModalOpen}
           onRequestClose={closeRepostModal}
           style={customStyles}
@@ -97,6 +98,7 @@ const onSubmit = (e) => {
           </div>
         </Modal>
         <Modal
+          className='repost-item-modal-inner'
           isOpen={commentaryModalOpen}
           onRequestClose={closeCommentaryModal}
           style={customStylesSecond}

@@ -31,10 +31,10 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
 {visitedPostArray.slice(0, 6).map(item => {
             return <li key={item._id}>
             {item.text && <Fragment>
-                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 50) : ''} </p>
+                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 15) : ''} </p>
               </Fragment>}
               {!item.text && item.commentary && <Fragment>
-                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 50) : ''} </p>
+                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 15) : ''} </p>
               </Fragment>}
               {!item.text && !item.commentary && <Fragment>
                 <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 45) : ''} ...</p>
@@ -49,10 +49,10 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
 {visitedPostArray.map(item => {
             return <li key={item._id}>
             {item.text && <Fragment>
-                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 50) : ''} </p>
+                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 15) : ''} </p>
               </Fragment>}
               {!item.text && item.commentary && <Fragment>
-                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 50) : ''} </p>
+                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 15) : ''} </p>
               </Fragment>}
               {!item.text && !item.commentary && <Fragment>
                 <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 45) : ''} ...</p>

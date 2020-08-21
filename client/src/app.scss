@@ -5,7 +5,7 @@ body{
     justify-content: space-around;
     height: auto;
     font-family: 'Lato', sans-serif;
-
+    overflow: hidden;
 }
 #root{
     height: auto;
@@ -66,6 +66,9 @@ textarea{
     width: 350px;
     border-radius: 5px;
     overflow: unset!important;
+}
+.ReactModal__Content.repost-item-modal{
+    background: #FFF;
 }
 .repost--modal{
     height: 100%;
@@ -702,6 +705,7 @@ margin-bottom: 15px;
     flex-direction: column;
     img{
         margin-bottom: 2px;
+        border-radius: 50%;
     }
     span, p, h2{
         padding: 0;
@@ -744,7 +748,8 @@ margin-bottom: 15px;
             background: #000;
         }  
      }
-}  
+} 
+
 .postsWidget, .dashboard--profile-widget{
     height: 100%;
     width: 55%;
@@ -936,6 +941,7 @@ margin-bottom: 15px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5px;
     textarea{
         background: transparent;
         outline: none;
@@ -981,7 +987,7 @@ margin-bottom: 15px;
         background: transparent;
         border: 2px solid #b3ecff;
         border-radius: 5px;
-        padding: 20px 20px;
+        padding: 5px 20px;
         outline: none;
         margin: 20px 0;
         transition: .35s all ease-in-out;
@@ -1186,6 +1192,7 @@ margin-bottom: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 40px 0;
         span{
             border-top: .5px solid lighten(deepskyblue, 35%);
             display: flex;
@@ -1194,6 +1201,9 @@ margin-bottom: 15px;
             height: 100%;
             width: 100%;
             transition: all .35s ease-in-out;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
             &:hover{        
                 cursor: pointer;
                 background: lighten(deepskyblue, 45%);
@@ -1228,6 +1238,8 @@ margin-bottom: 15px;
     flex-direction: column;
     justify-content: center;
     height: 35%;
+    padding-top: 23px;
+    padding-bottom: 23px;
     a{
         padding-bottom: 5px;
     }
@@ -1318,7 +1330,7 @@ p{
         li{
             border-bottom: 3px solid lighten(deepskyblue, 44%);
             border-right: .75px solid lighten(deepskyblue, 44%);
-            flex-basis: 47%;
+            flex-basis: 44%;
             list-style-type: none;
             padding: 5px 7px;
             height:145px;
@@ -1341,6 +1353,7 @@ p{
     padding: 5px 0 30px 0;
     height: auto;
     position: relative;
+    margin-bottom: 17px;
     h2{
         padding-left: 15px;
     }
@@ -1742,22 +1755,21 @@ p{
 .mobile-nav--dropDown-menu{
     position: absolute;
     background: #FFF;
-    top: 75px;
+    top: 74px;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50%;
+    height: auto;
     width: 100%;
     overflow: hidden;
     z-index: 999;
     transform: translate(0,-100%);
     transition: all .35s ease-in-out;
     display: none;
-    border-bottom: 2px solid black;
     .mobile-nav--dropDown-menu--auth-actions{
         border-radius: 5px;
-        height: 250px;
-        width: 250px;
+        height: 100%;
+        width: 100%;
         background-color: transparent;
         position: absolute;
         bottom: 0;
@@ -1769,11 +1781,15 @@ p{
 .visible{
     transform: translate(0, 0)!important;
 }
+.overflow{
+    overflow: hidden!important;
+}
 .mobile-nav--greeting-box{
     @extend .dashboard--navBar-greeting-box;
     width: 50%;
    height: auto;
-   bottom: -20px;
+   bottom: 0;
+   position: absolute;
 }
 .mobile-nav--greeting-box--image{
     @extend .dashboard--navBar-greeting-box--image;
@@ -1782,8 +1798,20 @@ p{
         width: 50px;
     }
 }
+.mobile-nav--greeting-box-info{
+    @extend .dashboard--navBar-greeting-box--header;
+    span{
+        font-size: 1rem;
+    }
+}
 .inner-burger{
     z-index: 1001;
+    width: 25px!important;
+    height: 15px;
+}
+.mobile-nav-burger{
+    width: 25px!important;
+
 }
 .mobile-nav--links{
     ul{
@@ -1809,9 +1837,46 @@ p{
 }
 
 .dashboard--modal--settings-container .modal--settings span{
-    border-top: 0.5px solid lighten(#b3ecff, 6%);
+    border-top: none;
 
 }
+.mobile--nav--settings--container{
+    @extend .dashboard--modal--settings-container;
+    height: 100%;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.mobile-nav--dropDown-container{
+    display: none;
+}
+.inner-burger{
+    position: fixed!important;
+    right: 15px!important;
+}
+.repost--commentary{
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 1450px) and (max-height: 900px){
     .dashboard--widgets--adOne {
         height: 50%;
@@ -1873,16 +1938,112 @@ p{
          padding-left: unset; 
     }
 }
+@media only screen and (width: 1024px) and (height: 1366px){
+    .postsWidget{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .dashboard--widgets--adTwo, .dashboard--widgets--adOne{
+        width: 100%;
+    }
+    .profile--top{
+        height: 25%;
+        h1{
+            font-size: 1.75rem;
+        }
+        span{
+            font-size: 1.25rem;
+        }
+        a{
+            font-size: 1.25rem;   
+        }
+    }
+    .post--header{
+        h4{
+            font-size: 1.2rem;
+        }
+        span{
+            font-size: 1.2rem;
+        }
+        div{
+            p{
+                font-size: 1.1rem;
+            }
+        }
+        button{
+            font-size: 1.2rem;;
+        }
+    }
+    .post--header img, .comment-item--userTitle img {
+        height: 85px;
+        width: 85px;
+    }
+    .ReactModal__Content.repost-item-modal{
+        top: 50%!important;
+        left: 50%!important;
+        transform: translate(-50%, -50%)!important;
+        height: 147px!important;
+        width: 45%!important;
+    }
+    .repost--modal--header{
+        p{
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    }
+}
 @media only screen and (max-width: 1025px){
     .postsWidget, .dashboard--profile-widget {
         width: 80%;
     }
+    .profile--bottom{
+        h2{
+            font-size: 1.65rem;
+        }
+    }
     .profile--bottom ul li {
-        flex-basis: 100%;
-        padding: 0px 15px;
+        flex-basis: 45%;
+        padding: unset;
+        p{
+            font-size: 1.05rem;
+        }
+        a{
+            font-size: 1.05rem;
+        }
+    }
+    .profile--posts-seeMore--btn{
+        span{
+            font-size: 1.35rem;
+        }
+    }
+    .dashboard--profile--following{
+        h2{
+            font-size: 1.65rem;  
+        }
+    }
+    .dashboard--profile--following--container-user{
+        p{
+            font-size: 1.25rem;
+        }
     }
     .newsFeed--newsFilterBar--buttons ul li {
         padding: 15px 8px;
+    }
+    .profiles-item{
+        font-size: 1.15rem;
+    }
+    .post--body p, .comment-item--info p {
+        font-size: 1.15rem;
+    }
+    .post--actionBox {
+        font-size: 1.6rem;
+    }
+    .post--container{
+        h1{
+            font-size: 1.6rem;
+        }
     }
 }
 @media only screen and (max-width: 900px){
@@ -1986,17 +2147,209 @@ p{
 
 }
 }
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 769px){
+    .dashboard--container{
+        margin: 0 auto;
+        width: 95%;
+    }
+    .dashboard--navbar{
+        border-right: 0.5px solid #eeeeee;
+    }
+    .dashboard--center-console {
+        width: 100%;
+    }
+    .dashboard--navBar-greeting-box--image{
+        width: 95%;
+    }
+    .dashboard--navBar-icon a {
+        font-size: 2rem;
+        i{
+            font-size: 2.5rem;
+            margin-top: 15px;
+        }
+    }
+    .dashboard--navBar-list ul li a {
+        font-size: 1.25rem;
+        letter-spacing: 1.05px;
+    }
     .newsFeed--newsFilterBar--buttons ul {
         width: 100%;
         li{
-            font-size: .8rem;
+            font-size: .9rem;
         }
     }
     .newsfeed--article--image {
         width: 35%;
     }
+    .profile--top img {
+        height: 175px;
+        width: 175px;
+    }
+    .profile--top h1 {
+        font-size: 1.4rem;
+        margin-top: 0;
+    }
+    .profile--top span {
+        font-size: 1.05rem;
+    }
+    .profile--top a {
+        font-size: 1rem;
+    }
+    .dashboard--profile--following--container-user p {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    .dashboard--profile--following--container-user img {
+        height: 90px;
+        width: 90px;
+    }
+    .profile--bottom{
+        h2{
+            padding-left: 10px;
+        }
+        ul{
+            li{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: none;
+                flex-basis: 44%;
+                p{
+                    font-size: 1rem;
+                    width: 95%;
+                }
+                a{
+                    font-size: 1rem;
 
+                }
+                &:nth-of-type(even){
+                    align-items: flex-end;
+
+                }
+            }
+        }
+    }
+    .post--container{
+        width: 95%;
+        h1{
+            font-size: 1.65rem;
+            margin-bottom: unset;
+        }
+        .form input[type='submit']{
+            padding: 5px 15px;
+            width: 17%;      
+        }
+        .form textarea {
+            width: 65%;
+        }
+        .post-item, .profile-widget-item, .comment-item {
+            width: 100%;
+        }
+        .post--header, .comment-item--userTitle {
+            padding: 0px 5px;
+        }
+        .post--header img, .comment-item--userTitle img {
+            height: 70px;
+            width: 70px;
+        }
+        .post--header h4, .comment-item--userTitle h4 {
+           font-size: 1.1rem;
+           font-weight: 500;
+        }
+        .post--header button, .comment-item--userTitle button {
+            font-size: .95rem;
+        }
+        .post--body{
+            width: 60%;
+        }
+        .post--body p, .comment-item--info p {
+            font-size: 1rem;
+        }
+        .post--actionBox .fa, .post--actionBox .fas {
+            font-size: 1.45rem;
+        }
+        .post--actionBox span {
+            margin-left: 9px;
+            font-size: 1.1rem;
+        }
+
+    }
+    .ReactModal__Content.repost-item-modal-inner{
+        width: 60%!important;
+        background: #FFF;
+        top: 50% !important;
+        padding: 20px;
+    }
+    .data--repost--details{
+        p{
+            word-break: break-all;
+        }
+    }
+    .repost{
+        width: 100%;
+        img{
+            width: 100%;
+            border: none;
+        }
+        img.repost-avatar{
+            width: 35px;
+        }
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data .data--text {
+        word-break: break-all;
+    }
+    .repost--modal--header {
+        text-align: center;
+        p{
+            font-size: .95rem;
+            text-transform: uppercase;
+            i{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .repost--modal button {
+        top: -36px;
+        right: 4px;
+        font-size: 2rem;
+    }
+    .ReactModal__Content.repost-item-modal{
+        height: 150px!important;
+        background: #FFF!important;
+        z-index: 1000!important;
+        right: 40% !important;
+        width: 35% !important;
+    }
+    .ReactModal__Content {
+        top: unset !important;
+        right: 25% !important;
+        width: 51% !important;
+    }
+    .dashboard--modal--settings-container .modal--settings{
+        margin: unset!important;
+        span{
+            border-top: 0.5px solid #b3ecff;
+            font-size: 1rem;
+        }
+    }
+    .dashboard--profile--following {
+        margin-bottom: 16px;
+        padding: 5px 0 23px 0;
+    }
+    .edit--container .form{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .edit--container .form .form-input-inner{
+        width: 50%;
+    }
+    .form input {
+        width: 235px;
+    }
+    .profile--container, .profiles--container{
+        position: relative;
+    }
 }
 @media only screen and (max-width: 600px){
     .container {
@@ -2017,13 +2370,14 @@ p{
             justify-content: center;
             padding-left: 15px;
             a{
+                font-size: 1.6rem;
                 height: 100%;
                 align-items: center;
                 justify-content: center;
                 display: flex;
                 i{
-                    margin-left: 5px;
-                    font-size: 2rem;
+                    margin-left: 7px;
+                    font-size: 2.65rem;
                 }
             }
         }
@@ -2035,10 +2389,14 @@ p{
 
         }
     }
+    .mobile-nav--dropDown-container{
+        display: unset;
+    }
     .mobile-nav--links{
-        width: 80%;
+        width: 95%;
         margin: 0 auto;
-        height: 200px;
+        height: 300px;
+        margin-top: -5rem;
     }
     .mobile-nav--dropDown-menu{
         display: unset;
@@ -2046,6 +2404,14 @@ p{
         flex-direction: column;
         align-self: center;
         justify-content: space-around;
+    }
+    .mobile-nav--links ul{
+        width: 95%;
+        li{
+            a{
+                font-size: 1.25rem;
+            }
+        }
     }
     .dashboard--container{
         display: unset;

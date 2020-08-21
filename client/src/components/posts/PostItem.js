@@ -24,13 +24,7 @@ const likePost = (id) => {
   setLikeStatus(true);
   addLike(id);
 }
-if(likes){
-  likes.forEach((item) => {
-    console.log(likes.filter(item => item.user === auth.user._id).length)
-    
-  })
-  console.log(auth.user._id)
-}
+
 return user === null ? <Spinner /> :
 (
 <div className='post-item'>
@@ -89,7 +83,7 @@ return user === null ? <Spinner /> :
           <div className='post--actionBox'>
        <span>
 
-         {likes.filter(like => like.user === auth.user._id).length === 1 ? (
+         { likes && auth && likes.filter(like => like.user === auth.user._id).length === 1 ? (
          <Fragment>
           <i onClick={() => removeLike(_id)} className='fa fa-thumbs-o-down '></i>
          </Fragment>

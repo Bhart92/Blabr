@@ -126,26 +126,6 @@ export const unfollow = (userId) => async dispatch => {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Create or update profile
 export const createProfile = (
   formData,

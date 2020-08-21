@@ -35,13 +35,13 @@ const userPostArray = posts.filter(post => post.user == user._id)
             return <li key={item._id}>
 
             {item.text && <Fragment>
-                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 50) : ''} </p>
+                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 15) : ''}... </p>
               </Fragment>}
               {!item.text && item.commentary && <Fragment>
-                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 50) : ''} </p>
+                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 15) : ''}... </p>
               </Fragment>}
               {!item.text && !item.commentary && <Fragment>
-                <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 45) : ''} ...</p>
+                <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 35) : ''} ...</p>
               </Fragment>}
                 <Link to={`/posts/${item._id}`}>Read more</Link>
                 <p><Moment format='MM/YYYY'>{item.date}</Moment></p>
@@ -54,13 +54,13 @@ const userPostArray = posts.filter(post => post.user == user._id)
             return <li key={item._id}>
 
             {item.text && <Fragment>
-                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 50) : ''} </p>
+                <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 15) : ''}... </p>
               </Fragment>}
               {!item.text && item.commentary && <Fragment>
-                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 50) : ''} </p>
+                <p>{item.commentary && item.commentary !== null || undefined ? item.commentary.substring(0, 15) : ''}... </p>
               </Fragment>}
               {!item.text && !item.commentary && <Fragment>
-                <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 45) : ''} ...</p>
+                <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 35) : ''} ...</p>
               </Fragment>}
                 <Link to={`/posts/${item._id}`}>Read more</Link>
                 <p><Moment format='MM/YYYY'>{item.date}</Moment></p>

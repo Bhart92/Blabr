@@ -43,7 +43,7 @@ if(!isAuthenticated){
     return !profile ? <Spinner /> : (
         <Fragment>
                 <div className='profile--container'>
-        {profile  === 'cat' ?  (<Fragment><Spinner /></Fragment>) : <Fragment>
+        {!profile  ?  (<Fragment><Spinner /></Fragment>) : <Fragment>
             <div className='profile--top'>        
             <img src={profile.user.avatar} />
         <h1>{profile.firstName} {profile.lastName}</h1>

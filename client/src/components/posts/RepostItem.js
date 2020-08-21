@@ -21,12 +21,12 @@ return <div className='repost'>
      </div>
      )}
 
-     {text !== undefined && text !== null && <p>{commentary}</p>
+     {text !== undefined && text !== null && <p className='repost--commentary'>{commentary}</p>
      }
 
      {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
 
-     {image.length == 0 ? (
+     {image && image.length == 0 ? (
                           <Fragment>
                             <p>.....</p>
                             <i className='fa fa-commenting article-image-missing'></i>

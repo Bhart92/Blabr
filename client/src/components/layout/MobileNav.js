@@ -4,10 +4,12 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import HamburgerMenu from 'react-hamburger-menu';
 import { logout } from '../../actions/auth';
+import {deleteAccount} from '../../actions/profile';
 
 const MobileNav = ({
     auth: { user },
-    logout
+    logout,
+    deleteAccount
 }) => {
 
 const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +19,8 @@ const toggleMobileNav = () => {
     setIsOpen(!isOpen);
     const nav = document.querySelector('.mobile-nav--dropDown-menu');
     const authActions = document.querySelector('.mobile-nav--dropDown-menu--auth-actions');
+    const body = document.querySelector('body');
+    body.classList.toggle('overflow');
     nav.classList.toggle('visible');
     if(authActions.classList.contains('visible')) setAuthActionsOpen(false);
     authActions.classList.remove('visible');
@@ -36,6 +40,7 @@ return (
         </div>
         <div className='mobile-nav--burger-menu'>
         <HamburgerMenu 
+            className='mobile-nav-burger'
             isOpen={isOpen}
             menuClicked={toggleMobileNav}
             width={18}
@@ -47,7 +52,7 @@ return (
             animationDuration={0.5}/>
         </div>
     </div>
-    <div>
+    <div className='mobile-nav--dropDown-container'>
         <div className='mobile-nav--dropDown-menu'>
             <div className='mobile-nav--links'>
                 <ul>
@@ -58,10 +63,10 @@ return (
                 </ul>
             </div>
         <div className='mobile-nav--greeting-box'>
-        {user.avatar ? (
+        {user && user.avatar ? (
                 <div className='mobile-nav--greeting-box--image'>
                     <img src={user.avatar} />
-                    <div className='dashboard--navBar-greeting-box--header'>
+                    <div className='mobile-nav--greeting-box-info'>
                         <span>Hello {user.firstName}</span>
                         <span>@{user.handle}</span>
                     </div>
@@ -85,9 +90,9 @@ return (
         </div>
             <div className='mobile-nav--dropDown-menu--auth-actions'>
             <div id='modal--container' className='modal--container mobile-modal'> 
-                <div className='dashboard--modal--settings-container'>
+                <div className='mobile--nav--settings--container'>
                 <div className='modal--settings'>
-                    <span>Delete your account</span>
+                    <span onClick={deleteAccount}>Delete your account</span>
                 </div>
                 <div className='modal--settings'>
                 <span onClick={toggleMobileNav}><Link to='edit-profile'>Edit your profile</Link></span>
@@ -112,4 +117,4 @@ const mapStateToProps = state => ({
     profile: state.profile
   });
 
-  export default connect(mapStateToProps, { logout })(MobileNav);
+  export default connect(mapStateToProps, { logout, deleteAccount })(MobileNav);
