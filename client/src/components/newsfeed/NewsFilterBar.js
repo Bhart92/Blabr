@@ -1,8 +1,9 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import NewsSpinner from '../layout/NewsSpinner';
+import NewsfeedBurgerMenu from './NewsfeedBurgerMenu';
 
 import { filterByCNN, filterByFox, filterByNY, filterByWashPo, filterByBBC, filterByIndependent, filterByBlaze } from '../../actions/news';
 
@@ -19,6 +20,15 @@ const NewsFilterBar = ({
     articles,
     news: {outlet}
  }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMobileNav = () => {
+        setIsOpen(!isOpen);  
+        const filterModal = document.querySelector('.newsfeed--filter--burger-modal');
+        const buttonBar = document.querySelector('.newsFeed--newsFilterBar--buttons');
+        filterModal.classList.toggle('visible');
+        buttonBar.classList.toggle('overFlowUnset');
+
+    };
     const filterArticles = articles.filter((item, index) => index === 0);
     return (
         <div className='newsFeed--newsFilterBar'>
@@ -29,6 +39,18 @@ const NewsFilterBar = ({
 
                 </div>
             <div className='newsFeed--newsFilterBar--buttons'>
+                <NewsfeedBurgerMenu toggleMobileNav={toggleMobileNav} isOpen={isOpen}/>
+                <div className='newsfeed--filter--burger-modal'>
+                    <ul>
+                            <li id='trending' onClick={filterByNY}>NYTimes</li>
+                            <li id='CNN'onClick={filterByCNN}>CNN</li>
+                            <li id='FOX' onClick={filterByFox}>FOX</li>
+                            <li id='CBS' onClick={filterByWashPo}>Wash.Post</li>
+                            <li id='BBC' onClick={filterByBBC}>BBC</li>
+                            <li id='NBC' onClick={filterByBlaze}>The Blaze</li>
+                            <li id='Independent' onClick={filterByIndependent}>Independent</li>
+
+                    </ul>                </div>
                 <ul>
                         <li id='trending' onClick={filterByNY}>NYTimes</li>
                         <li id='CNN'onClick={filterByCNN}>CNN</li>

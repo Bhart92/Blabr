@@ -1785,9 +1785,13 @@ p{
 }
 .visible{
     transform: translate(0, 0)!important;
+    opacity: 1!important;
 }
 .overflow{
     overflow: hidden!important;
+}
+.overFlowUnset{
+    overflow:unset!important;
 }
 .mobile-nav--greeting-box{
     @extend .dashboard--navBar-greeting-box;
@@ -1876,7 +1880,9 @@ p{
     transform: translate(-50%, -50%);
 }
 
-
+.newsfeed--filter-burger-menu{
+    display: none;
+}
 
 @media only screen and (max-width: 1450px) and (max-height: 900px){
     .dashboard--widgets--adOne {
@@ -2713,6 +2719,60 @@ p{
         width: 85% !important;
         top: 50%!important;
     }
+    .newsFeed--newsFilterBar--buttons ul {
+        display: none;
+    }
+    .newsfeed--filter-burger-menu{
+        display: block;
+    }
+    .newsFeed--newsFilterBar--buttons {
+        height: 35px;
+        justify-content: flex-end;
+        align-self: center;
+        position: relative;
+        overflow: hidden;
+}
+.newsfeed--filter-burger-menu--container{
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 35%;
+}
+    .newsfeed--filter-burger-menu{
+        position: absolute!important;
+        top: 0;
+        right: 20px;
+        z-index: 100;
+    }
+    .newsfeed--filter--burger-modal{
+        background: #FFF;
+        width: 200px;
+        height: 385px;
+        z-index: 999;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        opacity: 0;
+        transform: translate(100%, 0);
+        transition: all .35s ease;
+        padding: 1rem 0;
+        ul{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: space-around;
+            height: 100%;
+            width: 100%;
+            margin: unset;
+            li{
+                color: #000;
+                text-transform: uppercase;
+                font-weight: 500;
+                letter-spacing: 1px;
+                background: transparent;
+            }
+        }
+    }   
 }
 @media only screen and (max-height: 500px){
     .container {
@@ -2902,7 +2962,11 @@ p{
         height: 150px;
         width: 150px;
     }
-
+    .newsFeed-Spinner{
+        span{
+            top: 59%;
+        }
+    }
 }
 
 @media only screen and (max-width: 325px){
