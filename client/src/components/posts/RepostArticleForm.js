@@ -34,11 +34,13 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
       content : {
         position              : 'fixed',
         top                   : '50%',
-        left                  : 'unset',
-        right                 : '50%',
+        left                  : '50%',
+        right                 : 'auto',
         bottom                : 'auto',
-        height                : '75px',
-        width                 : '10%'
+        transform             : 'translate(-50%, -50%)',
+        height                : '135px',
+        width                 : '300px',
+        textAlign             : 'center'
       }
     };
     const customStylesSecond = {
@@ -49,8 +51,9 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
         right                 : 'auto',
         bottom                : 'auto',
         transform             : 'translate(-50%, -50%)',
-        height                : 'auto',
-        width                 : '25%'
+        height                : '545px',
+        width                 : '25%',
+        background            : '#FFF'
       }
     };
 const onSubmit = (e) => {

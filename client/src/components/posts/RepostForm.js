@@ -42,13 +42,14 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
     const customStyles = {
       content : {
         position              : 'fixed',
-        top                   : '74%',
-        left                  : 'unset',
+        top                   : '50%',
+        left                  : '50%',
         right                 : 'auto',
         bottom                : 'auto',
-        transform             : 'translate(100%, 3%)',
-        height                : '75px',
-        width                 : '10%'
+        transform             : 'translate(-50%, -50%)',
+        height                : '135px',
+        width                 : '300px',
+        textAlign             : 'center'
       }
     };
     const customStylesSecond = {
@@ -59,8 +60,9 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
         right                 : 'auto',
         bottom                : 'auto',
         transform             : 'translate(-50%, -50%)',
-        height                : 'auto',
-        width                 : '25%'
+        height                : '645px',
+        width                 : '25%',
+        background            : '#FFF'
       }
     };
 // ADD ORIGINALCOMMENTARY TO ADDPOST, THEN ADD IT TO THE COMPONENT DISPLAY

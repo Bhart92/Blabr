@@ -79,8 +79,8 @@ textarea{
     position: relative;
     button{
         position: absolute;
-        top: -45px;
-        right: -19px;
+        top: -30px;
+        left: 10px;
         background: none;
         border: none;
         outline: none;
@@ -139,6 +139,9 @@ textarea{
         display: flex;
         flex-direction: column;
         align-items: center;
+        p{
+            word-break: break-all;
+        }
         .repost--modal--commentary--input{
             display: flex;
             margin: 20px;
@@ -841,6 +844,9 @@ margin-bottom: 15px;
         letter-spacing: 1.15px;
         padding: 5px;
     }
+    img{
+        width: 100%;
+    }
 }
 .repost{
     border: 1px solid rgba(0, 0, 0, 0.35);
@@ -892,7 +898,7 @@ margin-bottom: 15px;
 }
 .repost-avatar{
     height: 35px;
-    width: 35px;
+    width: 35px!important;
     border-radius: 50%;
     display: inline;
 }
@@ -2702,6 +2708,11 @@ p{
             flex-direction: row;
         }
     }
+    .ReactModal__Content.repost-item-modal-inner {
+        height: 510px !important;
+        width: 85% !important;
+        top: 50%!important;
+    }
 }
 @media only screen and (max-height: 500px){
     .container {
@@ -2891,6 +2902,7 @@ p{
         height: 150px;
         width: 150px;
     }
+
 }
 
 @media only screen and (max-width: 325px){
@@ -2921,6 +2933,9 @@ p{
         width: 83% !important;
         top: 50% !important;
     }
+    .ReactModal__Content.repost-item-modal-inner {
+        height: 465px !important;
+    }
     .newsFeed--newsFilterBar--image .newsFeed--newsFilterBar--image__overlay .info-box {
         font-size: 1rem;
     }
@@ -2942,5 +2957,11 @@ p{
 
         }
     }
+    .data--repost--details p {
+        font-size: .7rem;
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data {
 
+        margin-bottom: 1rem;
+    }
 }
