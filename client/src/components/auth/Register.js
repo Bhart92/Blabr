@@ -42,7 +42,7 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
         return <Redirect to="/dashboard" />
     }
     return (
-        <Fragment>
+        <div className='auth--form--container'>
             <Navbar />
             <div className='post--container register--container'>
             <h1>Sign Up</h1>
@@ -114,7 +114,7 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                 <p>Already have an account? <Link to="/login">Sign In</Link></p>
             </p>
             </div>
-        </Fragment>
+        </div>
     );
 };
 

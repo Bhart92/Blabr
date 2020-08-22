@@ -92,7 +92,7 @@ return user === null ? <Spinner /> :
           <i onClick={() => addLike(_id)} className='fa fa-thumbs-o-up '></i>
          </Fragment>
            )}
-          { likes.length <= 0 ? '' : <span>{likes.length}</span> }
+          { likes.length <= 0 ? '' : <span className='like-count'>{likes.length}</span> }
 
           </span>
               <Link to={`/posts/${_id}`}><i className='fa fa-commenting-o'></i></Link>
@@ -103,7 +103,7 @@ return user === null ? <Spinner /> :
           <Fragment>
             <div className='comment-item--likes'>
           {likes.length > 0 ? <p>Like count
-            t: <span>{likes.length}</span></p> : ''}
+            t: <span className='like-count'>{likes.length}</span></p> : ''}
             </div>
         </Fragment>
         )}

@@ -13,20 +13,31 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
   const [text, setText] = useState('');
 
-
+  function toggleBodyOverflow() {
+    const body = document.querySelector('body');
+    body.classList.toggle('overflow');
+  }
   function openRepostModal() {
     setRepostModalOpen(true);
+    toggleBodyOverflow()
   }
   
   function closeRepostModal(){
     setRepostModalOpen(false);
+    toggleBodyOverflow()
+
     }
   function openCommentaryModal() {
     setCommentaryModalOpen(true);
+    toggleBodyOverflow()
+
     }
     
   function closeCommentaryModal(){
     setCommentaryModalOpen(false);
+    toggleBodyOverflow()
+
+
       }
     const customStyles = {
       content : {

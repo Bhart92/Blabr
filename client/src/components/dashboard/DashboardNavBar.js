@@ -69,6 +69,7 @@ const DashboardNavBar = ({
             )}
         
         <Modal
+        className='dashboard--navBar--modal'
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}

@@ -22,7 +22,7 @@ import RepostForm from '../posts/RepostForm';
 
 const Routes = ({isAuthenticated}) => {
   return (
-    <section className='container'>
+    <section className='container register'>
       <Alert />
       {isAuthenticated && (
         <Fragment>

@@ -24,7 +24,7 @@ const Login = ({ login, isAuthenticated }) => {
         return <Redirect to='/dashboard' />;
     }
     return (
-        <Fragment>
+        <div className='auth--form--container'>
         <Navbar />
         <div className='post--container register--container'>
             <h1 className='login--title'>Login</h1>
@@ -56,7 +56,7 @@ const Login = ({ login, isAuthenticated }) => {
                 <Link className='loginButton' to="/login">Sign Up</Link>
             </p>
         </div>
-        </Fragment>
+        </div>
     );
 };
 
