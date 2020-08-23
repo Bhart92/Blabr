@@ -50,7 +50,8 @@ const NewsFilterBar = ({
                             <li id='NBC' onClick={filterByBlaze}>The Blaze</li>
                             <li id='Independent' onClick={filterByIndependent}>Independent</li>
 
-                    </ul>                </div>
+                    </ul> 
+                </div>
                 <ul>
                         <li id='trending' onClick={filterByNY}>NYTimes</li>
                         <li id='CNN'onClick={filterByCNN}>CNN</li>
