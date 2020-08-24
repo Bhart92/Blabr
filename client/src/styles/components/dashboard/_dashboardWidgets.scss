@@ -1,0 +1,131 @@
+.dashboard--widgets{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: center;
+    grid-area: widgets;
+    overflow: hidden;
+    margin-left: -50px;
+}
+.dashboard--widgets__posts{
+    height: auto;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+.dashboard--widgets--adOne{
+    background: #e8f4f8;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.dashboard--widgets--adTwo{
+    background: #e8f4f8;
+    height: 225px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard--widgets__people{
+    height: 24%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    textarea{
+        background: transparent;
+        outline: none;
+        border: 1px solid lighten(deepskyblue, 40%);
+        width: 80%;
+        transition: .35s all ease-in-out;
+        border-radius: 5px;
+        height: 100px;
+        padding: 10px 10px;
+
+    }
+    button{
+        background: transparent;
+        border: 2px solid #b3ecff;
+        border-radius: 5px;
+        padding: 5px 10px;
+        outline: none;
+        margin: 10px 0;
+        transition: .35s all ease-in-out;
+        &:hover{
+            cursor: pointer;
+            border: 2px solid deepskyblue;
+        }
+    }
+}
+.dashboard--widgets__search{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    input{
+        background: transparent;
+        outline: none;
+        border: 1px solid lighten(deepskyblue, 40%);
+        width: 80%;
+        transition: .35s all ease-in-out;
+        border-radius: 5px;
+        height: 35px;
+        padding: 0 10px;
+
+    }
+    button{
+        background: transparent;
+        border: 2px solid lighten(deepskyblue, 35%);
+        border-radius: 5px;
+        padding: 5px 10px;
+        outline: none;
+        margin: 10px 0;
+        transition: .35s all ease-in-out;
+        &:hover{
+            cursor: pointer;
+            border: 2px solid transparent;
+            color: lighten(deepskyblue, 35%);
+            background: #000;
+        }  
+     }
+} 
+
+// Media Qs
+@media only screen and (max-width: 1450px) and (max-height: 950px){
+    .dashboard--widgets--adOne {
+        height: 50%;
+    }
+    .dashboard--widgets--adTwo {
+        height: 20%;
+    }
+}
+@media only screen and (max-width: 1450px){
+    .dashboard--widgets__posts {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .dashboard--widgets {
+         margin-left: unset;
+         padding: unset; 
+    } 
+}
+@media only screen and (width: 1024px) and (height: 1366px){
+    .dashboard--widgets--adTwo, .dashboard--widgets--adOne{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 900px){
+    .dashboard--widgets {
+        display: none;
+   }
+}

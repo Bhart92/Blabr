@@ -1,0 +1,110 @@
+.create--profile--container{
+    @extend .edit--container;
+    height: auto!important;
+}
+.create-button{
+    border: 2px solid deepskyblue;
+    @extend input[type='submit'];
+    width: 85%;
+    padding: 25px 10px;
+    text-align: center;
+    color: deepskyblue;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    margin: 0 auto;
+}
+.social-input-box{
+    width: 80%;
+    .social-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        i{
+            margin-right: 10px;
+        }
+        input{
+            width: 75%;
+        }
+    }
+}
+.display-social-links{
+    letter-spacing: 1.1px;
+    font-size: .9rem;
+    border: none;
+    background: none;
+    padding: 20px 20px;
+    margin: 20px 0;
+    color: darken(#b3ecff, 15%);
+    &:hover{
+        cursor: pointer;
+    }
+}
+// Media Qs
+@media only screen and (max-width: 1450px){
+    .create--profile--container{
+    display: flex;
+    height: auto;
+    width: 90%;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    border-right: 0.5px solid #eeeeee;
+    border-left: 0.5px solid #eeeeee;
+    overflow-y: scroll;
+    }
+}
+@media only screen and (width: 1024px) and (height: 1366px){
+    .form .create-button {
+        background: transparent;
+        border: 2px solid #b3ecff;
+        border-radius: 5px;
+        padding: 5px 20px;
+        outline: none;
+        margin: 20px 0;
+        transition: .35s all ease-in-out;
+        width: 20%;
+        letter-spacing: 1.1px;
+        font-size: 1.15rem;
+    }
+    .create--profile--container .form {
+        height: 90%;
+    }
+    .create--profile--container .form .form-group {
+        margin: 20px 0;
+        input{
+            font-size: 1.15rem;
+        }
+    }
+}
+@media only screen and (max-width: 800px){
+    .create-button {
+        width: unset;
+        padding: 10px 50px;
+    }
+
+    .create--profile--container{
+        justify-content: space-around;
+        .form{
+            height: auto;
+        }
+    }
+}
+@media only screen and (max-width: 700px){
+    .create--profile--container .form .form-group {
+        flex-direction: column;
+    }
+    .create--profile--container .form .form-input-inner {
+        width: 100%;
+        margin: 0 auto!important;
+    }
+    .create--profile--container .form textarea{
+        width: 90%;
+    }
+    .social-input-box {
+        width: 90%;
+        .form-group.social-input{
+            flex-direction: row;
+        }
+    } 
+}

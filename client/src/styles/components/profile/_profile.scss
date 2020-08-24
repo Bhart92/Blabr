@@ -1,0 +1,389 @@
+.profiles--container{
+    display: flex;
+    height: auto;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    border-right: 0.5px solid lighten(#1a1a1a, 83%);
+    border-left: 0.5px solid lighten(#1a1a1a, 83%);
+    overflow-y: scroll;
+}
+.profile-widget-item-image{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+.profile--container{
+    flex-direction: column;
+    display: flex;
+    height: auto;
+    overflow-y: scroll;
+    width: 100%;
+    margin: 0 auto;
+    border-right: 0.5px solid lighten(#1a1a1a, 83%);
+    border-left: 0.5px solid lighten(#1a1a1a, 83%);
+}
+.profile--top{
+    background: lighten(deepskyblue, 45%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 35%;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    a{
+        padding-bottom: 5px;
+    }
+width: 100%;
+    img{
+        border-radius: 50%;
+    }
+    h1{
+        margin: 15px 0 0 0;
+    }
+    button{
+        background: transparent;
+        border: 1px solid #000;
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        outline: none;
+        margin: 10px 0;
+        transition: .35s all ease-in-out;
+        
+        &:hover{
+            cursor: pointer;
+            border: 1px solid transparent;
+            color: #b3ecff;
+            background: #000;
+        }
+    }
+}
+.profile--top--social-icons{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+    i{
+        font-size: 1.35rem;
+        padding: 10px;
+        margin: -10px;
+        transition: all .35s ease;
+        &:hover{
+            cursor: pointer;
+            color: deepskyblue;
+        }
+    }
+}
+.profile--mid{
+background: #f4f4f4;
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+height: 15%;
+width: 100%;
+word-wrap: break-word;
+p{
+    padding: 30px;
+    text-align: justify;
+    word-spacing: 1.1px;
+    letter-spacing: 0.85px;
+    margin: 0 auto;
+}
+}
+.profile--mid__interests{
+    width: 90%;
+    display: flex;
+    ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}
+.profile--bottom{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    h2{
+        padding-left: 15px;
+    }
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        margin-bottom: 35px;
+        li{
+            border-bottom: 3px solid lighten(deepskyblue, 44%);
+            border-right: .75px solid lighten(deepskyblue, 44%);
+            flex-basis: 44%;
+            list-style-type: none;
+            padding: 5px 7px;
+            height:145px;
+            &:nth-of-type(even){
+                border-right: none;
+                text-align: right;
+                border-left: .75px solid lighten(deepskyblue, 44%);
+    
+            }
+        }
+    }
+}
+.profile--posts-seeMore{
+    position: relative;
+    margin-bottom: 2rem;
+}
+.profiles--container{
+    display: flex;
+    height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+}
+.profile-widget-item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @extend .post-item;
+    h1{
+        margin-top: 0;
+    }
+}
+.profile-widget-item-info{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.profiles-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 10px;
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: .25px solid rgba(0, 0, 0, .35);
+    &:nth-of-type(even){
+        flex-direction: row-reverse;
+    }
+
+}
+.profiles--button{
+    background: transparent;
+    border: 2px solid #b3ecff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    margin: 10px 0;
+    transition: .35s all ease-in-out;
+}
+.profiles--item--title{
+    display: flex;
+    flex-direction: column;
+    img{
+        margin-bottom: 2px;
+        border-radius: 50%;
+    }
+    span, p, h2{
+        padding: 0;
+        margin: 0;
+    }
+}
+.social-button-link-container{
+    display: flex;
+    flex-direction: column;
+    span{
+        margin: 10px auto 5px auto;
+    }
+}
+.btn-social-links{
+    border: 1px solid black;
+    background: transparent;
+    outline: none;
+    color: black;
+    border-radius: 25px;
+    padding: 5px 10px;
+
+}
+
+
+// Media Qs
+@media only screen and (width: 1024px) and (height: 1366px){
+    .profile--top{
+        height: 25%;
+        h1{
+            font-size: 1.75rem;
+        }
+        span{
+            font-size: 1.25rem;
+        }
+        a{
+            font-size: 1.25rem;   
+        }
+    }
+    .profile--mid p {
+        font-size: 1.05rem;
+    }
+    .btn-social-links {
+        font-size: 1.15rem;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .profile--bottom{
+        h2{
+            font-size: 1.65rem;
+        }
+    }
+    .profile--bottom ul li {
+        flex-basis: 45%;
+        padding: unset;
+        p{
+            font-size: 1.05rem;
+        }
+        a{
+            font-size: 1.05rem;
+        }
+    }
+    .profiles-item{
+        font-size: 1.15rem;
+    }
+}
+@media only screen and (max-width: 900px){
+.profile--top{
+        img{
+            height: 200px;
+            width: 200px;
+        }
+        h1{
+            font-size: 1.35rem;
+        }
+        span{
+            font-size: .95rem;
+        }
+        a{
+            font-size: .9rem;
+        }
+}
+.profile--top-container{
+    height: auto;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.profile--bottom h2{
+    font-size: 1.25rem;
+}
+.profile--bottom{
+    p, span{
+        font-size: .9rem;
+    }
+}
+}
+@media only screen and (max-width: 800px){
+    .profile--top img {
+        height: 175px;
+        width: 175px;
+    }
+    .profile--top h1 {
+        font-size: 1.4rem;
+        margin-top: 0;
+    }
+    .profile--top span {
+        font-size: 1.05rem;
+    }
+    .profile--top a {
+        font-size: 1rem;
+    }
+
+    .profile--bottom{
+        h2{
+            padding-left: 10px;
+        }
+        ul{
+            li{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: none;
+                flex-basis: 44%;
+                p{
+                    font-size: 1rem;
+                    width: 95%;
+                }
+                a{
+                    font-size: 1rem;
+
+                }
+                &:nth-of-type(even){
+                    align-items: flex-end;
+
+                }
+            }
+        }
+    }
+    .profile--container{
+        position: relative;
+    }
+    .profile--top-container {
+        width: 100%;
+    }
+    .auth--form--container {
+        width: 100%;
+         position: unset!important; 
+        top: unset!important; 
+         left: !important; 
+         transform: unset!important; 
+    }
+}
+@media only screen and (max-width: 700px){
+    .profiles--container{
+        h1{
+            font-size: 1.65rem;
+        }
+    }
+    .profiles-item {
+        padding: 3rem 10px;
+        flex-direction: column;
+        div{
+            p{
+                margin-top: 0!important;
+                margin-bottom: 0!important;
+                &:last-of-type{
+                    margin-bottom: 40px!important;
+                }
+
+            }
+        }
+        &:nth-of-type(even) {
+            flex-direction: column!important;
+        }
+    }
+}
+@media only screen and (max-width: 375px){
+    .profiles-item {
+        font-size: .9rem;
+    }
+    .profiles--item--title img {
+        height: 150px;
+        width: 150px;
+    }
+}
+@media only screen and (max-width: 325px){
+    .profile--bottom ul li p {
+        font-size: .9rem;
+    }
+    .profile--bottom ul {
+        margin-bottom: 55px;
+    }
+    .profile--mid p {
+        font-size: .95rem;
+    }
+}

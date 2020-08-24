@@ -1,0 +1,70 @@
+@import './newsfeedBurgerMenu';
+@import './newsFeedItem';
+@import './newsFilterBar';
+
+
+.newsFeed{
+    position: relative;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    margin: 70px auto 0 auto;
+    ul{
+        width: 55%;
+        padding: 0;
+    }
+}
+.newsFeed--article-section{
+    width: 75%;
+}
+.newsFeed--widget{
+    width: 100%;
+
+}
+
+.newsFeed--article-section__widget{
+    width: 98.75%;
+    margin: 0 auto;
+
+}
+.dashboard--newsfeed{
+    height: 100%;
+    width: 100%;
+    display:flex;
+    align-self: center;
+    justify-content: center;
+}
+
+// Media Qs
+@media only screen and (width: 1024px) and (height: 1366px){
+    .newsFeed {
+        width: 85%;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .newsFeed {
+        width: 75%;
+    }
+    .newsFeed--article-section {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 800px){
+    .newsFeed {
+        width: 99%;
+    }
+    .newsFeed--article-section {
+        width: 66%;
+    }
+}
+@media only screen and (max-width: 700px){
+    .newsFeed{
+        display: block!important;
+    }
+    .newsFeed--article-section {
+        width: 95%;
+        margin: 0 auto;
+    }
+}

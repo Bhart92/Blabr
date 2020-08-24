@@ -7,11 +7,6 @@ import { logout } from '../../actions/auth';
 import Modal from 'react-modal';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
-
-
-
-
-
 const DashboardNavBar = ({
     auth: { user },
     logout
@@ -25,7 +20,7 @@ const DashboardNavBar = ({
           right                 : 'unset',
           bottom                : '10%',
           marginRight           : '-50%',
-          height                : 'auto',
+          height                : '250px',
           padding               : '15px 0 0 0',
           transform             : 'translate(-25%, 2%)',
           borderRadius         : '10px'

@@ -1,0 +1,27 @@
+*{
+    font-size: 16px;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+    font-family: 'Lato', sans-serif;
+}
+#root{
+    width: 100%;
+    height: auto;
+}
+ul li{
+    list-style-type: none;
+}
+a{
+
+    text-decoration: none;
+    &:link, &:visited{
+        color: black;
+    }
+}

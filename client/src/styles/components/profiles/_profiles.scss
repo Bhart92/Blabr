@@ -1,0 +1,29 @@
+
+
+// Media Qs
+@media only screen and (max-width: 1450px){
+    .profiles--container {
+        display: flex;
+        height: auto;
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+        text-align: center;
+        border-right: 0.5px solid #eeeeee;
+        border-left: 0.5px solid #eeeeee;
+        overflow-y: scroll;
+    }
+}
+@media only screen and (width: 1024px) and (height: 1366px){
+    .profiles--container{
+        h1{
+            font-size: 1.6rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .profiles--container{
+        position: relative;
+    }
+}

@@ -1,0 +1,183 @@
+.mobile-nav{
+    background: #FFF;
+    width: 100%;
+    height: 75px;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.mobile-nav--dropDown-menu{
+    position: absolute;
+    background: #FFF;
+    top: 74px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    z-index: 999;
+    transform: translate(0,-100%);
+    transition: all .35s ease-in-out;
+    display: none;
+    .mobile-nav--dropDown-menu--auth-actions{
+        border-radius: 5px;
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        right:0;
+        transition: all .35s ease-in-out;
+        transform: translate(0, 100%);
+    }
+}
+.mobile--nav--settings--container{
+    @extend .dashboard--modal--settings-container;
+    height: 100%;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.mobile-nav--dropDown-container{
+    display: none;
+}
+.mobile-nav--greeting-box{
+    @extend .dashboard--navBar-greeting-box;
+    width: 50%;
+   height: auto;
+   bottom: 0;
+   position: absolute;
+}
+.mobile-nav--greeting-box--image{
+    @extend .dashboard--navBar-greeting-box--image;
+    img{
+        height: 50px;
+        width: 50px;
+    }
+}
+.mobile-nav--greeting-box-info{
+    @extend .dashboard--navBar-greeting-box--header;
+    span{
+        font-size: 1rem;
+    }
+}
+.inner-burger{
+    z-index: 1001;
+    width: 25px!important;
+    height: 15px;
+}
+.mobile-nav-burger{
+    width: 25px!important;
+
+}
+.mobile-nav--links{
+    ul{
+        height: 100%;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: unset;
+        li{
+            flex-basis: 50%;
+        } 
+    }
+}
+.fa-commenting.commenting-NavLink--mobileNav{
+    color: #000;
+}
+.modal--container.mobile-modal{
+    justify-content: flex-end;
+}
+
+
+// Media Qs
+
+
+
+
+@media only screen and (width: 1024px) and (height: 1366px){
+    .mobile-nav--greeting-box--image {
+        width: 90%;
+        img{
+            height: 75px;
+            width: 75px;
+        }
+    }
+    .mobile-nav--greeting-box-info {
+        font-size: 1.1rem;
+    }
+    .mobile--nav--settings--container .modal--settings {
+        height: 80px;
+        margin: unset;
+    }
+    .mobile--nav--settings--container .modal--settings span {
+        border-top: 0.5px solid #b3ecff!important;
+    }
+}
+@media only screen and (max-width: 700px){
+    .mobile-nav{
+        display: unset;
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        .mobile-nav--logo{
+            height: 100%;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            padding-left: 15px;
+            a{
+                font-size: 1.6rem;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                i{
+                    margin-left: 7px;
+                    font-size: 2.65rem;
+                }
+            }
+        }
+        .mobile-nav--burger-menu{
+                display: flex;
+                align-self: center;
+                justify-content: center;
+                padding-right: 15px;
+
+            }
+    }
+    .mobile-nav--dropDown-container{
+        display: unset;
+    }
+    .mobile-nav--links{
+        width: 95%;
+        margin: 0 auto;
+        height: 300px;
+        margin-top: -5rem;
+    }
+    .mobile-nav--dropDown-menu{
+        display: unset;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: space-around;
+    }
+    .mobile-nav--links ul{
+        width: 95%;
+        li{
+            a{
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

@@ -1453,9 +1453,9 @@ p{
 }
 .profiles-spinner{
     width: 100%;
-    border: none!important;
+    border: none !important;
     position: absolute;
-    top: 50%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
     img{
@@ -1502,17 +1502,13 @@ p{
 .create-button{
     border: 2px solid deepskyblue;
     @extend input[type='submit'];
-    width: 45%;
-    padding: 25px 0px;
+    width: 85%;
+    padding: 25px 10px;
     text-align: center;
     color: deepskyblue;
     text-transform: uppercase;
     letter-spacing: 1.1px;
     margin: 0 auto;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -60%);
 }
 .dashboard--spinner{
     display: flex;
@@ -1522,11 +1518,8 @@ p{
     height: 100vh;
     position: relative;
     h2{
-        position: absolute;
-        top: 57%;
-        left: 50%;
-        transform: translate(-50%, -60%);
         font-weight: 500;
+
     }
 }
 .edit--container .form .form-group .social-input{
@@ -1740,12 +1733,6 @@ p{
     @extend .alert-fail;
 
 }
-.spinner--span{
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 .mobile-nav{
     background: #FFF;
     width: 100%;
@@ -1886,6 +1873,21 @@ p{
 .newsfeed--filter--burger-modal{
     display: none;
 }
+.page-not-found{
+    height: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -35px;
+    h1{
+        margin-bottom: 0;
+    }
+}
+
+
+
+
 @media only screen and (max-width: 1450px) and (max-height: 950px){
     .dashboard--widgets--adOne {
         height: 50%;
@@ -2617,11 +2619,9 @@ p{
     .profile--top-container {
         width: 100%;
     }
-    .spinner--span {
-        top: 49%;
-    }
+
     .profiles-spinner {
-        top: 44%;
+        top: 35%;
     }
     .dashboard--spinner h2 {
         top: 53%;
@@ -2883,188 +2883,17 @@ p{
     .register--form-group {
         flex-direction: column;
     } 
-    .spinner--span {
-        top: 49%;
-    }
     .profiles-spinner {
-        top: 44%;
+        top: 33%;
     }
     .dashboard--spinner h2 {
-        top: 53%;
         font-size: 1.1rem;
     }
     .login--form--page .input--box {
         width: 75%;
     }
-}
-@media only screen and (max-height: 500px){
-    .container {
-        grid-template-columns: 100%;
-        grid-template-areas: "center";
-        margin-top: 75px;
-        height: auto;
-    }
-    .mobile-nav{
-        display: unset;
-        display: flex;
-        align-self: center;
-        justify-content: space-between;
-        .mobile-nav--logo{
-            height: 100%;
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            padding-left: 15px;
-            a{
-                font-size: 1.6rem;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                i{
-                    margin-left: 7px;
-                    font-size: 2.65rem;
-                }
-            }
-        }
-        .mobile-nav--burger-menu{
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            padding-right: 15px;
-
-        }
-    }
-    .mobile-nav--dropDown-container{
-        display: unset;
-    }
-    .mobile-nav--links{
-        width: 95%;
-        margin: 0 auto;
-        height: 300px;
-        margin-top: -5rem;
-    }
-    .mobile-nav--dropDown-menu{
-        display: unset;
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        justify-content: space-around;
-    }
-    .mobile-nav--links ul{
-        width: 95%;
-        li{
-            a{
-                font-size: 1.25rem;
-            }
-        }
-    }
-    .dashboard--container{
-        display: unset;
-        margin-left: unset;
-        margin: 0 auto;
-        width: 95%;
-    }
-    .dashboard--navbar {
-        display: none;
-    }
-    .post-item{
-        display: flex;
-        flex-direction: column;
-        padding: 20px 0 60px 0;
-    }
-    .post--container .post--header{
-        padding: 20px 5px 30px 5px;
-        border-bottom: 2px dashed #eeeeee;
-    }
-    .post--container .post--body{
-        width: 90%;
-    }
-    .repost {
-        transform: unset;
-    }
-    .post--container .post--actionBox span{
-        margin-left: 0;
-    }
-    .post--container .form input[type='submit']{
-        width: 30%;
-    }
-    .post--container .post--actionBox span.like-count{
-        margin-left: 10px;
-        margin-right: -10px;
-    }
-    .ReactModal__Content.repost-item-modal {
-        height: 175px !important;
-        background: #FFF !important;
-        z-index: 1000 !important;
-        right: unset!important;
-        top: 50%!important;
-        left: 50% !important;
-        width: 75% !important;
-        transform: translate(-50%, -50%)!important;
-    }
-    .ReactModal__Content.repost-item-modal-inner {
-        max-height: 705px !important;
-        width: 85% !important;
-        top: 55.5%!important;
-    }
-    .repost--modal--commentary--header form .repost--modal--commentary--input textarea {
-        font-size: .9rem;
-    }
-    .profile--posts-seeMore--btn {
-        bottom: 11px !important;
-    }
-    .data--repost--details .repost--details--image {
-        height: 90px;
-        width: 76%;
-    }
-    .data--repost--details p {
-        font-size: .85rem;
-    }
-    .repost--modal--commentary--header form .data--repost--details {
-        max-height: 300px;
-    }
-    .profiles--container{
-        h1{
-            font-size: 1.65rem;
-        }
-    }
-    .profiles-item {
-        padding: 3rem 10px;
-        flex-direction: column;
-        div{
-            p{
-                margin-top: 0!important;
-                margin-bottom: 0!important;
-                &:last-of-type{
-                    margin-bottom: 40px!important;
-                }
-
-            }
-        }
-        &:nth-of-type(even) {
-            flex-direction: column!important;
-        }
-    }
-    .edit--container .form .form-group, .create--profile--container .form .form-group {
-        flex-direction: column;
-    }
-    .edit--container .form .form-input-inner, .create--profile--container .form .form-input-inner {
-        width: 100%;
-        margin: 0 auto!important;
-    }
-    .post--container .form textarea, .edit--container .form textarea, .create--profile--container .form textarea, .register--container .form textarea {
-        width: 90%;
-    }
-    .form input {
-        width: 90%;
-        margin: 25px auto;
-    }
-    .social-input-box {
-        width: 90%;
-        .form-group.social-input{
-            flex-direction: row;
-        }
+    .page-not-found {
+        height: 100vh;
     }
 }
 @media only screen and (max-width: 375px){
@@ -3092,14 +2921,10 @@ p{
             top: 59%;
         }
     }
-    .spinner--span {
-        top: 46%;
-    }
     .profiles-spinner {
-        top: 40%;
+        top: 30%;
     }
     .dashboard--spinner h2 {
-        top: 50%;
         font-size: 1rem;
     }
 }
@@ -3158,9 +2983,6 @@ p{
     .newsfeed--article--image {
         width: 40%;
     }
-    .spinner--span {
-        top: 56%;
-    }
     .newsFeed-Spinner{
         span{
             top: 59%;
@@ -3175,10 +2997,7 @@ p{
         margin-bottom: 1rem;
     }
     .profiles-spinner {
-        top: 31%;
-    }
-    .spinner--span {
-        top: 39%;
+        top: 28%;
     }
     .dashboard--spinner h2 {
         top: 47%;

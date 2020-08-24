@@ -60,7 +60,7 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
         right                 : 'auto',
         bottom                : 'auto',
         transform             : 'translate(-50%, -50%)',
-        height                : '645px',
+        height                : '670px',
         width                 : '25%',
         background            : '#FFF'
       }

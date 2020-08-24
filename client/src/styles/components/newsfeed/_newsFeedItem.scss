@@ -1,0 +1,117 @@
+.newsFeed--article--container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    background: white;
+    margin: 25px 0;
+    border-bottom: .25px solid rgba(0, 0, 0, .25);
+    &:first-of-type{
+        margin-top: 10px;
+
+    }
+}
+.newsFeed--article--container--info{
+    width: 100%;
+    .button-container{
+        display: flex;
+        width: 100%;
+        flex-basis: 25%;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 35px;
+        .fas{
+            font-size: 1.25rem!important;
+        }
+        button{
+            margin: 0 10px;
+            border: none;
+            background: transparent;
+            padding: 5px 10px;
+            display: flex;
+            i{
+                font-size: 1.25rem;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+
+        }
+    }
+
+}
+.newsFeed--article--title{
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 90%;
+    margin: 20px;
+}
+.newsfeed--article--image{
+width: 25%;
+display: flex;
+align-items: flex-end;
+justify-content: flex-end;
+padding-bottom: 15px;
+margin-bottom: 15px;
+    a{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        flex-direction: column;
+        img{
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+        }
+    }
+}
+
+// Media Qs
+
+
+@media only screen and (width: 1024px) and (height: 1366px){
+    .newsFeed--article--title {
+        font-size: 1.08rem;
+    }
+    .newsfeed--article--image{
+        span{
+            font-size: 1.15rem;
+        }
+    } 
+}
+@media only screen and (max-width: 900px){
+    .newsfeed--article--image{
+        a{
+            span{
+                font-size: .85rem;
+    
+            }
+        }
+    }
+}
+@media only screen and (max-width: 800px){
+    .newsfeed--article--image {
+        width: 35%;
+    }
+}
+@media only screen and (max-width: 375px){
+    .newsFeed--article--container--info .button-container {
+        padding-left: 20px;
+    }
+    .newsFeed--article--title {
+        font-size: .9rem;
+    }
+}
+@media only screen and (max-width: 325px){
+    .newsFeed--article--container--info .button-container {
+        padding-left: 20px;
+    }
+    .newsfeed--article--image a span {
+        font-size: .75rem;
+    }
+    .newsfeed--article--image {
+        width: 40%;
+    }
+}

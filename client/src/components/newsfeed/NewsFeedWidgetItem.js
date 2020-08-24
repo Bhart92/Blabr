@@ -26,9 +26,6 @@ const NewsFeedWidgetItem = ({ news: { articles } }) => {
 
     return unique;
     }
-
-
-
     return (
         <Fragment>
             {filterArticles.map(item => (

@@ -1,0 +1,117 @@
+@import './loginBox';
+
+.login--form{
+    border: 0.25px solid rgba(0, 57, 77, 0.15);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 250px;
+    margin-left: 25px;
+    position: fixed;
+    top: 100px;
+    background: url('https://images.pexels.com/photos/1022923/pexels-photo-1022923.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-size: cover;
+    background-position: bottom;
+    i{
+        font-size: 6rem;
+        color: deepskyblue;
+    }
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        input{
+            margin: 5px 0;
+        }
+    }
+}
+.divider{
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+.loginButton{
+    background: transparent;
+    outline: none;
+    border: 2px solid deepskyblue;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 2rem;
+    transition: all .35s ease;
+    &:hover{
+        cursor: pointer;
+        background: deepskyblue;
+        border: 1px solid white;
+        color: white;
+    }
+}
+.loginFooter{
+    position: absolute;
+    bottom: -20px;
+    font-size: .87rem;
+&:last-of-type{
+    bottom: -40px;
+}
+}
+.login--title{
+    font-size: 2rem;
+}
+.login--form--page{
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    div{
+        width: 100%;
+    }
+    .input--box{
+        margin: 10px 0;
+        background: #FFF!important;
+        padding: 5px 10px;
+        width: 40%;
+        height: 35px;
+        outline: none;
+        border:none;
+        border-bottom: 2px solid deepskyblue;
+    }
+}
+.auth--form--container{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@media only screen and (width: 1024px) and (height: 1366px){
+    .loginBox {
+        width: 30%;
+    }
+    .login--form {
+        width: 245px;
+        top: 105px;
+    }
+    .login--form form input[type='email'], .login--form form input[type='password'] {
+        margin: 10px 0;
+        height: 30px!important;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    .login--form form input[type='submit'], .loginButton{
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .login--form{
+        display: none;
+    }
+    .login--form--page .input--box {
+        width: 75%;
+    }
+}

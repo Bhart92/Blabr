@@ -1,0 +1,53 @@
+.postsWidget{
+    height: 100%;
+    width: 55%;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 5px;
+    position: relative;
+    h2{
+        text-align: center;
+    }
+    h4{
+        margin-bottom: 0;
+        display: inline;
+    }
+    p{
+        margin: 5px;
+    }
+    .seeMore{
+        padding: 5px 0;
+        border-top: 0.25px solid #4dd2ff;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        padding: 5px 0;
+        border-top: .25px solid lighten(deepskyblue, 15%);
+        a{
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+
+
+// Media Qs
+@media only screen and (max-width: 1450px){
+    .postsWidget{
+        width: 70%;
+    }
+}
+@media only screen and (width: 1024px) and (height: 1366px){
+    .postsWidget{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .postsWidget{
+        width: 80%;
+    }
+}

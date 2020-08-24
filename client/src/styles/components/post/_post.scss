@@ -1,0 +1,93 @@
+
+.post--container{
+    display: flex;
+    height: auto;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    border-right: 0.5px solid lighten(#1a1a1a, 83%);
+    border-left: 0.5px solid lighten(#1a1a1a, 83%);
+    overflow-y: scroll;
+}
+@import './commentForm';
+@import './commentItem';
+@import '../posts/postItem';
+
+// Media Q
+
+@media only screen and (max-width: 1450px){
+    .post--container{
+        display: flex;
+        height: auto;
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+        text-align: center;
+        border-right: 0.5px solid #eeeeee;
+        border-left: 0.5px solid #eeeeee;
+        overflow-y: scroll;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .post--container{
+        h1{
+            font-size: 1.6rem;
+        }
+    }
+}
+@media only screen and (max-width: 800px){
+    .post--container{
+        width: 95%;
+        h1{
+            font-size: 1.65rem;
+            margin-bottom: unset;
+        }
+        .form input[type='submit']{
+            padding: 5px 15px;
+            width: 17%;      
+        }
+        .form textarea {
+            width: 65%;
+        }
+        .post-item, .profile-widget-item, .comment-item {
+            width: 100%;
+        }
+        .post--header, .comment-item--userTitle {
+            padding: 0px 5px;
+        }
+        .post--header img, .comment-item--userTitle img {
+            height: 70px;
+            width: 70px;
+        }
+        .post--header h4, .comment-item--userTitle h4 {
+           font-size: 1.1rem;
+           font-weight: 500;
+        }
+        .post--header button, .comment-item--userTitle button {
+            font-size: .95rem;
+        }
+        .post--body{
+            width: 60%;
+        }
+        .post--body p, .comment-item--info p {
+            font-size: 1rem;
+        }
+        .post--actionBox .fa, .post--actionBox .fas {
+            font-size: 1.45rem;
+        }
+        .post--actionBox span {
+            margin-left: 9px;
+            font-size: 1.1rem;
+        }
+
+    }
+}
+@media only screen and (max-width: 700px){
+    .post--container .form input[type='submit']{
+        width: 30%;
+    }
+    .post--container .form textarea{
+        width: 90%;
+    }
+}

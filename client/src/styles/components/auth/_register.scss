@@ -1,0 +1,125 @@
+.register--container{
+    @extend .post--container;
+    height: 97vh;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+.register--form-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input{
+        margin: 25px 5px;
+        outline: none;
+        background: transparent;
+        border: none;
+        border-bottom: 1.5px solid deepskyblue;
+        color: #000;
+        opacity: .5;
+        width: 250px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+}
+.register--form-group__small{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    small{
+        margin: 20px 0;
+        font-size: .9rem;
+    }
+    input[type='submit']{
+        border: 2px solid deepskyblue;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 0 10px;
+        background: transparent;
+    }
+}
+.register--form--footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+}
+
+@media only screen and (max-width: 1450px){
+    .register--container{
+        display: flex;
+        height: auto;
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+        text-align: center;
+        border-right: 0.5px solid #eeeeee;
+        border-left: 0.5px solid #eeeeee;
+        overflow-y: scroll;
+    }
+}
+@media only screen and (width: 1024px) and (height: 1366px){
+    .post--container.register--container{
+        height: 100vh!important;
+    }
+    .register--form-group__small input[type='submit'], .register--form-group__small .create-button {
+        padding: 10px 20px;
+    }
+    .register--form-group input {
+        font-size: 1.2rem;
+    }
+    .register--form-group__small input[type='submit']{
+        padding: 15px 25px;
+        font-size: 1.15rem;
+    }
+    .register--form--footer{
+        small, p{
+            font-size: 1rem;
+        }
+    }
+
+}
+@media only screen and (max-width: 800px){
+    .register--container {
+        width: 95%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+@media only screen and (max-width: 700px){
+    .register--container {
+        position: unset;
+        top: unset;
+        left: unset;
+        transform: unset;
+        height: 105vh;
+    }
+    .register--form-group {
+        flex-direction: column;
+    } 
+    .register--container .form textarea {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 375px){
+    .register--container {
+        margin-bottom: 2rem;
+    }
+}
+@media only screen and (max-width: 325px){
+    .register--container {
+        height: auto;
+    }
+    .register--container .comment-item--info p, .register--container .comment-item--info p {
+        font-size: .95rem;
+    }
+     .register--container .comment-item--userTitle h4, .register--container .comment-item--userTitle h4 {
+        font-size: 1.05rem;
+    }
+}

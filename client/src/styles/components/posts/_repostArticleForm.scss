@@ -1,0 +1,288 @@
+.repost--modal{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    button{
+        position: absolute;
+        top: -30px;
+        left: 10px;
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        margin: -15px;
+        padding: 15px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+.repost--modal--header{
+    width: 100%;
+    background: transparent;
+    transition: all .35s ease;
+    position: relative;
+    &:hover{
+        color: lighten(deepskyblue, 20%);
+        cursor: pointer;
+    }
+    p{
+        font-size: 1.05rem;
+        i{
+            font-size: 1.25rem;
+        }
+    }
+    img{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+}
+.repost--modal--commentary{
+    h1{
+        text-align: center;
+        font-size: 1.65rem;
+    }
+}
+.repost--modal--commentary--close{
+    background: none;
+    outline: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2rem;
+    margin: -15px;
+    padding: 15px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.repost--modal--commentary--header{
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+            word-break: break-all;
+        }
+        .repost--modal--commentary--input{
+            display: flex;
+            margin: 20px;
+            width: 95%;
+            align-items: center;
+            justify-content: flex-start;
+            img{
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+            }
+            textarea{
+                outline: none;
+                background: none;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.4rem;
+                margin-left: 10px;
+                width: 95%;
+            }
+        }
+        .repost--modal--commentary--data{
+            border: 1px solid rgba(0, 0, 0, .25);
+            border-radius: 25px;
+            padding: 10px;
+            width: 90%;
+            margin-bottom: 3rem;
+            .data--title{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                .textBox{
+                    display:flex;
+                    flex-direction: column;
+                    p{
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+            }
+            .data--text{
+                text-align: center;
+            }
+        }
+        .data--repost--details{
+            text-align: center;
+            margin: 10px;
+            h3{
+                text-align: left;
+            }
+        }
+        input[type='submit']{
+            background: none;
+            border: 1.5px solid lighten(deepskyblue, 25%);
+            border-radius: 25px;
+            outline: none;
+            background: lighten(deepskyblue, 25%);
+            padding: 10px 20px;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            transition: all .35s ease;
+            &:hover{
+                cursor: pointer;
+                background: transparent;
+            }
+        }
+    }
+}
+.ReactModal__Content.repost-item-modal{
+    background: #FFF;
+}
+.data--repost--details{
+    .repost--details--image{
+        height: 200px;
+        width: 85%;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+// Media Qs
+@media only screen and (width: 1024px) and (height: 1366px){
+    .ReactModal__Content.repost-item-modal{
+        top: 50%!important;
+        left: 50%!important;
+        transform: translate(-50%, -50%)!important;
+        height: 147px!important;
+        width: 45%!important;
+    }
+    .ReactModal__Content.repost-item-modal-inner{
+        background: #FFF;
+        width: 70%!important;
+    }
+    .repost--modal--header{
+        p{
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data .data--title .textBox {
+        font-size: 1.2rem;
+    }
+    .repost--modal--commentary--input{
+        height: 110px;
+    }
+    .repost--modal--commentary--header form input[type='submit'], .repost--modal--commentary--header form .create-button {
+        padding: 15px 25px;
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data {
+        margin-bottom: 5.5rem;
+    }
+    .repost--modal--commentary--close {
+        font-size: 2rem;
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--input textarea {
+        font-size: 2rem;
+    }
+    .data--repost--details{
+        font-size: 1.5rem;
+        p{
+            word-break: break-all;
+        }
+    }
+}
+@media only screen and (max-width: 800px){
+    .ReactModal__Content.repost-item-modal-inner{
+        width: 60%!important;
+        background: #FFF;
+        top: 50% !important;
+        padding: 20px;
+    }
+    .ReactModal__Content.repost-item-modal{
+        height: 150px!important;
+        background: #FFF!important;
+        z-index: 1000!important;
+        right: 40% !important;
+        width: 35% !important;
+    }
+    .repost--modal--header {
+        text-align: center;
+        p{
+            font-size: .95rem;
+            text-transform: uppercase;
+            i{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data .data--text {
+        word-break: break-all;
+    }
+    .repost--modal button {
+        top: -36px;
+        right: 4px;
+        font-size: 2rem;
+    }
+    .data--repost--details{
+        p{
+            word-break: break-all;
+        }
+    }
+}
+@media only screen and (max-width: 700px){
+    .ReactModal__Content.repost-item-modal {
+        height: 175px !important;
+        background: #FFF !important;
+        z-index: 1000 !important;
+        right: unset!important;
+        top: 50%!important;
+        left: 50% !important;
+        width: 75% !important;
+        transform: translate(-50%, -50%)!important;
+    }
+    .ReactModal__Content.repost-item-modal-inner {
+        max-height: 705px !important;
+        width: 85% !important;
+        top: 55.5%!important;
+    }
+    .ReactModal__Content.repost-item-modal-inner {
+        height: 510px !important;
+        width: 85% !important;
+        top: 50%!important;
+    } 
+    .repost--modal--commentary--header form .repost--modal--commentary--input textarea {
+        font-size: .9rem;
+    }
+    .repost--modal--commentary--header form .data--repost--details {
+        max-height: 300px;
+    }
+    .data--repost--details .repost--details--image {
+        height: 90px;
+        width: 76%;
+    }
+    .data--repost--details p {
+        font-size: .85rem;
+    }
+}
+@media only screen and (max-width: 325px){
+    .ReactModal__Content.repost-item-modal-inner {
+        max-height: 524px !important;
+        height: 465px !important;
+        width: 83% !important;
+        top: 50% !important;
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data {
+
+        margin-bottom: 1rem;
+    }
+    .data--repost--details p {
+        font-size: .7rem;
+    }
+}

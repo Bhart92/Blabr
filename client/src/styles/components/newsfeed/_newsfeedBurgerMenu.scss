@@ -1,0 +1,61 @@
+.newsfeed--filter-burger-menu{
+    display: none;
+}
+.newsfeed--filter--burger-modal{
+    display: none;
+}
+.inner-burger{
+    position: fixed!important;
+    right: 15px!important;
+}
+
+
+// Media Qs
+
+@media only screen and (max-width: 700px){
+    .newsfeed--filter-burger-menu{
+        display: block;
+    }
+    .newsfeed--filter-burger-menu--container{
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        width: 35%;
+    }
+    .newsfeed--filter-burger-menu{
+        position: absolute!important;
+        top: 0;
+        right: 20px;
+        z-index: 100;
+    }
+    .newsfeed--filter--burger-modal{
+        display: block;
+        background: #FFF;
+        width: 200px;
+        height: 385px;
+        z-index: 999;
+        position: absolute;
+        top: 30px;
+        left: 0;
+        opacity: 0;
+        transform: translate(-100%, 0);
+        transition: all .35s ease;
+        padding: 1rem 0;
+        ul{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: space-around;
+            height: 100%;
+            width: 100%;
+            margin: unset;
+            li{
+                color: #000;
+                text-transform: uppercase;
+                font-weight: 500;
+                letter-spacing: 1px;
+                background: transparent;
+            }
+        }
+    }
+}
