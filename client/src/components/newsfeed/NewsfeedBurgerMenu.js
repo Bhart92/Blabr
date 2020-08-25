@@ -1,11 +1,9 @@
 import React, {Fragment, useState} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import HamburgerMenu from 'react-hamburger-menu';
+import { connect } from 'react-redux';
 
-const NewsfeedBurgerMenu =({isOpen, toggleMobileNav}) => {
-
-    
+const NewsfeedBurgerMenu =({isOpen, toggleMobileNav}) => { 
     return (
         <div className='newsfeed--filter--burger-menu--container'>
         <HamburgerMenu 
@@ -23,5 +21,4 @@ const NewsfeedBurgerMenu =({isOpen, toggleMobileNav}) => {
         </div>
     );
 }
-
 export default NewsfeedBurgerMenu;

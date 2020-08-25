@@ -6,8 +6,6 @@ import { addPost } from '../../actions/posts';
 const PostForm = ({ addPost }) => {
   const [commentary, setCommentary] = useState('');
   const [text, setText] = useState(null);
-
-
   return (
     <div className='post-form'>
       <form
@@ -28,7 +26,7 @@ const PostForm = ({ addPost }) => {
           onChange={e => setCommentary(e.target.value)}
           required
         />
-        <input type='submit' className='btn btn-dark my-1' value='Submit' />
+        <input type='submit' className='my-1' value='Submit' />
       </form>
     </div>
   );

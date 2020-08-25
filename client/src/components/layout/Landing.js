@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import Proptypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import NewsFeed from './NewsFeed';
+import NewsFeed from '../newsfeed/NewsFeed';
 import Navbar from './Navbar';
 import Alert from './Alert';
-import { getCurrentProfile } from '../../actions/profile';
 
 const Landing = ({isAuthenticated}) => {
 
@@ -18,13 +17,10 @@ const Landing = ({isAuthenticated}) => {
     )
 }
 Landing.propTypes = {
-    auth: Proptypes.object.isRequired,
-    profile: Proptypes.object.isRequired
+    isAuthenticated: Proptypes.object.isRequired
 };
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    auth: state.auth,
-    profile: state.profile
+    isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps)(Landing);

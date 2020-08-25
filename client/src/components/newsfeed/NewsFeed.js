@@ -9,21 +9,17 @@ import LoginBox from '../auth/LoginBox';
 
 
 const Newsfeed = ({ 
-    getCurrentProfile,
     user,
-    filterByNY,
-    news: { articles }
+    filterByNY
  }) => {
      useEffect(() => {
         filterByNY();
-        getCurrentProfile();
-    },[getCurrentProfile, filterByNY]);
-    console.log(articles)
+    },[filterByNY]);
     return (
        <div className='newsFeed'>
            <div className='newsFeed--article-section'>
                 <Fragment>
-                    <NewsFilterBar articles={articles}/>
+                    <NewsFilterBar/>
                     <NewsFeedItem user={user}/>
                 </Fragment>
            </div>
@@ -35,13 +31,12 @@ const Newsfeed = ({
 };
 
 Newsfeed.propTypes = {
-    getCurrentProfile: PropTypes.func.isRequired,
+    filterByNY: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    news: state.news,
     user: state.auth.user
 });
 
-export default connect(mapStateToProps,{ getCurrentProfile, filterByNY })(Newsfeed);
+export default connect(mapStateToProps,{ filterByNY })(Newsfeed);

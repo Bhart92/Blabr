@@ -10,7 +10,6 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-
   return loading ? (
     <Spinner />
   ) : (
@@ -27,7 +26,6 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     </div>
   );
 };
-
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired

@@ -2,11 +2,8 @@ import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { getUnique } from '../../actions/news';
 
-
-
-const NewsFeedWidgetItem = ({ getUnique, news: { articles } }) => {
+const NewsFeedWidgetItem = ({  news: { articles } }) => {
     let filterArticles = articles.filter((item, index) => index !== 0);
     filterArticles.map((e) => {
         e.id = uuidv4()

@@ -7,23 +7,22 @@ import { filterNewsByKeyword } from '../../actions/news';
 import DashboardProfile from './DashboardProfile';
 import Spinner from '../layout/Spinner';
 import { loadUser } from '../../actions/auth';
+import { getPosts } from '../../actions/posts';
 
 const Dashboard = ({   
     getCurrentProfile,
-    logout,
-    deleteAccount,
+    getPosts,
+    post,
     auth: { user, isAuthenticated },
-    posts,
     profile: { profile, loading } 
 }) => {
     useEffect(() => {
         loadUser();
-        getCurrentProfile()
-    },[loadUser]);
+        getCurrentProfile();
+        getPosts();
+    },[loadUser, getCurrentProfile, getPosts]);
     return user === null ? <Spinner /> : 
-
     <div className='dashboard--container'>
-        
         <div className='dashboard--center-console'>
             <div className='dashboard--newsfeed'>
                {isAuthenticated && !profile ? (
@@ -33,29 +32,23 @@ const Dashboard = ({
                 <Link className='create-button' to='create-profile'>Create your profile</Link>
                </div>) : (<Fragment>
                 <DashboardProfile loading={loading} user={user}/>
-            
                </Fragment>
                )}
             </div>
         </div>
     </div>;
-
 };
 
 Dashboard.propTypes = {
-    deleteAccount: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
-    news: PropTypes.object.isRequired,
     getCurrentProfile: PropTypes.func.isRequired,
-    getNews: PropTypes.func.isRequired
+    getPosts: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    profile: state.profile,
-    posts: state.posts,
-    news: state.news
+    profile: state.profile
   });
 
-export default connect(mapStateToProps,{ getCurrentProfile, deleteAccount, loadUser })(Dashboard);
+export default connect(mapStateToProps,{ getPosts, getCurrentProfile, deleteAccount, loadUser })(Dashboard);

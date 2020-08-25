@@ -1,15 +1,11 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
-import { getPosts } from '../../actions/posts';
 
-const DashboardPosts = ({ getPosts, user, post: { posts, loading } }) => {
-  useEffect(() => {
-    getPosts();
-  }, [getPosts]);
+const DashboardPosts = ({ user, post: { posts, loading } }) => {
   const [seeMore, setSeeMore] = useState(false);
   const [seeMoreText, setSeeMoreText] = useState('See All');
   const toggleSeeMore = () => {
@@ -26,7 +22,6 @@ const userPostArray = posts.filter(post => post.user == user._id)
       <Fragment>
       {userPostArray.slice(0, 6).map(item => {
             return <li key={item._id}>
-
             {item.text && <Fragment>
                 <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 15) : ''}... </p>
               </Fragment>}
@@ -69,17 +64,14 @@ const userPostArray = posts.filter(post => post.user == user._id)
 };
 
 DashboardPosts.propTypes = {
-  getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post,
   user:state.auth.user
 });
 
 export default connect(
   mapStateToProps,
-  { getPosts }
 )(DashboardPosts);

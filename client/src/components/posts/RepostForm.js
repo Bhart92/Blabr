@@ -6,8 +6,6 @@ import Modal from 'react-modal';
 import RepostItem from './RepostItem';
 import Spinner from '../layout/Spinner';
 
-
-
 const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repostName, repostAvatar, user, avatar, repostHandle, name, description, url, image }) => {
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
@@ -17,28 +15,27 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
     const body = document.querySelector('body');
     body.classList.toggle('overflow');
   }
+
   function openRepostModal() {
     setRepostModalOpen(true);
-    toggleBodyOverflow()
+    toggleBodyOverflow();
   }
   
   function closeRepostModal(){
     setRepostModalOpen(false);
-    toggleBodyOverflow()
-
+    toggleBodyOverflow();
     }
+
   function openCommentaryModal() {
     setCommentaryModalOpen(true);
-    toggleBodyOverflow()
-
+    toggleBodyOverflow();
     }
     
   function closeCommentaryModal(){
     setCommentaryModalOpen(false);
-    toggleBodyOverflow()
-
-
+    toggleBodyOverflow();
       }
+
     const customStyles = {
       content : {
         position              : 'fixed',
@@ -52,6 +49,7 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
         textAlign             : 'center'
       }
     };
+
     const customStylesSecond = {
       content : {
         position              : 'fixed',
@@ -65,14 +63,14 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
         background            : '#FFF'
       }
     };
-// ADD ORIGINALCOMMENTARY TO ADDPOST, THEN ADD IT TO THE COMPONENT DISPLAY
+
 const onSubmit = (e) => {
     e.preventDefault();
     addPost({ title, handle, name, avatar, repostName, repostHandle, repostAvatar, commentary, description, url, image, text });
 }
+
 return user === null ? <Spinner /> : (
     <div className='post-form'>
-
       <i className="fas fa-retweet" onClick={openRepostModal}></i>
       <Modal
           className='repost-item-modal'
@@ -83,26 +81,25 @@ return user === null ? <Spinner /> : (
           contentLabel="Example Modal"
           ariaHideApp={false}
         >
-            <div className='repost--modal'> 
-            <div>
-                        <button onClick={closeRepostModal}>X</button>
-                    </div>
-                <div className='repost--modal--header' onClick={e => {
-                  onSubmit(e);
-                  closeRepostModal();
-                }}>
-                  <p><i className="fas fa-retweet"></i> &nbsp;Repost</p>
-                </div>
-                <div onClick={() => {
-                  closeRepostModal();
-                  openCommentaryModal();
-                }} className='repost--modal--header'>
-                  <p><i className='fa fa-commenting'></i> &nbsp;Repost with comment</p>
-                </div>
-            </div>
+        <div className='repost--modal'> 
           <div>
+            <button onClick={closeRepostModal}>X</button>
           </div>
-        </Modal>
+          <div className='repost--modal--header' onClick={e => {
+            onSubmit(e);
+            closeRepostModal();
+          }}>
+            <p><i className="fas fa-retweet"></i> &nbsp;Repost</p>
+          </div>
+          <div onClick={() => {
+            closeRepostModal();
+            openCommentaryModal();
+          }} className='repost--modal--header'>
+            <p><i className='fa fa-commenting'></i> &nbsp;Repost with comment</p>
+          </div>
+        </div>
+        <div></div>
+      </Modal>
         <Modal
           className='repost-item-modal-inner'
           isOpen={commentaryModalOpen}
@@ -112,46 +109,39 @@ return user === null ? <Spinner /> : (
           contentLabel="Example Modal"
           ariaHideApp={false}
         >
-            <div className='repost--modal--commentary'> 
-              <div>
-                <button className='repost--modal--commentary--close' onClick={closeCommentaryModal}>X</button>
-              </div>
-              <div className='repost--modal--commentary--header'>
-                <form onSubmit={e => onSubmit(e)}>
-                  <div className='repost--modal--commentary--input'>
-                    <img src={user !== null && user.avatar} />
-                    <textarea
+          <div className='repost--modal--commentary'> 
+            <div>
+              <button className='repost--modal--commentary--close' onClick={closeCommentaryModal}>X</button>
+            </div>
+            <div className='repost--modal--commentary--header'>
+              <form onSubmit={e => onSubmit(e)}>
+                <div className='repost--modal--commentary--input'>
+                  <img src={user !== null && user.avatar} />
+                  <textarea
                     value={text}
                     placeholder='add a comment'
                     maxLength='250'
                     onChange={e => setText(e.target.value)}
                     required
                     ></textarea>
-                  </div>
-
-                  <div className='repost--modal--commentary--data'>
-                    <div className='data--title'>
-                      <img src={avatar} className='repost--avatar' />
-                      <div className='textBox'>
+                </div>
+                <div className='repost--modal--commentary--data'>
+                  <div className='data--title'>
+                    <img src={avatar} className='repost--avatar' />
+                    <div className='textBox'>
                       <p>{name}</p>
                       <span>@{handle}</span>
-                      </div>
                     </div>
-                    <div className='data--repost--details'>
-
-
-
-                  {image && description && commentary && <p>{commentary}</p>}
-
-
-
-                    {image === undefined ? (
-                      <Fragment>
-                        <div className='data--text'>
-                          <p>{commentary}...</p>
-                        </div>            
-                      </Fragment>
-                    ) : (
+                  </div>
+                  <div className='data--repost--details'>
+                    {image && description && commentary && <p>{commentary}</p>}
+                      {image === undefined ? (
+                        <Fragment>
+                          <div className='data--text'>
+                           <p>{commentary}...</p>
+                          </div>            
+                        </Fragment>
+                      ) : (
                         <Fragment>
                           {image.length === 0 ? (
                           <Fragment>
@@ -165,14 +155,8 @@ return user === null ? <Spinner /> : (
                           {description !== undefined && (<p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... ... <a href={url}>Read More</a></p>)}
                         </Fragment>
                       )}
-
-
-
                     </div>
-
                   </div>
-
-
                   <input onClick={closeCommentaryModal} type='submit'value='Repost'/>
                 </form>
               </div>

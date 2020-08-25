@@ -2,7 +2,7 @@ import React, {Fragment, useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import NewsSpinner from '../layout/NewsSpinner';
+import NewsSpinner from './NewsSpinner';
 import NewsfeedBurgerMenu from './NewsfeedBurgerMenu';
 import { filterByCNN, filterByFox, filterByNY, filterByWashPo, filterByBBC, filterByIndependent, filterByBlaze } from '../../actions/news';
 const NewsFilterBar = ({ 
@@ -11,11 +11,9 @@ const NewsFilterBar = ({
     filterByFox,
     filterByWashPo,
     filterByBBC,
-    filterBySports,
     filterByBlaze,
     filterByIndependent,
-    articles,
-    news: {outlet}
+    news: {outlet, articles}
  }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMobileNav = () => {
@@ -24,7 +22,6 @@ const NewsFilterBar = ({
         const buttonBar = document.querySelector('.newsFeed--newsFilterBar-buttons');
         filterModal.classList.toggle('visible');
         buttonBar.classList.toggle('overFlowUnset');
-
     };
     const filterArticles = articles.filter((item, index) => index === 0);
     return (
@@ -33,7 +30,6 @@ const NewsFilterBar = ({
                 <div className='newsFeed--newsFilterBar-header'>
                 <span>Explore</span>
                 <span>{outlet}</span>
-
                 </div>
             <div className='newsFeed--newsFilterBar-buttons'>
                 <NewsfeedBurgerMenu toggleMobileNav={toggleMobileNav} isOpen={isOpen}/>
@@ -46,7 +42,6 @@ const NewsFilterBar = ({
                             <li id='BBC' onClick={filterByBBC}>BBC</li>
                             <li id='NBC' onClick={filterByBlaze}>The Blaze</li>
                             <li id='Independent' onClick={filterByIndependent}>Independent</li>
-
                     </ul> 
                 </div>
                 <ul>
@@ -57,7 +52,6 @@ const NewsFilterBar = ({
                         <li id='BBC' onClick={filterByBBC}>BBC</li>
                         <li id='NBC' onClick={filterByBlaze}>The Blaze</li>
                         <li id='Independent' onClick={filterByIndependent}>Independent</li>
-
                 </ul>
             </div>
             {articles.length <= 0 ? (
@@ -74,8 +68,8 @@ const NewsFilterBar = ({
                                 <p>{item.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
                                 </div>
                             </div>                
-                                <img src={item.image.url} />            
-                        </div>
+                            <img src={item.image.url} />            
+                         </div>
             ))}
             </Fragment>
             )}

@@ -5,7 +5,6 @@ const AdsWidget = () => {
   return <div className='postsWidget' id='posts'>
           <div className='dashboard--widgets__adTwo'>
       <h2>Your Ad Here</h2>
-
       </div>
       <div className='dashboard--widgets__adOne'>
       <h2>Your Ad Here</h2>
