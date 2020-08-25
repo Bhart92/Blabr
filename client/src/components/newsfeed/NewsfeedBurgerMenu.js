@@ -7,9 +7,9 @@ const NewsfeedBurgerMenu =({isOpen, toggleMobileNav}) => {
 
     
     return (
-        <div className='newsfeed--filter-burger-menu--container'>
+        <div className='newsfeed--filter--burger-menu--container'>
         <HamburgerMenu 
-            className='newsfeed--filter-burger-menu'
+            className='newsfeed--filter--burger-menu'
             isOpen={isOpen}
             menuClicked={toggleMobileNav}
             width={18}

@@ -28,7 +28,7 @@ const DashboardWidgets = ({
             <div className='dashboard--widgets__posts'>
                 <AdsWidget />
             </div>
-        
+    
         </div>
     );
 };

@@ -11,7 +11,7 @@
 
     }
 }
-.newsFeed--article--container--info{
+.newsFeed--article-info--container{
     width: 100%;
     .button-container{
         display: flex;
@@ -40,14 +40,14 @@
     }
 
 }
-.newsFeed--article--title{
+.newsFeed--article-title{
     text-align: left;
     font-size: 1rem;
     font-weight: 500;
     width: 90%;
     margin: 20px;
 }
-.newsfeed--article--image{
+.newsfeed--article-image{
 width: 25%;
 display: flex;
 align-items: flex-end;
@@ -72,17 +72,17 @@ margin-bottom: 15px;
 
 
 @media only screen and (width: 1024px) and (height: 1366px){
-    .newsFeed--article--title {
+    .newsFeed--article-title {
         font-size: 1.08rem;
     }
-    .newsfeed--article--image{
+    .newsfeed--article-image{
         span{
             font-size: 1.15rem;
         }
     } 
 }
 @media only screen and (max-width: 900px){
-    .newsfeed--article--image{
+    .newsfeed--article-image{
         a{
             span{
                 font-size: .85rem;
@@ -92,26 +92,26 @@ margin-bottom: 15px;
     }
 }
 @media only screen and (max-width: 800px){
-    .newsfeed--article--image {
+    .newsfeed--article-image {
         width: 35%;
     }
 }
 @media only screen and (max-width: 375px){
-    .newsFeed--article--container--info .button-container {
+    .newsFeed--article-info--container .button-container {
         padding-left: 20px;
     }
-    .newsFeed--article--title {
+    .newsFeed--article-title {
         font-size: .9rem;
     }
 }
 @media only screen and (max-width: 325px){
-    .newsFeed--article--container--info .button-container {
+    .newsFeed--article-info--container .button-container {
         padding-left: 20px;
     }
-    .newsfeed--article--image a span {
+    .newsfeed--article-image a span {
         font-size: .75rem;
     }
-    .newsfeed--article--image {
+    .newsfeed--article-image {
         width: 40%;
     }
 }

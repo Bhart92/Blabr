@@ -1,6 +1,7 @@
 @import './newsfeedBurgerMenu';
 @import './newsFeedItem';
 @import './newsFilterBar';
+@import './newsFeedWidget';
 
 
 .newsFeed{
@@ -12,22 +13,12 @@
     background: white;
     margin: 70px auto 0 auto;
     ul{
-        width: 55%;
+        width: 100%;
         padding: 0;
     }
 }
 .newsFeed--article-section{
     width: 75%;
-}
-.newsFeed--widget{
-    width: 100%;
-
-}
-
-.newsFeed--article-section__widget{
-    width: 98.75%;
-    margin: 0 auto;
-
 }
 .dashboard--newsfeed{
     height: 100%;

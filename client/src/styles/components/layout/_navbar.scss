@@ -46,7 +46,7 @@
     display: block;
     color: darken(rgba(0, 191, 255, .5), 35%);
 }
-.navLinks{
+.navBar--navLinks{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -69,7 +69,7 @@
         font-size: 1.05rem;
         display: block;
     }
-    .navLinks li {
+    .navBar--navLinks li {
         padding: 10px 15px;
     }
 }
@@ -97,7 +97,7 @@
     .navBar .navBar--container {
         width: 95%;
     }
-    .navLinks li {
+    .navBar--navLinks li {
         padding: 2px 7px;
     }
 

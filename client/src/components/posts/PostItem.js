@@ -27,7 +27,7 @@ const likePost = (id) => {
 
 return user === null ? <Spinner /> :
 (
-<div className='post-item'>
+<div className='post--item'>
 <div className='post--header'>
   <div>
   <Link to={`/profile/${user}`}>
@@ -39,7 +39,7 @@ return user === null ? <Spinner /> :
   </div>
   <div>
 
-  <p className='post-date'>
+  <p className='post--date'>
         Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>
       </p>
       {!auth.loading && user === auth.user._id && (
@@ -101,7 +101,7 @@ return user === null ? <Spinner /> :
         </Fragment>
           ): (
           <Fragment>
-            <div className='comment-item--likes'>
+            <div className='comment--item--likes'>
           {likes.length > 0 ? <p>Like count
             t: <span className='like-count'>{likes.length}</span></p> : ''}
             </div>

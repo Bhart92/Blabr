@@ -40,7 +40,7 @@ return (
         </div>
         <div className='mobile-nav--burger-menu'>
         <HamburgerMenu 
-            className='mobile-nav-burger'
+            className='mobile-nav--burger'
             isOpen={isOpen}
             menuClicked={toggleMobileNav}
             width={18}

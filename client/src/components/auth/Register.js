@@ -6,8 +6,6 @@ import { register } from '../../actions/auth';
 import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
 
-
-
 const Register = ({ setAlert, register, isAuthenticated, profile: { profile } }) => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -42,93 +40,86 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
         return <Redirect to="/dashboard" />
     }
     return (
-        <div className='auth--form--container'>
-            <Navbar />
+    <Fragment>
+        <Navbar />
+        <div className='auth--container'>
             <div className='post--container register--container'>
-            <h1>Sign Up</h1>
-            <p><i className="fas fa-user"></i> Create Your Account</p>
-            <div>
-            <form onSubmit={e => onSubmit(e)}>
-                <div className='register--form-group'>
-                <input
-                type="text"
-                placeholder="First Name"
-                name="firstName"
-                value={firstName}
-                onChange={e => onChange(e)}
-                
-                />
-                <input
-                type="text"
-                placeholder="Last Name"
-                name="lastName"
-                value={lastName}
-                onChange={e => onChange(e)}
-                
-                />
-    
+                <h1>Sign Up</h1>
+                <p><i className="fas fa-user"></i> Create Your Account</p>
+                <div>
+                    <form onSubmit={e => onSubmit(e)}>
+                        <div className='register--input-box'>
+                            <input
+                                type="text"
+                                placeholder="First Name"
+                                name="firstName"
+                                value={firstName}
+                                onChange={e => onChange(e)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Last Name"
+                                name="lastName"
+                                value={lastName}
+                                onChange={e => onChange(e)}
+                            />
+                        </div>
+                        <div className='register--input-box'> 
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            name="email"
+                            value={email}
+                            onChange={e => onChange(e)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Handle"
+                            name="handle"
+                            value={handle}
+                            onChange={e => onChange(e)}
+                        />
+                        </div>
+                        <div className='register--input-box'>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            minLength="6"
+                            onChange={e => onChange(e)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            name="password2"
+                            minLength="6"
+                            onChange={e => onChange(e)}      
+                        />
+                        </div>
+                        <div className='register--input-box__small'>
+                            <input type='submit' value='Register' />
+                        </div>
+                    </form>
                 </div>
-                <div className='register--form-group'> 
-                <input
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                value={email}
-                onChange={e => onChange(e)}
-                />
-
-                    <input
-                type="text"
-                placeholder="Handle"
-                name="handle"
-                value={handle}
-                onChange={e => onChange(e)}
-                
-                />
-                </div>
-                <div className='register--form-group'>
-                <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    minLength="6"
-                    onChange={e => onChange(e)}
-                    
-                />
-                                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    name="password2"
-                    minLength="6"
-                    onChange={e => onChange(e)}
-                    
-                />
-                </div>
-                <div className='register--form-group__small'>
-                <input type='submit' value='Register' />
-                </div>
-            </form>
-            </div>
-            <p className="register--form--footer">
-            <small>Create a Gravatar account to attach a profile image.</small>
-                <p>Already have an account? <Link to="/login">Sign In</Link></p>
-            </p>
+                <p className="register--footer">
+                    <small>Create a Gravatar account to attach a profile image.</small>
+                    <p>Already have an account? <Link to="/login">Sign In</Link></p>
+                </p>
             </div>
         </div>
+    </Fragment>
     );
 };
 
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    createProfile: PropTypes.func.isRequired
+    isAuthenticated: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
     profile: state.profile
 });
-
 
 export default connect(mapStateToProps, { setAlert, register })(Register);

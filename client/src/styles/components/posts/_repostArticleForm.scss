@@ -142,7 +142,7 @@
         }
     }
 }
-.ReactModal__Content.repost-item-modal{
+.ReactModal__Content.repost--item-modal{
     background: #FFF;
 }
 .data--repost--details{
@@ -156,14 +156,14 @@
 
 // Media Qs
 @media only screen and (width: 1024px) and (height: 1366px){
-    .ReactModal__Content.repost-item-modal{
+    .ReactModal__Content.repost--item-modal{
         top: 50%!important;
         left: 50%!important;
         transform: translate(-50%, -50%)!important;
         height: 147px!important;
         width: 45%!important;
     }
-    .ReactModal__Content.repost-item-modal-inner{
+    .ReactModal__Content.repost--item-modal-inner{
         background: #FFF;
         width: 70%!important;
     }
@@ -199,13 +199,13 @@
     }
 }
 @media only screen and (max-width: 800px){
-    .ReactModal__Content.repost-item-modal-inner{
+    .ReactModal__Content.repost--item-modal-inner{
         width: 60%!important;
         background: #FFF;
         top: 50% !important;
         padding: 20px;
     }
-    .ReactModal__Content.repost-item-modal{
+    .ReactModal__Content.repost--item-modal{
         height: 150px!important;
         background: #FFF!important;
         z-index: 1000!important;
@@ -237,7 +237,7 @@
     }
 }
 @media only screen and (max-width: 700px){
-    .ReactModal__Content.repost-item-modal {
+    .ReactModal__Content.repost--item-modal {
         height: 175px !important;
         background: #FFF !important;
         z-index: 1000 !important;
@@ -247,12 +247,12 @@
         width: 75% !important;
         transform: translate(-50%, -50%)!important;
     }
-    .ReactModal__Content.repost-item-modal-inner {
+    .ReactModal__Content.repost--item-modal-inner {
         max-height: 705px !important;
         width: 85% !important;
         top: 55.5%!important;
     }
-    .ReactModal__Content.repost-item-modal-inner {
+    .ReactModal__Content.repost--item-modal-inner {
         height: 510px !important;
         width: 85% !important;
         top: 50%!important;
@@ -272,7 +272,7 @@
     }
 }
 @media only screen and (max-width: 325px){
-    .ReactModal__Content.repost-item-modal-inner {
+    .ReactModal__Content.repost--item-modal-inner {
         max-height: 524px !important;
         height: 465px !important;
         width: 83% !important;

@@ -47,18 +47,18 @@ const DashboardNavBar = ({
 
             </ul>
         </div>
-        <div className='dashboard--navBar-greeting-box'>
+        <div className='dashboard--navBar--greeting-box'>
         {user.avatar ? (
-                <div className='dashboard--navBar-greeting-box--image'>
+                <div className='dashboard--navBar--greeting-box__image'>
                     <img src={user.avatar} />
-                    <div className='dashboard--navBar-greeting-box--header'>
+                    <div className='dashboard--navBar--greeting-box__header'>
                         <span>Hello {user.firstName}</span>
                         <span>{user.handle}</span>
                     </div>
                     <i className='fas fa-angle-down' onClick={openModal}></i>
                 </div>
             ) : (
-                <div className='dashboard--navBar-greeting-box--no-image'>
+                <div className='dashboard--navBar--greeting-box__no-image'>
                     <i className='fa fa-user'> </i>
                 </div>
             )}
@@ -79,12 +79,10 @@ const DashboardNavBar = ({
                     <span>{user.firstName} {user.lastName}</span>
                         <span>{user.handle}</span>
                     </div>
-                    <div className='dashboard--modal--close--button'>
+                    <div className='dashboard--modal--close-button'>
                         <button onClick={closeModal}>X</button>
                     </div>
                 </div>
-
-
                 <div className='dashboard--modal--settings-container'>
                 <div className='modal--settings'>
                     <span>Delete your account</span>
@@ -96,16 +94,12 @@ const DashboardNavBar = ({
                 <span onClick={logout}>Logout</span>
                 </div>
                 </div>
-
-
             </div>
           <div>
           </div>
         </Modal>
-        </div>
-            
+        </div>    
     </div>;
-
 };
 DashboardNavBar.propTypes = {
 };

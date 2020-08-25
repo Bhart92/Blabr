@@ -33,7 +33,7 @@ const Dashboard = ({
                 <Link className='create-button' to='create-profile'>Create your profile</Link>
                </div>) : (<Fragment>
                 <DashboardProfile loading={loading} user={user}/>
-                
+            
                </Fragment>
                )}
             </div>

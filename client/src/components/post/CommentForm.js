@@ -31,9 +31,7 @@ return (
     </div>
     );
 };
-
 CommentForm.propTypes = {
     addComment: PropTypes.func.isRequired
 }
-
 export default connect(null, { addComment })(CommentForm);

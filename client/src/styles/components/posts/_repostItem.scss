@@ -8,7 +8,7 @@
         border-radius: 50%;
     }
 }
-.repost-OG-info{
+.repost--OG-info{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -24,7 +24,7 @@
             color: lighten(black, 55%);
         }
     }
-    .repost-date{
+    .repost--date{
         height: auto;
         color: lighten(black, 55%);
         top: 50%;
@@ -33,7 +33,7 @@
         transform: translate(0, -50%);
     }
 }
-.repost--OG--info__names{
+.repost--OG-info__names{
     margin-top: -10px;
     padding-top: 15px;
     margin-left: 5px;
@@ -46,7 +46,7 @@
         padding: 0;
     }
 }
-.repost-avatar{
+.repost--avatar{
     height: 35px;
     width: 35px!important;
     border-radius: 50%;
@@ -61,14 +61,9 @@
     margin: 0 auto;
 }
 
-
-
-
 // Media Qs
-
-
 @media only screen and (max-width: 1100px){
-    .repost-avatar {
+    .repost--avatar {
         width: 35px!important;
     }
 }
@@ -79,7 +74,7 @@
             width: 100%;
             border: none;
         }
-        img.repost-avatar{
+        img.repost--avatar{
             width: 35px;
         }
     }

@@ -11,13 +11,13 @@ const RepostItem = ({
 console.log(image)
 return <div className='repost'>
     {repostAvatar === undefined || null ? '' : (
-     <div className='repost-OG-info'>
-       <img className='repost-avatar' src={repostAvatar}/>
-       <div className='repost--OG--info__names'>
+     <div className='repost--OG-info'>
+       <img className='repost--avatar' src={repostAvatar}/>
+       <div className='repost--OG-info__names'>
          <p>{repostName}</p>
          <p>@{repostHandle}</p> &nbsp; 
        </div>
-       <p className='repost-date'><Moment format='MMM/YY'>{date}</Moment></p>
+       <p className='repost--date'><Moment format='MMM/YY'>{date}</Moment></p>
      </div>
      )}
 
@@ -29,7 +29,7 @@ return <div className='repost'>
      {image && image.length == 0 ? (
                           <Fragment>
                             <p>.....</p>
-                            <i className='fa fa-commenting article-image-missing'></i>
+                            <i className='fa fa-commenting article-image__missing'></i>
                           </Fragment>
                           ) : (
                           <Fragment>

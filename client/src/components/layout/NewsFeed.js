@@ -27,8 +27,7 @@ const Newsfeed = ({
                     <NewsFeedItem user={user}/>
                 </Fragment>
            </div>
-           <div className='loginBox'>
-
+           <div className='login-box--container'>
             <LoginBox />
            </div>
        </div> 

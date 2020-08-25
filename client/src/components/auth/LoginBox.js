@@ -10,10 +10,9 @@ const Login = ({ login, isAuthenticated }) => {
         email: '',
         password: ''
     });
-
     const { email, password } = formData;
 
- const onChange = e => setFormData({... formData,[e.target.name]:e.target.value});
+    const onChange = e => setFormData({... formData,[e.target.name]:e.target.value});
     const onSubmit = async e => {
         e.preventDefault();
         login(email, password);
@@ -23,7 +22,7 @@ const Login = ({ login, isAuthenticated }) => {
         return <Redirect to='/dashboard' />;
     }
     return (
-        <div className='login--form'>
+        <div className='login--box'>
             <p><i className="fas fa-user"></i> </p>
             <h1>Login</h1>
             <form onSubmit={e => onSubmit(e)}>
@@ -46,25 +45,22 @@ const Login = ({ login, isAuthenticated }) => {
                     required
                 />
                 </div>
-                <input type="submit" className='loginButton' value="Sign In" />
+                <input type="submit" className='login--button' value="Sign In" />
             </form>
-            <div className='divider'>
+            <div className='login--divider'>
                 <span>OR</span>
             </div>
             <p className="my-1">
-                <Link className='loginButton' to="/register">Sign Up</Link>
+                <Link className='login--button' to="/register">Sign Up</Link>
             </p>
-            <span className='loginFooter'>&copy; 2020 Chattr</span>
-
-
+            <span className='login--footer'>&copy; 2020 Chattr</span>
         </div>
     );
 };
-
 Login.propTypes = {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired
-}
+};
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });

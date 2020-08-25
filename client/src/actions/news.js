@@ -314,3 +314,17 @@ export const filterByIndependent = () => async dispatch => {
     }
     
 }
+//remove any duplicate objects in an array based off of the second parameter passed in
+export const getUnique = (arr, comparison) => {
+
+    // store the comparison  values in array
+    const unique =  arr.map(e => e[comparison])
+
+    // store the indexes of the unique objects
+    .map((e, i, final) => final.indexOf(e) === i && i)
+
+    // eliminate the false indexes & return unique objects
+    .filter((e) => arr[e]).map(e => arr[e]);
+
+return unique;
+}

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,15 +7,10 @@ import { getCurrentProfile, getProfiles } from '../../actions/profile';
 import ProfileWidgetItem from './ProfileWidgetItem';
 
 const DashboardProfileWidget = ({ auth: {user}, getCurrentProfile, getProfiles, profile: {profile, profiles, loading}}) => {
-
-  useEffect(() => {
-    // getProfiles();
-  }, []);
-
   return (
     <Fragment>
       {profile === null  ?  <Spinner /> : <Fragment>
-        
+
         <div className='dashboard--profile-widget'>
       <h2>People you follow</h2>
       {profile.following.map(item => {
@@ -23,8 +18,8 @@ const DashboardProfileWidget = ({ auth: {user}, getCurrentProfile, getProfiles, 
       })}
          <span className='seeMore'><Link to='/profiles'>See More</Link></span>
       </div>
-        </Fragment>}
-
+        </Fragment>
+        }
     </Fragment>
   );
 

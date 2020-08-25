@@ -23,14 +23,14 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
   return !followerProfiles ? (
     <Spinner />
   ) : (
-    <div className='dashboard--profile--following--container'>
+    <div className='dashboard--profile-following'>
 
 {!seeMore ? (
 
 <Fragment>
 {followerProfiles && followerProfiles.length <= 0 && <p>There doesn't seem to be anything here</p>}
 {followerProfiles.slice(0,6).map(follower => {
-        return <div  className='dashboard--profile--following--container-user' key={follower._id}>
+        return <div  className='dashboard--profile-following--user-container' key={follower._id}>
             <img src={follower.avatar} />
         <p>{follower.firstName}</p>
     </div>
@@ -39,7 +39,7 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
 ) : (
 <Fragment>
 {followerProfiles.map(follower => {
-        return <div  className='dashboard--profile--following--container-user' key={follower._id}>
+        return <div  className='dashboard--profile-following--user-container' key={follower._id}>
             <img src={follower.avatar} />
         <p>{follower.firstName}</p>
     </div>

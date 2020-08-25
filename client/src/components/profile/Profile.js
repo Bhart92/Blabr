@@ -42,7 +42,7 @@ if(!isAuthenticated){
 }
     return !profile ? <Spinner /> : (
         <Fragment>
-                <div className='profile--container'>
+        <div className='profile--container'>
         {!profile  ?  (<Fragment><Spinner /></Fragment>) : <Fragment>
             <div className='profile--top'>        
             <img src={profile.user.avatar} />

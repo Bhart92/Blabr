@@ -1,4 +1,4 @@
-.newsfeed--filter-burger-menu{
+.newsfeed--filter--burger-menu{
     display: none;
 }
 .newsfeed--filter--burger-modal{
@@ -13,20 +13,18 @@
 // Media Qs
 
 @media only screen and (max-width: 700px){
-    .newsfeed--filter-burger-menu{
-        display: block;
-    }
-    .newsfeed--filter-burger-menu--container{
+    .newsfeed--filter--burger-menu--container{
         overflow: hidden;
         position: relative;
         height: 100%;
         width: 35%;
     }
-    .newsfeed--filter-burger-menu{
+    .newsfeed--filter--burger-menu{
         position: absolute!important;
         top: 0;
         right: 20px;
         z-index: 100;
+        display: block;
     }
     .newsfeed--filter--burger-modal{
         display: block;

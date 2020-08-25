@@ -1,4 +1,4 @@
-.post-item{
+.post--item{
     width: 95%;
     margin: 0 auto;
     padding: 60px 0;
@@ -40,7 +40,7 @@
         }
     }
 }
-.post-date{
+.post--date{
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -121,7 +121,7 @@
     }
 }
 @media only screen and (max-width: 700px){
-    .post-item{
+    .post--item{
         display: flex;
         flex-direction: column;
         padding: 20px 0 60px 0;

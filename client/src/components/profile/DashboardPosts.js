@@ -12,8 +12,6 @@ const DashboardPosts = ({ getPosts, user, post: { posts, loading } }) => {
   }, [getPosts]);
   const [seeMore, setSeeMore] = useState(false);
   const [seeMoreText, setSeeMoreText] = useState('See All');
-
-
   const toggleSeeMore = () => {
      setSeeMore(!seeMore); 
   }
@@ -23,14 +21,9 @@ const userPostArray = posts.filter(post => post.user == user._id)
   ) : (
     <div>
       <ul>
-
-
-
       {userPostArray.length <= 0 && <p>Please add some posts</p>}
-
     {!seeMore ? (
       <Fragment>
-
       {userPostArray.slice(0, 6).map(item => {
             return <li key={item._id}>
 
@@ -52,7 +45,6 @@ const userPostArray = posts.filter(post => post.user == user._id)
       <Fragment>
               {userPostArray.map(item => {
             return <li key={item._id}>
-
             {item.text && <Fragment>
                 <p>{item.text && item.text !== null || undefined ? item.text.substring(0, 15) : ''}... </p>
               </Fragment>}
@@ -68,10 +60,8 @@ const userPostArray = posts.filter(post => post.user == user._id)
         })}
       </Fragment>
     )}
-
-
       </ul>
-      <span className='profile--posts-seeMore--btn' onClick={() => toggleSeeMore()}>
+      <span className='profile--posts--seeMore-btn' onClick={() => toggleSeeMore()}>
         <span>{!seeMore ? 'See All' : 'Hide'}</span>
         </span>
     </div>

@@ -14,8 +14,8 @@ const CommentItem = ({
 }) => {
   console.log(comment)
   return (
-        <div className='comment-item'>
-          <div className='comment-item--userTitle'>
+        <div className='comment--item'>
+          <div className='comment--item--userTitle'>
             <div>
               <Link to={`/profile/${user}`}>
                           <img
@@ -32,7 +32,7 @@ const CommentItem = ({
             </p>
             {!auth.loading && user === auth.user._id && (
               <button
-              className='comment-item--delete'
+              className='comment--item--delete'
               onClick={e => deleteComment(postId, _id)}
               type='button'
               >
@@ -41,24 +41,21 @@ const CommentItem = ({
             )}
             </div>
           </div>
-          <div className='comment-item--info'>
-            <p className='comment--item--info--desc'>
+          <div className='comment--item--info'>
+            <p className='comment--item--info-desc'>
                 {text}
             </p>
           </div>
         </div>
     )
-            };
-
+ };
 CommentItem.propTypes = {
     postId: PropTypes.number.isRequired,
     comment: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     deleteComment: PropTypes.func.isRequired
 }
-
 const mapStateToProps = state => ({
     auth: state.auth
 });
-
 export default connect(mapStateToProps, { deleteComment })(CommentItem);

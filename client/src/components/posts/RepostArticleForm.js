@@ -11,10 +11,6 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
   const [text, setText] = useState(null);
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
-  
-
-
-
   function openRepostModal() {
     setRepostModalOpen(true);
   }
@@ -29,7 +25,6 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
   function closeCommentaryModal(){
     setCommentaryModalOpen(false);
       }
-
     const customStyles = {
       content : {
         position              : 'fixed',
@@ -69,10 +64,9 @@ const onSubmit = (e) => {
 }
   return (
     <div className='post-form'>
-
       <i className="fas fa-retweet" onClick={openRepostModal}></i>
       <Modal
-          className='repost-item-modal'
+          className='repost--item-modal'
           isOpen={repostModalOpen}
           onRequestClose={closeRepostModal}
           style={customStyles}
@@ -101,7 +95,7 @@ const onSubmit = (e) => {
           </div>
         </Modal>
         <Modal
-          className='repost-item-modal-inner'
+          className='repost--item-modal-inner'
           isOpen={commentaryModalOpen}
           onRequestClose={closeCommentaryModal}
           style={customStylesSecond}

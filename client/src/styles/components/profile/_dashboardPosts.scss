@@ -1,4 +1,4 @@
-.seeMore, .profile--posts-seeMore--btn{
+.seeMore, .profile--posts--seeMore-btn{
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -8,7 +8,7 @@
         cursor: pointer;
     }
 }
-.profile--posts-seeMore--btn{
+.profile--posts--seeMore-btn{
     bottom: -25px;
 }
 
@@ -16,29 +16,29 @@
 
 
 @media only screen and (max-width: 1100px){
-    .profile--posts-seeMore--btn{
+    .profile--posts--seeMore-btn{
         span{
             font-size: 1.35rem;
         }
     }
 }
 @media only screen and (max-width: 900px){
-    .profile--posts-seeMore--btn {
+    .profile--posts--seeMore-btn {
         bottom: 5px!important; 
    }
 }
 @media only screen and (max-width: 700px){
-    .profile--posts-seeMore--btn {
+    .profile--posts--seeMore-btn {
         bottom: 11px !important;
     }
 }
 @media only screen and (max-width: 375px){
-    .profile--posts-seeMore--btn {
+    .profile--posts--seeMore-btn {
         bottom: 10px !important;
     }
 }
 @media only screen and (max-width: 325px){
-    .profile--posts-seeMore--btn {
+    .profile--posts--seeMore-btn {
         bottom: 17px !important;
         
     }

@@ -59,34 +59,33 @@ const CreateProfile = ({isAuthenticated, user, createProfile, history, profile:{
       <div className='post--container create--profile--container'>
       {user === null ? <Spinner /> : (
             <Fragment>
-            <h1 className='large text-primary'>Create your profile</h1>
+            <h1>Create your profile</h1>
             <small>* = required field</small>
             <form className='form' onSubmit={e => onSubmit(e)}>
               <div className='form-group'>
                 <div className='form-input-inner'>
                   <input type='text'  value={user.firstName} />
-                  <small className='form-text'>
+                  <small>
                     First name
                   </small>
                 </div>
                 <div className='form-input-inner'>
                   <input type='text'  value={user.lastName} />
-                  <small className='form-text'>
+                  <small>
                     Last name
                   </small>
                 </div>
               </div>
-
               <div className='form-group'>
               <div className='form-input-inner'>
                 <input type='text'  value={user.avatar} />
-                <small className='form-text'>
+                <small>
                 Gravatar profile link
                 </small>
                 </div>
                 <div className='form-input-inner'>
                 <input type='text' name='status' value={status} onChange={e => onChange(e)} />
-                <small className='form-text'>
+                <small>
                 What is your work title?
                 </small>
                 </div>

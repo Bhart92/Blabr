@@ -15,7 +15,7 @@ const WidgetPostItem = ({
 }) => {
 
   return (
-  <div className='post-item'>
+  <div className='post--item'>
     <div className='post--header'>
       <Link to={`/profile/${user}`}>
         <h4>{name}</h4>
@@ -26,14 +26,9 @@ const WidgetPostItem = ({
     <p>{text !== undefined && text !== null ? text.slice(0,35) : 'Please add some posts'}...</p>
     <Link to=''>Read More...</Link>
     </div>
-
   </div>
 );
 }
-
-WidgetPostItem.defaultProps = {
-};
-
 WidgetPostItem.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,

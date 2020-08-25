@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import NewsSpinner from '../layout/NewsSpinner';
 import NewsfeedBurgerMenu from './NewsfeedBurgerMenu';
-
 import { filterByCNN, filterByFox, filterByNY, filterByWashPo, filterByBBC, filterByIndependent, filterByBlaze } from '../../actions/news';
-
-
 const NewsFilterBar = ({ 
     filterByNY,
     filterByCNN,
@@ -24,7 +21,7 @@ const NewsFilterBar = ({
     const toggleMobileNav = () => {
         setIsOpen(!isOpen);  
         const filterModal = document.querySelector('.newsfeed--filter--burger-modal');
-        const buttonBar = document.querySelector('.newsFeed--newsFilterBar--buttons');
+        const buttonBar = document.querySelector('.newsFeed--newsFilterBar-buttons');
         filterModal.classList.toggle('visible');
         buttonBar.classList.toggle('overFlowUnset');
 
@@ -33,12 +30,12 @@ const NewsFilterBar = ({
     return (
         <div className='newsFeed--newsFilterBar'>
             <div className='newsFeed--newsFilterBar--container'>
-                <div className='newsFeed--newsFilterBar--header'>
+                <div className='newsFeed--newsFilterBar-header'>
                 <span>Explore</span>
                 <span>{outlet}</span>
 
                 </div>
-            <div className='newsFeed--newsFilterBar--buttons'>
+            <div className='newsFeed--newsFilterBar-buttons'>
                 <NewsfeedBurgerMenu toggleMobileNav={toggleMobileNav} isOpen={isOpen}/>
                 <div className='newsfeed--filter--burger-modal'>
                     <ul>
@@ -70,17 +67,14 @@ const NewsFilterBar = ({
                 ) : (
                 <Fragment>
                     {filterArticles.map(item => (
-                        <div className='newsFeed--newsFilterBar--image' key={uuidv4()}>
-                            <div className='newsFeed--newsFilterBar--image__overlay'>
-                                <div className='info-box'>
+                        <div className='newsFeed--newsFilterBar-image' key={uuidv4()}>
+                            <div className='newsFeed--newsFilterBar-image__overlay'>
+                                <div className='newsFeed--newsFilterBar-info-box'>
                                 <p>{item.provider.name}: {item.author}</p>
                                 <p>{item.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
                                 </div>
-
-                            </div>
-                            
-                                <img src={item.image.url} />
-                            
+                            </div>                
+                                <img src={item.image.url} />            
                         </div>
             ))}
             </Fragment>
@@ -89,10 +83,7 @@ const NewsFilterBar = ({
         </div>
     );
 };
-
-
 const mapStateToProps = state => ({
     news: state.news
 });
-
 export default connect(mapStateToProps,{  filterByNY, filterByIndependent, filterByCNN, filterByFox, filterByWashPo, filterByBBC, filterByBlaze })(NewsFilterBar);

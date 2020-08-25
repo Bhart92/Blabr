@@ -7,7 +7,7 @@
     align-self: center;
     justify-content: center;
 }
-.register--form-group{
+.register--input-box{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,7 @@
     }
 
 }
-.register--form-group__small{
+.register--input-box__small{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +42,7 @@
         background: transparent;
     }
 }
-.register--form--footer{
+.register--footer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,17 +66,17 @@
     .post--container.register--container{
         height: 100vh!important;
     }
-    .register--form-group__small input[type='submit'], .register--form-group__small .create-button {
+    .register--input-box__small input[type='submit'], .register--input-box__small .create-button {
         padding: 10px 20px;
     }
-    .register--form-group input {
+    .register--input-box input {
         font-size: 1.2rem;
     }
-    .register--form-group__small input[type='submit']{
+    .register--input-box__small input[type='submit']{
         padding: 15px 25px;
         font-size: 1.15rem;
     }
-    .register--form--footer{
+    .register--footer{
         small, p{
             font-size: 1rem;
         }
@@ -100,7 +100,7 @@
         transform: unset;
         height: 105vh;
     }
-    .register--form-group {
+    .register--input-box {
         flex-direction: column;
     } 
     .register--container .form textarea {

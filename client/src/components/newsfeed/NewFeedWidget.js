@@ -23,7 +23,7 @@ const Newsfeed = ({
     <div className='newsFeed--widget'>
             <div className='newsFeed--article-section__widget'>
                 {articles.length === 0 ? (
-                <div className='newsFeed-Spinner'>
+                <div className='newsFeed--Spinner'>
                     <NewsSpinner />
                 </div>
                 ) : (

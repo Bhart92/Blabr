@@ -1,6 +1,9 @@
 @import './loginBox';
 
-.login--form{
+.login--container{
+    @extend .register--container;
+}
+.login--box{
     border: 0.25px solid rgba(0, 57, 77, 0.15);
     padding: 10px;
     display: flex;
@@ -28,12 +31,12 @@
         }
     }
 }
-.divider{
+.login--login--dividser{
     margin: 10px 0;
     width: 100%;
     text-align: center;
 }
-.loginButton{
+.login--button{
     background: transparent;
     outline: none;
     border: 2px solid deepskyblue;
@@ -48,7 +51,7 @@
         color: white;
     }
 }
-.loginFooter{
+.login--footer{
     position: absolute;
     bottom: -20px;
     font-size: .87rem;
@@ -59,7 +62,7 @@
 .login--title{
     font-size: 2rem;
 }
-.login--form--page{
+.login--input-container{
     height: 500px;
     display: flex;
     align-items: center;
@@ -68,7 +71,7 @@
     div{
         width: 100%;
     }
-    .input--box{
+    .login--input-box{
         margin: 10px 0;
         background: #FFF!important;
         padding: 5px 10px;
@@ -79,39 +82,33 @@
         border-bottom: 2px solid deepskyblue;
     }
 }
-.auth--form--container{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 
 
 @media only screen and (width: 1024px) and (height: 1366px){
-    .loginBox {
+    .login--container {
         width: 30%;
     }
-    .login--form {
+    .login--box {
         width: 245px;
         top: 105px;
     }
-    .login--form form input[type='email'], .login--form form input[type='password'] {
+    .login--box form input[type='email'], .login--box form input[type='password'] {
         margin: 10px 0;
         height: 30px!important;
         font-size: 1.2rem;
         letter-spacing: 1px;
     }
-    .login--form form input[type='submit'], .loginButton{
+    .login--box form input[type='submit'], .login--button{
         font-size: 1.25rem;
     }
 }
 
 @media only screen and (max-width: 700px){
-    .login--form{
+    .login--box{
         display: none;
     }
-    .login--form--page .input--box {
+    .login--box-page .input--box {
         width: 75%;
     }
 }

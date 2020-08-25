@@ -1,4 +1,4 @@
-.profiles-spinner{
+.profiles--spinner{
     width: 100%;
     border: none !important;
     position: absolute;
@@ -27,7 +27,7 @@
 
     }
 }
-.newsFeed-Spinner{
+.newsFeed--Spinner{
     width: 100%;
     height: 100vh;
     display: flex;
@@ -53,7 +53,7 @@
     }
 }
 @media only screen and (max-width: 800px){
-    .profiles-spinner {
+    .profiles--spinner {
         top: 35%;
     }
     .dashboard--spinner {
@@ -66,7 +66,7 @@
     }
 }
 @media only screen and (max-width: 700px){
-    .profiles-spinner {
+    .profiles--spinner {
         top: 33%;
     }
     .dashboard--spinner h2 {
@@ -74,26 +74,26 @@
     }
 }
 @media only screen and (max-width: 375px){
-    .profiles-spinner {
+    .profiles--spinner {
         top: 30%;
     }
     .dashboard--spinner h2 {
         font-size: 1rem;
     }
-    .newsFeed-Spinner{
+    .newsFeed--Spinner{
         span{
             top: 59%;
         }
     }
 }
 @media only screen and (max-width: 325px){
-    .profiles-spinner {
+    .profiles--spinner {
         top: 28%;
     }
     .dashboard--spinner h2 {
         top: 47%;
     }
-    .newsFeed-Spinner{
+    .newsFeed--Spinner{
         span{
             top: 59%;
 

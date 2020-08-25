@@ -9,7 +9,7 @@ import { filterNewsByKeyword } from '../../actions/news';
 const Navbar = ({ auth: { isAuthenticated, loading }, logout, filterNewsByKeyword, news }) => {
 
     const authLinks = (
-        <ul className='navLinks'>
+        <ul className='navBar--navLinks'>
         <li>
                 <Link to='/dashboard'>
                 Dashboard
@@ -29,7 +29,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout, filterNewsByKeywor
         </ul>
     );
     const guestLinks = (
-            <ul className='navLinks'>
+        <ul className='navBar--navLinks'>
                 <li>
                     <Link to='/login'>
                     Login

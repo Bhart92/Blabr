@@ -1,4 +1,4 @@
-.dashboard--profile--following{
+.dashboard--profile-following--container{
     width: 100%;
     background: #e6f9ff;
     padding: 5px 0 30px 0;
@@ -9,7 +9,7 @@
         padding-left: 15px;
     }
 }
-.dashboard--profile--following--container{
+.dashboard--profile-following{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,8 +17,7 @@
     height: auto;
     flex-wrap: wrap;
 }
-.dashboard--profile--following--container-user{
-    margin: 0 5px;
+.dashboard--profile-following--user-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +25,7 @@
     flex-basis: 25%;
     position: relative;
     flex-direction: column-reverse;
+    margin: 0 5px;
     img{
         border-radius: 50%;
     }
@@ -37,43 +37,43 @@
 
 // Media Qs
 @media only screen and (max-width: 1100px){
-    .dashboard--profile--following{
+    .dashboard--profile-following{
         h2{
             font-size: 1.65rem;  
         }
     }
-    .dashboard--profile--following--container-user{
+    .dashboard--profile-following--user-container{
         p{
             font-size: 1.25rem;
         }
     }
 }
 @media only screen and (max-width: 900px){
-    .dashboard--profile--following--container-user{
+    .dashboard--profile-following--user-container{
         img{
             height: 100px;
             width: 100px;
         }
     }
-    .dashboard--profile--following h2 {
+    .dashboard--profile-following h2 {
         font-size: 1.25rem;
     }
-    .dashboard--profile--following--container-user{
+    .dashboard--profile-following--user-container{
         p{
             font-size: .85rem;
         }
     }
 }
 @media only screen and (max-width: 800px){
-    .dashboard--profile--following--container-user p {
+    .dashboard--profile-following--user-container p {
         font-size: 1rem;
         margin-bottom: 5px;
     }
-    .dashboard--profile--following--container-user img {
+    .dashboard--profile-following--user-container img {
         height: 90px;
         width: 90px;
     }
-    .dashboard--profile--following {
+    .dashboard--profile-following {
         margin-bottom: 16px;
         padding: 5px 0 23px 0;
     }

@@ -48,21 +48,21 @@
     display: none;
 }
 .mobile-nav--greeting-box{
-    @extend .dashboard--navBar-greeting-box;
+    @extend .dashboard--navBar--greeting-box;
     width: 50%;
    height: auto;
    bottom: 0;
    position: absolute;
 }
 .mobile-nav--greeting-box--image{
-    @extend .dashboard--navBar-greeting-box--image;
+    @extend .dashboard--navBar--greeting-box__image;
     img{
         height: 50px;
         width: 50px;
     }
 }
 .mobile-nav--greeting-box-info{
-    @extend .dashboard--navBar-greeting-box--header;
+    @extend .dashboard--navBar--greeting-box__header;
     span{
         font-size: 1rem;
     }
@@ -72,7 +72,7 @@
     width: 25px!important;
     height: 15px;
 }
-.mobile-nav-burger{
+.mobile-nav--burger{
     width: 25px!important;
 
 }

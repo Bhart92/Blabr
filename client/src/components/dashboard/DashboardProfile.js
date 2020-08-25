@@ -29,15 +29,13 @@ const DashboardProfile = ({ getCurrentProfile,  user , profile: {profile, follow
                 <h2>Your Posts</h2>
                 <DashboardPosts />
             </div>
-            <div className='dashboard--profile--following'>
+            <div className='dashboard--profile-following--container'>
                 <h2>Following</h2>
-                <div className='dashboard--profile--following--container'>
+                <div className='dashboard--profile-following'>
                 {followerProfiles === null || followerProfiles === undefined ? <Spinner /> : (
                 <ProfileFollowers followerProfiles={followerProfiles} />
-
                 )}
                 </div>
-
             </div>
             </Fragment>}
     </div>

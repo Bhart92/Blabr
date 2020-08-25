@@ -1,6 +1,7 @@
 @import './base/settings';
 @import './base/base';
 @import './components/auth/login';
+@import './components/auth/register';
 @import './components/dashboard/dashboard';
 @import './components/layout/alert';
 @import './components/layout/mobileNav';
@@ -17,15 +18,9 @@
 @import './components/post/commentForm';
 @import './components/profile/dashboardPosts';
 @import './components/profile/profile';
-@import './components/profile/profileAbout';
-@import './components/profile/profileFollowers';
-@import './components/profile/profileLikes';
-@import './components/profile/profilePosts';
-@import './components/profile/profileTop';
 @import './components/profile-forms/createProfile';
 @import './components/profile-forms/editProfile';
 @import './components/profiles/profiles';
-@import './components/profiles/profileItem';
 
 
 
