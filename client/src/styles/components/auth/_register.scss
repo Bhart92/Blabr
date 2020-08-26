@@ -32,14 +32,6 @@
     flex-direction: column-reverse;
     small{
         margin: 20px 0;
-        font-size: .9rem;
-    }
-    input[type='submit']{
-        border: 2px solid deepskyblue;
-        border-radius: 5px;
-        padding: 5px 10px;
-        margin: 0 10px;
-        background: transparent;
     }
 }
 .register--footer{
@@ -47,6 +39,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column-reverse;
+    small{
+        color: #868686;
+        font-size: .9rem;
+    }
 }
 
 @media only screen and (max-width: 1450px){

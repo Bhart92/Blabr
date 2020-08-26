@@ -21,6 +21,7 @@
     }
     p{
         text-align: center;
+        font-size: .85rem;
     }
     img{
         height: 60px;
@@ -35,6 +36,7 @@
         border: none;
         color: darkred;
         outline: none;
+        font-size: .85rem;
         &:hover{
             cursor: pointer;
         }
@@ -54,6 +56,7 @@
     p{
         letter-spacing: 1.15px;
         padding: 5px;
+        font-size: .9rem;
     }
     img{
         width: 100%;
@@ -67,7 +70,7 @@
     justify-content: space-around;
     font-size: 1.15rem;
     span{
-        margin-left: 5px;
+        margin-left: 15px;
     }
     .fa, .fas{
         color: rgba(0,0,0, .45);

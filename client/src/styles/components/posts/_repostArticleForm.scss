@@ -88,7 +88,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.4rem;
+                font-size: 1.05rem;
                 margin-left: 10px;
                 width: 95%;
             }
@@ -98,7 +98,6 @@
             border-radius: 25px;
             padding: 10px;
             width: 90%;
-            margin-bottom: 3rem;
             .data--title{
                 display: flex;
                 align-items: center;
@@ -131,9 +130,9 @@
             background: lighten(deepskyblue, 25%);
             padding: 10px 20px;
             letter-spacing: 2px;
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
+            // position: absolute;
+            // bottom: 15px;
+            // right: 20px;
             transition: all .35s ease;
             &:hover{
                 cursor: pointer;
@@ -152,6 +151,13 @@
         display: block;
         margin: 0 auto;
     }
+}
+.data--repost--details--submit-button{
+    margin: 1rem 2rem 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 // Media Qs

@@ -41,7 +41,6 @@ router.post('/', [auth, [
             const post = await newPost.save();
             res.json(post);
     } catch(err){
-        console.error(err.message);
         res.status(500).json('Server error');
     }
 
@@ -57,7 +56,6 @@ router.get('/', auth, async (req, res) => {
         const posts = await Post.find().sort({ date: -1 });
         res.json(posts);
     } catch(err){
-        console.error(err.message);
         res.status(500).json('Server error');
     }
 });
@@ -73,7 +71,6 @@ router.get('/:id', auth, async (req, res) => {
     }
         res.json(post);
     } catch(err){
-        console.error(err.message);
         if(err.kind === 'ObjectId'){
             return res.status(404).json({ msg: 'Post not found' })
         }
@@ -101,7 +98,6 @@ router.delete('/:id', auth, async (req, res) => {
 
         res.json({ msg: 'Post removed' });
     } catch(err){
-        console.error(err.message);
         res.status(500).json('Server error');
     }
 });
@@ -123,7 +119,6 @@ router.put('/like/:id', auth, async (req, res) => {
 
         res.json(post.likes);
     } catch (err) {
-        console.error(err.message);
         res.status(500).send('Server error');
     }
 });
@@ -150,7 +145,6 @@ router.put('/unlike/:id', auth, async (req, res) => {
 
         res.json(post.likes);
     } catch (err) {
-        console.error(err.message);
         res.status(500).send('Server error');
     }
 });
@@ -184,7 +178,6 @@ router.post('/comment/:id', [auth, [
         await post.save();
         res.json(post.comments);
     } catch(err){
-        console.error(err.message);
         res.status(500).json('Server error');
     }
 
@@ -222,7 +215,6 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
         res.json(post.comments);
 
     } catch (error) {
-        console.error(err.message);
         res.status(500).json('Server error');
     }
 });

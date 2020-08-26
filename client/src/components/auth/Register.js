@@ -97,13 +97,13 @@ const Register = ({ setAlert, register, isAuthenticated, profile: { profile } })
                         />
                         </div>
                         <div className='register--input-box__small'>
-                            <input type='submit' value='Register' />
+                            <input className='login--button' type='submit' value='Register' />
                         </div>
                     </form>
                 </div>
                 <p className="register--footer">
                     <small>Create a Gravatar account to attach a profile image.</small>
-                    <p>Already have an account? <Link to="/login">Sign In</Link></p>
+                    <p>Already have an account? <Link className='login--button' to="/login">Sign In</Link></p>
                 </p>
             </div>
         </div>

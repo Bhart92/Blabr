@@ -73,8 +73,6 @@ export const filterByValue = (array, string) => {
   return array.filter(o =>
       Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
 }
-
-
 // Follow a user
 export const follow = (userId) => async dispatch => {
   try {
@@ -102,8 +100,6 @@ export const follow = (userId) => async dispatch => {
     
   }
 }
-
-
 // Unfollow a user
 export const unfollow = (userId) => async dispatch => {
   try {
@@ -125,7 +121,6 @@ export const unfollow = (userId) => async dispatch => {
     
   }
 }
-
 // Create or update profile
 export const createProfile = (
   formData,

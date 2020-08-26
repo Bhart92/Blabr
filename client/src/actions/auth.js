@@ -65,7 +65,7 @@ console.log('failed')
       });
     }
   };
-
+// Redirect User
 export const redirect = redirectUrl => {
     window.location = redirectUrl;
   };
@@ -108,8 +108,8 @@ export const register = ({ firstName, lastName, email, handle, password }) => as
 
 //lOGOUT / CLEAR PROFILE
 export const logout = () => dispatch => {
-    dispatch({type: CLEAR_PROFILE});
-    dispatch({type: LOGOUT});
+  dispatch({type: CLEAR_PROFILE});
+  dispatch({type: LOGOUT});
 }
 
 

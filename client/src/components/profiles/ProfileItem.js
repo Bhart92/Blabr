@@ -16,12 +16,9 @@ const ProfileItem = ({
             <div>
                 <p>{status} {company && <span> at {company}</span>}</p>
                 <p>{location && <span>{location}</span>}</p>
-                <Link className='profiles--button' to={`/profile/${_id}`} >View Profile</Link>
+                <Link className='login--button' to={`/profile/${_id}`} >View Profile</Link>
             </div>
         </div>;
 };
-
-
-
 
 export default ProfileItem;

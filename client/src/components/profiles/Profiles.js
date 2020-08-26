@@ -1,19 +1,20 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import ProfileItem from '../profiles/ProfileItem';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ isAuthenticated, getProfiles, profile: { profiles, loading } }) => {
    useEffect(() => {
        getProfiles();
-   }, [getProfiles])
+   }, [getProfiles]);
+
    if(!isAuthenticated){
     return <Redirect to='/' />;
     }
-    console.log(profiles)
+
     return <div className='profiles--container'>
         {loading ? <Spinner /> : <Fragment>
             <h1>Profiles</h1>
@@ -24,7 +25,7 @@ const Profiles = ({ isAuthenticated, getProfiles, profile: { profiles, loading }
                     ))
                 ) : <Fragment><Spinner /></Fragment>}
             </div>
-            </Fragment>}
+        </Fragment>}
     </div>;
 };
 

@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import { Route, Switch } from 'react-router-dom';
 import Register from '../auth/Register';
 import Login from '../auth/Login';
 import Alert from '../layout/Alert';
@@ -16,9 +15,9 @@ import PrivateRoute from '../routing/PrivateRoute';
 import MobileNav from '../layout/MobileNav';
 import DashboardNavBar from '../dashboard/DashboardNavBar';
 import DashboardWidgets from '../dashboard/DashboardWidgets';
-import { connect } from 'react-redux';
 import RepostForm from '../posts/RepostForm';
-
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
 const Routes = ({isAuthenticated}) => {
   return (

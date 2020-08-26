@@ -38,7 +38,10 @@
     }
 }
 .navBar--h1{
-    font-size: 2rem;
+    a{
+        font-size: 1.75rem;
+        color: $black;
+    }
 }
 .navBar--h1__span{
     font-weight: 300;
@@ -52,10 +55,18 @@
     justify-content: space-around;
     li{
         padding: 10px;
-        border: 2px solid deepskyblue;
+        border: none;
         border-radius: 5px;
         padding: 5px 10px;
         margin: 0 10px;
+        a{
+            color: #868686;
+            transition: all .35s ease;
+            &:hover{
+                color: $blue;
+                cursor: pointer;
+            }
+        }
     }
 }
 

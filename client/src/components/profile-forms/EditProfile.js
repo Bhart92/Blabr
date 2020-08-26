@@ -1,16 +1,31 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link, withRouter, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const EditProfile = ({
   profile: { profile, loading },
   createProfile,
-  getCurrentProfile,
   isAuthenticated,
   history
 }) => {
+  
+  useEffect(() => {
+    if(profile){
+      setFormData({
+        company: loading || !profile.company ? '' : profile.company,
+        location: loading || !profile.location ? '' : profile.location,
+        status: loading || !profile.status ? '' : profile.status,
+        interests: loading || !profile.interests ? '' : profile.interests.join(','),
+        bio: loading || !profile.bio ? '' : profile.bio,
+        twitter: loading || !profile.social ? '' : profile.social.twitter,
+        facebook: loading || !profile.social ? '' : profile.social.facebook,
+        youtube: loading || !profile.social ? '' : profile.social.youtube,
+        instagram: loading || !profile.social ? '' : profile.social.instagram
+      });
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     company: '',
@@ -25,24 +40,6 @@ const EditProfile = ({
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
-
-  useEffect(() => {
-    getCurrentProfile();
-    if(profile){
-      setFormData({
-        company: loading || !profile.company ? '' : profile.company,
-        location: loading || !profile.location ? '' : profile.location,
-        status: loading || !profile.status ? '' : profile.status,
-        interests: loading || !profile.interests ? '' : profile.interests.join(','),
-        bio: loading || !profile.bio ? '' : profile.bio,
-        twitter: loading || !profile.social ? '' : profile.social.twitter,
-        facebook: loading || !profile.social ? '' : profile.social.facebook,
-        youtube: loading || !profile.social ? '' : profile.social.youtube,
-        instagram: loading || !profile.social ? '' : profile.social.instagram
-      });
-    }
-  }, [getCurrentProfile]);
-
   const {
     company,
     location,
@@ -63,9 +60,9 @@ const EditProfile = ({
     createProfile(formData, history, true);
     window.location.replace("/dashboard")
   };
-if(isAuthenticated && profile === null){
-  return <Redirect to='create-profile'></Redirect>;
-}
+  if(isAuthenticated && profile === null){
+    return <Redirect to='create-profile'></Redirect>;
+  }
   return (
     <div className='post--container edit--container'>
       <h1 className='large text-primary'>Edit Your Profile</h1>
@@ -76,50 +73,49 @@ if(isAuthenticated && profile === null){
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <div className='form-input-inner'>
-          <input type='text' name='status' value={status} placeholder='Work Title' onChange={e => onChange(e)} />
-          <small className='form-text'>
-            What is your work title?
-          </small>
+            <input type='text' name='status' value={status} placeholder='Work Title' onChange={e => onChange(e)} />
+            <small className='form-text'>
+              What is your work title?
+            </small>
           </div>
-          <div className='form-input-inner'>
-          <input
-            type='text'
-            placeholder='Company'
-            name='company'
-            value={company}
-            onChange={e => onChange(e)}
-          />
-          <small className='form-text'>
-            Where do you work?
-          </small>
-          </div>
-        </div>
-
-
-        <div className='form-group'>
           <div className='form-input-inner'>
             <input
               type='text'
-              placeholder='Location'
-              name='location'
-              value={location}
+              placeholder='Company'
+              name='company'
+              value={company}
               onChange={e => onChange(e)}
             />
             <small className='form-text'>
-              City & state(eg. Boston, MA)
+              Where do you work?
             </small>
+          </div>
+        </div>
+
+        <div className='form-group'>
+          <div className='form-input-inner'>
+              <input
+                type='text'
+                placeholder='Location'
+                name='location'
+                value={location}
+                onChange={e => onChange(e)}
+              />
+              <small className='form-text'>
+                City & state(eg. Boston, MA)
+              </small>
             </div>
             <div className='form-input-inner'>
-            <input
-            type='text'
-            placeholder='* interests'
-            name='interests'
-            value={interests}
-            onChange={e => onChange(e)}
-          />
-          <small className='form-text'>
-            What are some of your interests?
-          </small>
+              <input
+              type='text'
+              placeholder='* interests'
+              name='interests'
+              value={interests}
+              onChange={e => onChange(e)}
+            />
+            <small className='form-text'>
+              What are some of your interests?
+            </small>
             </div>
         </div>
         <div className='form-group form-textarea'>
@@ -201,7 +197,6 @@ if(isAuthenticated && profile === null){
 
 EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
-  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -212,5 +207,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProfile, getCurrentProfile }
+  { createProfile }
 )(withRouter(EditProfile));

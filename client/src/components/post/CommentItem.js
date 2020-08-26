@@ -30,7 +30,6 @@ const CommentItem = ({
               </p>
               {!auth.loading && user === auth.user._id && (
                 <button
-                className='comment--item--delete'
                 onClick={e => deleteComment(postId, _id)}
                 type='button'
                 >

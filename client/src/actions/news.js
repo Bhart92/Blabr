@@ -6,7 +6,7 @@ import {
     FILTER_NEWS
 } from './types';
 
-
+// NOT IN USE
 export const getNews = (e) => async dispatch => {
 
     try {
@@ -63,6 +63,7 @@ export const filterNewsByKeyword = (keyword) => async dispatch => {
           });
     }
 }
+//
 export const filterByBBC = () => async dispatch => {
 
     try {
@@ -120,20 +121,17 @@ export const filterByCNN = () => async dispatch => {
             "safeSearch":"false"
             }
             })
-
             dispatch({
                type: GET_NEWS,
                payload: res.data.value
             });
     
     } catch (err) {
-        console.error(err);
-        // dispatch({
-        //     type: AUTH_ERROR,
-        //     payload: { msg: 'something went wrong' }
-        // });
+        dispatch({
+            type: AUTH_ERROR,
+            payload: { msg: 'something went wrong' }
+        });
     }
-    
 }
 export const filterByFox = () => async dispatch => {
     try {
@@ -154,23 +152,18 @@ export const filterByFox = () => async dispatch => {
             "pageSize":"50",
             "q":"site:foxnews.com Top News",
             "safeSearch":"false"
-            }
+                }
             })
-
             dispatch({
                type: GET_NEWS,
                payload: res.data.value
             });
-    
     } catch (err) {
-        console.error(err);
         dispatch({
             type: AUTH_ERROR,
             payload: { msg: 'something went wrong' }
         });
-    }
-    
-    
+    }  
 }
 export const filterByWashPo = () => async dispatch => {
     try {
@@ -198,9 +191,7 @@ export const filterByWashPo = () => async dispatch => {
                type: GET_NEWS,
                payload: res.data.value
             });
-    
     } catch (err) {
-        console.error(err);
         dispatch({
             type: AUTH_ERROR,
             payload: { msg: 'something went wrong' }
@@ -232,10 +223,8 @@ export const filterByNY = () => async dispatch => {
             dispatch({
                type: GET_NEWS,
                payload: res.data.value
-            });
-    
+            });    
     } catch (err) {
-        console.error(err);
         dispatch({
             type: AUTH_ERROR,
             payload: { msg: 'something went wrong' }
@@ -263,20 +252,17 @@ export const filterByBlaze = () => async dispatch => {
             "safeSearch":"false"
             }
             })
-
             dispatch({
                type: GET_NEWS,
                payload: res.data.value
             });
     
     } catch (err) {
-        console.error(err);
         dispatch({
             type: AUTH_ERROR,
             payload: { msg: 'something went wrong' }
         });
-    }
-    
+    }   
 }
 export const filterByIndependent = () => async dispatch => {
     try {
@@ -299,20 +285,16 @@ export const filterByIndependent = () => async dispatch => {
             "safeSearch":"false"
             }
             })
-
             dispatch({
                type: GET_NEWS,
                payload: res.data.value
-            });
-    
+            });   
     } catch (err) {
-        console.error(err);
         dispatch({
             type: AUTH_ERROR,
             payload: { msg: 'something went wrong' }
         });
-    }
-    
+    }  
 }
 //remove any duplicate objects in an array based off of the second parameter passed in
 export const getUnique = (arr, comparison) => {

@@ -44,7 +44,7 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
           right                 : 'auto',
           bottom                : 'auto',
           transform             : 'translate(-50%, -50%)',
-          height                : '545px',
+          height                : 'auto',
           width                 : '25%',
           background            : '#FFF'
         }
@@ -127,7 +127,9 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
                     {description !== undefined && <p>{description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').slice(0,150)}... ... <a href={url}>Read More</a></p>}
                   </div>
                 </div>
+                <div className='data--repost--details--submit-button'>
                 <input onClick={closeCommentaryModal} type='submit'value='Repost'/>
+                </div>
               </form>
             </div>
           </div>

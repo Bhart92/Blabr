@@ -7,7 +7,6 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
 
-
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
@@ -33,11 +32,9 @@ router.get('/me', auth, async (req, res) => {
 
     res.json(profileObj);
   } catch (err) {
-    console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
-
 
 // @route  POST api/profile
 // @desc   Create or update profile
@@ -101,8 +98,7 @@ const {
             await profile.save();
             res.json(profile);
         } catch(err){
-            console.error(err.message);
-                res.status(500).send('Server Error');
+          res.status(500).send('Server Error');
         }
     }
 );
@@ -116,14 +112,12 @@ router.get('/', async (req, res) => {
 
       const followerProfiles = await Profile.find().where('user').in(profiles).exec();
 
-
       const profileObj = {
         profiles,
         followerProfiles
       };
       res.json(profileObj);
     } catch (err) {
-      console.error(err.message);
       res.status(500).send('Server Error');
     }
   });
@@ -140,8 +134,6 @@ router.get('/user/:user_id', async (req, res) => {
     const profiles = profile.followers.map(item => item.user);
     const followerProfiles = await Profile.find().where('user').in(profiles).exec();
 
-
-
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     const profileObj = {
@@ -150,7 +142,6 @@ router.get('/user/:user_id', async (req, res) => {
     };
     res.json(profileObj);
   } catch (err) {
-    console.error(err.message);
     if (err.kind == 'ObjectId') {
       return res.status(400).json({ msg: 'Profile not found' });
     }
@@ -172,7 +163,6 @@ router.delete('/', auth, async (req, res) => {
       res.json({ msg: 'User Deleted' });
     res.json(profiles);
   } catch (err) {
-    console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
@@ -191,27 +181,19 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
         ['firstName', 'avatar', 'handle', 'lastName']
       );
 
-
-
-
       const profiles = profile.following.map(item => item.user);
       const followerProfiles = await Profile.find().where('user').in(profiles).exec();
-      
-
-      
-      
+         
       // Check to make sure current user isnt already following visited user
       if(visitiedProfile.followers.filter(follower => 
           follower.user.toString() === req.user.id ).length > 0){
             return res.status(400).json({msg: 'User already followed'})
           }
 
-
       //  Checks to see if user is attempting to follow themselves
       if (req.user.id === req.params.user_id) {
             return res.status(400).json({msg : 'You cannot follow yourself'})
         } 
-
 
       // Add current user to visited users follwer array
       visitiedProfile.followers.unshift({user:req.user.id});
@@ -244,7 +226,6 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
   }
 })
 
-
 // @route  POST api/users/unfollow-user
 // @desc   unfollow a  user
 // @access Private
@@ -259,9 +240,6 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
         ['firstName', 'avatar', 'handle', 'lastName']
       );
 
-
-
-
       const profiles = profile.following.map(item => item.user);
       const followerProfiles = await Profile.find().where('user').in(profiles).exec();
       
@@ -272,20 +250,14 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
       // // save visited user
       await visitiedProfile.save()
 
-
-
-
-
       // Get current users profile
       const currentProfile =  await Profile.findOne({ user: req.user.id }).populate(
         'followers',
         'user.avatar',
         ['handle', 'avatar']
       );
-        // console.log(currentProfile.following.map(follower => follower.user.toString()).indexOf(visitiedProfile.user))
       const removeIndexTwo = currentProfile.following.map(follower => follower.user.toString()).indexOf(req.params.user_id);
       currentProfile.following.splice(removeIndexTwo, 1);
-
 
       // save current user
       await currentProfile.save();

@@ -18,6 +18,7 @@ return (
         }}
       >
         <textarea
+          maxLength='280'
           name='text'
           cols='30'
           rows='5'
@@ -26,7 +27,7 @@ return (
           onChange={e => setText(e.target.value)}
           required
         />
-        <input type='submit' value='Submit' className='comment-item--button' />
+        <input type='submit' value='Submit' className='login--button' />
       </form>
     </div>
     );

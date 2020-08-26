@@ -1,7 +1,7 @@
 // Colors
 $blue: deepskyblue;
 $lightBlue: #e0f7ff;
-$black: #858585;
+$black: #141414;
 $white: #f4f4f4;
 $lightGrey: #eee;
 
@@ -30,6 +30,7 @@ $font-large: 1.5rem;
 // Icons
 .fa-commenting{
     color: darken(rgba(0, 191, 255, .5), 10%);
+    font-size: 2rem;
 }
 .fa-thumbs-o-down, .fa-thumbs-o-up{
     margin: 0 5px;
@@ -126,7 +127,6 @@ $font-large: 1.5rem;
             background: #b3ecff;
             border: 2px solid transparent;
         }
-
     }
 }
 textarea{
@@ -149,6 +149,20 @@ textarea{
     text-transform: uppercase;
     letter-spacing: 1.1px;
     margin: 0 auto;
+}
+.login--button{
+    background: transparent!important;
+    outline: none;
+    border: none;
+    border-bottom: none!important;
+    padding-bottom: 10px;
+    transition: all .35s ease;
+    margin: 25px auto!important;
+    color: #868686;
+    &:hover{
+        cursor: pointer;
+        color: $blue;
+    }
 }
 @media only screen and (max-width: 1450px){
     .container {

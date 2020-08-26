@@ -46,7 +46,8 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
         transform             : 'translate(-50%, -50%)',
         height                : '135px',
         width                 : '300px',
-        textAlign             : 'center'
+        textAlign             : 'center',
+        backgroundColor       : '#FFF'
       }
     };
 
@@ -58,7 +59,7 @@ const PostForm = ({ addPost, title, handle, originalCommentary, commentary, repo
         right                 : 'auto',
         bottom                : 'auto',
         transform             : 'translate(-50%, -50%)',
-        height                : '670px',
+        height                : 'auto',
         width                 : '25%',
         background            : '#FFF'
       }
@@ -157,7 +158,9 @@ return user === null ? <Spinner /> : (
                       )}
                     </div>
                   </div>
-                  <input onClick={closeCommentaryModal} type='submit'value='Repost'/>
+                    <div className='data--repost--details--submit-button'>
+                      <input onClick={closeCommentaryModal} type='submit'value='Repost'/>
+                  </div>
                 </form>
               </div>
             </div>

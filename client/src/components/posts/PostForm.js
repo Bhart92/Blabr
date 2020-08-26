@@ -17,7 +17,7 @@ const PostForm = ({ addPost }) => {
         }}
       >
         <textarea
-        maxLength='280'
+          maxLength='280'
           name='commentary'
           cols='30'
           rows='5'

@@ -2,6 +2,7 @@
     font-size: 16px;
     box-sizing: border-box;
     text-rendering: optimizeLegibility;
+    color: $black;
 }
 body{
     display: flex;
@@ -19,9 +20,13 @@ ul li{
     list-style-type: none;
 }
 a{
-
     text-decoration: none;
+    transition: all .35s ease;
     &:link, &:visited{
-        color: black;
+        color: #868686;
+    }
+    &:hover{
+        color: $black;
+        cursor: pointer;
     }
 }
