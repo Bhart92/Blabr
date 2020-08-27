@@ -22,31 +22,36 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
   return !followerProfiles ? (
     <Spinner />
   ) : (
-    <div className='dashboard--profile-following'>
-      {!seeMore ? (
-        <Fragment>
-          {followerProfiles && followerProfiles.length <= 0 && <p>There doesn't seem to be anything here</p>}
-            {followerProfiles.slice(0,6).map(follower => {
-              return <div className='dashboard--profile-following--user-container' key={follower._id}>
+    <Fragment>
+      <div className='dashboard--profile-following'>
+        {!seeMore ? (
+          <Fragment>
+            {followerProfiles && followerProfiles.length <= 0 && <p>There doesn't seem to be anything here</p>}
+              {followerProfiles.slice(0,6).map(follower => {
+                return <div className='dashboard--profile-following--user-container' key={follower._id}>
+                  <img src={follower.avatar} />
+                  <p>{follower.firstName}</p>
+                </div>
+              })}
+          </Fragment>
+          ) : (
+          <Fragment>
+            {followerProfiles.map(follower => {
+              return <div  className='dashboard--profile-following--user-container' key={follower._id}>
                 <img src={follower.avatar} />
                 <p>{follower.firstName}</p>
               </div>
             })}
-        </Fragment>
-        ) : (
-        <Fragment>
-          {followerProfiles.map(follower => {
-            return <div  className='dashboard--profile-following--user-container' key={follower._id}>
-              <img src={follower.avatar} />
-              <p>{follower.firstName}</p>
-            </div>
-          })}
-        </Fragment>
-      )}
-      <span className='seeMore' onClick={() => toggleSeeMore()}>
-        {followerProfiles.length <= 6 ? '' : <span>{!seeMore ? 'See All' : 'Hide'}</span>}
-      </span>
-    </div>
+          </Fragment>
+        )}
+      </div>
+      <Fragment>
+            <span className='seeMore' onClick={() => toggleSeeMore()}>
+          {followerProfiles.length <= 6 ? '' : <span>{!seeMore ? 'See All' : 'Hide'}
+          </span>}
+        </span>
+      </Fragment>
+    </Fragment>
   );
 };
 ProfileFollowers.propTypes = {

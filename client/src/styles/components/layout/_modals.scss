@@ -150,9 +150,9 @@ height: 100%;
 }
 @media only screen and (max-width: 800px){
     .ReactModal__Content {
-        top: unset !important;
-        right: 25% !important;
-        width: 51% !important;
+        top: 50% !important;
+        right: 50% !important;
+        width: 85% !important;
     }
     .dashboard--modal--settings-container .modal--settings{
         margin: unset!important;

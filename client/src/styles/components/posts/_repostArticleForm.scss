@@ -130,9 +130,6 @@
             background: lighten(deepskyblue, 25%);
             padding: 10px 20px;
             letter-spacing: 2px;
-            // position: absolute;
-            // bottom: 15px;
-            // right: 20px;
             transition: all .35s ease;
             &:hover{
                 cursor: pointer;
@@ -211,6 +208,9 @@
         top: 50% !important;
         padding: 20px;
     }
+    .repost--modal--commentary--header{
+        width: 100%;
+    }
     .ReactModal__Content.repost--item-modal{
         height: 150px!important;
         background: #FFF!important;
@@ -260,7 +260,7 @@
     }
     .ReactModal__Content.repost--item-modal-inner {
         height: 510px !important;
-        width: 85% !important;
+        width: 90% !important;
         top: 50%!important;
     } 
     .repost--modal--commentary--header form .repost--modal--commentary--input textarea {

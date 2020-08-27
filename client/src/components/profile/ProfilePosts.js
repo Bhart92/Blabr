@@ -16,7 +16,7 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
   return loading ? (
     <Spinner />
   ) : (
-    <div className='profile--posts-seeMore'>
+    <div>
       <ul>
         {visitedPostArray && visitedPostArray.length <= 0 && <p> {profile.user.firstName} has made no posts yet</p>}
           {!seeMore ? (
@@ -60,9 +60,11 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
             </Fragment>
           )}
       </ul>
-      <span className='profile--posts-seeMore--btn' onClick={() => toggleSeeMore()}>
+      <div className='profile--posts-seeMore'>
+      <span className='profile--posts--seeMore-btn' onClick={() => toggleSeeMore()}>
         <span>{!seeMore ? 'See All' : 'Hide'}</span>
       </span>
+      </div>
     </div>
   );
 };

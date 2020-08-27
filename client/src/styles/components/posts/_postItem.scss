@@ -134,13 +134,13 @@
         border-bottom: 2px dashed #eeeeee;
     }
     .post--container .post--body{
-        width: 90%;
+        width: 90%!important;
     }
     .post--container .post--actionBox span{
         margin-left: 0;
     }
     .post--container .post--actionBox span.like-count{
-        margin-left: 10px;
+        margin-left: 25px;
         margin-right: -10px;
     }
 }
