@@ -25,6 +25,13 @@
     padding: 0;
     padding-left: 35px;
     justify-content: space-around;
+    .dashboard--navBar--no-profile{
+        margin-top: 3rem;
+        text-align: left;
+        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+    }
     ul{
         margin-top: 3rem;
         text-align: left;

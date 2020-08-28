@@ -10,9 +10,9 @@ import { deleteAccount } from '../../actions/profile';
 const DashboardNavBar = ({
     auth: { user },
     logout,
+    profile: {profile},
     deleteAccount
 }) => {
-
     const customStyles = {
         content : {
           position              : 'fixed',
@@ -39,12 +39,23 @@ const DashboardNavBar = ({
         <Link to='/dashboard'>Chattr <i className='fa fa-commenting'></i></Link>
         </div>
         <div className='dashboard--navBar-list'>
-            <ul>
-                <li><NavLink exact to='/dashboard' activeClassName='active'><i className="fas fa-home"></i> Home</NavLink></li>
-                <li><NavLink exact to='/explore' activeClassName='active' ><i className="fas fa-newspaper"></i> Explore</NavLink></li>
-                <li><NavLink exact to='/posts' activeClassName='active' ><i className='fa fa-commenting'></i> Posts</NavLink></li>
-                <li><NavLink exact to='/profiles' activeClassName='active' ><i className='fa fa-user'></i> People</NavLink></li>
-            </ul>
+                {profile === null && user ? (
+                    <Fragment>
+                        <ul className='dashboard--navBar--no-profile'>
+                            <li><NavLink exact to='/dashboard' activeClassName='active'><i className="fas fa-home"></i> Home</NavLink></li>
+                            <li><NavLink exact to='/create-profile' activeClassName='active' ><i className="fas fa-newspaper"></i> Create Profile</NavLink></li>
+                        </ul>
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        <ul>
+                            <li><NavLink exact to='/dashboard' activeClassName='active'><i className="fas fa-home"></i> Home</NavLink></li>
+                            <li><NavLink exact to='/explore' activeClassName='active' ><i className="fas fa-newspaper"></i> Explore</NavLink></li>
+                            <li><NavLink exact to='/posts' activeClassName='active' ><i className='fa fa-commenting'></i> Posts</NavLink></li>
+                            <li><NavLink exact to='/profiles' activeClassName='active' ><i className='fa fa-user'></i> People</NavLink></li>
+                        </ul>
+                    </Fragment>
+                )}
         </div>
         <div className='dashboard--navBar--greeting-box'>
         {user.avatar ? (
@@ -101,7 +112,8 @@ const DashboardNavBar = ({
 };
 DashboardNavBar.propTypes = {
     deleteAccount: PropTypes.func.isRequired,
-    logout: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

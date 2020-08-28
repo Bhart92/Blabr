@@ -1,15 +1,17 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { getPosts } from '../../actions/posts';
 
-const Posts = ({ getPosts, post: { posts, loading } }) => {
+const Posts = ({ getPosts, profile: {profile}, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
+  if(profile === null) return <Redirect to='/dashboard' />
   return loading ? (
     <Spinner />
   ) : (
@@ -28,11 +30,13 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 };
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
+  profile: state.profile
 });
 
 export default connect(

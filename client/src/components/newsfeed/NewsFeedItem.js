@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { filterByNY, getUnique } from '../../actions/news';
 import { v4 as uuidv4 } from 'uuid';
 
-const NewsFeedarticle = ({ isAuthenticated, auth: {user}, news: { articles } }) => {
+const NewsFeedarticle = ({ isAuthenticated, profile: {profile}, auth: {user}, news: { articles } }) => {
     let filterArticles = articles.filter((article, index) => index !== 0);
     filterArticles.map((e) => {
         e.id = uuidv4()
@@ -18,7 +18,7 @@ const NewsFeedarticle = ({ isAuthenticated, auth: {user}, news: { articles } }) 
                         <div className='newsFeed--article-info--container'>
                         <p className='newsFeed--article-title'>{article.description.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 60)}...</p>
                         <div className='button-container'>
-                        {isAuthenticated && <Fragment>
+                        {isAuthenticated && profile !== null && <Fragment>
                             <RepostArticleForm user={user} article={article}/>
                             </Fragment>}
                         </div>
@@ -35,11 +35,13 @@ const NewsFeedarticle = ({ isAuthenticated, auth: {user}, news: { articles } }) 
     );
 };
 NewsFeedarticle.propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     news: state.news,
     auth: state.auth,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    profile: state.profile
 });
 export default connect(mapStateToProps)(NewsFeedarticle);
