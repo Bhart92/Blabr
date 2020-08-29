@@ -129,9 +129,11 @@
         flex-direction: column;
         padding: 20px 0 60px 0;
     }
+
     .post--container .post--header{
         padding: 20px 5px 30px 5px;
         border-bottom: 2px dashed #eeeeee;
+        padding-bottom: 15px!important;
     }
     .post--container .post--body{
         width: 90%!important;
@@ -139,9 +141,10 @@
     .post--container .post--actionBox span{
         margin-left: 0;
     }
-    .post--container .post--actionBox span.like-count{
-        margin-left: 25px;
-        margin-right: -10px;
+    .post-form{
+        display: flex;
+        flex-basis: 35%;
+        justify-content: center;
     }
 }
 @media only screen and (max-width: 325px){

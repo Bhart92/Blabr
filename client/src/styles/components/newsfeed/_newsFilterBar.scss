@@ -131,6 +131,10 @@
         position: relative;
         overflow: hidden;
 }
+.newsFeed--newsFilterBar-buttons .newsfeed--filter--burger-modal__mobile{
+    display: flex;
+    margin: unset;
+    }
 }
 @media only screen and (max-width: 325px){
     .newsFeed--newsFilterBar-image .newsFeed--newsFilterBar-image__overlay .newsFeed--newsFilterBar-info-box {

@@ -34,7 +34,7 @@ const NewsFilterBar = ({
             <div className='newsFeed--newsFilterBar-buttons'>
                 <NewsfeedBurgerMenu toggleMobileNav={toggleMobileNav} isOpen={isOpen}/>
                 <div className='newsfeed--filter--burger-modal'>
-                    <ul>
+                    <ul className='newsfeed--filter--burger-modal__mobile'>
                             <li id='trending' onClick={filterByNY}>NYTimes</li>
                             <li id='CNN'onClick={filterByCNN}>CNN</li>
                             <li id='FOX' onClick={filterByFox}>FOX</li>
@@ -44,7 +44,7 @@ const NewsFilterBar = ({
                             <li id='Independent' onClick={filterByIndependent}>Independent</li>
                     </ul> 
                 </div>
-                <ul>
+                <ul className=''>
                         <li id='trending' onClick={filterByNY}>NYTimes</li>
                         <li id='CNN'onClick={filterByCNN}>CNN</li>
                         <li id='FOX' onClick={filterByFox}>FOX</li>

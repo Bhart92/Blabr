@@ -14,9 +14,7 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
         setSeeMoreText('See All')
        } else{
         setSeeMoreText('Hide')
-
        }
-       console.log(seeMore)
   }
 
   return !followerProfiles ? (

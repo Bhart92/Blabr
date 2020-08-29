@@ -75,9 +75,21 @@
         }
         .post--actionBox .fa, .post--actionBox .fas {
             font-size: 1.45rem;
+            padding: 0;
+            margin: 0;
+        }
+        .post--actionBox{
+            a{
+                display: flex;
+                flex-basis: 35%;
+                justify-content: center; 
+            }
         }
         .post--actionBox span {
-            margin-left: 9px;
+            display: flex;
+            flex-basis: 35%;
+            justify-content: center;
+            margin-left: 0;
             font-size: 1.1rem;
         }
 

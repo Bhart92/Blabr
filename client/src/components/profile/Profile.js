@@ -77,7 +77,7 @@ const Profile = ({  getProfileById, follow, unfollow, auth, match,  post, profil
                         <h2>{profile.firstName}s posts</h2>
                         <ProfilePosts />
                     </div>
-                    <div className='dashboard--profile--following'>
+                    <div className='dashboard--profile-following--container'>
                         <h2>{profile.user.firstName}s followers</h2>
                         <ProfileFollowers followerProfiles={followerProfiles}/>
                     </div>

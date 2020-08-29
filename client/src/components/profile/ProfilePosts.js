@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
+import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -33,7 +34,7 @@ const visitedPostArray = posts.filter(post => post.user == profile.user._id)
                       <p>{item.title && item.title !== null || undefined ? item.title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('').substring(0, 45) : ''} ...</p>
                     </Fragment>}
                     <Link to={`/posts/${item._id}`}>Read more</Link>
-                    <p>{item.date}</p>
+                    <p><Moment format='MM/DD/YYYY'>{item.date}</Moment></p>
                 </li>
               })}
             </Fragment>
