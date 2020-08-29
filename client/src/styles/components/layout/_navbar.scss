@@ -90,6 +90,12 @@
     }
 }
 @media only screen and (max-width: 700px){
+    .navBar{
+        position: relative;
+        top: unset;
+        transform: unset;
+        left: unset;
+    }
     .navBar--h1 {
         font-size: 1.25rem;
     }

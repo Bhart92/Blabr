@@ -32,7 +32,7 @@ const NewsFilterBar = ({
                 <span>{outlet}</span>
                 </div>
             <div className='newsFeed--newsFilterBar-buttons'>
-                <NewsfeedBurgerMenu toggleMobileNav={toggleMobileNav} isOpen={isOpen}/>
+                {articles.length <= 0 ? '' : <NewsfeedBurgerMenu toggleMobileNav={toggleMobileNav} isOpen={isOpen}/>}
                 <div className='newsfeed--filter--burger-modal'>
                     <ul className='newsfeed--filter--burger-modal__mobile'>
                             <li id='trending' onClick={filterByNY}>NYTimes</li>

@@ -255,14 +255,11 @@
     }
     .ReactModal__Content.repost--item-modal-inner {
         max-height: 705px !important;
-        width: 85% !important;
-        top: 55.5%!important;
-    }
-    .ReactModal__Content.repost--item-modal-inner {
-        height: 510px !important;
-        width: 90% !important;
+        width: 95% !important;
         top: 50%!important;
-    } 
+        padding: 0;
+        z-index: 1001;
+    }
     .repost--modal--commentary--header form .repost--modal--commentary--input textarea {
         font-size: .9rem;
     }
@@ -279,16 +276,19 @@
 }
 @media only screen and (max-width: 325px){
     .ReactModal__Content.repost--item-modal-inner {
-        max-height: 524px !important;
-        height: 465px !important;
-        width: 83% !important;
+        height: auto !important;
+        width: 95% !important;
         top: 50% !important;
+        padding: 5px!important;
     }
     .repost--modal--commentary--header form .repost--modal--commentary--data {
-
-        margin-bottom: 1rem;
+        margin-bottom: 0;
     }
     .data--repost--details p {
         font-size: .7rem;
+    }
+    .repost--modal--commentary--header form .repost--modal--commentary--data {
+        padding: 2px;
+        width: 95%;
     }
 }

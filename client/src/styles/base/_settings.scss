@@ -207,9 +207,9 @@ textarea{
 }
 @media only screen and (max-width: 700px){
     .container {
-        grid-template-columns: 100%;
-        grid-template-areas: "center";
-        margin-top: 75px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
         height: auto;
     }
     .form textarea{
@@ -218,5 +218,15 @@ textarea{
     .form input {
         width: 90%;
         margin: 25px auto;
+    }
+    .auth--container {
+        position: absolute;
+        top: 70%;
+    }
+}
+@media only screen and (max-width: 325px){
+    .auth--container {
+        position: absolute;
+        top: 95%;
     }
 }
