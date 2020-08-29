@@ -10,18 +10,26 @@ const RepostArticleForm = ({ user, addPost, article, article: {title, descriptio
   const [text, setText] = useState(null);
   const [repostModalOpen, setRepostModalOpen] = useState(false);
   const [commentaryModalOpen, setCommentaryModalOpen] = useState(false);
+  function toggleBodyOverflow() {
+    const body = document.querySelector('body');
+    body.classList.toggle('overflow');
+  }
 
   function openRepostModal() {
-      setRepostModalOpen(true);
+    setRepostModalOpen(true);
+    toggleBodyOverflow();
     }
   function closeRepostModal(){
-      setRepostModalOpen(false);
+    setRepostModalOpen(false);
+    toggleBodyOverflow();
   }
   function openCommentaryModal() {
-      setCommentaryModalOpen(true);
+    setCommentaryModalOpen(true);
+    toggleBodyOverflow();
   } 
   function closeCommentaryModal(){
-      setCommentaryModalOpen(false);
+    setCommentaryModalOpen(false);
+    toggleBodyOverflow();
   }
   const customStyles = {
         content : {
