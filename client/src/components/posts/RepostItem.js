@@ -24,6 +24,7 @@ const RepostItem = ({
     {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
     {image && image.length == 0 ? (
       <Fragment>
+            {text !== undefined && text !== null && <p className='repost--commentary'>{commentary}</p>}
         <p>.....</p>
         <i className='fa fa-commenting article-image__missing'></i>
       </Fragment>

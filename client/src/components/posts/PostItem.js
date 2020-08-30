@@ -53,6 +53,17 @@ return user === null ? <Spinner /> :
       <p className='my-1'>{text === undefined || text === null ? commentary : text}</p>
       {image !== undefined && image.length == 0 && (
         <div className='repost'>
+          {repostAvatar === undefined || null ? '' : (
+            <div className='repost--OG-info'>
+              <img className='repost--avatar' src={repostAvatar}/>
+              <div className='repost--OG-info__names'>
+                <p>{repostName}</p>
+                <p>@{repostHandle}</p> &nbsp; 
+              </div>
+              <p className='repost--date'><Moment format='MMM/YY'>{date}</Moment></p>
+            </div>
+          )}
+              {text !== undefined && text !== null && <p className='repost--commentary'>{commentary}</p>}
           {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
             <Fragment>
               <i className='fa fa-commenting article-image-missing'></i>

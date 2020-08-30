@@ -144,6 +144,8 @@ return user === null ? <Spinner /> : (
                         </Fragment>
                       ) : (
                         <Fragment>
+                           {text !== undefined && text !== null && <p className='repost--commentary'>{commentary}</p>}
+                          {title && <p>{title.split('<b>').join('').split('[').join('').split('</b>').join('').split(']').join('')}</p>}
                           {image.length === 0 ? (
                           <Fragment>
                             <i className='fa fa-commenting article-image-missing'></i>
