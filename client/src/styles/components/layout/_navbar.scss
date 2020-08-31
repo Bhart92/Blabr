@@ -96,6 +96,9 @@
         transform: unset;
         left: unset;
     }
+    .navBar .navBar--container {
+        padding: 0;
+    }
     .navBar--h1 {
         font-size: 1.25rem;
     }
