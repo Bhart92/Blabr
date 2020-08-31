@@ -44,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <nav id='navBar' className='navBar'>
             <div className='navBar--container'>
             <h1 className='navBar--h1'>
-                <Link to={isAuthenticated ? '/dashboard' : '/'}>Chattr <i className='fa fa-commenting'></i><span className='navBar--h1__span'>Share. Discuss. Debate.</span></Link>
+                <Link to={isAuthenticated ? '/dashboard' : '/'}>Blabr <i className='fa fa-commenting'></i><span className='navBar--h1__span'>Share. Discuss. Debate.</span></Link>
             </h1>
             {!loading && (<Fragment>
                 { isAuthenticated ? authLinks : guestLinks }
