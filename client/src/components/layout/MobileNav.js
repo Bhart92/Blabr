@@ -36,7 +36,7 @@ return (
     <Fragment>
         <div className='mobile-nav'>
             <div className='mobile-nav--logo'>
-            <Link to='/dashboard'>Chattr <i className='fa fa-commenting'></i></Link>
+            <Link to='/dashboard'>Blabbr <i className='fa fa-commenting'></i></Link>
             </div>
             <div className='mobile-nav--burger-menu'>
             <HamburgerMenu 
