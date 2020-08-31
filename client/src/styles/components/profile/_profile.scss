@@ -116,6 +116,7 @@ p{
     display: flex;
     flex-direction: column;
     padding: 10px 0;
+    background: rgba(255, 255, 255, 0.9);
     h2{
         padding-left: 15px;
     }
@@ -125,7 +126,6 @@ p{
         align-items: center;
         justify-content: center;
         padding-left: 0;
-        margin-bottom: 35px;
         li{
             border-bottom: 3px solid lighten(deepskyblue, 44%);
             border-right: .75px solid lighten(deepskyblue, 44%);
@@ -144,7 +144,6 @@ p{
 }
 .profile--posts-seeMore{
     position: relative;
-    margin-bottom: 2rem;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;

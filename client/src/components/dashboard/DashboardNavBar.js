@@ -36,7 +36,7 @@ const DashboardNavBar = ({
     }
     return user === null ? '' : <div className='dashboard--navbar'>
         <div className='dashboard--navBar-icon'>
-        <Link to='/dashboard'>Chattr <i className='fa fa-commenting'></i></Link>
+        <Link to='/dashboard'>Blabr <i className='fa fa-commenting'></i></Link>
         </div>
         <div className='dashboard--navBar-list'>
                 {profile === null && user ? (

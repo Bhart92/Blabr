@@ -4,16 +4,19 @@ import NewsFilterBar from './NewsFilterBar';
 import NewsFeedItem from './NewsFeedItem';
 import NewsSpinner from './NewsSpinner';
 import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profile';
 import { filterByNY } from '../../actions/news';
 
 const Newsfeed = ({ 
     filterByNY,
+    getCurrentProfile,
     user,
     news: { articles }
  }) => {
-     useEffect(() => {
+    useEffect(() => {
+        getCurrentProfile();
         filterByNY();
-    },[filterByNY]);
+    },[filterByNY, getCurrentProfile]);
     return (
 <div className='post--container'>
     <div className='newsFeed--widget'>
@@ -36,6 +39,7 @@ const Newsfeed = ({
 
 Newsfeed.propTypes = {
     filterByNY: PropTypes.func.isRequired,
+    getCurrentProfile: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 };
 
@@ -44,4 +48,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 });
 
-export default connect(mapStateToProps,{ filterByNY })(Newsfeed);
+export default connect(mapStateToProps,{ filterByNY, getCurrentProfile })(Newsfeed);

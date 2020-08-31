@@ -11,6 +11,10 @@ body{
     justify-content: space-around;
     height: auto;
     font-family: 'Lato', sans-serif;
+    background: url('../img/mainBackk.svg');
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: bottom;
 }
 #root{
     width: 100%;

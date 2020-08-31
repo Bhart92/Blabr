@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NewsFilterBar from '../newsfeed/NewsFilterBar';
 import NewsFeedItem from '../newsfeed/NewsFeedItem';
-import { getCurrentProfile } from '../../actions/profile';
 import { filterByNY } from '../../actions/news';
 import LoginBox from '../auth/LoginBox';
-
+import NewsSpinner from './NewsSpinner';
 
 const Newsfeed = ({ 
     user,
-    filterByNY
+    filterByNY,
+    news: {articles}
  }) => {
      useEffect(() => {
         filterByNY();
     },[filterByNY]);
-    return (
+    return articles.length <= 0 ? <NewsSpinner /> : (
        <div className='newsFeed'>
            <div className='newsFeed--article-section'>
                 <Fragment>
@@ -36,7 +36,8 @@ Newsfeed.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    user: state.auth.user
+    user: state.auth.user,
+    news: state.news
 });
 
 export default connect(mapStateToProps,{ filterByNY })(Newsfeed);

@@ -2,7 +2,6 @@ import React, {Fragment, useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import NewsSpinner from './NewsSpinner';
 import NewsfeedBurgerMenu from './NewsfeedBurgerMenu';
 import { filterByCNN, filterByFox, filterByNY, filterByWashPo, filterByBBC, filterByIndependent, filterByBlaze } from '../../actions/news';
 const NewsFilterBar = ({ 
@@ -56,7 +55,7 @@ const NewsFilterBar = ({
             </div>
             {articles.length <= 0 ? (
             <Fragment>
-                <NewsSpinner />
+                
                 </Fragment>
                 ) : (
                 <Fragment>

@@ -9,6 +9,7 @@
     border-right: 0.5px solid lighten(#1a1a1a, 83%);
     border-left: 0.5px solid lighten(#1a1a1a, 83%);
     overflow-y: scroll;
+    background: rgba(255, 255, 255, .9);
 }
 @import './commentForm';
 @import './commentItem';

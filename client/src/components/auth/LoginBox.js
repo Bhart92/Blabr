@@ -23,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
     }
     return (
         <div className='login--box'>
-            <p><i className="fas fa-user"></i> </p>
+            <p><i class="far fa-comments"></i></p>
             <h1>Login</h1>
             <form onSubmit={e => onSubmit(e)}>
                 <div>
@@ -53,7 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
             <p className="my-1">
                 <Link className='login--button' to="/register">Sign Up</Link>
             </p>
-            <span className='login--footer'>&copy; 2020 Chattr</span>
+            <span className='login--footer'>2020 Blabr</span>
         </div>
     );
 };

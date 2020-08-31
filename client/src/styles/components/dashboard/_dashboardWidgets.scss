@@ -9,6 +9,7 @@
     grid-area: widgets;
     overflow: hidden;
     margin-left: -50px;
+    background: rgba(255, 255, 255, .9);
 }
 .dashboard--widgets__posts{
     height: auto;
@@ -21,7 +22,7 @@
     flex-direction: column;
 }
 .dashboard--widgets__adOne{
-    background: #e8f4f8;
+    background: #fff;
     height: 500px;
     display: flex;
     align-items: center;
@@ -29,7 +30,7 @@
     margin: 2rem 0;
 }
 .dashboard--widgets__adTwo{
-    background: #e8f4f8;
+    background: #fff;
     height: 225px;
     display: flex;
     align-items: center;

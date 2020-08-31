@@ -2,6 +2,9 @@
     width: 100%;
     text-align: center;
     background: white;
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
 }
 .newsFeed--newsFilterBar--container{
     padding-top: 10px;
