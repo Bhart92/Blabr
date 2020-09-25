@@ -16,9 +16,7 @@ const Landing = ({isAuthenticated}) => {
         </Fragment>
     )
 }
-Landing.propTypes = {
-    isAuthenticated: Proptypes.object.isRequired
-};
+
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });

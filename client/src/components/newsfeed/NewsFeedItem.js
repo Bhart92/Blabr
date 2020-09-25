@@ -24,10 +24,8 @@ const NewsFeedarticle = ({ isAuthenticated, profile: {profile}, auth: {user}, ne
                         </div>
                         </div>
                         <div className='newsfeed--article-image'>
-                        <a href={article.image.url}>
                             {!article.image.url ? <a href={article.url}><i className='fa fa-commenting article-image__missing'></i></a> : <a href={article.url}><img src={article.image.url} /></a>}
-                            <a href={article.url}><span>Read More...</span></a>
-                        </a> 
+                            <span><a href={article.url}>Read More...</a></span>
                         </div>
                     </div>
                ))}

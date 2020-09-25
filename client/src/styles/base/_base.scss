@@ -28,7 +28,7 @@ a{
     text-decoration: none;
     transition: all .35s ease;
     &:link, &:visited{
-        color: #868686;
+        color: unset;
     }
     &:hover{
         color: $black;

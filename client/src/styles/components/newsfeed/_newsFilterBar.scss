@@ -81,6 +81,15 @@
         height: 100%;
         width: 100%;
     }
+    a{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i{
+            font-size: 10rem;
+        }
+    }
 }
 
 // Media Qs

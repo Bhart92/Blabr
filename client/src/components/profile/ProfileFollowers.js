@@ -28,7 +28,7 @@ const ProfileFollowers = ({ profile: {profile, profiles}, followerProfiles}) => 
               {followerProfiles.slice(0,6).map(follower => {
                 return <div className='dashboard--profile-following--user-container' key={follower._id}>
                   <img src={follower.avatar} />
-                  <p>{follower.firstName}</p>
+                  <p>{follower.firstName} {follower.lastName}</p>
                 </div>
               })}
           </Fragment>

@@ -22,7 +22,7 @@ const NewsFilterBar = ({
         filterModal.classList.toggle('visible');
         buttonBar.classList.toggle('overFlowUnset');
     };
-    const filterArticles = articles.filter((item, index) => index === 0);
+    const filterArticles = articles.filter((article, index) => index === 0);
     return (
         <div className='newsFeed--newsFilterBar'>
             <div className='newsFeed--newsFilterBar--container'>
@@ -59,16 +59,15 @@ const NewsFilterBar = ({
                 </Fragment>
                 ) : (
                 <Fragment>
-                    {filterArticles.map(item => (
+                    {filterArticles.map(article => (
                         <div className='newsFeed--newsFilterBar-image' key={uuidv4()}>
                             <div className='newsFeed--newsFilterBar-image__overlay'>
                                 <div className='newsFeed--newsFilterBar-info-box'>
-                                <p>{item.provider.name}: {item.author}</p>
-                                <p>{item.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
+                                <p>{article.provider.name}: {article.author}</p>
+                                <p>{article.title.split('<b>').splice(0, 150).join('').split('</b>').join('').split('[').join('').split(']').join('')}...</p>
                                 </div>
                             </div>                
-                            <img src={item.image.url} />            
-                         </div>
+                            {!article.image.url ? <a href={article.url}><i className='fa fa-commenting article-image__missing'></i></a> : <a href={article.url}><img src={article.image.url} /></a>}                         </div>
             ))}
             </Fragment>
             )}

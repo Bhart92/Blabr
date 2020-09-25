@@ -31,8 +31,7 @@ const Newsfeed = ({
 };
 
 Newsfeed.propTypes = {
-    filterByNY: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    filterByNY: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
