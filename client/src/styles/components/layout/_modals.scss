@@ -151,12 +151,12 @@ height: 100%;
 @media only screen and (max-width: 800px){
     .ReactModal__Content {
         top: 50% !important;
-        right: 50% !important;
-        left: 0!important;
+        right: unset!important;
+        left: 50%!important;
         transform: translate(-50%, -50%)!important;
         margin-right: unset!important;
         bottom: 0!important;
-        width: 85% !important;
+        width: 65% !important;
     }
     .dashboard--modal--settings-container .modal--settings{
         margin: unset!important;
