@@ -146,11 +146,11 @@
                 align-self: center;
                 justify-content: center;
                 padding-right: 15px;
-
             }
     }
     .mobile-nav--dropDown-container{
         display: unset;
+        
     }
     .mobile-nav--links{
         width: 95%;
@@ -164,6 +164,7 @@
         flex-direction: column;
         align-self: center;
         justify-content: space-around;
+        height: calc(100vh - 69px);
     }
     .mobile-nav--links ul{
         width: 95%;

@@ -219,12 +219,15 @@ textarea{
         width: 90%;
         margin: 25px auto;
     }
+    .container.register{
+        margin-bottom: 1rem;
+    }
     .auth--container {
         position: unset;
         top: unset;
         left: unset;
         transform: unset;
-        height: 100vh;
+        height: auto;
         display: flex;
         overflow: hidden;
     }
