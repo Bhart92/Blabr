@@ -25,7 +25,7 @@ router.post('/', [auth, [
         const newPost = new Post ({
             text: req.body.text,
             commentary: req.body.commentary,
-            name: `${user.firstName}  ${user.lastName}`,
+            name: `${user.name}`,
             avatar: user.avatar,
             repostAvatar: req.body.avatar,
             repostName: req.body.name,
@@ -168,7 +168,7 @@ router.post('/comment/:id', [auth, [
 
         const newComment = {
             text: req.body.text,
-            name: `${user.firstName}  ${user.lastName}`,
+            name: `${user.name}`,
             avatar: user.avatar,
             user: req.user.id,
             handle: user.handle

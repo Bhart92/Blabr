@@ -23,7 +23,7 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
         }
     };
     const [formData, setFormData] = useState({
-        firstName: '',
+        name: '',
         lastName: '',
         email: '',
         handle: '',
@@ -32,7 +32,7 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
     });
 
     const {
-        firstName,
+        name,
         lastName,
         email,
         handle,
@@ -47,7 +47,7 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
         if(password !== password2){
             setAlert('passwords dont match');
         } else{
-            register({ firstName, lastName, email, handle, password });
+            register({ name, lastName, email, handle, password });
         }
     };
     //Redirect if logged in
@@ -67,12 +67,63 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
             contentLabel="Example Modal"
             ariaHideApp={false}
         >
-                <div id='modal--container' className='modal--container'> 
+            <div id='modal--container' className='modal--container'> 
+            <i className='fa fa-commenting'></i>
 
+                 <div className='modal--container--form'>
+                     <form onSubmit={e => onSubmit(e)}>
+                     <h1>Create An Account</h1>
+                     <div className='register--input-box__small'>
+                            <input className='register--button' type='submit' value='Register' />
+                        </div>
+                         <div className='register--input-box'>
+                             <input
+                                type="text"
+                                placeholder="Name"
+                                name="Name"
+                                value={name}
+                                onChange={e => onChange(e)}
+                            />
+                        </div>
+
+                        <div className='register--input-box'> 
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            name="email"
+                            value={email}
+                            onChange={e => onChange(e)}
+                        />
+                        </div>
+                        <div className='register--input-box'>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            minLength="6"
+                            onChange={e => onChange(e)}
+                        />
+                        </div>
+                        <div className='register--input-box'>
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            name="password2"
+                            minLength="6"
+                            onChange={e => onChange(e)}      
+                        />
+                        </div>
+                        <p className="register--footer">
+                    <small>Create a Gravatar account to attach a profile image.</small>
+                    <p>Already have an account? <Link className='login--button' to="/login">Sign In</Link></p>
+                </p>
+                    </form>
                 </div>
-                <div>
-                </div>
-            </Modal>
+
+            </div>
+        <div>
+    </div>
+    </Modal>
 </Fragment>
 
 
@@ -89,8 +140,8 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
     //                         <input
     //                             type="text"
     //                             placeholder="First Name"
-    //                             name="firstName"
-    //                             value={firstName}
+    //                             name="name"
+    //                             value={name}
     //                             onChange={e => onChange(e)}
     //                         />
     //                         <input

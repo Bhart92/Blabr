@@ -14,7 +14,7 @@ router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id }).populate(
       'user',
-      ['firstName', 'avatar', 'handle', 'lastName']
+      ['name', 'avatar', 'handle']
     );
 
     if (!profile) {
@@ -48,8 +48,7 @@ router.post('/', [auth, [
   }
 
 const {
-  firstName,
-  lastName,
+  name,
   avatar,
     company,
     status,
@@ -64,8 +63,7 @@ const {
     //build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
-    if(firstName) profileFields.firstName = firstName;
-    if(lastName) profileFields.lastName = lastName;
+    if(name) profileFields.name = name;
     if(avatar) profileFields.avatar = avatar;
     if(company) profileFields.company = company;
     if(location) profileFields.location = location;
@@ -108,7 +106,7 @@ const {
 // @access   Public
 router.get('/', async (req, res) => {
     try {
-      const profiles = await Profile.find().populate('user', ['firstName', 'avatar', 'handle', 'lastName']);
+      const profiles = await Profile.find().populate('user', ['name', 'avatar', 'handle']);
 
       const followerProfiles = await Profile.find().where('user').in(profiles).exec();
 
@@ -129,7 +127,7 @@ router.get('/user/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id
-    }).populate('user', ['firstName', 'lastName', 'handle', 'avatar', 'followers', 'following']);
+    }).populate('user', ['name', 'handle', 'avatar', 'followers', 'following']);
 
     const profiles = profile.followers.map(item => item.user);
     const followerProfiles = await Profile.find().where('user').in(profiles).exec();
@@ -178,7 +176,7 @@ router.post('/user/:user_id/follow-user', auth, async (req, res) => {
       })
       const profile = await Profile.findOne({ user: req.user.id }).populate(
         'user',
-        ['firstName', 'avatar', 'handle', 'lastName']
+        ['name', 'avatar', 'handle']
       );
 
       const profiles = profile.following.map(item => item.user);
@@ -237,7 +235,7 @@ router.post('/user/:user_id/unfollow-user', auth, async (req, res) => {
       });
       const profile = await Profile.findOne({ user: req.user.id }).populate(
         'user',
-        ['firstName', 'avatar', 'handle', 'lastName']
+        ['name', 'avatar', 'handle']
       );
 
       const profiles = profile.following.map(item => item.user);

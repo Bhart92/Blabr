@@ -1,4 +1,11 @@
 .register--modal{
+    max-width: 80vw;
+    max-height: 90vh;
+    min-height: 400px;
+    height: 750px;
+    min-width: 700px;
+    flex-shrink: 1;
+    background: $white;
     &:focus{
         border: none;
         outline: none
@@ -22,11 +29,7 @@
     opacity: 0;
   }
 
-.modal--container{
-    background: $white;
-    height: 500px;
-    width: 500px;
-}
+
 .ReactModal__Overlay--after-open{
     background: rgba(153, 153, 153, 0.8)!important;
     z-index: 5;
