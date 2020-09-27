@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import Register from '../auth/Register';
 import Login from '../auth/Login';
 import Alert from '../layout/Alert';
 import CreateProfile from '../profile-forms/CreateProfile';
@@ -21,17 +20,8 @@ import { Route, Switch } from 'react-router-dom';
 
 const Routes = ({isAuthenticated}) => {
   return (
-    <section className='container register'>
-      <Alert />
-      {isAuthenticated && (
-        <Fragment>
-        <DashboardNavBar />
-        <MobileNav />
-        <DashboardWidgets />
-        </Fragment>
-      )}
+
       <Switch>
-        <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/profiles' component={Profiles} />
         <Route exact path='/profile/:id' component={Profile} />
@@ -45,7 +35,6 @@ const Routes = ({isAuthenticated}) => {
         <PrivateRoute exact path='/repost/:id' component={RepostForm} />
         <Route component={NotFound} />
       </Switch>
-    </section>
   );
 };
 

@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Navbar from '../layout/Navbar';
 import { login } from '../../actions/auth';
+import Register from './Register';
+
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     const { email, password } = formData;
 
@@ -23,42 +26,46 @@ const Login = ({ login, isAuthenticated }) => {
         return <Redirect to='/dashboard' />;
     }
     return (
-        <Fragment>
-            <Navbar />
-            <div className='auth--container'>
-                <div className='post--container login--container'>
-                    <h1 className='login--title'>Login</h1>
-                    <form className='login--input-container' onSubmit={e => onSubmit(e)}>
-                        <div>
-                        <input
-                        type="email"
-                        placeholder="Email Address"
-                        name="email"
-                        className='login--input-box'
-                        value={email}
-                        onChange={e => onChange(e)}
-                        required/>
-                        </div>
-                        <div>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            minLength="6"
-                            className='login--input-box'
-                            onChange={e => onChange(e)}
-                            required
-                        />
-                        </div>
-                        <input type="submit" className='login--button' value="Sign In" />
-                    </form>
-                    <p className="my-1">
-                        <Link className='login--button' to="/login">Sign Up</Link>
+        <section className='login'>
+           <i className='fa fa-commenting'></i>
+           <h1 className='login--title'>Log in to Blabr</h1>
+           <form>
+                            <div className='login--input-container'>
+                                <label>
+                                <div className='login--input-label'>
+                                        <span>
+                                        Email:
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <input type='email' required/>
+                                    </div>
+                                </label>
+                            </div>
+                            <div className='login--input-container'>
+                                <label>
+                                    <div className='login--input-label'>
+                                        <span>
+                                        Password:
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <input type='text' required/>
+                                    </div>
+                                </label>
+                            </div>
+                            <div className='login--submit-container'>
+                                    <div>
+                                        <input type='submit' value='Log in'></input>
+                                    </div>
+                            </div>
+                        </form>
+                    <p className="login--sign-up">
+                        <Link className='login--button' to="/">Go Back</Link>
+                        <span className='spanLink' onClick={() => setIsOpen(true)}>Sign Up</span>
                     </p>
-                </div>
-            </div>
-        </Fragment>
-
+                    <Register modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
+        </section>
     );
 };
 Login.propTypes = {

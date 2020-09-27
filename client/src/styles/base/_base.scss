@@ -3,23 +3,11 @@
     box-sizing: border-box;
     text-rendering: optimizeLegibility;
     color: $black;
+    margin: 0;
+    padding: 0;
 }
 body{
-    margin: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    height: auto;
     font-family: 'Lato', sans-serif;
-    background: url('../img/mainBackk.svg');
-    background-attachment: fixed;
-    background-size: contain;
-    background-position: bottom;
-}
-#root{
-    width: 100%;
-    height: auto;
 }
 ul li{
     list-style-type: none;

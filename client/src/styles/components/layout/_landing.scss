@@ -1,0 +1,189 @@
+.landing{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100vh;
+    width: 100%;
+}
+.landing--hero-right{
+    background:$white;
+    height: 100%;
+    flex-basis: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+.landing--hero-right--login-box{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+}
+.landing--hero-right--login-box--inner{
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    form{
+        label{
+            height: 100%;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .landing--hero-right--input-label{
+            padding: 10px 15px 0 15px;
+            span{
+                color: #688897;
+                font-size: 1.5rem;
+                letter-spacing: 1.1px;
+            }
+        }
+        input[type='text'],
+        input[type='email']{
+            background: transparent;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 10px 10px 5px 10px;
+            width: 100%;
+            font-size: 1.75rem;
+            &:focus,
+            &:valid{
+                border-bottom: 1px solid $blue;
+            }
+        }
+        input[type='submit']{
+            min-width: calc(62.79px);
+            border-radius: 9999px;
+            background: transparent;
+            border:1px solid $blue;
+            min-height: 39px;
+            padding: .75rem 1rem;
+            font-size: 1.5rem;
+            color: $blue;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all .15s ease;
+            &:hover{
+                background: lighten($lightBlue, 25%);
+            }
+        }
+        .landing--hero-right--input-container{
+            min-width: 200px;
+            width: 350px;
+            margin-right: 25px;
+            background: #f5f8fa;
+        }
+    }
+}
+.landing--hero-right--center-box{
+    display: flex;
+    flex-direction: column;
+    max-width: 465px;
+    transform: translate(-50px, -50px);
+    i{
+        font-size: 4rem;
+        margin-bottom: 35px;
+    }
+    .landing--hero-right--center-box--inner{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        div{
+            margin-top: 60px;
+            span{
+                font-weight: bolder;
+                font-size: 1.25rem;
+            }
+        }
+        h1{
+            font-size: 3rem;
+            word-break: break-word;
+            font-weight: bolder;
+        }
+        a, .spanLink{
+            width: 100%;
+            padding: 15px 0;
+            border: 1px solid $blue;
+            border-radius: 9999px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1.1px;
+            color: $blue;
+            transition:  all .35s ease;
+            &:hover{
+                background: lighten($lightBlue, 25%);
+            }
+        }
+        .spanLink{
+            cursor: pointer;
+            color: $white;
+            background: $blue;
+            &:hover{
+                background: darken($blue, 5%);
+            }
+        }
+    }
+}
+.landing--hero-left{
+    @extend .landing--hero-right;
+    background: $lightBlue;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.landing--hero-left--inner{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1;
+    i{
+        transform: translate(-275px, -25px) scaleX(-1) scale(2);
+        color: $blue;
+        font-size: 38rem;
+    }
+}
+.landing--hero-left--box{
+    position: relative;
+    z-index: 2;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    transform: translate(-50px, -20px);
+}
+.landing--hero-left--box-item{
+    margin-bottom: 65px;
+    span{
+        font-size: 2rem;
+        font-weight: bold;
+        color: $white;
+        margin-left: 25px;
+    }
+    .fa-newspaper,
+    .fa-comments,
+    .fa-user-friends{
+        color: $white;
+        font-size: 2.5rem;
+    }
+}

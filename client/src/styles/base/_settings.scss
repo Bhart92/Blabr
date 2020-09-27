@@ -1,8 +1,8 @@
 // Colors
-$blue: deepskyblue;
-$lightBlue: #e0f7ff;
+$blue: rgb(29,161,242);
+$lightBlue: rgb(113, 201, 248);
 $black: #141414;
-$white: #f4f4f4;
+$white: rgb(255, 255, 255);
 $lightGrey: #eee;
 
 // reusable containers  & Formatting
@@ -29,7 +29,7 @@ $font-medium: 1.1rem;
 $font-large: 1.5rem;
 // Icons
 .fa-commenting{
-    color: darken(rgba(0, 191, 255, .5), 10%);
+    color: $blue;
     font-size: 2rem;
 }
 .fa-thumbs-o-down, .fa-thumbs-o-up{
