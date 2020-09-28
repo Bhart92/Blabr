@@ -1,12 +1,12 @@
 .register--modal{
-    max-width: 80vw;
-    max-height: 90vh;
-    min-height: 400px;
-    height: 750px;
-    min-width: 700px;
-    flex-shrink: 1;
-    background: $white;
-    overflow: hidden;
+  max-width: 80vw;
+  max-height: 90vh;
+  min-height: 400px;
+  height: 735px;
+  min-width: 700px;
+  flex-shrink: 1;
+  background: white;
+  overflow: hidden;
     &:focus{
         border: none;
         outline: none
