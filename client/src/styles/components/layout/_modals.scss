@@ -32,7 +32,7 @@
 
 
 .ReactModal__Overlay--after-open{
-    background: rgba(153, 153, 153, 0.8)!important;
+    background: transparent!important;
     z-index: 5;
     &:focus{
         outline: none;

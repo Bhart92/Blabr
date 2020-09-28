@@ -1,0 +1,91 @@
+
+header{
+    height: 100%;
+    display: flex;
+    width: 595px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.dashboard--navbar{
+    height: 100%;
+    width: 275px;
+}
+.dashboard--navBar-icon{
+    height: 5%;
+    padding-top: 5px;
+    i{
+        transition: all .25s ease;
+        border-radius: 9999px;
+        padding: 10px;
+        margin: -10px;
+    }
+    &:hover{
+        i{
+            background: lighten($blue, 40%);
+        }
+    }
+}
+.dashboard--navBar-list{
+    height: 85%;
+    ul{
+        margin-top: 10px;
+        li{
+            padding: 30px 5px;
+            a{
+                font-size: 1.3rem;
+                font-weight: 800;
+                transition: all .25s ease;
+                border-radius: 9999px;
+                padding: 10px 20px;
+                margin: -10px -20px;
+                i{
+                    font-size: 1.35rem;
+                    padding-right: 15px;
+                    transition: all .25s ease;
+                }
+                &:hover{
+                    color: $blue;
+                    background: lighten($blue, 40%);
+                    i{
+                        color: $blue;
+    
+                    }
+                }
+            }
+        }
+    }
+    .tweet-button{
+        margin-top: 25px;
+        border: 1px solid #1da1f2;
+        background: #1da1f2;
+        color: white;
+        font-weight: 800;
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: all .35s ease;
+        width: 95%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background: darken($blue, 10%);
+        }
+    }
+}
+.dashboard--navBar--greeting-box{
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard--navBar--greeting-box__image{
+    display: flex;
+    width: 95%;
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+}

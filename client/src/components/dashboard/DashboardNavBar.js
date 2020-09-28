@@ -10,7 +10,6 @@ import { deleteAccount } from '../../actions/profile';
 const DashboardNavBar = ({
     auth: { user },
     logout,
-    profile: {profile},
     deleteAccount
 }) => {
     const customStyles = {
@@ -34,31 +33,34 @@ const DashboardNavBar = ({
     function closeModal(){
             setIsOpen(false);
     }
-    return user === null ? '' : <div className='dashboard--navbar'>
+    return <header>
+        <div className='dashboard--navbar'>
         <div className='dashboard--navBar-icon'>
-        <Link to='/dashboard'>Blabr <i className='fa fa-commenting'></i></Link>
+            <Link to='/dashboard'><i className='fa fa-commenting'></i></Link>
         </div>
         <div className='dashboard--navBar-list'>
-                {profile === null && user ? (
-                    <Fragment>
-                        <ul className='dashboard--navBar--no-profile'>
-                            <li><NavLink exact to='/dashboard' activeClassName='active'><i className="fas fa-home"></i> Home</NavLink></li>
-                            <li><NavLink exact to='/create-profile' activeClassName='active' ><i className="fas fa-newspaper"></i> Create Profile</NavLink></li>
-                        </ul>
-                    </Fragment>
-                ) : (
-                    <Fragment>
                         <ul>
-                            <li><NavLink exact to='/dashboard' activeClassName='active'><i className="fas fa-home"></i> Home</NavLink></li>
-                            <li><NavLink exact to='/explore' activeClassName='active' ><i className="fas fa-newspaper"></i> Explore</NavLink></li>
-                            <li><NavLink exact to='/posts' activeClassName='active' ><i className='fa fa-commenting'></i> Posts</NavLink></li>
-                            <li><NavLink exact to='/profiles' activeClassName='active' ><i className='fa fa-user'></i> People</NavLink></li>
+                            <li><NavLink exact to='/dashboard' activeClassName='active' ><i className="fas fa-home"></i> Home</NavLink></li>
+                            <li><NavLink exact to='/posts' activeClassName='active' ><i className='fa fa-hashtag'></i> Explore</NavLink></li>
+                            <li><NavLink exact to='/profiles' activeClassName='active' ><i className='fa fa-user'></i> Profile</NavLink></li>
+                            <li><NavLink exact to='/explore' activeClassName='active' ><i className="fas fa-newspaper"></i> People</NavLink></li>
+                            <li><NavLink exact to='/posts' activeClassName='active' ><i className='fa fa-user'></i> Bookmarks</NavLink></li>
                         </ul>
-                    </Fragment>
-                )}
+                        <span className='tweet-button'>Tweet</span>
         </div>
         <div className='dashboard--navBar--greeting-box'>
-        {user.avatar ? (
+
+        <div className='dashboard--navBar--greeting-box__image'>
+                    <i className='fa fa-user'> </i>
+                    <div className='dashboard--navBar--greeting-box__header'>
+                        <span>Hello </span>
+                        <span></span>
+                    </div>
+                    <i className='fas fa-angle-down' onClick={openModal}></i>
+                </div>
+
+
+        {/* {user.avatar ? (
                 <div className='dashboard--navBar--greeting-box__image'>
                     <img src={user.avatar} />
                     <div className='dashboard--navBar--greeting-box__header'>
@@ -71,7 +73,7 @@ const DashboardNavBar = ({
                 <div className='dashboard--navBar--greeting-box__no-image'>
                     <i className='fa fa-user'> </i>
                 </div>
-            )}
+            )} */}
 
         <Modal
             className='dashboard--navBar--modal'
@@ -84,10 +86,10 @@ const DashboardNavBar = ({
         >
                 <div id='modal--container' className='modal--container'> 
                     <div className='modal--header'>
-                        <img src={user.avatar} />
+                        {/* <img src={user.avatar} /> */}
                         <div className='title'>
-                        <span>{user.firstName} {user.lastName}</span>
-                            <span>{user.handle}</span>
+                        {/* <span>{user.firstName} {user.lastName}</span>
+                            <span>{user.handle}</span> */}
                         </div>
                         <div className='dashboard--modal--close-button'>
                             <button onClick={closeModal}>X</button>
@@ -95,7 +97,7 @@ const DashboardNavBar = ({
                     </div>
                     <div className='dashboard--modal--settings-container'>
                     <div className='modal--settings'>
-                        <span onClick={e => deleteAccount(user._id)}>Delete your account</span>
+                        {/* <span onClick={e => deleteAccount(user._id)}>Delete your account</span> */}
                     </div>
                     <div className='modal--settings'>
                     <span onClick={closeModal}><Link to='edit-profile'>Edit your profile</Link></span>
@@ -107,8 +109,9 @@ const DashboardNavBar = ({
                 </div>
                 <div></div>
             </Modal>
+        </div>
         </div>    
-    </div>;
+    </header>;
 };
 DashboardNavBar.propTypes = {
     deleteAccount: PropTypes.func.isRequired,
@@ -117,8 +120,7 @@ DashboardNavBar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    profile: state.profile
+    auth: state.auth
   });
 
 export default connect(mapStateToProps, { logout, deleteAccount })(DashboardNavBar);

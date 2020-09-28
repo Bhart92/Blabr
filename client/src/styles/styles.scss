@@ -3,27 +3,14 @@
 @import './components/auth/login';
 @import './components/auth/register';
 @import './components/dashboard/dashboard';
+@import './components/dashboard/dashboardNavBar';
+@import './components/dashboard/dashboardProfile';
 @import './components/layout/landing';
 @import './components/layout/footer';
 @import './components/layout/alert';
-@import './components/layout/mobileNav';
-@import './components/layout/navbar';
-@import './components/newsfeed/newsFeed';
 @import './components/layout/modals';
 @import './components/layout/notFound';
-@import './components/layout/spinner';
-@import './components/posts/posts';
-@import './components/posts/repostArticleForm';
-@import './components/posts/repostForm';
-@import './components/posts/repostItem';
-@import './components/post/post';
-@import './components/post/commentForm';
-@import './components/post/commentItem';
-@import './components/profile/dashboardPosts';
-@import './components/profile/profile';
-@import './components/profile-forms/createProfile';
-@import './components/profile-forms/editProfile';
-@import './components/profiles/profiles';
+
 
 
 

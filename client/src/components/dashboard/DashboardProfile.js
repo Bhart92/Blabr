@@ -11,7 +11,16 @@ import { connect } from 'react-redux';
 const DashboardProfile = ({ post, user }) => {
  
     return (
-        <div>DashboardProfile</div>
+        <main className='dashboard--profile'>
+            <div className='dashboard--profile--container'>
+                <div className='dashboard--profile--center-console'>
+
+                </div>
+                <aside className='dashboard--profile--aside-bar'>
+
+                </aside>
+            </div>
+            </main>
     );
 };
 
