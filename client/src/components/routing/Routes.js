@@ -20,7 +20,6 @@ import { Route, Switch } from 'react-router-dom';
 
 const Routes = ({isAuthenticated}) => {
   return (
-
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/profiles' component={Profiles} />

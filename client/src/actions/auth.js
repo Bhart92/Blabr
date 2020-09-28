@@ -71,14 +71,14 @@ export const redirect = redirectUrl => {
   };
 
 //Register User
-export const register = ({ firstName, lastName, email, handle, password }) => async (dispatch) => {
+export const register = ({ fullName, email, handle, password, company, location, title, interests, bio }) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
 
-  const body = JSON.stringify({ firstName, lastName, email, handle, password });
+  const body = JSON.stringify({ fullName, email, handle, password, company, location, title, interests, bio });
 
   try {
     const res = await axios.post('/api/users', body, config);

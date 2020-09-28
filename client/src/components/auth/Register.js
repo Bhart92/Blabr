@@ -23,21 +23,29 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
         }
     };
     const [formData, setFormData] = useState({
-        name: '',
-        lastName: '',
+        fullName: '',
         email: '',
         handle: '',
         password: '',
-        password2: ''
+        password2: '',
+        company: '',
+        location: '',
+        interests: '',
+        title: '',
+        bio: ''
     });
 
     const {
-        name,
-        lastName,
+        fullName,
         email,
         handle,
         password,
-        password2
+        password2,
+      company,
+      location,
+      title,
+      interests,
+      bio
     } = formData;
 
     const onChange = e => setFormData({ ... formData, [e.target.name]: e.target.value })
@@ -47,9 +55,16 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
         if(password !== password2){
             setAlert('passwords dont match');
         } else{
-            register({ name, lastName, email, handle, password });
+            console.log(formData)
+            register({ fullName, email, handle, password, bio, company, interests, location, title });
         }
     };
+    const slideSwap = () => {
+        const modals = document.querySelectorAll('.modal--container');
+        Array.from(modals).map((slide) => {
+            slide.classList.toggle('activeSlide');
+        })
+    }   
     //Redirect if logged in
     if(isAuthenticated){
         return <Redirect to="/dashboard" />
@@ -67,23 +82,25 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
             contentLabel="Example Modal"
             ariaHideApp={false}
         >
-            <div id='modal--container' className='modal--container'> 
+            <div id='modal--container' className='modal--container activeSlide'> 
             <i className='fa fa-commenting'></i>
 
                  <div className='modal--container--form'>
                      <form onSubmit={e => onSubmit(e)}>
                      <h1>Create An Account</h1>
                      <div className='register--input-box__small'>
-                            <input className='register--button' type='submit' value='Register' />
+                            <span className='register--button' onClick={() => slideSwap()}>Next</span>
                         </div>
+
+                        
                          <div className='register--input-box'>
-                             <input
-                                type="text"
-                                placeholder="Name"
-                                name="Name"
-                                value={name}
-                                onChange={e => onChange(e)}
-                            />
+                         <input
+                            type="text"
+                            placeholder="Name"
+                            name="fullName"
+                            value={fullName}
+                            onChange={e => onChange(e)}
+                        />
                         </div>
 
                         <div className='register--input-box'> 
@@ -92,6 +109,15 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
                             placeholder="Email Address"
                             name="email"
                             value={email}
+                            onChange={e => onChange(e)}
+                        />
+                        </div>
+                        <div className='register--input-box'> 
+                        <input
+                            type="text"
+                            placeholder="Handle"
+                            name="handle"
+                            value={handle}
                             onChange={e => onChange(e)}
                         />
                         </div>
@@ -121,81 +147,76 @@ const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated,
                 </div>
 
             </div>
+            <div id='modal--container' className='modal--container'> 
+            <i className='fa fa-commenting'></i>
+
+                 <div className='modal--container--form'>
+                     <form onSubmit={e => onSubmit(e)}>
+                     <h1>Create An Account</h1>
+                     <div className='register--input-box__small'>
+                            <span className='register--button' onClick={() => slideSwap()}>Back</span>
+                        </div>                        
+
+                        <div className='register--input-box'> 
+                        <input type='text'
+                        name='title'
+                        placeholder='Job Title'
+                        value={title}
+                        onChange={e => onChange(e)}
+                        />
+                        </div>
+
+                        <div className='register--input-box'> 
+                        <input
+                            type="text"
+                            placeholder="Company"
+                            name="company"
+                            value={company}
+                            onChange={e => onChange(e)}
+                            />
+                        </div>
+
+
+                        <div className='register--input-box'>
+                            <input
+                                type="text"
+                                placeholder="Location"
+                                name="location"
+                                value={location}
+                                onChange={e => onChange(e)}
+                            />
+                        </div>
+
+
+                        <div className='register--input-box'>
+                            <input
+                            className='interests--input'
+                            type="text"
+                            placeholder="* interests"
+                            name="interests"
+                            value={interests}
+                            onChange={e => onChange(e)}
+                            />
+                        </div>
+                        <div className='register--input-box'>
+                            <textarea
+                                placeholder="Tell us a little about yourself"
+                                name="bio"
+                                value={bio}
+                                onChange={e => onChange(e)}
+                            />
+                        </div>
+                        <div className='register--input-box__bottom'>
+                            <input className='register--button' type='submit' value='Register' />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
         <div>
     </div>
     </Modal>
 </Fragment>
-
-
-        
-    // <Fragment>
-    //     <Navbar />
-    //     <div className='auth--container'>
-    //         <div className='post--container register--container'>
-    //             <h1>Sign Up</h1>
-    //             <p><i className="fas fa-user"></i> Create Your Account</p>
-    //             <div>
-    //                 <form onSubmit={e => onSubmit(e)}>
-    //                     <div className='register--input-box'>
-    //                         <input
-    //                             type="text"
-    //                             placeholder="First Name"
-    //                             name="name"
-    //                             value={name}
-    //                             onChange={e => onChange(e)}
-    //                         />
-    //                         <input
-    //                             type="text"
-    //                             placeholder="Last Name"
-    //                             name="lastName"
-    //                             value={lastName}
-    //                             onChange={e => onChange(e)}
-    //                         />
-    //                     </div>
-    //                     <div className='register--input-box'> 
-    //                     <input
-    //                         type="email"
-    //                         placeholder="Email Address"
-    //                         name="email"
-    //                         value={email}
-    //                         onChange={e => onChange(e)}
-    //                     />
-    //                     <input
-    //                         type="text"
-    //                         placeholder="Handle"
-    //                         name="handle"
-    //                         value={handle}
-    //                         onChange={e => onChange(e)}
-    //                     />
-    //                     </div>
-    //                     <div className='register--input-box'>
-    //                     <input
-    //                         type="password"
-    //                         placeholder="Password"
-    //                         name="password"
-    //                         minLength="6"
-    //                         onChange={e => onChange(e)}
-    //                     />
-    //                     <input
-    //                         type="password"
-    //                         placeholder="Confirm Password"
-    //                         name="password2"
-    //                         minLength="6"
-    //                         onChange={e => onChange(e)}      
-    //                     />
-    //                     </div>
-    //                     <div className='register--input-box__small'>
-    //                         <input className='login--button' type='submit' value='Register' />
-    //                     </div>
-    //                 </form>
-    //             </div>
-    //             <p className="register--footer">
-    //                 <small>Create a Gravatar account to attach a profile image.</small>
-    //                 <p>Already have an account? <Link className='login--button' to="/login">Sign In</Link></p>
-    //             </p>
-    //         </div>
-    //     </div>
-    // </Fragment>
     );
 };
 

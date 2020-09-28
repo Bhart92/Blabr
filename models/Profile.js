@@ -5,7 +5,7 @@ const ProfileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    name:{
+    fullName:{
         type: String
     },
     avatar: {
@@ -41,7 +41,7 @@ const ProfileSchema = new mongoose.Schema({
       {
           user:{ 
               type: mongoose.Schema.Types.ObjectId, 
-              firstName: String,
+              firstfullName: String,
               ref: 'user'
           },
       }

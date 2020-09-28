@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Navbar from '../layout/Navbar';
 import { login } from '../../actions/auth';
 import Register from './Register';
+import Alert from '../layout/Alert';
 
 
 const Login = ({ login, isAuthenticated }) => {
@@ -26,10 +27,12 @@ const Login = ({ login, isAuthenticated }) => {
         return <Redirect to='/dashboard' />;
     }
     return (
+        <Fragment>
+        <Alert />
         <section className='login'>
            <i className='fa fa-commenting'></i>
            <h1 className='login--title'>Log in to Blabr</h1>
-           <form>
+           <form onSubmit={onSubmit}>
                             <div className='login--input-container'>
                                 <label>
                                 <div className='login--input-label'>
@@ -38,7 +41,7 @@ const Login = ({ login, isAuthenticated }) => {
                                         </span>
                                     </div>
                                     <div>
-                                        <input type='email' required/>
+                                    <input type='email' name='email' onChange={onChange} required/>
                                     </div>
                                 </label>
                             </div>
@@ -50,7 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
                                         </span>
                                     </div>
                                     <div>
-                                        <input type='text' required/>
+                                    <input type='password' name='password' onChange={onChange} required/>
                                     </div>
                                 </label>
                             </div>
@@ -66,6 +69,7 @@ const Login = ({ login, isAuthenticated }) => {
                     </p>
                     <Register modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
         </section>
+        </Fragment>
     );
 };
 Login.propTypes = {

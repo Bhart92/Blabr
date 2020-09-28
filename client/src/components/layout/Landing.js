@@ -2,22 +2,36 @@ import React, { Fragment, useState } from 'react';
 import Proptypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 import Alert from './Alert';
 import Footer from './Footer';
 import Register from '../auth/Register';
 
 
 
-const Landing = ({isAuthenticated}) => {
+const Landing = ({isAuthenticated, login}) => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+console.log(formData)
+    const { email, password } = formData;
 
+    const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    
+    const onSubmit = async e => {
+        e.preventDefault();
+        login(email, password);
+    };
     return (
         <section className='landing'>
             <Alert />
             <div className='landing--hero-right'>
                 <div className='landing--hero-right--login-box'>
                     <div className='landing--hero-right--login-box--inner'>
-                        <form>
+                    <form onSubmit={onSubmit}>
                             <div className='landing--hero-right--input-container'>
                                 <label>
                                 <div className='landing--hero-right--input-label'>
@@ -26,7 +40,7 @@ const Landing = ({isAuthenticated}) => {
                                         </span>
                                     </div>
                                     <div>
-                                        <input type='email' required/>
+                                    <input type='email' name='email' onChange={onChange} required/>
                                     </div>
                                 </label>
                             </div>
@@ -38,14 +52,14 @@ const Landing = ({isAuthenticated}) => {
                                         </span>
                                     </div>
                                     <div>
-                                        <input type='text' required/>
+                                        <input type='password' name='password' onChange={onChange} required/>
                                     </div>
                                 </label>
                             </div>
                             <div>
                                 <div>
                                     <div>
-                                        <input type='submit' value='Log in'></input>
+                                        <input type='submit' value='Log in' />
                                     </div>
                                 </div>
                             </div>
@@ -82,4 +96,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, {login})(Landing);

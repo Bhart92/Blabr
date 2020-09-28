@@ -50,6 +50,7 @@ router.post('/', [auth, [
 const {
   name,
   avatar,
+  handle,
     company,
     status,
     location,
@@ -65,6 +66,7 @@ const {
     profileFields.user = req.user.id;
     if(name) profileFields.name = name;
     if(avatar) profileFields.avatar = avatar;
+    if(handle) profileFields.handle = handle;
     if(company) profileFields.company = company;
     if(location) profileFields.location = location;
     if(bio) profileFields.bio = bio;

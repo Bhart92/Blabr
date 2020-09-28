@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    fullName: {
         type: String,
         requried: true
     },
@@ -23,6 +23,38 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    company: {
+        type: String
+    },
+    title: {
+        type: String
+    },
+    location: {
+      type: String
+    },
+    interests: {
+      type: [String]
+    },
+    bio: {
+      type: String
+    },
+    following: [
+      {
+          user:{ 
+              type: mongoose.Schema.Types.ObjectId, 
+              ref: 'user'
+          },
+      }
+  ],
+  followers: [
+      {
+          user:{ 
+              type: mongoose.Schema.Types.ObjectId, 
+              firstfullName: String,
+              ref: 'user'
+          },
+      }
+  ],
     date: {
         type: Date,
         default: Date.now

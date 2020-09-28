@@ -8,7 +8,7 @@ const PostSchema = new mongoose.Schema({
     text: {
         type: String
     },
-    name: {
+    fullName: {
         type: String,
     },
     image: {
@@ -35,7 +35,7 @@ const PostSchema = new mongoose.Schema({
     repostHandle: {
         type: String
     },
-    repostName: {
+    repostfullName: {
         type: String
     },
     commentary: {
@@ -65,7 +65,7 @@ const PostSchema = new mongoose.Schema({
             avatar: {
                 type: String
             },
-            name:{
+            fullName:{
                 type: String
             },
              handle: { 

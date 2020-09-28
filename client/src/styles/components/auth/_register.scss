@@ -11,7 +11,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    input{
+    input,
+    textarea{
         margin: 25px 5px;
         outline: none;
         background: transparent;
@@ -53,6 +54,9 @@
         font-size: 2rem;
         }
     }
+    &:nth-of-type(2){
+        overflow-y: scroll;
+    }
 }
 .register--input-box__small{
     display: flex;
@@ -61,10 +65,13 @@
     flex-direction: column-reverse;
     position: absolute;
     right: 15px;
-    top: 0;
+    top: 15px;
     small{
         margin: 20px 0;
     }
+}
+.register--input-box__bottom{
+    display: flex;
 }
 .modal--container--form{
     height: calc(100% - 48px);
