@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/posts';
 
-const PostForm = ({ addPost }) => {
+const PostForm = ({ addPost, user }) => {
   const [commentary, setCommentary] = useState('');
   const [text, setText] = useState(null);
   return (
     <div className='post-form'>
+      <div className='post-form-avatar'>
+        <img src={user.avatar} />
+      </div>
       <form
         className='form'
         onSubmit={e => {
@@ -17,6 +20,7 @@ const PostForm = ({ addPost }) => {
         }}
       >
         <textarea
+        contenteditable
           maxLength='280'
           name='commentary'
           cols='30'
@@ -26,7 +30,7 @@ const PostForm = ({ addPost }) => {
           onChange={e => setCommentary(e.target.value)}
           required
         />
-        <input type='submit' className='my-1' value='Submit' />
+        <input type='submit' value='Blab' />
       </form>
     </div>
   );

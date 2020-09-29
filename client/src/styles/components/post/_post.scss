@@ -1,15 +1,47 @@
 
 .post--container{
+    background: #e6ecf0;
     display: flex;
-    height: auto;
-    width: 80%;
-    margin: 0 auto;
     flex-direction: column;
-    text-align: center;
+    width: 600px;
+    max-width: 600px;
+    height: auto;
+    text-align: left;
     border-right: 0.5px solid lighten(#1a1a1a, 83%);
     border-left: 0.5px solid lighten(#1a1a1a, 83%);
     overflow-y: scroll;
-    background: rgba(255, 255, 255, .9);
+}
+.post--container--title{
+    height: 55px;
+    max-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid lighten(#1a1a1a, 83%);
+    background: #FFF;
+    padding: 0 15px;
+    h1{
+        font-weight: 800;
+        font-size: 1.25rem;
+    }
+    i{
+        color: $blue;
+        font-size: 1.35rem;
+    }
+}
+.post--container--form{
+    background: #FFF;
+    padding-left: 15px;
+    padding-top: 10px;
+    textarea{
+        padding-right: 2px;
+
+    }
+}
+.post--container--posts{
+    flex-grow: 1;
+    background: #FFF;
+    margin-top: 10px;
 }
 @import './commentForm';
 @import './commentItem';
@@ -20,8 +52,6 @@
 @media only screen and (max-width: 1450px){
     .post--container{
         display: flex;
-        height: auto;
-        width: 90%;
         margin: 0 auto;
         flex-direction: column;
         text-align: center;

@@ -33,6 +33,7 @@
 
 .ReactModal__Overlay--after-open{
     background: transparent!important;
+
     z-index: 5;
     &:focus{
         outline: none;
@@ -50,8 +51,15 @@
     transition: transform .35s ease, opacity .25s ease;
     transform: translate(100%, 0);
     opacity: 0;
+    background: $white;
 }
 .activeSlide{
   transform: translate(0, 0);
   opacity: 1;
+}
+.ReactModal__Content--after-open{
+  &:focus{
+    outline: none;
+    border: none;
+  }
 }

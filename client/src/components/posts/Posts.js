@@ -7,36 +7,32 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getPosts } from '../../actions/posts';
 
-const Posts = ({ getPosts, profile: {profile}, post: { posts, loading } }) => {
+const Posts = ({ getPosts, user, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  if(profile === null) return <Redirect to='/dashboard' />
-  return loading ? (
-    <Spinner />
-  ) : (
-    <div className='post--container'>
-      <h1 className='large text-primary'>Posts</h1>
-      <p className='lead'>
-      </p>
-      <PostForm />
-      <div className='posts'>
+  return <div className='post--container'>
+          <div className='post--container--title'>
+            <h1>Home</h1>
+            <i className="fas fa-home"></i>
+          </div>
+          <div className='post--container--form'>
+          <PostForm user={user}/>
+          </div>
+      <div className='post--container--posts'>
         {posts.map(post => (
           <PostItem key={post._id} post={post} showActions={true}/>
         ))}
       </div>
     </div>
-  );
 };
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post,
-  profile: state.profile
+  post: state.post
 });
 
 export default connect(

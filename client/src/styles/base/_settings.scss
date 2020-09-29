@@ -40,7 +40,7 @@ $font-large: 1.5rem;
 }
 // Animation toggles
 .active{
-    border-radius: 5px!important;
+    border-radius: 9999px!important;
     transition: all .25s ease-in-out!important;
     color: deepskyblue!important;
     background: #e6f9ff!important;
@@ -62,72 +62,6 @@ $font-large: 1.5rem;
 }
 .hide{
     display: none;
-}
-// Form Styles
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 5px;
-    textarea{
-        background: transparent;
-        outline: none;
-        border: 1px solid #ccf2ff;
-        width: 55%;
-        transition: .35s all ease-in-out;
-        border-radius: 5px;
-        height: 125px;
-        padding: 7px 10px; 
-        font-size: 1.2rem;
-        letter-spacing: .5px;
-        color: lighten(grey, 35%);
-        transition: all .35s ease-in-out;
-        &:focus{
-            color: darken(blue, 95%);
-        }
-    }
-    input{
-        margin: 25px 5px;
-        outline: none;
-        background: transparent;
-        border: none;
-        border-bottom: 1.5px solid deepskyblue;
-        color: #000;
-        opacity: .5;
-        width: 250px;
-        text-align: center;
-        padding-bottom: 5px;
-        &:hover{
-            cursor: text;
-        }
-    }
-    .interests--input{
-        width: 100%;
-    }
-    .social--inputs{
-        width: 100%;
-        input{
-            width: 70%;
-        }
-    }
-    input[type='submit']{
-        background: transparent;
-        border: 2px solid #b3ecff;
-        border-radius: 5px;
-        padding: 5px 20px;
-        outline: none;
-        margin: 20px 0;
-        transition: .35s all ease-in-out;
-        width: 20%;
-        letter-spacing: 1.1px;
-        font-size: .9rem;
-        &:hover{
-            cursor: pointer;
-            background: #b3ecff;
-            border: 2px solid transparent;
-        }
-    }
 }
 textarea{
     resize: none;
