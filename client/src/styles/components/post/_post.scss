@@ -33,9 +33,33 @@
     background: #FFF;
     padding-left: 15px;
     padding-top: 10px;
-    textarea{
-        padding-right: 2px;
+    position: relative;
+    .post--container--form--icons{
+        width: 92%;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 0.5px solid #eeeeee;
+        transform: translate(5%, 0);
+        padding-top: 5px;
+        i{
+            font-size: 1.25rem;
+            color: $lightBlue;
+            cursor: pointer;
+            border-radius: 9999px;
+            padding: 8px;
+            transition: all .25s ease;
+            &:hover{
+                background-color: lighten($blue, 44%);
+            }
+        }
+    }
 
+    textarea{
+        padding-top: 11px;
+        padding-right: 2px;
+        height: 115px;
     }
 }
 .post--container--posts{
@@ -43,6 +67,17 @@
     background: #FFF;
     margin-top: 10px;
 }
+.progress_bar {
+    height: 10px;
+    background: orange;
+    width: 0%;
+    -moz-transition: all 4s ease;
+    -moz-transition-delay: 1s;
+    -webkit-transition: all 4s ease;
+    -webkit-transition-delay: 1s;
+    transition: all 4s ease;
+    transition-delay: 1s;
+  }
 @import './commentForm';
 @import './commentItem';
 @import '../posts/postItem';

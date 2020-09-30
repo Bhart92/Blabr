@@ -9,19 +9,19 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Post = ({ getPost, match, post: { post, loading } }) => {
-   useEffect(() => {
-       getPost(match.params.id);
-   }, [ getPost, match.params.id ]);
+//    useEffect(() => {
+//        getPost(match.params.id);
+//    }, [ getPost, match.params.id ]);
     return loading || post === null ? <Spinner /> : <div className='post--container'>
         <Link className='btn--back' to='/posts'>
             Back to posts
         </Link>
-        <PostItem post={post} showActions={false} />
-        <CommentForm postId={post._id} />
+        {/* <PostItem post={post} showActions={false} /> */}
+        {/* <CommentForm postId={post._id} /> */}
         <div className='comment--item-container'>
-            {post.comments.map(comment => (
+            {/* {post.comments.map(comment => (
                 <CommentItem key={comment._id} comment={comment} postId={post._id} />
-            ))}
+            ))} */}
         </div>
     </div>
 }

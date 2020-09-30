@@ -30,7 +30,19 @@ const PostForm = ({ addPost, user }) => {
           onChange={e => setCommentary(e.target.value)}
           required
         />
-        <input type='submit' value='Blab' />
+          <div className='post--container--form--icons'>
+            <div>
+              <i className="fas fa-home"></i>
+              <i className="fas fa-home"></i>
+              <i className="fas fa-home"></i>
+              <i className="fas fa-home"></i>
+              <i className="fas fa-home"></i>
+            </div>
+            <div>
+              <input type='submit' value='Blab' />
+           </div>
+          </div>
+
       </form>
     </div>
   );

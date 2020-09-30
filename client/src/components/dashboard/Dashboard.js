@@ -6,13 +6,20 @@ import DashboardNavBar from './DashboardNavBar';
 import DashboardProfile from './DashboardProfile';
 import Spinner from '../layout/Spinner';
 import Posts from '../posts/Posts';
+import { getPosts } from '../../actions/posts';
+
 
 const Dashboard = ({   
-  user
+  user,
+  getPosts,
+  post
 }) => {
+  useEffect(() => {
+    getPosts();
+  })
     return user === null ? <Spinner /> : <div className='dashboard--container'>
         <DashboardNavBar user={user}/>
-        <Posts user={user}/>
+        <Posts user={user} posts={post}/>
     </div>;
 };
 
@@ -21,7 +28,8 @@ Dashboard.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.auth.user,
+  post: state.posts
   });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, {getPosts})(Dashboard);

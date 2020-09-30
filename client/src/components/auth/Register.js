@@ -7,7 +7,7 @@ import { register } from '../../actions/auth';
 import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
 
-const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated, profile: { profile } }) => {
+const Register = ({ modalIsOpen, setIsOpen, setAlert, register, isAuthenticated }) => {
     function openModal() {
           setIsOpen(true);
     }

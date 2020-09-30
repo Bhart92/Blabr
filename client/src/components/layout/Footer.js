@@ -5,19 +5,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='footer'>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>   
-            <span>Link</span>
+            <span>Chattr - A Twitter clone / inspired  web app created for personal XP powered by MERN and TwitterAPI</span>
         </div>
     )
 };
