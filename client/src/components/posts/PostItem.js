@@ -18,6 +18,7 @@ const PostItem = ({
   i,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
+  console.log(image)
 {/* <div id="progressBar" class="progress_bar"></div> */}
     // // Assign your element ID to a variable.
     // var progress = document.getElementById("progressBar");
@@ -33,17 +34,29 @@ const PostItem = ({
     const modals = document.querySelectorAll('.retweet--modal')
     const modalsArr = Array.from(modals);
 
-    const toggleRetweetModal = (modalsArr, i) => {
+    const tweetSettingModals = document.querySelectorAll('.post--item--settings-modal')
+    const tweetSettingsArray = Array.from(tweetSettingModals);
+
+
+    const toggleRetweetModal = (array, i) => {
       const overlay = document.querySelector('.retweet--modal--overlay');
       overlay.classList.toggle('retweet-active-overlay');
-      const element = modalsArr[i]
+      const element = array[i]
       element.classList.toggle('retweet-active');
     }
-    const toggleClearModal = (modalsArr, i) => {
+    const toggleTweetSettingsModal = (array, i) => {
+      const overlay = document.querySelector('.retweet--modal--overlay');
+      overlay.classList.toggle('retweet-active-overlay');
+      const element = array[i]
+      element.classList.toggle('retweet-active');
+    }
+    const toggleClearModal = (array, array2,  i) => {
       const overlay = document.querySelector('.retweet--modal--overlay');
       overlay.classList.remove('retweet-active-overlay');
-      const modals = document.querySelectorAll('.retweet--modal')
-      modalsArr.map((item, i) => {
+      array.map((item, i) => {
+        item.classList.remove('retweet-active')
+      })
+      array2.map((item, i) => {
         item.classList.remove('retweet-active')
       })
 
@@ -71,12 +84,20 @@ return user === null ? <Spinner /> :
 (
   <Fragment>
     <Fragment>
-    <div className='retweet--modal--overlay' onClick={() => toggleClearModal(modalsArr, i)}></div>
+    <div className='retweet--modal--overlay' onClick={() => toggleClearModal(modalsArr, tweetSettingsArray, i)}></div>
 
     </Fragment>
 
     <div className='post--item'>
-<span className='post--item--down-carrot'><i class="fas fa-chevron-down"></i></span>
+      <div className='post--item--settings-modal'>
+      <span>Retweet</span>
+        <span>Quote Tweet</span>
+        <span>Retweet</span>
+        <span>Quote Tweet</span>
+        <span>Retweet</span>
+        <span>Quote Tweet</span>
+      </div>
+<span className='post--item--down-carrot'><i class="fas fa-chevron-down" onClick={() => toggleTweetSettingsModal(tweetSettingsArray, i)}></i></span>
 <Link className='post--body--image--link__main' to={`/posts/${_id}`}> 
 
   <div className='post--header'>
@@ -92,7 +113,8 @@ return user === null ? <Spinner /> :
 <div className='post--body--text'>{commentary.length > 125 ?<p>{commentary.slice(0, 125)}...</p> : <p>{commentary}</p>}</div>
       <div className='post--body--image'>
         <Link className='post--body--image--link' to='google.com'> 
-        <div className='post--body--image--left'><img src={avatar} /></div>
+        <div className='post--body--image--left'>
+          {image !== undefined ? <Fragment><img src={image} alt={name} /></Fragment> : <Fragment><i className='fa fa-commenting'></i></Fragment>}</div>
         <div className='post--body--image--right'>
           <span>This will be the title</span>
           <p>words words words words words words words words words words words words</p>
@@ -110,7 +132,8 @@ return user === null ? <Spinner /> :
     <div className='post--actionBar--icon-container'>
 
       <div className='retweet--modal'>
-        <p>d</p>
+        <span>Retweet</span>
+        <span>Quote Tweet</span>
       </div>
       <i class="fas fa-retweet" onClick={() => toggleRetweetModal(modalsArr, i)}></i>
       

@@ -13,13 +13,34 @@
     &:hover{
         background: rgb(245, 248, 250);
     }
+    .post--item--settings-modal{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        width: 240px;
+        min-width: 200px;
+        max-width: 250px;
+        height: 350px;
+        min-height: 300px;
+        max-height: 360px;
+        background: $white;
+        box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px,
+                    rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+        z-index: 20;
+        border-radius: 5px;
+        opacity: 0;
+        transition: all .25s ease;
+        transform: translate(0, -120%);
+    }
     .post--item--down-carrot{
         position: absolute;
-        top: 10px;
-        right: 0;
+        top: 15px;
+        right: -5px;
         height: 50px;
         width: 50px;
-        z-index: 13;
+        z-index: 21;
         i{
             border-radius: 9999px;
             transition: all .25s ease;
@@ -74,6 +95,8 @@
             opacity: 0;
             transition: all .25s ease;
             transform: translate(0, -120%);
+            display: flex;
+            flex-direction: column;
         }
     }
 }
@@ -197,6 +220,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            min-width: 125px;
+            min-height: 125px;
+            max-width: 150px;
+            max-height: 150px;
+            background: $white;
+            transition: all .25s ease;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
             p{
                 align-items: center;
                 align-self: center;
@@ -210,6 +242,9 @@
                 border-top-left-radius: 25px;
                 border-bottom-left-radius: 25px;
             }
+            i{
+                font-size: 4.5rem;
+            }
         }
         .post--body--image--right{
             display: flex;
@@ -222,8 +257,11 @@
             background: $white;
             transition: all .25s ease;
             &:hover{
+                .post--body--image--left{
+                    background: rgba(0, 0, 0, .03)!important;
+                }
                 background: rgba(0, 0, 0, .03)!important;
- 
+
             }
             span{
                 align-self: flex-start;

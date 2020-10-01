@@ -21,7 +21,7 @@ router.post('/', [auth, [
 
     try{
         const user = await User.findById(req.user.id).select('-password');
-
+        console.log(req.body)
         const newPost = new Post ({
             text: req.body.text,
             commentary: req.body.commentary,
@@ -41,6 +41,7 @@ router.post('/', [auth, [
             const post = await newPost.save();
             res.json(post);
     } catch(err){
+        console.log(err)
         res.status(500).json('Server error');
     }
 
