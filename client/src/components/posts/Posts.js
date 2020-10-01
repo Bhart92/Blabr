@@ -8,7 +8,9 @@ import { Redirect } from 'react-router-dom';
 import { getPosts } from '../../actions/posts';
 
 const Posts = ({ getPosts, user, post: { posts, loading } }) => {
-
+  if(user === undefined){
+    return <Redirect to='/dashboard' />
+  }
   return <div className='post--container'>
           <div className='post--container--title'>
             <h1>Home</h1>
@@ -19,8 +21,8 @@ const Posts = ({ getPosts, user, post: { posts, loading } }) => {
           <PostForm user={user}/>
           </div>
       <div className='post--container--posts'>
-        {posts.map(post => (
-          <PostItem key={post._id} post={post} showActions={true}/>
+        {posts.map((post, i) => (
+          <PostItem key={post._id} post={post} i={i} showActions={true} user={user}/>
         ))}
       </div>
     </div>

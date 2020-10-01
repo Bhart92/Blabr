@@ -32,11 +32,11 @@ const PostForm = ({ addPost, user }) => {
         />
           <div className='post--container--form--icons'>
             <div>
-              <i className="fas fa-home"></i>
-              <i className="fas fa-home"></i>
-              <i className="fas fa-home"></i>
-              <i className="fas fa-home"></i>
-              <i className="fas fa-home"></i>
+              <i class="far fa-image"></i>
+              <i class="fas fa-film"></i>
+              <i class="fas fa-bars"></i>
+              <i class="far fa-smile"></i>
+              <i class="far fa-calendar-alt"></i>
             </div>
             <div>
               <input type='submit' value='Blab' />

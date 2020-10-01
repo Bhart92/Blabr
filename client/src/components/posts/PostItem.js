@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DayJS from 'react-dayjs';
+import Modal from 'react-modal';
 import RepostForm from './RepostForm';
 import Spinner from '../layout/Spinner';
 import RepostItem from './RepostItem';
@@ -14,6 +15,7 @@ const PostItem = ({
   deletePost,
   showActions,
   auth,
+  i,
   post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, name, avatar, user, likes, comments, date }
 }) => {
 {/* <div id="progressBar" class="progress_bar"></div> */}
@@ -28,7 +30,38 @@ const PostItem = ({
     //     progress.style.backgroundColor = "green";
     //   }
     // ,100);
+    const modals = document.querySelectorAll('.retweet--modal')
+    const modalsArr = Array.from(modals);
 
+    const toggleRetweetModal = (modalsArr, i) => {
+      const overlay = document.querySelector('.retweet--modal--overlay');
+      overlay.classList.toggle('retweet-active-overlay');
+      const element = modalsArr[i]
+      element.classList.toggle('retweet-active');
+    }
+    const toggleClearModal = (modalsArr, i) => {
+      const overlay = document.querySelector('.retweet--modal--overlay');
+      overlay.classList.remove('retweet-active-overlay');
+      const modals = document.querySelectorAll('.retweet--modal')
+      modalsArr.map((item, i) => {
+        item.classList.remove('retweet-active')
+      })
+
+    }
+    const customStyles = {
+      content : {
+        position              : 'relative',
+        // top                   : 'unset',
+        // left                  : '330px',
+        // right                 : 'unset',
+        // bottom                : '70px',
+        height                : '100px',
+        width                 : '125px',
+        background            : '#FFF',
+        borderRadius          : '25px',
+        boxShadow             : 'rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px'
+      }
+  };
   const [likeStatus, setLikeStatus] = useState(false);
   const likePost = (id) => {
     setLikeStatus(true);
@@ -36,22 +69,58 @@ const PostItem = ({
   }
 return user === null ? <Spinner /> :
 (
-<div className='post--item'>
+  <Fragment>
+    <Fragment>
+    <div className='retweet--modal--overlay' onClick={() => toggleClearModal(modalsArr, i)}></div>
+
+    </Fragment>
+
+    <div className='post--item'>
+<span className='post--item--down-carrot'><i class="fas fa-chevron-down"></i></span>
+<Link className='post--body--image--link__main' to={`/posts/${_id}`}> 
+
   <div className='post--header'>
     <img src={avatar} alt={name} />
   </div>
   <div className='post--body'>
     <div className='post--body--title'>
-      <span>{name}Name</span>
-      <span>@{handle} &middot; </span> 
+      <span>{name}Name &nbsp;</span>
+      <span>@{handle} &middot;&nbsp;</span> 
        <DayJS format={"MM/D/YYYY"} element={"span"}>{date}</DayJS>
-      <span><i class="fas fa-chevron-down"></i></span>
     </div>
-    <div className='post--body--text'>
-      <p>{commentary}</p>
+    <div className='post--body--content'>
+<div className='post--body--text'>{commentary.length > 125 ?<p>{commentary.slice(0, 125)}...</p> : <p>{commentary}</p>}</div>
+      <div className='post--body--image'>
+        <Link className='post--body--image--link' to='google.com'> 
+        <div className='post--body--image--left'><img src={avatar} /></div>
+        <div className='post--body--image--right'>
+          <span>This will be the title</span>
+          <p>words words words words words words words words words words words words</p>
+          <a><i class="fas fa-link"></i>SomeLink.com</a>
+          </div>
+          </Link>
+      </div>
     </div>
   </div>
+  </Link>
+  <div className='post--actionBar'>
+    <div className='post--actionBar--icon-container'>
+      <i class="far fa-comment-dots"></i>
+    </div>
+    <div className='post--actionBar--icon-container'>
+
+      <div className='retweet--modal'>
+        <p>d</p>
+      </div>
+      <i class="fas fa-retweet" onClick={() => toggleRetweetModal(modalsArr, i)}></i>
+      
+      </div>
+    <div className='post--actionBar--icon-container'><i class="far fa-heart"></i></div>
+    <div className='post--actionBar--icon-container'><i class="fas fa-upload"></i></div>
+  </div>
  </div>
+  </Fragment>
+
   );
 };
 PostItem.propTypes = {

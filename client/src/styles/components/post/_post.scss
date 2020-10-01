@@ -14,6 +14,7 @@
 .post--container--title{
     height: 55px;
     max-height: 55px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,6 +51,7 @@
             border-radius: 9999px;
             padding: 8px;
             transition: all .25s ease;
+            
             &:hover{
                 background-color: lighten($blue, 44%);
             }
