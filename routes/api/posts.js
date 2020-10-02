@@ -25,7 +25,7 @@ router.post('/', [auth, [
         const newPost = new Post ({
             text: req.body.text,
             commentary: req.body.commentary,
-            name: `${user.name}`,
+            fullName: `${user.fullName}`,
             avatar: user.avatar,
             repostAvatar: req.body.avatar,
             repostName: req.body.name,

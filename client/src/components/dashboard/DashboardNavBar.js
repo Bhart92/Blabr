@@ -12,7 +12,7 @@ const DashboardNavBar = ({
     logout,
     deleteAccount
 }) => {
-    const customStyles = {
+    const bottomModal = {
         content : {
           position              : 'fixed',
           top                   : 'unset',
@@ -26,6 +26,22 @@ const DashboardNavBar = ({
           boxShadow             : 'rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px'
         }
     };
+    const topModal = {
+        content : {
+            top                   : '50%',
+            left                  : '50%',
+            minWidth              : '550px',
+            maxWidth              :'650px',
+            minHeight             : '375px',
+            maxHeight             : '425px',
+            height                : '400px',
+            width                 : '600px',
+            zIndex                : '50',
+            background            : '#FFF',
+            borderRadius          : '25px',
+            boxShadow             : 'rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px'
+        }
+    };
     const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
           setIsOpen(true);
@@ -33,7 +49,34 @@ const DashboardNavBar = ({
     function closeModal(){
             setIsOpen(false);
     }
+
+
+
+
+    const [modalTwoIsOpen, setTwoIsOpen] = useState(false);
+
+    function openModalTwo() {
+        setTwoIsOpen(true);
+  }
+    function closeModalTwo(){
+        setTwoIsOpen(false);
+}
     return <Fragment>
+        <Fragment>
+        <Modal
+            className='dashboard-tweet--modal'
+            isOpen={modalTwoIsOpen}
+            onRequestClose={closeModalTwo}
+            style={topModal}
+            closeTimeoutMS={200}
+            contentLabel="Example Modal"
+            ariaHideApp={false}
+        >
+                <div id='modal--container' className='tweet-comment--modal'> 
+
+                </div>
+        </Modal>
+        </Fragment>
         <header>
         <div className='dashboard--navbar'>
         <div className='dashboard--navBar-icon'>
@@ -47,7 +90,7 @@ const DashboardNavBar = ({
                             <li><NavLink exact to='/explore' activeClassName='active' ><i class="fas fa-user-friends"></i> People</NavLink></li>
                             <li><NavLink exact to='/posts' activeClassName='active' ><i class="fas fa-bookmark"></i> Bookmarks</NavLink></li>
                         </ul>
-                        <span className='tweet-button'>Blab</span>
+                        <span className='tweet-button' onClick={() => {openModalTwo()}}>Blab</span>
         </div>
         <div className='dashboard--navBar--greeting-box'>
 
@@ -67,7 +110,7 @@ const DashboardNavBar = ({
             className='dashboard--navBar--modal'
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
-            style={customStyles}
+            style={bottomModal}
             closeTimeoutMS={200}
             contentLabel="Example Modal"
             ariaHideApp={false}

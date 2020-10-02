@@ -9,6 +9,7 @@
     border-bottom: 0.5px solid #eeeeee;
     position: relative;
     transition: all .25s ease;
+    overflow: hidden;
     cursor: pointer;
     &:hover{
         background: rgb(245, 248, 250);
@@ -104,7 +105,7 @@
     height: 100%;
     width: 100%;
     background: transparent;
-    z-index: 14;
+    z-index: 30;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -112,14 +113,23 @@
     right: 0;
     display: none;
 }
+.retweet--modal{
+    z-index: 100;
+}
 .retweet-active-overlay{
     display: block;
+}
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    z-index: 50;
 }
 .retweet-active{
     transform: translate(0, 0%)!important;
     box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px!important;
-    z-index: 15!important;
+    z-index: 30!important;
     opacity: 1!important;
+}
+.remove-overflow{
+    overflow: unset!important;
 }
 .post--header{
     min-width: 59px;
