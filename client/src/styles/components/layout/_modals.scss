@@ -18,7 +18,8 @@
     opacity: 0;
   }
   .ReactModalPortal .ReactModal__Overlay{
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 4rem;
     display: flex;
     justify-content: center;
     transition: opacity 200ms ease-in-out;
@@ -54,6 +55,7 @@
     transform: translate(100%, 0);
     opacity: 0;
     background: $white;
+    z-index: 1000;
 }
 .activeSlide{
   transform: translate(0, 0);
@@ -64,4 +66,9 @@
     outline: none;
     border: none;
   }
+}    
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+  background: rgba(0, 0, 0, .07)!important;
+  position: relative;
+  z-index: 999;
 }
