@@ -14,6 +14,26 @@
     &:hover{
         background: rgb(245, 248, 250);
     }
+    .user--modal{
+        position: absolute;
+        top: -25px;
+        left: 75px;
+        background: #1da1f2;
+        border-radius: 25px;
+        height: 300px;
+        width: 300px;
+        min-height: 300px;
+        max-height: 300px;
+        min-width: 300px;
+        max-width: 300px;
+        transform: translate(-200%, 0);
+        opacity: 0;
+        transition: all .25s ease;
+        transition-delay: .25s;
+        transition-property: opacity;
+        box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+    }
+
     .post--item--settings-modal{
         display: flex;
         flex-direction: column;
@@ -275,13 +295,33 @@ article{
     align-items: flex-start;
     justify-content: center;
     text-align: center;
+    cursor: pointer;
     img{
         width: 90%;
         border-radius: 9999px;
         cursor: pointer;
     }
 }
+.post-popper{
+    background: $white;
+    z-index: 100000;
+    min-width: 300px;
+    min-height: 300px;
+    border-radius: 25px;
+    opacity: 1;
+    transform: translate(0);
+    transition: transform .35s ease,
+                opacity .5s ease;
+    visibility: visible;
+    box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+}
+.post-popper--hidden{
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-100px, 0);
+    pointer-events: none!important;
 
+}
 .post--body{
     flex-grow: 1;
     .post--item--down-carrot{
@@ -563,5 +603,10 @@ article{
     position: absolute;
     bottom: .5rem;
     right: 4rem;
+    }
+    .user--modal-active{
+        transform: translate(0, 0)!important;
+        opacity: 1!important;
+        z-index: 10000!important;
     }
 // Media Qs

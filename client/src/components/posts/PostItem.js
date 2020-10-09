@@ -1,5 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { usePopper } from 'react-popper';
+import classNames from 'classnames';
 import DayJS from 'react-dayjs';
 import Modal from 'react-modal';
 import RepostForm from './RepostForm';
@@ -36,6 +38,9 @@ const PostItem = ({
     const postItems = document.querySelectorAll('.post--item')
     const postItemsArray = Array.from(postItems);
 
+    const userModals = document.querySelectorAll('.user--modal')
+    const userModalsArray = Array.from(userModals);
+
 
     const toggleRetweetModal = (array, array2, i) => {
       const overlay = document.querySelector('.retweet--modal--overlay');
@@ -46,7 +51,6 @@ const PostItem = ({
       element.classList.toggle('retweet-active');
     }
 
-
     const toggleTweetSettingsModal = (array, array2, i) => {
       const overlay = document.querySelector('.retweet--modal--overlay');
       overlay.classList.toggle('retweet-active-overlay');
@@ -56,7 +60,6 @@ const PostItem = ({
       element.classList.toggle('retweet-active');
     }
 
- 
     const toggleClearModal = (array, array2, array3, i) => {
       const overlay = document.querySelector('.retweet--modal--overlay');
 
@@ -73,6 +76,37 @@ const PostItem = ({
       })
 
     }
+
+
+
+
+    const boxRef = useRef();
+    const tooltipRef = useRef();
+
+    const [popperOpen, setPopperOpen] = useState(true);
+
+    const togglePopper = () => {
+      setPopperOpen(!popperOpen);
+    };
+    const {styles, attributes} = usePopper(boxRef.current, tooltipRef.current,
+      { placement: 'right-start',
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 25]
+          }
+        },
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: ['top', 'bottom'],
+          }
+        }
+      ]
+    }
+      );
+
     const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
           setIsOpen(true);
@@ -181,8 +215,13 @@ return user === null ? <Spinner /> :
                 </div>
         </Modal>
     </Fragment>
+    <Fragment>
+    <div className={classNames('post-popper', { 'post-popper--hidden': !!popperOpen })} ref={tooltipRef} style={styles.popper} {...attributes.popper}>
 
+      Popper ToolTip</div>
+    </Fragment>
     <div className='post--item'>
+
       <div className='post--item--settings-modal'>
         {user.toString() === auth.user._id ? (
                     <Fragment>
@@ -203,50 +242,49 @@ return user === null ? <Spinner /> :
           </Fragment>
           )}
       </div>
-<span className='post--item--down-carrot'><i class="fas fa-chevron-down" onClick={() => toggleTweetSettingsModal(tweetSettingsArray, postItemsArray, i)}></i></span>
-<Link className='post--body--image--link__main' to={`/posts/${_id}`}> 
-
-  <div className='post--header'>
-    <img src={avatar} alt={fullName} />
-  </div>
-  <div className='post--body'>
-    <div className='post--body--title'>
-      <span>{fullName} &nbsp;</span>
-      <span>@{handle} &middot;&nbsp;</span> 
-       <DayJS format={"MM/D/YYYY"} element={"span"}>{date}</DayJS>
-    </div>
-    <div className='post--body--content'>
-<div className='post--body--text'>{commentary.length > 125 ?<p>{commentary.slice(0, 125)}...</p> : <p>{commentary}</p>}</div>
-      <div className='post--body--image'>
-        <Link className='post--body--image--link' to='google.com'> 
-        <div className='post--body--image--left'>
-          {image !== undefined ? <Fragment><img src={image} alt={fullName} /></Fragment> : <Fragment><i className='fa fa-commenting'></i></Fragment>}</div>
-        <div className='post--body--image--right'>
-          <span>This will be the title</span>
-          <p>words words words words words words words words words words words words</p>
-          <a><i class="fas fa-link"></i>SomeLink.com</a>
+        <span className='post--item--down-carrot'><i class="fas fa-chevron-down" onClick={() => toggleTweetSettingsModal(tweetSettingsArray, postItemsArray, i)}></i></span>
+        <Link className='post--body--image--link__main' to={`/posts/${_id}`}> 
+          <div className='post--header' ref={boxRef} onMouseEnter={() => togglePopper()} onMouseLeave={() => togglePopper()}>
+            <img src={avatar} alt={fullName} />
+          </div>
+          <div className='post--body'>
+            <div className='post--body--title'>
+              <span>{fullName} &nbsp;</span>
+              <span>@{handle} &middot;&nbsp;</span> 
+              <DayJS format={"MM/D/YYYY"} element={"span"}>{date}</DayJS>
+            </div>
+            <div className='post--body--content'>
+            <div className='post--body--text'>{commentary.length > 125 ?<p>{commentary.slice(0, 125)}...</p> : <p>{commentary}</p>}</div>
+              <div className='post--body--image'>
+                <Link className='post--body--image--link' to='google.com'> 
+                <div className='post--body--image--left'>
+                  {image !== undefined ? <Fragment><img src={image} alt={fullName} /></Fragment> : <Fragment><i className='fa fa-commenting'></i></Fragment>}</div>
+                <div className='post--body--image--right'>
+                  <span>This will be the title</span>
+                  <p>words words words words words words words words words words words words</p>
+                  <a><i class="fas fa-link"></i>SomeLink.com</a>
+                  </div>
+                  </Link>
+              </div>
+            </div>
           </div>
           </Link>
-      </div>
-    </div>
-  </div>
-  </Link>
-  <div className='post--actionBar'>
-    <div className='post--actionBar--icon-container'>
-      <i class="far fa-comment-dots" onClick={() => openModal()}></i>
-    </div>
-    <div className='post--actionBar--icon-container'>
+        <div className='post--actionBar'>
+          <div className='post--actionBar--icon-container'>
+            <i class="far fa-comment-dots" onClick={() => openModal()}></i>
+          </div>
+          <div className='post--actionBar--icon-container'>
 
-      <div className='retweet--modal'>
-        <div className='post--item--menu-item'><i class="fas fa-retweet"></i> ReTweet</div>
-        <div className='post--item--menu-item'><i class="fas fa-pencil-alt"></i> Quote Tweet</div>
-      </div>
-      <i class="fas fa-retweet" onClick={() => toggleRetweetModal(modalsArr, postItemsArray, i)}></i>
-      
-      </div>
-    <div className='post--actionBar--icon-container'><i class="far fa-heart"></i></div>
-    <div className='post--actionBar--icon-container'><i class="fas fa-upload"></i></div>
-  </div>
+            <div className='retweet--modal'>
+              <div className='post--item--menu-item'><i class="fas fa-retweet"></i> ReTweet</div>
+              <div className='post--item--menu-item'><i class="fas fa-pencil-alt"></i> Quote Tweet</div>
+            </div>
+            <i class="fas fa-retweet" onClick={() => toggleRetweetModal(modalsArr, postItemsArray, i)}></i>
+            
+            </div>
+          <div className='post--actionBar--icon-container'><i class="far fa-heart"></i></div>
+          <div className='post--actionBar--icon-container'><i class="fas fa-upload"></i></div>
+        </div>
  </div>
   </Fragment>
 
