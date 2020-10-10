@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { usePopper } from 'react-popper';
+import Tippy from '@tippyjs/react';
+import {followCursor} from 'tippy.js';
 import classNames from 'classnames';
 import DayJS from 'react-dayjs';
 import Modal from 'react-modal';
@@ -19,16 +20,14 @@ const PostItem = ({
   auth,
   i,
   post,
-  post: { _id, text, url, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, fullName, avatar, user, likes, comments, date }
+  post: { _id, text, url, following, followers, interests, bio, userTitle, company, title, repostHandle, repostAvatar, repostName, originalCommentary, commentary, handle, image, description, fullName, avatar, user, likes, comments, date }
 }) => {
-  console.log('*******')
-  console.log(text)
-  console.log('*******')
-  console.log(commentary)
-  console.log('*******')
-
-
-
+  // console.log('*******')
+  // console.log(text)
+  // console.log('*******')
+  // console.log(commentary)
+  // console.log('*******')
+console.log(post)
     const modals = document.querySelectorAll('.retweet--modal')
     const modalsArr = Array.from(modals);
 
@@ -40,7 +39,6 @@ const PostItem = ({
 
     const userModals = document.querySelectorAll('.user--modal')
     const userModalsArray = Array.from(userModals);
-
 
     const toggleRetweetModal = (array, array2, i) => {
       const overlay = document.querySelector('.retweet--modal--overlay');
@@ -76,36 +74,6 @@ const PostItem = ({
       })
 
     }
-
-
-
-
-    const boxRef = useRef();
-    const tooltipRef = useRef();
-
-    const [popperOpen, setPopperOpen] = useState(true);
-
-    const togglePopper = () => {
-      setPopperOpen(!popperOpen);
-    };
-    const {styles, attributes} = usePopper(boxRef.current, tooltipRef.current,
-      { placement: 'right-start',
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 25]
-          }
-        },
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: ['top', 'bottom'],
-          }
-        }
-      ]
-    }
-      );
 
     const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
@@ -216,9 +184,7 @@ return user === null ? <Spinner /> :
         </Modal>
     </Fragment>
     <Fragment>
-    <div className={classNames('post-popper', { 'post-popper--hidden': !!popperOpen })} ref={tooltipRef} style={styles.popper} {...attributes.popper}>
 
-      Popper ToolTip</div>
     </Fragment>
     <div className='post--item'>
 
@@ -243,10 +209,68 @@ return user === null ? <Spinner /> :
           )}
       </div>
         <span className='post--item--down-carrot'><i class="fas fa-chevron-down" onClick={() => toggleTweetSettingsModal(tweetSettingsArray, postItemsArray, i)}></i></span>
-        <Link className='post--body--image--link__main' to={`/posts/${_id}`}> 
-          <div className='post--header' ref={boxRef} onMouseEnter={() => togglePopper()} onMouseLeave={() => togglePopper()}>
-            <img src={avatar} alt={fullName} />
+<div className='post--body--image--link__main'>
+
+
+<Tippy
+          content={
+          <div className='tippy-popper'>
+            <div className='popper-container-top'>
+              <div className='popper-image-container'>
+              <a href="#"><img src={avatar} /></a>
+                <span>{fullName}</span>
+                <span><a href="#">@{handle}</a></span>
+              </div>
+              <button>Follow</button>
+            </div>
+
+            <div className='popper-container-mid'>
+ 
+            <div className='popper-mid-content'>
+              <div><span>{userTitle} at {company}</span></div>
+          <div className='popper-bio'>{bio.length > 75 ? <Fragment><span>{bio.slice(0, 75)} ...</span></Fragment> : <Fragment><span>{bio}</span></Fragment>}</div>
+
+            </div>
+
+            </div>
+            <div className='popper-container-bottom'>
+              <div className='popper-follow-container'>
+              <div className='popper-followers'>
+                <p>{followers.length} <span>Followers</span></p>
+              </div>
+              <div className='popper-following'>
+                  <p>{following.length} <span>Following</span></p>
+
+              </div>
+
+              </div>
+            </div>
+
           </div>
+        }
+          interactive={true}
+          delay={450}
+          trigger={'mouseenter'}
+          placement={'right'}
+          popperOptions={{
+            strategy: 'fixed',
+            modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  fallbackPlacements: ['top', 'bottom'],
+                },
+              }
+            ]
+          }}
+          interactiveBorder={20}
+          >
+            <div className='post--header'  >
+              <img src={avatar} alt={fullName} />
+            </div>
+
+          </ Tippy>
+      <Link to={`/posts/${_id}`}> 
           <div className='post--body'>
             <div className='post--body--title'>
               <span>{fullName} &nbsp;</span>
@@ -269,6 +293,9 @@ return user === null ? <Spinner /> :
             </div>
           </div>
           </Link>
+
+</div>
+
         <div className='post--actionBar'>
           <div className='post--actionBar--icon-container'>
             <i class="far fa-comment-dots" onClick={() => openModal()}></i>

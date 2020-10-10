@@ -302,18 +302,105 @@ article{
         cursor: pointer;
     }
 }
-.post-popper{
+.tippy-box{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 2px 3px;
     background: $white;
     z-index: 100000;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 250px;
+    min-height: 225px;
+    max-height: 250px;
+    height: auto;
     border-radius: 25px;
     opacity: 1;
     transform: translate(0);
     transition: transform .35s ease,
-                opacity .5s ease;
+                opacity .5s ease,
+                visibility .55s ease;
     visibility: visible;
     box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+}
+.popper-container-top{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button{
+        padding: 10px 15px;
+        flex-shrink: 1;
+        align-self: end;
+        background: $blue;
+        border: 1px solid $blue;
+        border-radius: 25px;
+        margin: 5px 10px;
+        color: $white;
+        cursor: pointer;
+        transition: all .25s ease;
+        font-weight: 800;
+        &:hover{
+            background: #0c85d0;
+        }
+    }
+    .popper-image-container{
+        height: auto;
+        width: 100px;
+        span{
+            width: 100%;
+            display: block;
+            padding: 0;
+            margin: 0;
+            font-size: .9rem;
+            line-height: 100%;
+            &:last-of-type{
+                color: rgba(119, 128, 138, 0.75);
+            }
+        }
+        img{
+            height: 100%;
+            width: 60px;
+            border-radius: 9999px;
+        }
+    }
+}
+.popper-container-mid{
+    width: 95%;
+    text-align: left;
+    margin: 10px 0;
+    .popper-mid-content{
+        .popper-bio{
+            line-height: 110%;
+            span{
+                word-break: break-word;
+            }
+        }
+
+    }
+.popper-interests{
+    ul{
+        display: flex;
+        flex-direction: column;
+    }
+}
+}
+.popper-container-bottom{
+    width: 100%;
+.popper-follow-container{
+    display: flex;
+    div{
+        margin: 0 5px;
+        p{
+            color: black;
+            span{
+                color: rgba(119, 128, 138, 0.75); 
+            }
+        }
+    }
+    }
 }
 .post-popper--hidden{
     visibility: hidden;

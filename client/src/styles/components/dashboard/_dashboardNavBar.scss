@@ -161,3 +161,27 @@ header{
     align-self: flex-start;
     justify-content: flex-start;
 }
+
+.tweet--textarea{
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 100%;
+    flex-grow: 1;
+    word-break: break-word;
+    resize: none;
+    padding-top: 10px;
+    text-align: left;
+}
+.retweet-dash-content{
+    height: 100%;
+}
+.retweet-modal--article-container.dash{
+    margin-top: -25px;
+    min-height: 165px;
+    max-height: 185px;
+}
+.retweet-modal--lower-container.dash{
+    height: 330px;
+}

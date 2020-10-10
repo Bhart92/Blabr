@@ -32,6 +32,20 @@ const PostSchema = new mongoose.Schema({
     repostAvatar: {
         type: String
     },
+    interests: {
+        type: Array
+    },
+    followers: {
+        type: Array
+    },
+    following: {
+        type: Array
+    },
+    bio: {type: String},
+    location: {type: String},
+    company: {type: String},
+    userTitle: {type: String},
+
     repostHandle: {
         type: String
     },

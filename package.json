@@ -13,6 +13,7 @@
   "author": "Brandon Hart",
   "license": "ISC",
   "dependencies": {
+    "@tippyjs/react": "^4.2.0",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.2.6",
     "config": "^3.3.1",
@@ -24,6 +25,7 @@
     "mongoose": "^5.9.17",
     "react-hamburger-menu": "^1.2.1",
     "request": "^2.88.2",
+    "tippy.js": "^6.2.6",
     "unirest": "^0.6.0",
     "uuid": "^8.2.0"
   },

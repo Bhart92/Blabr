@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import PostForm from '../posts/PostForm';
 import Modal from 'react-modal';
+import DayJS from 'react-dayjs';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../../actions/auth';
@@ -72,8 +73,46 @@ const DashboardNavBar = ({
             contentLabel="Example Modal"
             ariaHideApp={false}
         >
-                <div id='modal--container' className='tweet-comment--modal'> 
 
+<div id='modal--container' className='tweet-comment--modal'> 
+                  <div className='retweet-modal--upper'><i className='fa fa-times'onClick={() => closeModalTwo()} ></i></div>
+                  <div className='retweet-modal--lower'>
+                    <div className='retweet-modal--lower-container dash'>
+                      <div className='retweet-modal--article-container dash'>
+                        <article>
+                          
+                          <div className='retweet--poster-image-container'>
+                            <div className='retweet--poster-image-inner'>
+                              <img src={user.avatar} />
+                            </div>
+                          </div>
+
+                          <div className='retweet--poster-content dash'>
+                          <div className='retweet-dash-content'>
+                            <textarea className='tweet--textarea' placeholder={`What's happening?`}
+                                      maxLength='280'
+                                      name='commentary'
+                                      cols='30'
+                                      rows='5'
+                                      ></textarea>
+                          </div>
+                          <div className='retweet--submit-actions'>
+                        <div>
+                          <i class="far fa-image"></i>
+                          <i class="fas fa-film"></i>
+                          <i class="fas fa-bars"></i>
+                          <i class="far fa-smile"></i>
+                          <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <div>
+                          <input type='submit' value='Blab' />
+                      </div>
+                      </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
                 </div>
         </Modal>
         </Fragment>
