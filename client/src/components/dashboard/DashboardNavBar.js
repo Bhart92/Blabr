@@ -6,11 +6,13 @@ import DayJS from 'react-dayjs';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../../actions/auth';
+import { addPost } from '../../actions/posts';
 import { deleteAccount } from '../../actions/profile';
 
 const DashboardNavBar = ({
     user,
     logout,
+    addPost,
     deleteAccount
 }) => {
     const bottomModal = {
@@ -53,6 +55,7 @@ const DashboardNavBar = ({
 
 
 
+    const [commentary, setCommentary] = useState('');
 
     const [modalTwoIsOpen, setTwoIsOpen] = useState(false);
 
@@ -89,25 +92,44 @@ const DashboardNavBar = ({
 
                           <div className='retweet--poster-content dash'>
                           <div className='retweet-dash-content'>
-                            <textarea className='tweet--textarea' placeholder={`What's happening?`}
-                                      maxLength='280'
-                                      name='commentary'
-                                      cols='30'
-                                      rows='5'
-                                      ></textarea>
-                          </div>
+                            <form
+                              className='form'
+                              onSubmit={e => {
+                                e.preventDefault();
+                                addPost({ commentary });
+                                setCommentary('');
+                                closeModalTwo();
+                              }}
+                            >
+
+                              <textarea className='tweet--textarea' placeholder={`What's happening?`}
+                                        maxLength='280'
+                                        name='commentary'
+                                        cols='30'
+                                        rows='5'
+                                        value={commentary}
+                                        onChange={e => setCommentary(e.target.value)}
+                                        ></textarea>
                           <div className='retweet--submit-actions'>
-                        <div>
-                          <i class="far fa-image"></i>
-                          <i class="fas fa-film"></i>
-                          <i class="fas fa-bars"></i>
-                          <i class="far fa-smile"></i>
-                          <i class="far fa-calendar-alt"></i>
-                        </div>
-                        <div>
-                          <input type='submit' value='Blab' />
-                      </div>
-                      </div>
+
+                              <div>
+                                <i class="far fa-image"></i>
+                                <i class="fas fa-film"></i>
+                                <i class="fas fa-bars"></i>
+                                <i class="far fa-smile"></i>
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+
+                              <div>
+                                <input type='submit' value='Blab' />
+                              </div>
+
+                              </div>
+
+
+                            </form>
+                          </div>
+
                           </div>
                         </article>
                       </div>
@@ -190,4 +212,4 @@ const mapStateToProps = state => ({
     auth: state.auth
   });
 
-export default connect(mapStateToProps, { logout, deleteAccount })(DashboardNavBar);
+export default connect(mapStateToProps, { logout, addPost, deleteAccount })(DashboardNavBar);

@@ -10,7 +10,7 @@ import Spinner from '../layout/Spinner';
 import RepostItem from './RepostItem';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addLike, removeLike, deletePost, addPost } from '../../actions/posts';
+import { addLike, removeLike, deletePost } from '../../actions/posts';
 
 const PostItem = ({
   addLike,
@@ -27,7 +27,13 @@ const PostItem = ({
   // console.log('*******')
   // console.log(commentary)
   // console.log('*******')
-console.log(post)
+
+
+console.log(post.likes.filter(like => like.user !== user).length)
+
+
+
+
     const modals = document.querySelectorAll('.retweet--modal')
     const modalsArr = Array.from(modals);
 
@@ -183,15 +189,12 @@ return user === null ? <Spinner /> :
                 </div>
         </Modal>
     </Fragment>
-    <Fragment>
-
-    </Fragment>
     <div className='post--item'>
 
       <div className='post--item--settings-modal'>
         {user.toString() === auth.user._id ? (
                     <Fragment>
-                    <div className='post--item--menu-item'><i class="far fa-trash-alt" style={redFont}></i><span style={redFont}> Delete Tweet</span></div>
+                    <div className='post--item--menu-item'><i class="far fa-trash-alt" style={redFont}></i><span onClick={() => deletePost(_id)} style={redFont}> Delete Tweet</span></div>
                     <div className='post--item--menu-item'><i class="fas fa-thumbtack"></i><span>Pin tweet</span></div>
                     <div className='post--item--menu-item'><i class="fas fa-code"></i><span>Embed Tweet</span></div>
                     <div className='post--item--menu-item'><i class="far fa-chart-bar"></i><span>Analytics</span></div>
@@ -212,7 +215,9 @@ return user === null ? <Spinner /> :
 <div className='post--body--image--link__main'>
 
 
-<Tippy
+{/* //Create tippy popper for delete box modal and for retweet modals */}
+
+        <Tippy
           content={
           <div className='tippy-popper'>
             <div className='popper-container-top'>
@@ -309,7 +314,33 @@ return user === null ? <Spinner /> :
             <i class="fas fa-retweet" onClick={() => toggleRetweetModal(modalsArr, postItemsArray, i)}></i>
             
             </div>
-          <div className='post--actionBar--icon-container'><i class="far fa-heart"></i></div>
+        <div className='post--actionBar--icon-container'>
+          
+  
+          {post.likes.filter(like => like.user === user).length > 0 ? (
+            <Fragment>
+              <span>{post.likes.length}</span> &nbsp;&nbsp;<i class="far fa-heart liked" onClick={() => removeLike(_id)}></i>
+            </Fragment>
+          ) 
+          : 
+          (
+            <Fragment>
+              {
+                
+              post.likes.length <= 0 ? 
+
+                <Fragment><i class="far fa-heart" onClick={() => addLike(_id)}></i></Fragment>
+              : 
+
+                <Fragment>
+                  <span>{post.likes.length}</span>&nbsp;&nbsp;<i class="far fa-heart" onClick={() => addLike(_id)}></i>
+                </Fragment> 
+
+              }
+            </Fragment>
+          )}
+
+          </div>
           <div className='post--actionBar--icon-container'><i class="fas fa-upload"></i></div>
         </div>
  </div>
