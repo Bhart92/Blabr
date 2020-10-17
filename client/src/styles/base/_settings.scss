@@ -185,7 +185,13 @@ textarea{
         overflow: hidden;
     }
 }
-@media only screen and (max-width: 325px){
+@media (max-width: 800px){
+    .register--input-box__bottom {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 325px){
     .auth--container {
         position: absolute;
         top: 95%;

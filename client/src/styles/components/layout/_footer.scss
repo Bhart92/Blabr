@@ -20,3 +20,36 @@
         cursor: pointer;
     }
 }
+
+@media (max-width: 800px){
+    .footer span {
+        font-size: 1.25rem;
+        color: #878787;
+        font-weight: 300;
+        padding-right: 34px;
+        letter-spacing: 1.1px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .landing--hero-left--box-item {
+         margin-bottom: 0; 
+    }
+    .landing--hero-right, .landing--hero-left {
+        padding: 65px;
+    }
+}
+@media (max-width: 600px){
+    .footer span {
+        font-size: .9rem!important;
+        padding-right: unset!important;
+        width: 90%!important;
+    }
+    .landing--hero-left--box-item span {
+        font-size: 1.05rem;
+    }
+}
+@media (max-width: 350px){
+    .footer{
+        position: unset;
+    }
+}

@@ -7,7 +7,7 @@
 .landing--hero-right{
     background:$white;
     height: 100%;
-    flex-basis: 50%;
+    flex-basis: 55%;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -23,12 +23,13 @@
 }
 .landing--hero-right--login-box--inner{
     height: 100%;
-    width: 100%;
+    width: 85%;
     text-align: left;
     display: flex;
     align-items: center;
     justify-content: center;
-    form{
+    margin: 0 auto;
+     form{
         label{
             height: 100%;
         }
@@ -75,8 +76,8 @@
             }
         }
         .landing--hero-right--input-container{
-            min-width: 200px;
-            width: 350px;
+            width: 45%;
+            max-width: 45%;
             margin-right: 25px;
             background: #f5f8fa;
         }
@@ -86,7 +87,7 @@
     display: flex;
     flex-direction: column;
     max-width: 465px;
-    transform: translate(-50px, -50px);
+    transform: translate(-50px, -25px);
     i{
         font-size: 4rem;
         margin-bottom: 35px;
@@ -140,6 +141,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-basis: 45%;
 }
 .landing--hero-left--inner{
     height: 100%;
@@ -156,7 +158,7 @@
     i{
         transform: translate(-275px, -25px) scaleX(-1) scale(2);
         color: $blue;
-        font-size: 38rem;
+        font-size: 31rem;
     }
 }
 .landing--hero-left--box{
@@ -186,5 +188,32 @@
     .fa-user-friends{
         color: $white;
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 1200px){
+    .landing--hero-right{
+        flex-basis: 60%
+    }
+    .landing--hero-left{
+        flex-basis: 40%
+    }
+    .landing--hero-right--center-box {
+        transform: unset!important;
+    }
+    .landing--hero-left--box{
+        transform: unset!important;
+    }
+    .landing--hero-left--box-item span {
+        font-size: 1.35rem;
+    }
+}
+@media (max-width: 800px){
+    .landing {
+        flex-direction: column;
+        height: auto;
+    }
+    .landing--hero-right--login-box{
+        display: none;
     }
 }

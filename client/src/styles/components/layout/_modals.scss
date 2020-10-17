@@ -72,3 +72,24 @@
   position: relative;
   z-index: 999;
 }
+@media(max-width: 800px){
+  .ReactModal__Overlay.ReactModal__Overlay--after-open {
+    background: rgba(0, 0, 0, 0.5)!important;
+  }
+.modal--container {
+  border-radius: 25px!important;
+  }
+  .register--modal {
+    border-radius: 25px!important;
+  }
+}
+@media (max-width:600px ){
+  .register--modal {
+    min-width: 95%!important;
+    overflow: hidden;
+    overflow-y: unset;
+  }
+  .modal--container:nth-of-type(2) {
+    overflow-y: scroll!important;
+  }
+}
